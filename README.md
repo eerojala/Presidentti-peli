@@ -1,2 +1,3 @@
-# Presidentti-peli
+﻿# Presidentti-peli
 Ohjelmoinnin harjoitustyö
+pieni repotreeni
