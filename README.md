@@ -1,0 +1,2 @@
+# Presidentti-peli
+Ohjelmoinnin harjoitustyö
