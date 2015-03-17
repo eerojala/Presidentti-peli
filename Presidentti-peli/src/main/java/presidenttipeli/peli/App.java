@@ -1,4 +1,4 @@
-package presidenttipeli.presidentti.peli;
+package presidenttipeli.peli;
 
 /**
  * Hello world!
