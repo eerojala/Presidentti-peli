@@ -1,4 +1,4 @@
-package presidenttipeli.presidentti.peli;
+package presidenttipeli.peli;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

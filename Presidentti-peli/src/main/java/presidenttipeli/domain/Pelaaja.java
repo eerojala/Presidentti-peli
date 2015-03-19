@@ -3,7 +3,7 @@ package presidenttipeli.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pelaaja {
+public class Pelaaja implements Comparable<Pelaaja> {
 
     private String nimi;
     private int rahaa;
@@ -90,4 +90,31 @@ public class Pelaaja {
         this.velkaa = velkaa;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Pelaaja verrattava = (Pelaaja) obj;
+
+        if (!this.nimi.equals(verrattava.getNimi())) {
+            return false;
+        }
+
+        // myöhemmin toteutettavat logiikkaosuudet huolehtivat siitä että kahta samannimistä pelaajaa ei ole
+        return true;
+    }
+
+    @Override
+    public int compareTo(Pelaaja o) {
+        return o.getRahaa() - this.rahaa;
+    }
+
+    @Override
+    public String toString() {
+        return this.nimi;
+    }
+    
+    
 }

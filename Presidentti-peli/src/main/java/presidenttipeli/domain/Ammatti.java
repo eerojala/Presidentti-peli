@@ -2,7 +2,7 @@
 package presidenttipeli.domain;
 
 
-public class Ammatti {
+public class Ammatti implements Comparable<Ammatti>{
     private String nimi;
     private int palkka;
     private boolean johtaja;
@@ -30,6 +30,30 @@ public class Ammatti {
     public boolean salliiKansanedustajuuden() {
         return salliiKansanedustajuuden;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        Ammatti verrattava = (Ammatti) obj;
+        
+        if (!this.nimi.equals(verrattava.getNimi())) {
+            return false;
+        }
+        
+        // Samannimisiä ammatteja ei voi olla
+        return true;
+    }
+
+    @Override
+    public int compareTo(Ammatti o) {
+        return o.getPalkka() - this.palkka;
+    }
+
+    
+
     
     
 }

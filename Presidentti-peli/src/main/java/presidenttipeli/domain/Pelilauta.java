@@ -1,47 +1,56 @@
-
 package presidenttipeli.domain;
 
+import presidenttipeli.domain.tapahtumat.Tapahtuma;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Pelilauta {
+
     private List<Ruutu> ruudut;
-    private List<Nappula> nappulat;
-    private List<Ammatti> ammatit;
-    private List<Mokki> mokit;
-    private List<Liike> liikkeet;
-    private List<Tapahtuma> tapahtumakortit;
+    private ArrayDeque<Nappula> nappulat;
+    private List<Ammatti> johtajaAmmatit;
+    private ArrayDeque<Ammatti> sattumaAmmatit;
+    private ArrayDeque<Mokki> mokit;
+    private ArrayDeque<Liike> liikkeet;
+    private ArrayDeque<Tapahtuma> tapahtumakortit;
 
     public Pelilauta() {
         ruudut = new ArrayList();
-        nappulat = new ArrayList();
-        ammatit = new ArrayList();
-        mokit = new ArrayList();
-        liikkeet = new ArrayList();
-        tapahtumakortit = new ArrayList();
+        nappulat = new ArrayDeque();
+        johtajaAmmatit = new ArrayList();
+        sattumaAmmatit = new ArrayDeque();
+        mokit = new ArrayDeque();
+        liikkeet = new ArrayDeque();
+        tapahtumakortit = new ArrayDeque();
     }
 
-    public List<Ammatti> getAmmatit() {
-        return ammatit;
+    public List<Ammatti> getJohtajaAmmatit() {
+        return johtajaAmmatit;
     }
 
-    public List<Liike> getLiikkeet() {
+    public ArrayDeque<Liike> getLiikkeet() {
         return liikkeet;
     }
 
-    public List<Mokki> getMokit() {
+    public ArrayDeque<Mokki> getMokit() {
         return mokit;
     }
 
-    public List<Nappula> getNappulat() {
+    public ArrayDeque<Nappula> getNappulat() {
         return nappulat;
+    }
+
+    public ArrayDeque<Ammatti> getSattumaAmmatit() {
+        return sattumaAmmatit;
+    }
+
+    public ArrayDeque<Tapahtuma> getTapahtumakortit() {
+        return tapahtumakortit;
     }
 
     public List<Ruutu> getRuudut() {
         return ruudut;
     }
-    
-    
-    
+
 }
