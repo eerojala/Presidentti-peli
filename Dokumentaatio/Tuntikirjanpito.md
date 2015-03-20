@@ -5,3 +5,4 @@
 * 18.3.2015 1 tunti, Kirjoitin pelin mukana tulleet säännöt md-tiedostoon
 * 18.3.2015 0,5 tuntia, Piirsin alustavan domain-luokkien luokkakaavion
 * 19.3.2015 5 tuntia, Kirjoittelin testejä ja koodasin lisää domain-luokkia ja vähän logiikkaluokkia.
+* 20.3.2015 5 tuntia, Koodasin tapahtumaluokkia ja tweakkailin domain-luokkia, kirjoittelin testejä
