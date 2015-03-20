@@ -3,7 +3,7 @@ package presidenttipeli.domain.tapahtumat;
 import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelaaja;
 
-public class AmmattiinVaikuttavaTapahtuma extends Tapahtuma {
+public class AmmattiinVaikuttavaTapahtuma implements Tapahtuma {
 
     private Ammatti ammatti;
 

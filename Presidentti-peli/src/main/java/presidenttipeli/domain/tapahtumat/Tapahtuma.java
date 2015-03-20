@@ -2,8 +2,8 @@ package presidenttipeli.domain.tapahtumat;
 
 import presidenttipeli.domain.Pelaaja;
 
-public abstract class Tapahtuma {
+public interface Tapahtuma {
 
-    public abstract boolean suoritaTapahtuma(Pelaaja pelaaja);
+    public boolean suoritaTapahtuma(Pelaaja pelaaja);
 
 }

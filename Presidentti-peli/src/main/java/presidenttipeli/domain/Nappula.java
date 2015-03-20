@@ -3,11 +3,10 @@ package presidenttipeli.domain;
 public class Nappula {
 
     private Pelaaja omistaja;
-    private Ruutu sijainti;
+    private Ruutu sijainti; // Nappula asetetaan luontivaiheessa aloitusruudulle
 
-    public Nappula(Pelaaja omistaja, Ruutu sijainti) {
+    public Nappula(Pelaaja omistaja) {
         this.omistaja = omistaja;
-        this.sijainti = sijainti;
     }
 
     public Pelaaja getOmistaja() {

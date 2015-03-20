@@ -4,7 +4,7 @@ package presidenttipeli.domain.tapahtumat;
 import presidenttipeli.domain.Pelaaja;
 
 
-public class RahaanVaikuttavaTapahtuma extends Tapahtuma{
+public class RahaanVaikuttavaTapahtuma implements Tapahtuma{
     private boolean pelaajalleRahaa; // jos true niin pelaaja saa rahaa, jos false niin pelaajalta otetaan rahaa
     private int summa;
     

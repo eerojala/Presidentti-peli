@@ -19,6 +19,8 @@ import presidenttipeli.domain.Pelaaja;
  */
 public class TutkintoonVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
+    Tapahtuma test1;
+    Tapahtuma test2;
     
     public TutkintoonVaikuttavaTapahtumaTest() {
     }
@@ -34,6 +36,8 @@ public class TutkintoonVaikuttavaTapahtumaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("test");
+        test1 = new TutkintoonVaikuttavaTapahtuma(true);
+        test2 = new TutkintoonVaikuttavaTapahtuma(false);
     }
     
     @After
@@ -43,15 +47,14 @@ public class TutkintoonVaikuttavaTapahtumaTest {
 
     @Test
     public void tutkinnonAntaminenPelaajalleOnnistuu() {
-        Tapahtuma test = new TutkintoonVaikuttavaTapahtuma(true);
-        test.suoritaTapahtuma(pelaaja);
+        test1.suoritaTapahtuma(pelaaja);
         assertEquals(true, pelaaja.isTutkinto());
     }
     
     @Test
     public void tutkinnonOttaminenPelaajaltaOnnistuu() {
-        Tapahtuma test = new TutkintoonVaikuttavaTapahtuma(false);
-        test.suoritaTapahtuma(pelaaja);
+        test1.suoritaTapahtuma(pelaaja);
+        test2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.isTutkinto());
     }
 }

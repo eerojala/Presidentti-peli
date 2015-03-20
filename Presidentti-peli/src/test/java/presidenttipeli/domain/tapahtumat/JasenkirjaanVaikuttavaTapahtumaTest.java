@@ -12,6 +12,8 @@ import presidenttipeli.domain.Pelaaja;
 
 public class JasenkirjaanVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
+    Tapahtuma test1;
+    Tapahtuma test2;
     
     public JasenkirjaanVaikuttavaTapahtumaTest() {
     }
@@ -27,6 +29,8 @@ public class JasenkirjaanVaikuttavaTapahtumaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("test");
+        test1 = new JasenkirjaanVaikuttavaTapahtuma(true);
+        test2 = new JasenkirjaanVaikuttavaTapahtuma(false);
     }
     
     @After
@@ -35,15 +39,14 @@ public class JasenkirjaanVaikuttavaTapahtumaTest {
 
     @Test
     public void jasenKirjanAntaminenOnnistuu() {
-        Tapahtuma test = new JasenkirjaanVaikuttavaTapahtuma(true);
-        test.suoritaTapahtuma(pelaaja);
+        test1.suoritaTapahtuma(pelaaja);
         assertEquals(true, pelaaja.isPuolueenJasen());
     }
     
     @Test
     public void jasenKirjanPoisOttaminenOnnistuu() {
-        Tapahtuma test = new JasenkirjaanVaikuttavaTapahtuma(false);
-        test.suoritaTapahtuma(pelaaja);
+        test1.suoritaTapahtuma(pelaaja);
+        test2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.isPuolueenJasen());
     }
 }

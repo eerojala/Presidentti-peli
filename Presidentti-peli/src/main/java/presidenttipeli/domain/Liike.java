@@ -1,7 +1,7 @@
 
 package presidenttipeli.domain;
 
-public class Liike {
+public class Liike implements Comparable<Liike>{
     private String nimi;
     private int arvo;
     private int tuotto;
@@ -22,6 +22,30 @@ public class Liike {
     
     public int getTuotto() {
         return tuotto;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        Liike verrattava = (Liike) obj;
+        
+        if (!this.nimi.equals(verrattava.getNimi())) {
+            return false;
+        }
+        // Samannimisiä liikkeitä ei ole
+        return true;
+    }
+
+    @Override
+    public int compareTo(Liike o) {
+        if (this.arvo != o.getArvo()) {
+            return o.getArvo() - this.arvo;
+        } else {
+            return o.getTuotto() - this.tuotto;
+        } // Ei ole liikkeitä joilla olisi sekä sama arvo että tuotto
     }
     
     

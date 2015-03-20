@@ -4,7 +4,7 @@ package presidenttipeli.domain.tapahtumat;
 import presidenttipeli.domain.Pelaaja;
 
 
-public class TutkintoonVaikuttavaTapahtuma extends Tapahtuma{
+public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma{
     private boolean pelaajalleTutkinto;
 
     public TutkintoonVaikuttavaTapahtuma(boolean pelaajalleTutkinto) {

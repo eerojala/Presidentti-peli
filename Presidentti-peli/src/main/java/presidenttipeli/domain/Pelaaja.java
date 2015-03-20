@@ -14,6 +14,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private Ammatti ammatti;
     private List<Liike> omistamatLiikkeet;
     private List<Mokki> omistamatMokit;
+    private Nappula nappula; // pelaajalle asetetaan nappula olioiden luontivaiheessa.
 
     public Pelaaja(String nimi) {
         this.nimi = nimi;
@@ -28,6 +29,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     public Ammatti getAmmatti() {
         return ammatti;
+    }
+
+    public Nappula getNappula() {
+        return nappula;
     }
 
     public String getNimi() {
@@ -68,6 +73,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     public void setKansanedustaja(boolean kansanedustaja) {
         this.kansanedustaja = kansanedustaja;
+    }
+
+    public void setNappula(Nappula nappula) {
+        this.nappula = nappula;
     }
 
     public void setNimi(String nimi) {
@@ -115,6 +124,5 @@ public class Pelaaja implements Comparable<Pelaaja> {
     public String toString() {
         return this.nimi;
     }
-    
-    
+ 
 }
