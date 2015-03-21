@@ -34,8 +34,8 @@ public class NappulanSijaintiinVaikuttavaTapahtumaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("");
-        uusiSijainti = new Ruutu(0, new ArrayDeque<Tapahtuma>(), "test");
-        vanhaSijainti = new Ruutu(1, new ArrayDeque<Tapahtuma>(), "test");
+        uusiSijainti = new Ruutu(0);
+        vanhaSijainti = new Ruutu(1);
         nappula = new Nappula(pelaaja);
         pelaaja.setNappula(nappula);
         nappula.setSijainti(vanhaSijainti);

@@ -24,6 +24,10 @@ public class Pelilauta {
         liikkeet = new ArrayDeque();
         tapahtumakortit = new ArrayDeque();
     }
+    
+    public void siirraNappulaa(Nappula nappula, int nopanLuku) {
+        
+    }
 
     public List<Ammatti> getJohtajaAmmatit() {
         return johtajaAmmatit;

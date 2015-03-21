@@ -1,0 +1,132 @@
+﻿1. MAANANTAI
+LÄHTÖRAHA 5000,-
+Palkkapäivä, työttömyyskorvaus + liikkeen tuotto
+Liikkeiden ja mökkien osto + myynti
+
+2. TIISTAI
+TYÖTÖN
+Työttömyyskorvaus 1000,-/kk
+Työsi kansanedustajana jatkuu
+
+3. KESKIVIIKKO
+OPETTAJA
+Palkka 5000,-/kk
+Menetät kansanedustajan työsi
+
+4. TORSTAI
+AUTONKULJETTAJA
+Palkka 3500,-/kk
+Työsi kansanedustajana jatkuu
+
+5. PERJANTAI
+TYÖTÖN
+Työttömyyskorvaus 1000,-/kk
+Työsi kansanedustajana jatkuu
+
+6. LAUANTAI
+PÄÄLIKKÖ
+Palkka 9000,-/kk
+Menetät kansanedustajan työsi
+
+7. SUNNUNTAI
+Ota sattuma-ammattikortti
+Työsi kansanedustajana jatkuu
+
+8. MAANANTAI
+Saat puolueen jäsenkirjan
+
+9. TIISTAI
+Voitat totossa, nosta 2000,-
+
+10. KESKIVIIKKO
+VAALIT
+
+11. TORSTAI
+VUOKRAN MAKSU
+Jos palkkasi on
+0-2000 mk maksa 500,-
+2001-4000 mk maksa 1000,-
+Yli 4000 mk maksa 1500,-
+
+12. PERJANTAI
+Jos sinulla on puoluuen jäsenkirja, valitse johtaja-ammatti
+Muutoin nosta tapahtumakortti
+
+13. LAUANTAI
+Vaihdat työpaikkaa
+Työmatkasi pitenee, maksa 500,-
+Ei koske työtöntä
+
+14. SUNNUNTAI
+YLITYÖPALKKA
+Nosta kassasta 1000,-
+Ei koske työtöntä
+
+15. MAANANTAI
+AUTON VAIHTO
+Maksa 5000,-
+
+16. TIISTAI
+PANKIN SIVUKONTTORI
+Nosta tapahtumakortti
+Liikkeiden ja mökkien osto + myynti
+
+17. KESKIVIIKKO
+UUSI TUTKINTO
+Ota tutkintokortti
+Palkankorotus 1500,-
+Maksetaan palkkapäivänä
+
+18. TORSTAI
+Voi surkeus!
+Menetät työsi ja palkkasi
+
+19. PERJANTAI
+Saat perintönä LIIKKEEN, nosta liikekortti
+
+20. LAUANTAI
+Ainutlaatuinen tilaisuus,
+saat ostaa MÖKIN yhdellä kymmenesosalla sen todellisesta arvosta
+
+21. SUNNUNTAI
+Mökkisi paloi, vakuutus kattaa vain puolet vahingosta
+Nosta vakuutussumma pankista
+
+22. MAANANTAI
+Sinut koulutetaan uusiin tehtäviin
+Valitse johtaja-ammatti
+
+23. TIISTAI
+VUOKRAN KOROTUS
+Maksa 500,-
+Kansanedustaja tai johtaja siirry lisäksi ruutuun 30
+
+24. KESKIVIIKKO
+Joudut poliisilaitoksen PUTKAAN
+Odota 2 heittovuoroa tai maksa 4000,-
+
+25. TORSTAI 
+VAALIT
+Jos palkkasi on vähintään 4000,-/kk ja sinulla on puoleen jäsenkirja,
+pääset kansanedustajaksi vähintään 80 äänellä.
+
+26. PERJANTAI
+SIIRRY RUUTUUN 1
+
+27. LAUANTAI
+VOITAT LOTOSSA
+20000,-
+
+28. SUNNUNTAI 
+Elämässäsi tapahtuu!
+Ota tapahtumakortti
+
+29. MAANANTAI
+VEROTARKASTUS
+Jos sinulla on liikkeitä, menetät kuukauden tuoton
+
+30. TIISTAI
+SINUSTAKO PRESIDENTTI?
+Osallistu vaaliin!
+
+Tiedosto päättyy

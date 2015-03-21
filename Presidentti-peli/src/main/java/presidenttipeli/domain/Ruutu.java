@@ -9,14 +9,28 @@ public class Ruutu {
     private ArrayDeque<Tapahtuma> tapahtumat;
     private String seloste;
 
-    public Ruutu(int numero, ArrayDeque<Tapahtuma> tapahtumat, String seloste) {
+    public Ruutu(int numero) {
         this.numero = numero;
-        this.tapahtumat = tapahtumat;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getSeloste() {
+        return seloste;
+    }
+
+    public ArrayDeque<Tapahtuma> getTapahtumat() {
+        return tapahtumat;
+    }
+    
+    public void setSeloste(String seloste) {
         this.seloste = seloste;
     }
 
+    public void setTapahtumat(ArrayDeque<Tapahtuma> tapahtumat) {
+        this.tapahtumat = tapahtumat;
+    }
     
-
-    
-
 }
