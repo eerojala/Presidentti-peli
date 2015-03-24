@@ -9,12 +9,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Liike;
 import presidenttipeli.domain.Pelaaja;
+import presidenttipeli.domain.Pelilauta;
 
 public class LiikkeisiinVaikuttavaTapahtumaTest {
     Liike liike;
     Tapahtuma tapahtuma1;
     Tapahtuma tapahtuma2;
     Pelaaja pelaaja;
+    Pelilauta lauta;
     
     public LiikkeisiinVaikuttavaTapahtumaTest() {
     }
@@ -29,10 +31,11 @@ public class LiikkeisiinVaikuttavaTapahtumaTest {
     
     @Before
     public void setUp() {
+        lauta = new Pelilauta();
         pelaaja = new Pelaaja("test");
         liike = new Liike("liike1", 10000, 1000);
-        tapahtuma1 = new LiikkeisiinVaikuttavaTapahtuma(liike, true);
-        tapahtuma2 = new LiikkeisiinVaikuttavaTapahtuma(liike, false);
+        tapahtuma1 = new LiikkeisiinVaikuttavaTapahtuma(liike, true, lauta);
+        tapahtuma2 = new LiikkeisiinVaikuttavaTapahtuma(liike, false, lauta);
     }
     
     @After
@@ -59,7 +62,7 @@ public class LiikkeisiinVaikuttavaTapahtumaTest {
     @Test
     public void poistaaOikeanLiikkeen() {
         tapahtuma1.suoritaTapahtuma(pelaaja);
-        Tapahtuma tapahtuma3 = new LiikkeisiinVaikuttavaTapahtuma(new Liike("testi", 30000, 3000), true);
+        Tapahtuma tapahtuma3 = new LiikkeisiinVaikuttavaTapahtuma(new Liike("testi", 30000, 3000), true, lauta);
         tapahtuma3.suoritaTapahtuma(pelaaja);
         tapahtuma2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.getOmistamatLiikkeet().contains(liike));

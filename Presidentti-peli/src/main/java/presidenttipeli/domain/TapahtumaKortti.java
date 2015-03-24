@@ -13,8 +13,5 @@ public class TapahtumaKortti {
         this.tapahtumat = tapahtumat;
         this.seloste = seloste;
     }
-
- 
-    
     
 }

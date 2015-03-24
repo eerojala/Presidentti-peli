@@ -13,18 +13,19 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelaaja;
+import presidenttipeli.domain.Pelilauta;
 
 /**
  *
  * @author Eero
  */
-public class AmmattiinVaikuttavaTapahtumaTest {
+public class AsetaAmmattiTest {
     Pelaaja pelaaja;
     Tapahtuma testi;
     Ammatti ammatti1;
     Ammatti ammatti2;
     
-    public AmmattiinVaikuttavaTapahtumaTest() {
+    public AsetaAmmattiTest() {
     }
     
     @BeforeClass
@@ -38,9 +39,9 @@ public class AmmattiinVaikuttavaTapahtumaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("test");
-        ammatti1 = new Ammatti("ammatti1", 5000, false, true);
-        ammatti2 = new Ammatti("ammatti2", 10000, true, false);
-        testi = new AmmattiinVaikuttavaTapahtuma(ammatti2);
+        ammatti1 = new Ammatti("ammatti1", 5000, false, false, true);
+        ammatti2 = new Ammatti("ammatti2", 10000, true, false, false);
+        testi = new AsetaAmmatti(new Pelilauta(), ammatti2);
     }
     
     @After

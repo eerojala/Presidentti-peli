@@ -2,16 +2,18 @@
 package presidenttipeli.domain;
 
 
-public class Ammatti implements Comparable<Ammatti>{
+public class Ammatti implements Comparable<Ammatti> {
     private String nimi;
     private int palkka;
     private boolean johtaja;
+    private boolean sattumaAmmmatti;
     private boolean salliiKansanedustajuuden;
 
-    public Ammatti(String nimi, int palkka, boolean johtaja, boolean salliiKansanedustajuuden) {
+    public Ammatti(String nimi, int palkka, boolean johtaja, boolean sattumaAmmmatti, boolean salliiKansanedustajuuden) {
         this.nimi = nimi;
         this.palkka = palkka;
         this.johtaja = johtaja;
+        this.sattumaAmmmatti = sattumaAmmmatti;
         this.salliiKansanedustajuuden = salliiKansanedustajuuden;
     }
 
@@ -25,6 +27,10 @@ public class Ammatti implements Comparable<Ammatti>{
 
     public boolean isJohtaja() {
         return johtaja;
+    }
+
+    public boolean isSattumaAmmmatti() {
+        return sattumaAmmmatti;
     }
 
     public boolean salliiKansanedustajuuden() {

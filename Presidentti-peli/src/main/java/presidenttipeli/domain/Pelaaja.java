@@ -11,6 +11,8 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private boolean puolueenJasen;
     private boolean kansanedustaja;
     private boolean tutkinto;
+    private boolean liikuntakykyinen;
+    private boolean oikeutettuTuottoon;
     private Ammatti ammatti;
     private List<Liike> omistamatLiikkeet;
     private List<Mokki> omistamatMokit;
@@ -23,6 +25,8 @@ public class Pelaaja implements Comparable<Pelaaja> {
         puolueenJasen = false;
         kansanedustaja = false;
         tutkinto = false;
+        liikuntakykyinen = true;
+        oikeutettuTuottoon = true;
         omistamatLiikkeet = new ArrayList();
         omistamatMokit = new ArrayList();
     }
@@ -55,6 +59,14 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return velkaa;
     }
 
+    public boolean isLiikuntakykyinen() {
+        return liikuntakykyinen;
+    }
+
+    public boolean isOikeutettuTuottoon() {
+        return oikeutettuTuottoon;
+    }
+    
     public boolean isPuolueenJasen() {
         return puolueenJasen;
     }
@@ -63,7 +75,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return kansanedustaja;
     }
 
-    public boolean isTutkinto() {
+    public boolean onTutkinto() {
         return tutkinto;
     }
 
@@ -75,12 +87,20 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.kansanedustaja = kansanedustaja;
     }
 
+    public void setLiikuntakykyinen(boolean liikuntakykyinen) {
+        this.liikuntakykyinen = liikuntakykyinen;
+    }
+
     public void setNappula(Nappula nappula) {
         this.nappula = nappula;
     }
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
+    }
+
+    public void setOikeutettuTuottoon(boolean oikeutettuTuottoon) {
+        this.oikeutettuTuottoon = oikeutettuTuottoon;
     }
 
     public void setPuolueenJasen(boolean puolueenJasen) {

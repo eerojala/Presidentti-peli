@@ -1,7 +1,7 @@
 
 package presidenttipeli.domain;
 
-public class Mokki implements Comparable<Mokki>{
+public class Mokki implements Comparable<Mokki> {
     private String nimi;
     private int arvo;
     

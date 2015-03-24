@@ -37,29 +37,29 @@ public class AmmattiTest {
 
     @Test
     public void equalsToimiiJosKaksiEri() {
-        ammatti1 = new Ammatti("ammatti1", 10000, true, true);
-        ammatti2 = new Ammatti("ammatti2", 2000, true, true);
+        ammatti1 = new Ammatti("ammatti1", 10000, true, false, true);
+        ammatti2 = new Ammatti("ammatti2", 2000, true, false, true);
         assertEquals(false, ammatti1.equals(ammatti2));
     }
     
     @Test
     public void equalsToimiiJosSamat() {
-        ammatti1 = new Ammatti("testi", 1000, true, true);
-        ammatti2 = new Ammatti("testi", 5000, false, false);
+        ammatti1 = new Ammatti("testi", 1000, true, false, true);
+        ammatti2 = new Ammatti("testi", 5000, false, false, false);
         assertEquals(true, ammatti1.equals(ammatti2));
     }
     
     @Test
     public void equalsToimiiJosEriLuokka() {
         Object object = new Object();
-        ammatti1 = new Ammatti("testi", 100, true, true);
+        ammatti1 = new Ammatti("testi", 100, true, false, true);
         assertEquals(false, ammatti1.equals(object));
     }
     
     @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
-        ammatti1 = new Ammatti("ammatti1", 10000, true, true);
-        ammatti2 = new Ammatti("ammatti2", 10001, true, true);
+        ammatti1 = new Ammatti("ammatti1", 10000, true, false, true);
+        ammatti2 = new Ammatti("ammatti2", 10001, true, false, true);
 
         List<Ammatti> lista = new ArrayList();
         lista.add(ammatti1);

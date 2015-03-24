@@ -17,7 +17,7 @@ public class JohtajaAmmattienLuoja extends Luoja{
     @Override
     public void luo() {
         for (int i = 0; i < 10; i++) {
-            johtajaAmmatit.add(new Ammatti("Johtaja-Ammatti", 10000, true, false));
+            johtajaAmmatit.add(new Ammatti("Johtaja-Ammatti", 10000, true, false, false));
         }
     }
 

@@ -1,7 +1,7 @@
 
 package presidenttipeli.domain;
 
-public class Liike implements Comparable<Liike>{
+public class Liike implements Comparable<Liike> {
     private String nimi;
     private int arvo;
     private int tuotto;

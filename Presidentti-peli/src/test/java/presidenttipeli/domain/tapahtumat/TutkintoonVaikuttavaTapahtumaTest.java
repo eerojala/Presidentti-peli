@@ -48,13 +48,13 @@ public class TutkintoonVaikuttavaTapahtumaTest {
     @Test
     public void tutkinnonAntaminenPelaajalleOnnistuu() {
         test1.suoritaTapahtuma(pelaaja);
-        assertEquals(true, pelaaja.isTutkinto());
+        assertEquals(true, pelaaja.onTutkinto());
     }
     
     @Test
     public void tutkinnonOttaminenPelaajaltaOnnistuu() {
         test1.suoritaTapahtuma(pelaaja);
         test2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.isTutkinto());
+        assertEquals(false, pelaaja.onTutkinto());
     }
 }
