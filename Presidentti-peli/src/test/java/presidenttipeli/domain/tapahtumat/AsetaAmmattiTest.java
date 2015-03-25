@@ -21,7 +21,8 @@ import presidenttipeli.domain.Pelilauta;
  */
 public class AsetaAmmattiTest {
     Pelaaja pelaaja;
-    Tapahtuma testi;
+    Tapahtuma testi1;
+    Tapahtuma testi2;
     Ammatti ammatti1;
     Ammatti ammatti2;
     
@@ -39,9 +40,10 @@ public class AsetaAmmattiTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("test");
-        ammatti1 = new Ammatti("ammatti1", 5000, false, false, true);
+        ammatti1 = new Ammatti("Työtön", 5000, false, false, true);
         ammatti2 = new Ammatti("ammatti2", 10000, true, false, false);
-        testi = new AsetaAmmatti(new Pelilauta(), ammatti2);
+        testi1 = new AsetaAmmatti(new Pelilauta(), ammatti1);
+        testi2 = new AsetaAmmatti(new Pelilauta(), ammatti2);
     }
     
     @After
@@ -50,9 +52,42 @@ public class AsetaAmmattiTest {
 
     @Test
     public void uudenAmmatinAsettaminenOnnistuu() {
-        pelaaja.setAmmatti(ammatti1);
-        testi.suoritaTapahtuma(pelaaja);
-        assertEquals(ammatti2, pelaaja.getAmmatti());
+        pelaaja.setAmmatti(ammatti2);
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(ammatti1, pelaaja.getAmmatti());
     }
     
+    @Test
+    public void ottaaPoisKansanedustajuudenJosAmmattiEiSalliSita() {
+        pelaaja.setKansanedustaja(true);
+        testi2.suoritaTapahtuma(pelaaja);
+        assertEquals(false, pelaaja.isKansanedustaja());
+    }
+    
+    @Test
+    public void eiOtaPoisKansanedustajuuttaJosAmmattiSalliiSen() {
+        pelaaja.setKansanedustaja(true);
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.isKansanedustaja());
+    }
+    
+    @Test
+    public void ottaaTutkinnonPois() {
+        pelaaja.setTutkinto(true);
+        testi2.suoritaTapahtuma(pelaaja);
+        assertEquals(false, pelaaja.omistaaTutkinnon());
+    }
+    
+    @Test
+    public void eiOtaTutkintoaPoisJosPelaajaOnTyoton() {
+        pelaaja.setTutkinto(true);
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.omistaaTutkinnon());
+    }
+    
+    @Test
+    public void eiAnnaTutkintoaJosPelaajaOnTyoton() {
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(false, pelaaja.omistaaTutkinnon());
+    }
 }

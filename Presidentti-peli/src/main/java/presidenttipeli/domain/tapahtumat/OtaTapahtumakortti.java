@@ -3,6 +3,7 @@ package presidenttipeli.domain.tapahtumat;
 
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.Tapahtumakortti;
 
 public class OtaTapahtumakortti implements Tapahtuma{
     private Pelilauta lauta;
@@ -13,9 +14,11 @@ public class OtaTapahtumakortti implements Tapahtuma{
 
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        Tapahtuma tapahtuma = lauta.getTapahtumakortit().getFirst();
-        tapahtuma.suoritaTapahtuma(pelaaja);
-        lauta.getTapahtumakortit().add(tapahtuma);
+        Tapahtumakortti kortti = lauta.getTapahtumakortit().pollFirst();
+        for (Tapahtuma tapahtuma : kortti.getTapahtumat()) {
+            tapahtuma.suoritaTapahtuma(pelaaja);
+        }
+        lauta.getTapahtumakortit().add(kortti);
         return true;
     }
     

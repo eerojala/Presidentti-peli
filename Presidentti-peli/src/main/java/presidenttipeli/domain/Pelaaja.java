@@ -22,6 +22,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.nimi = nimi;
         rahaa = 5000;
         velkaa = 0;
+        ammatti = new Ammatti("Työtön", 1000, false, false, true);
         puolueenJasen = false;
         kansanedustaja = false;
         tutkinto = false;
@@ -75,7 +76,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return kansanedustaja;
     }
 
-    public boolean onTutkinto() {
+    public boolean omistaaTutkinnon() {
         return tutkinto;
     }
 

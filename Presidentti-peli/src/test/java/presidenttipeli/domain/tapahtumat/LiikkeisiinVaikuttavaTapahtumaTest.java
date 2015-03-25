@@ -73,4 +73,9 @@ public class LiikkeisiinVaikuttavaTapahtumaTest {
         assertEquals(false, tapahtuma2.suoritaTapahtuma(pelaaja));
     }
     
+    @Test
+    public void palauttaaLiikkeenTakaisinKorttipinoon() {
+        tapahtuma2.suoritaTapahtuma(pelaaja);
+        assertEquals(liike, lauta.getLiikkeet().getLast());
+    }
 }

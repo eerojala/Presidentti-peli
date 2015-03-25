@@ -9,6 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
+import presidenttipeli.domain.Pelilauta;
 
 
 public class MokkeihinVaikuttavaTapahtumaTest {
@@ -16,6 +17,7 @@ public class MokkeihinVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
     Tapahtuma tapahtuma1;
     Tapahtuma tapahtuma2;
+    Pelilauta lauta;
     
     public MokkeihinVaikuttavaTapahtumaTest() {
     }
@@ -32,8 +34,9 @@ public class MokkeihinVaikuttavaTapahtumaTest {
     public void setUp() {
         pelaaja = new Pelaaja("test");
         mokki = new Mokki("mokki1", 10000);
-        tapahtuma1 = new MokkeihinVaikuttavaTapahtuma(mokki, true);
-        tapahtuma2 = new MokkeihinVaikuttavaTapahtuma(mokki, false);
+        lauta = new Pelilauta();
+        tapahtuma1 = new MokkeihinVaikuttavaTapahtuma(mokki, true, lauta);
+        tapahtuma2 = new MokkeihinVaikuttavaTapahtuma(mokki, false, lauta);
     }
     
     @After
@@ -60,7 +63,7 @@ public class MokkeihinVaikuttavaTapahtumaTest {
     @Test
     public void ottaaPelaajaltaPoisOikeanMokin() {
         tapahtuma1.suoritaTapahtuma(pelaaja);
-        Tapahtuma tapahtuma3 = new MokkeihinVaikuttavaTapahtuma(new Mokki("testi", 45000), true);
+        Tapahtuma tapahtuma3 = new MokkeihinVaikuttavaTapahtuma(new Mokki("testi", 45000), true, lauta);
         tapahtuma3.suoritaTapahtuma(pelaaja);
         tapahtuma2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.getOmistamatMokit().contains(mokki));
@@ -71,4 +74,9 @@ public class MokkeihinVaikuttavaTapahtumaTest {
         assertEquals(false, tapahtuma2.suoritaTapahtuma(pelaaja));
     }
     
+    @Test
+    public void palauttaaMokinTakaisinKorttipinoonPoistonJalkeen() {
+        tapahtuma2.suoritaTapahtuma(pelaaja);
+        assertEquals(mokki, lauta.getMokit().getLast());
+    }
 }

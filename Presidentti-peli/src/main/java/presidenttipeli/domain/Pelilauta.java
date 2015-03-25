@@ -13,7 +13,7 @@ public class Pelilauta {
     private ArrayDeque<Ammatti> sattumaAmmatit;
     private ArrayDeque<Mokki> mokit;
     private ArrayDeque<Liike> liikkeet;
-    private ArrayDeque<Tapahtuma> tapahtumakortit;
+    private ArrayDeque<Tapahtumakortti> tapahtumakortit;
 
     public Pelilauta() {
         ruudut = new ArrayList();
@@ -23,10 +23,6 @@ public class Pelilauta {
         mokit = new ArrayDeque();
         liikkeet = new ArrayDeque();
         tapahtumakortit = new ArrayDeque();
-    }
-    
-    public void siirraNappulaa(Nappula nappula, int nopanLuku) {
-        
     }
 
     public List<Ammatti> getJohtajaAmmatit() {
@@ -49,7 +45,7 @@ public class Pelilauta {
         return sattumaAmmatit;
     }
 
-    public ArrayDeque<Tapahtuma> getTapahtumakortit() {
+    public ArrayDeque<Tapahtumakortti> getTapahtumakortit() {
         return tapahtumakortit;
     }
 

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import presidenttipeli.domain.Pelaaja;
 
 
-public class PalkastaRiippuvatTapahtumat implements Tapahtuma{
+public class PalkastaRiippuvaTapahtuma implements Tapahtuma{
     private ArrayList<Tapahtuma> tapahtumat;
     private ArrayList<Integer> palkkarajat;
 
-    public PalkastaRiippuvatTapahtumat(ArrayList<Tapahtuma> tapahtumat, ArrayList<Integer> palkkarajat) {
+    public PalkastaRiippuvaTapahtuma(ArrayList<Tapahtuma> tapahtumat, ArrayList<Integer> palkkarajat) {
         this.tapahtumat = tapahtumat;
         this.palkkarajat = palkkarajat;
     }
@@ -24,7 +24,7 @@ public class PalkastaRiippuvatTapahtumat implements Tapahtuma{
                 return tapahtumat.get(i).suoritaTapahtuma(pelaaja);
             }
         }
-        return false;
+        return true;
     }
     
     

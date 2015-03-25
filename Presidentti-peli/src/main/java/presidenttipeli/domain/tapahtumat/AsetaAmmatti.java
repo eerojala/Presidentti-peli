@@ -16,21 +16,26 @@ public class AsetaAmmatti implements Tapahtuma {
 
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        Tapahtuma tapahtuma1 = new VieAmmattikorttiTakaisinPinoon(lauta, ammatti);
+        Tapahtuma tapahtuma1 = new VieAmmattikorttiTakaisinPinoon(lauta, pelaaja.getAmmatti());
         tapahtuma1.suoritaTapahtuma(pelaaja);
         pelaaja.setAmmatti(ammatti);
-        Tapahtuma tapahtuma2;
-        
-        if (pelaaja.isKansanedustaja() && ammatti.salliiKansanedustajuuden() == false) {
-            tapahtuma2 = new KansanedustajuuteenVaikuttavaTapahtuma(false);
-            tapahtuma2.suoritaTapahtuma(pelaaja);
-        }
-        
-        if (pelaaja.onTutkinto() && !ammatti.getNimi().equals("Työtön")) {
-            tapahtuma2 = new TutkintoonVaikuttavaTapahtuma(false);
-            tapahtuma2.suoritaTapahtuma(pelaaja);
-        }
+        otaPoisKansanedustajuus(pelaaja);
+        otaPoisTutkinto(pelaaja);
         return true;
+    }
+
+    private void otaPoisKansanedustajuus(Pelaaja pelaaja) {
+        if (pelaaja.isKansanedustaja() && ammatti.salliiKansanedustajuuden() == false) {
+            Tapahtuma tapahtuma = new KansanedustajuuteenVaikuttavaTapahtuma(false);
+            tapahtuma.suoritaTapahtuma(pelaaja);
+        }
+    }
+    
+    private void otaPoisTutkinto(Pelaaja pelaaja) {
+        if (pelaaja.omistaaTutkinnon() && !ammatti.getNimi().equals("Työtön")) {
+            Tapahtuma tapahtuma = new TutkintoonVaikuttavaTapahtuma(false);
+            tapahtuma.suoritaTapahtuma(pelaaja);
+        }
     }
 
 }

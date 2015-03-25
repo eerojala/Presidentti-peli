@@ -16,7 +16,7 @@ public class SiirraNappulaa implements Tapahtuma {
 
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        pelaaja.getNappula().setSijainti(lauta.getRuudut().get(uusiSijainti - 1));
+        pelaaja.getNappula().setSijainti(lauta.getRuudut().get(uusiSijainti - 1)); // luokka olettaa että laudalla on kaikki ruudut asetettuna
         return true;
     }
     

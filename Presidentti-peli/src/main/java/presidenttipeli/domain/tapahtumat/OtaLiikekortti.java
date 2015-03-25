@@ -15,7 +15,7 @@ public class OtaLiikekortti implements Tapahtuma{
 
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        Liike liike = lauta.getLiikkeet().getFirst();
+        Liike liike = lauta.getLiikkeet().pollFirst();
         Tapahtuma tapahtuma = new LiikkeisiinVaikuttavaTapahtuma(liike, true, lauta);
         return tapahtuma.suoritaTapahtuma(pelaaja);
     }

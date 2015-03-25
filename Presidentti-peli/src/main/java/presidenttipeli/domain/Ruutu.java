@@ -12,12 +12,11 @@ public class Ruutu implements Comparable<Ruutu>{
     private ArrayList<Tapahtuma> tapahtumat;
     private String seloste;
 
-    public Ruutu(int numero) {
+    public Ruutu(int numero, boolean ostoJaMyyntiruutu, boolean vaaliruutu, boolean putkaruutu) {
         this.numero = numero;
-        ostoJaMyyntiruutu = false;
-        vaaliruutu = false;
-        putkaruutu = false;
-        tapahtumat = new ArrayList();
+        this.ostoJaMyyntiruutu = ostoJaMyyntiruutu;
+        this.vaaliruutu = vaaliruutu;
+        this.putkaruutu = putkaruutu;
     }
 
     public int getNumero() {

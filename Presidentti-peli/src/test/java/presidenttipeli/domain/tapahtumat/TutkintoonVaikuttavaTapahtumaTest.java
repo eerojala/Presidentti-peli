@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.domain.tapahtumat;
 
 import org.junit.After;
@@ -13,10 +9,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
 
-/**
- *
- * @author Eero
- */
 public class TutkintoonVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
     Tapahtuma test1;
@@ -48,13 +40,13 @@ public class TutkintoonVaikuttavaTapahtumaTest {
     @Test
     public void tutkinnonAntaminenPelaajalleOnnistuu() {
         test1.suoritaTapahtuma(pelaaja);
-        assertEquals(true, pelaaja.onTutkinto());
+        assertEquals(true, pelaaja.omistaaTutkinnon());
     }
     
     @Test
     public void tutkinnonOttaminenPelaajaltaOnnistuu() {
         test1.suoritaTapahtuma(pelaaja);
         test2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.onTutkinto());
+        assertEquals(false, pelaaja.omistaaTutkinnon());
     }
 }

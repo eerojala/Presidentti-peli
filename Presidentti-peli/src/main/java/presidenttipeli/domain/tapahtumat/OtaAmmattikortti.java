@@ -22,7 +22,7 @@ public class OtaAmmattikortti implements Tapahtuma{
         if (johtaja) {
             ammatti = otaJohtaja();
         } else {
-            ammatti = lauta.getSattumaAmmatit().getFirst();
+            ammatti = lauta.getSattumaAmmatit().pollFirst();
         }
         Tapahtuma tapahtuma = new AsetaAmmatti(lauta, ammatti);
         return tapahtuma.suoritaTapahtuma(pelaaja);
