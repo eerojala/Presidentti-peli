@@ -17,6 +17,8 @@ public class Ruutu implements Comparable<Ruutu>{
         this.ostoJaMyyntiruutu = ostoJaMyyntiruutu;
         this.vaaliruutu = vaaliruutu;
         this.putkaruutu = putkaruutu;
+        tapahtumat = new ArrayList();
+        seloste = "placeholder";
     }
 
     public int getNumero() {
