@@ -30,6 +30,8 @@ public class LiikeTest {
     
     @Before
     public void setUp() {
+        liike1 = new Liike("Liike1", 10000, 1000);
+        liikkeet = new ArrayList();
     }
     
     @After
@@ -38,30 +40,25 @@ public class LiikeTest {
 
     @Test
     public void equalsToimiiJosKaksiEriLiiketta() {
-        liike1 = new Liike("liike1", 10000, 1000);
-        liike2 = new Liike("liike2", 10000, 1000);
+        liike2 = new Liike("Liike2", 10000, 1000);
         assertEquals(false, liike1.equals(liike2));
     }
     
     @Test
     public void equalsToimiiJosKaksiSamaaLiikettä() {
-        liike1 = new Liike("liike", 100,1000);
-        liike2 = new Liike("liike", 10000, 1000);
+        liike2 = new Liike("Liike1", 3000, 200);
         assertEquals(true, liike1.equals(liike2));
     }
     
     @Test
     public void equalsToimiiJosKaksiEriLuokkaa() {
-        liike1 = new Liike("s",1000,1000);
         Object obj = new Object();
         assertEquals(false, liike1.equals(obj));
     }
     
     @Test
     public void compareToJarjestaaOikeinJosEriArvot() {
-        liike1 = new Liike("1", 1000, 1000);
-        liike2 = new Liike("2", 999, 1000);
-        liikkeet = new ArrayList();
+        liike2 = new Liike("Liike2", 9999, 1000);
         liikkeet.add(liike2);
         liikkeet.add(liike1);
         Collections.sort(liikkeet);
@@ -70,9 +67,7 @@ public class LiikeTest {
     
     @Test
     public void compareToJarjestaaOikeinJosSamatArvot() {
-        liike1 = new Liike("1", 1000, 1000);
-        liike2 = new Liike("2", 1000, 1001);
-        liikkeet = new ArrayList();
+        liike2 = new Liike("Liike2", 10000, 1001);
         liikkeet.add(liike1);
         liikkeet.add(liike2);
         Collections.sort(liikkeet);
