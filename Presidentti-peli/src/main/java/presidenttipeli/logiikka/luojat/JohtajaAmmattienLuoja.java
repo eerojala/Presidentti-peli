@@ -1,15 +1,15 @@
 
 package presidenttipeli.logiikka.luojat;
 
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 import presidenttipeli.domain.Ammatti;
 
 
 public class JohtajaAmmattienLuoja extends Luoja{
-    private ArrayDeque<Ammatti> johtajaAmmatit;
+    private ArrayList<Ammatti> johtajaAmmatit;
 
     public JohtajaAmmattienLuoja() {
-        johtajaAmmatit = new ArrayDeque();
+        johtajaAmmatit = new ArrayList();
         luo();
     }
     
@@ -21,7 +21,7 @@ public class JohtajaAmmattienLuoja extends Luoja{
         }
     }
 
-    public ArrayDeque<Ammatti> getJohtajaAmmatit() {
+    public ArrayList<Ammatti> getJohtajaAmmatit() {
         return johtajaAmmatit;
     }
        

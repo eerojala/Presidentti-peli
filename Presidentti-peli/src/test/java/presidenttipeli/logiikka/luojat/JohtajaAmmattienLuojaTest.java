@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.logiikka.luojat;
 
-import java.util.ArrayDeque;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,10 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Ammatti;
 
-/**
- *
- * @author Eero
- */
+
 public class JohtajaAmmattienLuojaTest {
 
     JohtajaAmmattienLuoja luokka;
@@ -49,7 +41,7 @@ public class JohtajaAmmattienLuojaTest {
 
     @Test
     public void luomatAmmatitOnJohtajaAmmatteja() {
-        Ammatti temp = luokka.getJohtajaAmmatit().getFirst();
+        Ammatti temp = luokka.getJohtajaAmmatit().get(0);
         assertEquals(true, temp.isJohtaja());
     }
 

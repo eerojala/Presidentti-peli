@@ -16,7 +16,7 @@ public class LiikkeidenLuoja extends Luoja{
     @Override
     public void luo() {
         for (int i = 0; i < 15; i++) {
-            liikkeet.add(new Liike("Liike", 20000, 2500));
+            liikkeet.add(new Liike("Tyyppi","Liike", 20000, 2500));
         }
     }
 

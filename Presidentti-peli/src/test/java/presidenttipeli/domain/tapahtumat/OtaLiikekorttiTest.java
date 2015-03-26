@@ -31,7 +31,7 @@ public class OtaLiikekorttiTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta();
-        lauta.getLiikkeet().add(new Liike("Liike", 30000, 3000));
+        lauta.getLiikkeet().add(new Liike("Tyyppi", "Liike", 30000, 3000));
         testi = new OtaLiikekortti(lauta);
         pelaaja = new Pelaaja("testi");
     }

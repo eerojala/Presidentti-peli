@@ -26,7 +26,6 @@ public class RuutujenLuojaTest {
     @Before
     public void setUp() {
         luoja = new RuutujenLuoja(new Pelilauta());
-        luoja.luo();
     }
 
     @After

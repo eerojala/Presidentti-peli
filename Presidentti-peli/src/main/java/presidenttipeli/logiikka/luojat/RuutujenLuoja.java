@@ -21,6 +21,7 @@ public class RuutujenLuoja extends Luoja {
         this.lauta = lauta;
         tyoton = new Ammatti("Työtön", 1000, false, false, true);
         tapahtumienluoja = new TapahtumienLuoja(lauta);
+        luo();
     }
 
     @Override

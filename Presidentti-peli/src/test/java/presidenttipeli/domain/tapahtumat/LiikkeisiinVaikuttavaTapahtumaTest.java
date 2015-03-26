@@ -33,7 +33,7 @@ public class LiikkeisiinVaikuttavaTapahtumaTest {
     public void setUp() {
         lauta = new Pelilauta();
         pelaaja = new Pelaaja("test");
-        liike = new Liike("liike1", 10000, 1000);
+        liike = new Liike("Tyyppi", "liike1", 10000, 1000);
         tapahtuma1 = new LiikkeisiinVaikuttavaTapahtuma(liike, true, lauta);
         tapahtuma2 = new LiikkeisiinVaikuttavaTapahtuma(liike, false, lauta);
     }
@@ -62,7 +62,7 @@ public class LiikkeisiinVaikuttavaTapahtumaTest {
     @Test
     public void poistaaOikeanLiikkeen() {
         tapahtuma1.suoritaTapahtuma(pelaaja);
-        Tapahtuma tapahtuma3 = new LiikkeisiinVaikuttavaTapahtuma(new Liike("testi", 30000, 3000), true, lauta);
+        Tapahtuma tapahtuma3 = new LiikkeisiinVaikuttavaTapahtuma(new Liike("Tyyppi", "testi", 30000, 3000), true, lauta);
         tapahtuma3.suoritaTapahtuma(pelaaja);
         tapahtuma2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.getOmistamatLiikkeet().contains(liike));

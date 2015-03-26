@@ -2,11 +2,13 @@
 package presidenttipeli.domain;
 
 public class Liike implements Comparable<Liike> {
+    private String tyyppi;
     private String nimi;
     private int arvo;
     private int tuotto;
-    
-    public Liike(String nimi, int arvo, int tuotto) {
+
+    public Liike(String tyyppi, String nimi, int arvo, int tuotto) {
+        this.tyyppi = tyyppi;
         this.nimi = nimi;
         this.arvo = arvo;
         this.tuotto = tuotto;
