@@ -7,3 +7,4 @@
 * 19.3.2015 5 tuntia, Kirjoittelin testejä ja koodasin lisää domain-luokkia ja vähän logiikkaluokkia.
 * 20.3.2015 5 tuntia, Koodasin tapahtumaluokkia ja tweakkailin domain-luokkia, kirjoittelin testejä
 * 24.3.2015 6 tuntia, Koodasin lisää tapahtumaluokkia, sain ruutujen luonti-luokan ainakin tältä erää valmiiksi
+* 25.3.2015 9 tuntia, Tein testejä, tein ruutujen luonti-luokkaa hieman siistimmäksi
