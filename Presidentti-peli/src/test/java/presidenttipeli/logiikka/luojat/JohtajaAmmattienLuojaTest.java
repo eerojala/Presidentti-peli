@@ -28,6 +28,7 @@ public class JohtajaAmmattienLuojaTest {
     @Before
     public void setUp() {
         luokka = new JohtajaAmmattienLuoja();
+        luokka.luo();
     }
 
     @After
@@ -43,6 +44,26 @@ public class JohtajaAmmattienLuojaTest {
     public void luomatAmmatitOnJohtajaAmmatteja() {
         Ammatti temp = luokka.getJohtajaAmmatit().get(0);
         assertEquals(true, temp.isJohtaja());
+    }
+    
+    @Test
+    public void ensimmaisellaAlkiollaOnOikeaNimi( ) {
+        assertEquals("﻿Toimitusjohtaja", luokka.getJohtajaAmmatit().get(0).getNimi());
+    }
+    
+    @Test
+    public void ensimmaisellaAlkiollaOnOikeaPalkka() {
+        assertEquals(10000, luokka.getJohtajaAmmatit().get(0).getPalkka());
+    }
+    
+    @Test
+    public void viimeisellaAlkiollaOnOikeaNimi() {
+        assertEquals("Maaherra", luokka.getJohtajaAmmatit().get(luokka.getJohtajaAmmatit().size() - 1).getNimi());
+    }
+    
+    @Test
+    public void viimeisellaAlkiollaOnOikeaPalkka() {
+        assertEquals(12000, luokka.getJohtajaAmmatit().get(luokka.getJohtajaAmmatit().size() - 1).getPalkka());
     }
 
 }

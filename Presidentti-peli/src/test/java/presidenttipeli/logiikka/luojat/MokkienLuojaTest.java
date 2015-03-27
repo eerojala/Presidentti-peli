@@ -1,12 +1,14 @@
 
 package presidenttipeli.logiikka.luojat;
 
+import java.util.ArrayDeque;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import presidenttipeli.domain.Mokki;
 
 public class MokkienLuojaTest {
     MokkienLuoja luokka;
@@ -25,6 +27,7 @@ public class MokkienLuojaTest {
     @Before
     public void setUp() {
         luokka = new MokkienLuoja();
+        luokka.luo();
     }
     
     @After
@@ -35,5 +38,24 @@ public class MokkienLuojaTest {
     public void luoOikeanMaaran() {
        assertEquals(15, luokka.getMokit().size());
     }
+
+    @Test
+    public void ensimmaisellaMokillaOikeaNimi() {
+        assertEquals("﻿Männynkäpy", luokka.getMokit().get(0).getNimi());
+    }
     
+    @Test
+    public void ensimmaisellaMokillaOikeaArvo() {
+        assertEquals(6000, luokka.getMokit().get(0).getArvo());
+    }
+    
+    @Test
+    public void viimeisellaMokillaOikeaNimi() {
+        assertEquals("Kilpasanta", luokka.getMokit().get(luokka.getMokit().size() - 1).getNimi());
+    }
+    
+    @Test
+    public void viimeisellaMokillaOikeaArvo() {
+        assertEquals(12000, luokka.getMokit().get(luokka.getMokit().size() - 1).getArvo());
+    }
 }

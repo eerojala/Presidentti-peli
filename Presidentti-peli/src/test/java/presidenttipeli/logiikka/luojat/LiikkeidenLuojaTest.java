@@ -42,12 +42,12 @@ public class LiikkeidenLuojaTest {
 
     @Test
     public void luoOikeanMaaran() {
-        assertEquals(15, luokka.getLiikkeet().size());
+        assertEquals(15, luokka.getLista().size());
     }
     
     @Test
     public void asettaaArvonJaTuotonOikeinpain() {       
-        Liike temp = luokka.getLiikkeet().getFirst();
+        Liike temp = luokka.getLista().getFirst();
         assertTrue(temp.getArvo() > temp.getTuotto());
     }
     

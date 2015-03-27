@@ -28,7 +28,7 @@ public class RuutujenLuoja extends Luoja {
     public void luo() {
         luoRuudut();
         Collections.sort(ruudut);
-        lisaaSelosteet();
+        lueTiedosto();
     }
 
     private void luoRuudut() {
@@ -49,15 +49,22 @@ public class RuutujenLuoja extends Luoja {
         luoVerotarkastusRuudut();
     }
 
-    private void lisaaSelosteet() {
-        StringBuilder seloste = new StringBuilder("");
+    private void lueTiedosto() {
         classloader = getClass().getClassLoader();
         tiedosto = new File(classloader.getResource("RuutujenSelostukset.txt").getFile());
-        int indeksi = 0;
 
         try {
             lukija = new Scanner(tiedosto, "UTF-8");
-            while (lukija.hasNext()) {
+            lisaaSelosteet(lukija);           
+        } catch (Exception e) {
+            System.out.println("Tiedoston lukeminen epäonnistui");
+        }
+    }
+    
+    public void lisaaSelosteet(Scanner lukija) {
+        StringBuilder seloste = new StringBuilder("");
+        int indeksi = 0;
+        while (lukija.hasNext()) {
                 String rivi = lukija.nextLine();
                 if (rivi.isEmpty()) {
                     ruudut.get(indeksi).setSeloste(seloste.toString());
@@ -67,9 +74,6 @@ public class RuutujenLuoja extends Luoja {
                     seloste.append(rivi + "\n");
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui");
-        }
     }
 
     public ArrayList<Ruutu> getRuudut() {

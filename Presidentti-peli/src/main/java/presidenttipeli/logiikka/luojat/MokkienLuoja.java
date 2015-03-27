@@ -1,26 +1,64 @@
 
 package presidenttipeli.logiikka.luojat;
 
+import java.io.File;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 import presidenttipeli.domain.Mokki;
 
 
 public class MokkienLuoja extends Luoja{
-    private ArrayDeque<Mokki> mokit;
+    private ArrayList<Mokki> lista;
 
     public MokkienLuoja() {
-        mokit = new ArrayDeque();
-        luo();
+        lista = new ArrayList();
     }
 
     @Override
     public void luo() {
-        for (int i = 0; i < 15; i++) {
-            mokit.add(new Mokki("Mökki", 10000));
+        classloader = getClass().getClassLoader();
+        tiedosto = new File (classloader.getResource("Mokit.txt").getFile());
+        try {
+            lukija = new Scanner(tiedosto, "UTF-8");
+            luoMokit(lukija);
+        } catch (Exception e) {
+            System.out.println("Tiedoston lukeminen epäonnistui");
+        }
+    }
+    
+    private void luoMokit(Scanner lukija) {
+        boolean arvoViimeksi = true;
+        String nimi = "";
+        int arvo = 0;
+        
+        while(lukija.hasNext()) {
+            String rivi = lukija.nextLine();
+            if (!rivi.isEmpty()) {
+                if (arvoViimeksi) {
+                    nimi = rivi;
+                    arvoViimeksi = false;
+                } else {
+                    arvo = Integer.parseInt(rivi);
+                    arvoViimeksi = true;
+                }
+            } else {
+                lista.add(new Mokki(nimi, arvo));
+            }
         }
     }
 
-    public ArrayDeque<Mokki> getMokit() {
+    public ArrayList<Mokki> getLista() {
+        return lista;
+    }
+    
+    public ArrayDeque<Mokki> getSekoitetutMokit() {
+        Collections.sort(lista);
+        ArrayDeque<Mokki> mokit = new ArrayDeque();
+        for (Mokki mokki : lista) {
+            mokit.add(mokki);
+        }
         return mokit;
     }
     

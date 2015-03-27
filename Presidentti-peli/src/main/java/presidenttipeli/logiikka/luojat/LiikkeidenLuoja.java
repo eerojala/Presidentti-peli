@@ -1,27 +1,38 @@
 
 package presidenttipeli.logiikka.luojat;
 
+import java.io.File;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Scanner;
 import presidenttipeli.domain.Liike;
 
 
 public class LiikkeidenLuoja extends Luoja{
-    private ArrayDeque<Liike> liikkeet;
+    private ArrayList<Liike> lista;
 
     public LiikkeidenLuoja() {
-        liikkeet = new ArrayDeque<Liike>();
-        luo();
+        lista = new ArrayList();
     }
 
     @Override
     public void luo() {
-        for (int i = 0; i < 15; i++) {
-            liikkeet.add(new Liike("Tyyppi","Liike", 20000, 2500));
+        classloader = getClass().getClassLoader();
+        tiedosto = new File(classloader.getResource("Liikkeet.txt").getFile());
+        try {
+            lukija = new Scanner(tiedosto);
+            luoLiikkeet(lukija);
+        } catch (Exception e) {
+            System.out.println("Tiedoston lukeminen epäonnistui");
         }
     }
+    
+    private void luoLiikkeet(Scanner lukija) {
+    
+    }
 
-    public ArrayDeque<Liike> getLiikkeet() {
-        return liikkeet;
+    public ArrayList<Liike> getLista() {
+        return lista;
     }
     
 }

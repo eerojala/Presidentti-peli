@@ -73,3 +73,4 @@ Ankerias
 15000
 500
 
+Tiedosto päättyy
