@@ -37,6 +37,14 @@ public class Ammatti implements Comparable<Ammatti> {
         return salliiKansanedustajuuden;
     }
 
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public void setPalkka(int palkka) {
+        this.palkka = palkka;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this.getClass() != obj.getClass()) {

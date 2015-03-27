@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import presidenttipeli.domain.Mokki;
+
 
 public class MokkienLuojaTest {
     MokkienLuoja luokka;
@@ -36,26 +36,26 @@ public class MokkienLuojaTest {
 
     @Test
     public void luoOikeanMaaran() {
-       assertEquals(15, luokka.getMokit().size());
+       assertEquals(15, luokka.getLista().size());
     }
 
     @Test
     public void ensimmaisellaMokillaOikeaNimi() {
-        assertEquals("﻿Männynkäpy", luokka.getMokit().get(0).getNimi());
+        assertEquals("﻿Männynkäpy", luokka.getLista().get(0).getNimi());
     }
     
     @Test
     public void ensimmaisellaMokillaOikeaArvo() {
-        assertEquals(6000, luokka.getMokit().get(0).getArvo());
+        assertEquals(6000, luokka.getLista().get(0).getArvo());
     }
     
     @Test
     public void viimeisellaMokillaOikeaNimi() {
-        assertEquals("Kilpasanta", luokka.getMokit().get(luokka.getMokit().size() - 1).getNimi());
+        assertEquals("Kilpasanta", luokka.getLista().get(14).getNimi());
     }
     
     @Test
     public void viimeisellaMokillaOikeaArvo() {
-        assertEquals(12000, luokka.getMokit().get(luokka.getMokit().size() - 1).getArvo());
+        assertEquals(12000, luokka.getLista().get(14).getArvo());
     }
 }

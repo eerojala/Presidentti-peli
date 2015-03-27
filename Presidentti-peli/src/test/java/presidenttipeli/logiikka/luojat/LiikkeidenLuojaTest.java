@@ -18,24 +18,26 @@ import presidenttipeli.domain.Liike;
  * @author Eero
  */
 public class LiikkeidenLuojaTest {
+
     private LiikkeidenLuoja luokka;
-    
+
     public LiikkeidenLuojaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         luokka = new LiikkeidenLuoja();
+        luokka.luo();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,11 +46,35 @@ public class LiikkeidenLuojaTest {
     public void luoOikeanMaaran() {
         assertEquals(15, luokka.getLista().size());
     }
-    
+
     @Test
-    public void asettaaArvonJaTuotonOikeinpain() {       
-        Liike temp = luokka.getLista().getFirst();
-        assertTrue(temp.getArvo() > temp.getTuotto());
+    public void asettaaArvonJaTuotonOikeinpain() {
+        boolean arvoJaTuottoOikeinPain = true;
+        for (Liike liike : luokka.getLista()) {
+            if (liike.getTuotto() > liike.getArvo()) {
+                arvoJaTuottoOikeinPain = false;
+            }
+        }
+        assertEquals(true, arvoJaTuottoOikeinPain);
+    }
+
+    @Test
+    public void ensimmaisellaLiikkeellaOikeaNimi() {
+        assertEquals("Ylensiisti", luokka.getLista().get(0).getNimi());
+    }
+
+    @Test
+    public void ensimmaisellaLiikkeellaOikeaTuotto() {
+        assertEquals(4500, luokka.getLista().get(0).getTuotto());
+    }
+
+    @Test
+    public void viimeisellaLiikkeellaOikeaTyyppi() {
+        assertEquals("Kalakauppa", luokka.getLista().get(14).getTyyppi());
     }
     
+    @Test
+    public void viimeisellaLiikkeellaOikeaArvo() {
+        assertEquals(15000, luokka.getLista().get(14).getArvo());
+    }
 }

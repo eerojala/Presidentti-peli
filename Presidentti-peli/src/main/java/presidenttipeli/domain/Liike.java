@@ -26,6 +26,26 @@ public class Liike implements Comparable<Liike> {
         return tuotto;
     }
 
+    public String getTyyppi() {
+        return tyyppi;
+    }
+
+    public void setArvo(int arvo) {
+        this.arvo = arvo;
+    }
+
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
+    public void setTuotto(int tuotto) {
+        this.tuotto = tuotto;
+    }
+
+    public void setTyyppi(String tyyppi) {
+        this.tyyppi = tyyppi;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this.getClass() != obj.getClass()) {

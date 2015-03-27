@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.Ruutu;
 
 public class RuutujenLuojaTest {
 
@@ -26,6 +27,7 @@ public class RuutujenLuojaTest {
     @Before
     public void setUp() {
         luoja = new RuutujenLuoja(new Pelilauta());
+        luoja.luo();
     }
 
     @After
@@ -45,6 +47,19 @@ public class RuutujenLuojaTest {
     @Test
     public void ruutu30Viimeisena() {
         assertEquals(30, luoja.getRuudut().get(luoja.getRuudut().size() - 1).getNumero());
+    }
+    
+    @Test
+    public void ruudutOvatNousevassaSuuruusjarjestyksessa() {
+        boolean oikeaJarjestys = true;
+        int edellinenNro = 0;
+        for (Ruutu ruutu : luoja.getRuudut()) {
+            if (ruutu.getNumero() != edellinenNro + 1) {
+                oikeaJarjestys = false;
+            }
+            edellinenNro = ruutu.getNumero();
+        }
+        assertEquals(true, oikeaJarjestys);
     }
 
     @Test

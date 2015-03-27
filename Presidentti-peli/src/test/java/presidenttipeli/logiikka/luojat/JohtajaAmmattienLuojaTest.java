@@ -41,9 +41,36 @@ public class JohtajaAmmattienLuojaTest {
     }
 
     @Test
-    public void luomatAmmatitOnJohtajaAmmatteja() {
-        Ammatti temp = luokka.getJohtajaAmmatit().get(0);
-        assertEquals(true, temp.isJohtaja());
+    public void luodutAmmatitOnJohtajaAmmatteja() {
+        boolean johtajia = true;
+        for (Ammatti ammatti : luokka.getJohtajaAmmatit()) {
+            if (!ammatti.isJohtaja()) {
+                johtajia = false;
+            }
+        }
+        assertEquals(true, johtajia);
+    }
+    
+    @Test
+    public void luodutAmmatitEivatOleSattumaAmmatteja() {
+        boolean sattumaAmmatteja = false;
+        for (Ammatti ammatti : luokka.getJohtajaAmmatit()) {
+            if (ammatti.isSattumaAmmmatti()) {
+                sattumaAmmatteja = true;
+            }
+        }
+        assertEquals(false, sattumaAmmatteja);
+    }
+    
+    @Test
+    public void luodutAmmatitEivatSalliKansanedustajuutta() {
+        boolean ehto = true;
+        for (Ammatti ammatti : luokka.getJohtajaAmmatit()) {
+            if (ammatti.salliiKansanedustajuuden()) {
+                ehto = false;
+            }
+        }
+        assertEquals(true, ehto);
     }
     
     @Test
