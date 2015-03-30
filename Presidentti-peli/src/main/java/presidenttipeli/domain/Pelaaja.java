@@ -6,26 +6,25 @@ import java.util.List;
 public class Pelaaja implements Comparable<Pelaaja> {
 
     private String nimi;
-    private int rahaa;
+    private int rahat;
     private int velkaa;
     private boolean puolueenJasen;
     private boolean kansanedustaja;
-    private boolean tutkinto;
     private boolean liikuntakykyinen;
     private boolean oikeutettuTuottoon;
     private Ammatti ammatti;
     private List<Liike> omistamatLiikkeet;
     private List<Mokki> omistamatMokit;
     private Nappula nappula; // pelaajalle asetetaan nappula olioiden luontivaiheessa.
+    private Tutkinto tutkinto;
 
     public Pelaaja(String nimi) {
         this.nimi = nimi;
-        rahaa = 5000;
+        rahat = 5000;
         velkaa = 0;
         ammatti = new Ammatti("Työtön", 1000, false, false, true);
         puolueenJasen = false;
         kansanedustaja = false;
-        tutkinto = false;
         liikuntakykyinen = true;
         oikeutettuTuottoon = true;
         omistamatLiikkeet = new ArrayList();
@@ -52,8 +51,12 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return omistamatMokit;
     }
 
-    public int getRahaa() {
-        return rahaa;
+    public int getRahat() {
+        return rahat;
+    }
+
+    public Tutkinto getTutkinto() {
+        return tutkinto;
     }
 
     public int getVelkaa() {
@@ -74,10 +77,6 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     public boolean isKansanedustaja() {
         return kansanedustaja;
-    }
-
-    public boolean omistaaTutkinnon() {
-        return tutkinto;
     }
 
     public void setAmmatti(Ammatti ammatti) {
@@ -108,11 +107,11 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.puolueenJasen = puolueenJasen;
     }
 
-    public void setRahaa(int rahaa) {
-        this.rahaa = rahaa;
+    public void setRahat(int rahat) {
+        this.rahat = rahat;
     }
 
-    public void setTutkinto(boolean tutkinto) {
+    public void setTutkinto(Tutkinto tutkinto) {
         this.tutkinto = tutkinto;
     }
 
@@ -138,7 +137,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     @Override
     public int compareTo(Pelaaja o) {
-        return o.getRahaa() - this.rahaa;
+        return o.getRahat() - this.rahat;
     }
 
     @Override

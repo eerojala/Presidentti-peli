@@ -159,7 +159,7 @@ public class RuutujenLuoja extends Luoja {
     }
 
     private void luoTutkintoonVaikuttavatRuudut() {
-        luoRuutu(false, false, false, 17, tapahtumienluoja.luoTutkintoonVaikuttavaTapahtuma(true));
+        luoRuutu(false, false, false, 17, tapahtumienluoja.luoTutkintoonVaikuttavaTapahtuma(true, false));
     }
 
     private void luoPerintoRuudut() {
@@ -167,7 +167,7 @@ public class RuutujenLuoja extends Luoja {
     }
 
     private void luoRuudutJossaMokkiPalaa() {
-        luoRuutu(false, false, false, 21, tapahtumienluoja.luoMokkiPalaaTapahtuma());
+        luoRuutu(false, false, false, 21, tapahtumienluoja.luoMokinPoistoTapahtuma(true));
     }
 
     private void luoRuudutJossaUseampiTapahtuma() {

@@ -60,8 +60,8 @@ public class PelaajaTest {
     public void compareToLaittaaOikeaanJarjestykseen() {
         test1 = new Pelaaja("test1");
         test2 = new Pelaaja("test2");
-        test1.setRahaa(2000);
-        test2.setRahaa(1000);
+        test1.setRahat(2000);
+        test2.setRahat(1000);
         List<Pelaaja> lista = new ArrayList<Pelaaja>();
         lista.add(test2);
         lista.add(test1);

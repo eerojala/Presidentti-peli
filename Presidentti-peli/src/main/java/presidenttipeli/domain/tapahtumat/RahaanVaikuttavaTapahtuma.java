@@ -15,13 +15,13 @@ public class RahaanVaikuttavaTapahtuma implements Tapahtuma{
 
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        int pelaajanRahat = pelaaja.getRahaa();
+        int pelaajanRahat = pelaaja.getRahat();
         
         if (pelaajalleRahaa) {
-            pelaaja.setRahaa(pelaajanRahat + summa);
+            pelaaja.setRahat(pelaajanRahat + summa);
             return true;
         } else if (pelaajanRahat >= summa) {
-            pelaaja.setRahaa(pelaajanRahat - summa);
+            pelaaja.setRahat(pelaajanRahat - summa);
             return true;
         }
         return false;

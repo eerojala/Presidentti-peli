@@ -38,7 +38,7 @@ public class TietystaAmmatistaRiippuvaTapahtumaTest {
         johtaja = new Ammatti("Johtaja", 10000, true, false, false);
         tapahtuma1 = new JasenkirjaanVaikuttavaTapahtuma(true);
         tapahtuma2 = new JasenkirjaanVaikuttavaTapahtuma(false);
-        tapahtuma3 = new TutkintoonVaikuttavaTapahtuma(true);
+        tapahtuma3 = new TutkintoonVaikuttavaTapahtuma(true, false);
         testi1 = new TietystaAmmatistaRiippuvaTapahtuma(tyoton, tapahtuma1, tapahtuma2);
         testi2 = new TietystaAmmatistaRiippuvaTapahtuma(tyoton, tapahtuma1, tapahtuma3);
         pelaaja = new Pelaaja("Testi");
@@ -65,9 +65,9 @@ public class TietystaAmmatistaRiippuvaTapahtumaTest {
     
     @Test
     public void eiTeeTapahtumaa2JosPelaajallaTiettyAmmatti() {
-        pelaaja.setTutkinto(false);
+        pelaaja.setTutkinto(null);
         testi2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        assertEquals(null, pelaaja.getTutkinto());
     }
     
     @Test

@@ -8,7 +8,7 @@ import java.util.List;
 public class Pelilauta {
 
     private List<Ruutu> ruudut;
-    private ArrayDeque<Nappula> nappulat;
+    private ArrayList<Nappula> nappulat;
     private List<Ammatti> johtajaAmmatit;
     private ArrayDeque<Ammatti> sattumaAmmatit;
     private ArrayDeque<Mokki> mokit;
@@ -17,7 +17,7 @@ public class Pelilauta {
 
     public Pelilauta() {
         ruudut = new ArrayList();
-        nappulat = new ArrayDeque();
+        nappulat = new ArrayList();
         johtajaAmmatit = new ArrayList();
         sattumaAmmatit = new ArrayDeque();
         mokit = new ArrayDeque();
@@ -37,7 +37,7 @@ public class Pelilauta {
         return mokit;
     }
 
-    public ArrayDeque<Nappula> getNappulat() {
+    public ArrayList<Nappula> getNappulat() {
         return nappulat;
     }
 

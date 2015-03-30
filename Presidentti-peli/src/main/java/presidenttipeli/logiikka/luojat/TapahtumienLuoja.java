@@ -54,16 +54,16 @@ public class TapahtumienLuoja extends Luoja{
         return new TapahtumaJokaEiTeeMitaan();
     }
     
-    public Tapahtuma luoTutkintoonVaikuttavaTapahtuma(boolean pelaajalleTutkinto) {
-        return new TutkintoonVaikuttavaTapahtuma(pelaajalleTutkinto);
+    public Tapahtuma luoTutkintoonVaikuttavaTapahtuma(boolean pelaajalleTutkinto, boolean yleissivistava) {
+        return new TutkintoonVaikuttavaTapahtuma(pelaajalleTutkinto, yleissivistava);
     }
     
     public Tapahtuma luoOtaLiikekorttiTapahtuma() {
         return new OtaLiikekortti(lauta);
     }
     
-    public Tapahtuma luoMokkiPalaaTapahtuma() {
-        return new MokkiPalaa(lauta);
+    public Tapahtuma luoMokinPoistoTapahtuma(boolean vakuutusKorvaa) {
+        return new MenetaMokki(lauta, vakuutusKorvaa);
     }
     
     public Tapahtuma luoJohtajuudestaTaiKansanedustajuudestaRiippuvaTapahtuma(Tapahtuma tapahtuma1, Tapahtuma tapahtuma2) {

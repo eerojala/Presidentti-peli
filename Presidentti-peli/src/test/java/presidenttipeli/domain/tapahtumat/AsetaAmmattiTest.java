@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.Tutkinto;
 
 /**
  *
@@ -72,22 +73,41 @@ public class AsetaAmmattiTest {
     }
     
     @Test
-    public void ottaaTutkinnonPois() {
-        pelaaja.setTutkinto(true);
+    public void tutkintoPoisJosPelaajallaOnTutkinto() {
+        pelaaja.setTutkinto(new Tutkinto(false));
         testi2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        assertEquals(null, pelaaja.getTutkinto());
     }
     
     @Test
-    public void eiOtaTutkintoaPoisJosPelaajaOnTyoton() {
-        pelaaja.setTutkinto(true);
+    public void tutkintoEiMenePoisJosTyoton() {
+        boolean vaite = true;
+        pelaaja.setTutkinto(new Tutkinto(false));
         testi1.suoritaTapahtuma(pelaaja);
-        assertEquals(true, pelaaja.omistaaTutkinnon());
+        if (pelaaja.getTutkinto() == null) {
+            vaite = false;
+        }
+        assertEquals(true, vaite);
     }
     
     @Test
-    public void eiAnnaTutkintoaJosPelaajaOnTyoton() {
+    public void pelaajaEiSaaUuttaTutkintoaJosTyoton() {
+        pelaaja.setTutkinto(null);
         testi1.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        assertEquals(null, pelaaja.getTutkinto());
+    }
+    
+    @Test
+    public void yleissivistavaTutkintoEiMenePois() {
+        pelaaja.setTutkinto(new Tutkinto(true));
+        testi2.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.getTutkinto().isYleissivistava());
+    }
+    
+    @Test
+    public void yleissivistavaTutkintoEiMenePoisJosTyoton() {
+        pelaaja.setTutkinto(new Tutkinto(true));
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.getTutkinto().isYleissivistava());
     }
 }

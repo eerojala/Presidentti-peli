@@ -32,8 +32,12 @@ public class AsetaAmmatti implements Tapahtuma {
     }
     
     private void otaPoisTutkinto(Pelaaja pelaaja) {
-        if (pelaaja.omistaaTutkinnon() && !ammatti.getNimi().equals("Työtön")) {
-            Tapahtuma tapahtuma = new TutkintoonVaikuttavaTapahtuma(false);
+        if (pelaaja.getTutkinto() == null) {
+            return;
+        }
+        
+        if (!pelaaja.getTutkinto().isYleissivistava() && !ammatti.getNimi().equals("Työtön")) {
+            Tapahtuma tapahtuma = new TutkintoonVaikuttavaTapahtuma(false, false);
             tapahtuma.suoritaTapahtuma(pelaaja);
         }
     }

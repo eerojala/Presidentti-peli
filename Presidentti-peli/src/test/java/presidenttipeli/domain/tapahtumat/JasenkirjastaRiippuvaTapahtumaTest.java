@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.Tutkinto;
 
 
 public class JasenkirjastaRiippuvaTapahtumaTest {
@@ -35,7 +36,7 @@ public class JasenkirjastaRiippuvaTapahtumaTest {
     public void setUp() {
         tapahtuma1 = new JasenkirjaanVaikuttavaTapahtuma(false);
         tapahtuma2 = new JasenkirjaanVaikuttavaTapahtuma(true);
-        tapahtuma3 = new TutkintoonVaikuttavaTapahtuma(true);
+        tapahtuma3 = new TutkintoonVaikuttavaTapahtuma(true, false);
         testi1 = new JasenkirjastaRiippuvaTapahtuma(tapahtuma1, tapahtuma2);
         testi2 = new JasenkirjastaRiippuvaTapahtuma(tapahtuma1, tapahtuma3);
         pelaaja = new Pelaaja("test");
@@ -62,15 +63,15 @@ public class JasenkirjastaRiippuvaTapahtumaTest {
     @Test
     public void eiSuoritaMolempiaTapahtumiaJosPuolueenJasen() {
         pelaaja.setPuolueenJasen(true);
-        pelaaja.setTutkinto(false);
+        pelaaja.setTutkinto(null);
         testi2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        assertEquals(null, pelaaja.getTutkinto());
     }
     
     @Test
     public void eiSuoritaMolempiaTapahtumiaJosEiPuolueenJasen() {
         pelaaja.setPuolueenJasen(false);
-        pelaaja.setTutkinto(true);
+        pelaaja.setTutkinto(new Tutkinto(false));
         testi2.suoritaTapahtuma(pelaaja);
         assertEquals(false, pelaaja.isPuolueenJasen());
     }

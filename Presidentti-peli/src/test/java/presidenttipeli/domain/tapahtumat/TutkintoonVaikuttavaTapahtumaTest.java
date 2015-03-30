@@ -11,8 +11,9 @@ import presidenttipeli.domain.Pelaaja;
 
 public class TutkintoonVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
-    Tapahtuma test1;
-    Tapahtuma test2;
+    Tapahtuma testi1;
+    Tapahtuma testi2;
+    Tapahtuma testi3;
     
     public TutkintoonVaikuttavaTapahtumaTest() {
     }
@@ -27,9 +28,10 @@ public class TutkintoonVaikuttavaTapahtumaTest {
     
     @Before
     public void setUp() {
-        pelaaja = new Pelaaja("test");
-        test1 = new TutkintoonVaikuttavaTapahtuma(true);
-        test2 = new TutkintoonVaikuttavaTapahtuma(false);
+        pelaaja = new Pelaaja("Testi");
+        testi1 = new TutkintoonVaikuttavaTapahtuma(true, false);
+        testi2 = new TutkintoonVaikuttavaTapahtuma(false, false);
+        testi3 = new TutkintoonVaikuttavaTapahtuma(true, true);
     }
     
     @After
@@ -38,15 +40,20 @@ public class TutkintoonVaikuttavaTapahtumaTest {
 
 
     @Test
-    public void tutkinnonAntaminenPelaajalleOnnistuu() {
-        test1.suoritaTapahtuma(pelaaja);
-        assertEquals(true, pelaaja.omistaaTutkinnon());
+    public void normaalinTutkinnonAntaminenOnnistuu() {
+        testi1.suoritaTapahtuma(pelaaja);
+        assertEquals(false, pelaaja.getTutkinto().isYleissivistava());
     }
     
     @Test
     public void tutkinnonOttaminenPelaajaltaOnnistuu() {
-        test1.suoritaTapahtuma(pelaaja);
-        test2.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        testi2.suoritaTapahtuma(pelaaja);
+        assertEquals(null, pelaaja.getTutkinto());
+    }
+    
+    @Test
+    public void yleissivistavanTutkinnonAntaminenOnnistuu() {
+        testi3.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.getTutkinto().isYleissivistava());
     }
 }

@@ -33,7 +33,7 @@ public class RahaanVaikuttavaTapahtumaTest {
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("test");
-        pelaaja.setRahaa(1000);
+        pelaaja.setRahat(1000);
         test1 = new RahaanVaikuttavaTapahtuma(true, 1000);
         test2 = new RahaanVaikuttavaTapahtuma(false, 1000);
         test3 = new RahaanVaikuttavaTapahtuma(false, 1001);
@@ -61,18 +61,18 @@ public class RahaanVaikuttavaTapahtumaTest {
     @Test
     public void pelaajalleAnnetaanOikeaSummaRahaa() {
         test1.suoritaTapahtuma(pelaaja);
-        assertEquals(2000, pelaaja.getRahaa());
+        assertEquals(2000, pelaaja.getRahat());
     }
     
     @Test
     public void pelaajaltaOtetaanOikeaSummaRahaaJosOnTarpeeksi() {
         test2.suoritaTapahtuma(pelaaja);
-        assertEquals(0, pelaaja.getRahaa());
+        assertEquals(0, pelaaja.getRahat());
     }
     
     @Test
     public void pelaajaltaEiOtetaRahaaJosHanellaEiOleTarpeeksi() {
         test3.suoritaTapahtuma(pelaaja);
-        assertEquals(1000, pelaaja.getRahaa());
+        assertEquals(1000, pelaaja.getRahat());
     }
 }

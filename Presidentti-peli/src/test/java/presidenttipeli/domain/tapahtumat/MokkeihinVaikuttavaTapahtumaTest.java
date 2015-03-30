@@ -70,11 +70,6 @@ public class MokkeihinVaikuttavaTapahtumaTest {
     }
     
     @Test
-    public void mokinOttaminenEpaonnistuuJosPelaajallaEiOleTataMokkia() {
-        assertEquals(false, tapahtuma2.suoritaTapahtuma(pelaaja));
-    }
-    
-    @Test
     public void palauttaaMokinTakaisinKorttipinoonPoistonJalkeen() {
         tapahtuma2.suoritaTapahtuma(pelaaja);
         assertEquals(mokki, lauta.getMokit().getLast());

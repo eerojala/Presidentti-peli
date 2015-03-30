@@ -38,7 +38,7 @@ public class PalkastaRiippuvaTapahtumaTest {
         ArrayList<Tapahtuma> tapahtumat = new ArrayList();
         tapahtumat.add(new JasenkirjaanVaikuttavaTapahtuma(true));
         tapahtumat.add(new KansanedustajuuteenVaikuttavaTapahtuma(true));
-        tapahtumat.add(new TutkintoonVaikuttavaTapahtuma(true));
+        tapahtumat.add(new TutkintoonVaikuttavaTapahtuma(true, false));
         return tapahtumat;
     }
     
@@ -79,9 +79,9 @@ public class PalkastaRiippuvaTapahtumaTest {
     @Test
     public void eiSuoritaYlimmanRajanTapahtumaaJosPalkkaYliKaikkienRajojen() {
         pelaaja.setAmmatti(new Ammatti("Johtaja", 10001, true, false, false));
-        pelaaja.setTutkinto(false);
+        pelaaja.setTutkinto(null);
         testi.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.omistaaTutkinnon());
+        assertEquals(null, pelaaja.getTutkinto());
     }
     
 }
