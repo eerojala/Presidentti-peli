@@ -58,9 +58,9 @@ public class LiikkeidenLuoja extends Luoja {
         return lista;
     }
     
-    public ArrayDeque<Liike> getLiikkeet() {
+    public ArrayDeque<Liike> getSekoitetutLiikkeet() {
         ArrayDeque<Liike> liikkeet = new ArrayDeque();
-        Collections.sort(lista);
+        Collections.shuffle(lista);
         for (Liike liike : lista) {
             liikkeet.add(liike);
         }

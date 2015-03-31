@@ -48,8 +48,9 @@ public class JohtajaAmmattienLuoja extends Luoja{
         }
     }
     
-    public void sekoitaLista() {
+    public ArrayList<Ammatti> getSekoitetutAmmatit() {
         Collections.shuffle(johtajaAmmatit);
+        return johtajaAmmatit;
     }
 
     public ArrayList<Ammatti> getJohtajaAmmatit() {

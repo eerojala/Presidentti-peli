@@ -53,4 +53,32 @@ public class Pelilauta {
         return ruudut;
     }
 
+    public void setJohtajaAmmatit(List<Ammatti> johtajaAmmatit) {
+        this.johtajaAmmatit = johtajaAmmatit;
+    }
+
+    public void setLiikkeet(ArrayDeque<Liike> liikkeet) {
+        this.liikkeet = liikkeet;
+    }
+
+    public void setMokit(ArrayDeque<Mokki> mokit) {
+        this.mokit = mokit;
+    }
+
+    public void setNappulat(ArrayList<Nappula> nappulat) {
+        this.nappulat = nappulat;
+    }
+
+    public void setRuudut(List<Ruutu> ruudut) {
+        this.ruudut = ruudut;
+    }
+
+    public void setSattumaAmmatit(ArrayDeque<Ammatti> sattumaAmmatit) {
+        this.sattumaAmmatit = sattumaAmmatit;
+    }
+
+    public void setTapahtumakortit(ArrayDeque<Tapahtumakortti> tapahtumakortit) {
+        this.tapahtumakortit = tapahtumakortit;
+    }
+    
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 
 
-public class Tapahtumakortti implements Comparable<Tapahtumakortti>{
+public class Tapahtumakortti implements Comparable<Tapahtumakortti>, SelosteenOmaava{
     private ArrayList<Tapahtuma> tapahtumat;
     private String seloste;
 
@@ -13,7 +13,8 @@ public class Tapahtumakortti implements Comparable<Tapahtumakortti>{
         tapahtumat = new ArrayList();
         seloste = "placeholder";
     }
-
+    
+    @Override
     public String getSeloste() {
         return seloste;
     }
@@ -21,7 +22,8 @@ public class Tapahtumakortti implements Comparable<Tapahtumakortti>{
     public ArrayList<Tapahtuma> getTapahtumat() {
         return tapahtumat;
     }
-
+    
+    @Override
     public void setSeloste(String seloste) {
         this.seloste = seloste;
     }

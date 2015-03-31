@@ -8,9 +8,9 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private String nimi;
     private int rahat;
     private int velkaa;
+    private int odottaaVuoroaan; // monta kierrosta pelaaja joutuu odottamaan seuraavaa vuoroaan
     private boolean puolueenJasen;
     private boolean kansanedustaja;
-    private boolean liikuntakykyinen;
     private boolean oikeutettuTuottoon;
     private Ammatti ammatti;
     private List<Liike> omistamatLiikkeet;
@@ -22,10 +22,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.nimi = nimi;
         rahat = 5000;
         velkaa = 0;
+        odottaaVuoroaan = 0;
         ammatti = new Ammatti("Työtön", 1000, false, false, true);
         puolueenJasen = false;
         kansanedustaja = false;
-        liikuntakykyinen = true;
         oikeutettuTuottoon = true;
         omistamatLiikkeet = new ArrayList();
         omistamatMokit = new ArrayList();
@@ -41,6 +41,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     public String getNimi() {
         return nimi;
+    }
+
+    public int getOdottaaVuoroaan() {
+        return odottaaVuoroaan;
     }
 
     public List<Liike> getOmistamatLiikkeet() {
@@ -63,14 +67,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return velkaa;
     }
 
-    public boolean isLiikuntakykyinen() {
-        return liikuntakykyinen;
-    }
-
     public boolean isOikeutettuTuottoon() {
         return oikeutettuTuottoon;
     }
-    
+
     public boolean isPuolueenJasen() {
         return puolueenJasen;
     }
@@ -87,16 +87,16 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.kansanedustaja = kansanedustaja;
     }
 
-    public void setLiikuntakykyinen(boolean liikuntakykyinen) {
-        this.liikuntakykyinen = liikuntakykyinen;
-    }
-
     public void setNappula(Nappula nappula) {
         this.nappula = nappula;
     }
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
+    }
+
+    public void setOdottaaVuoroaan(int odottaaVuoroaan) {
+        this.odottaaVuoroaan = odottaaVuoroaan;
     }
 
     public void setOikeutettuTuottoon(boolean oikeutettuTuottoon) {
@@ -144,5 +144,5 @@ public class Pelaaja implements Comparable<Pelaaja> {
     public String toString() {
         return this.nimi;
     }
- 
+
 }

@@ -77,4 +77,24 @@ public class TapahtumienLuoja extends Luoja{
     public Tapahtuma luoVerotarkastusTapahtuma() {
         return new Verotarkastus();
     }
+    
+    public Tapahtuma luoLiikkeenPoistoTapahtuma(boolean vakuutusKorvaa) {
+        return new MenetaLiike(lauta, vakuutusKorvaa);
+    }
+    
+    public Tapahtuma luoOdotaXKierrostaTapahtuma(int montakoKierrosta) {
+        return new OdotaXKierrosta(montakoKierrosta);
+    }
+    
+    public Tapahtuma luoMaksaKulujaLiikkeistaJaMokeista(int maksettavaHinta) {
+        return new MaksaKulujaLiikkeistaJaMokeista(maksettavaHinta);
+    }
+    
+    public Tapahtuma luoSijainnistaRiippuvaTapahtuma(Tapahtuma tapahtuma1, Tapahtuma tapahtuma2, int ruudunNro) {
+        return new SijainnistaRiippuvaTapahtuma(tapahtuma1, tapahtuma2, ruudunNro);
+    }
+    
+    public Tapahtuma luoNostaLikkeidenTuottoTapahtuma() {
+        return new NostaLiikkeidenTuotto();
+    }
 }

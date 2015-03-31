@@ -3,7 +3,7 @@ package presidenttipeli.domain;
 import java.util.ArrayList;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 
-public class Ruutu implements Comparable<Ruutu>{
+public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava{
 
     private int numero;
     private boolean ostoJaMyyntiruutu;
@@ -25,9 +25,12 @@ public class Ruutu implements Comparable<Ruutu>{
         return numero;
     }
 
+    @Override
     public String getSeloste() {
         return seloste;
     }
+    
+    
 
     public ArrayList<Tapahtuma> getTapahtumat() {
         return tapahtumat;

@@ -54,7 +54,7 @@ public class MokkienLuoja extends Luoja{
     }
     
     public ArrayDeque<Mokki> getSekoitetutMokit() {
-        Collections.sort(lista);
+        Collections.shuffle(lista);
         ArrayDeque<Mokki> mokit = new ArrayDeque();
         for (Mokki mokki : lista) {
             mokit.add(mokki);
