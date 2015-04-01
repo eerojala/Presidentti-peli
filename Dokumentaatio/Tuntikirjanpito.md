@@ -10,4 +10,5 @@
 * 25.3.2015 9 tuntia, Tein testejä, tein ruutujen luonti-luokkaa hieman siistimmäksi
 * 27.3.2015 6 tuntia, Lisää luojaluokkia ja niiden testejä koodattu
 * 30.3.2015 4 tuntia, Koodasin lisää tapahtumaluokkia ja niiden testejä, Tutkinto on nyt boolean-arvon sijasta luokka
-* 31.3.2015 4 tuntia, Tapahtumakorttien-, pelaajien- ja ruutujenluoja koodattu.
+* 31.3.2015 4 tuntia, Tapahtumakorttien-, pelaajien- ja nappuloidenluoja koodattu
+* 1.4.2015 3 tuntia, Uusia tapahtumaluokkia, lisää testejä, aloitin koodaamaan ohjelmalogiikkaa
