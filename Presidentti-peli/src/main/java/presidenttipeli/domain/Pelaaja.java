@@ -103,6 +103,14 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.oikeutettuTuottoon = oikeutettuTuottoon;
     }
 
+    public void setOmistamatMokit(List<Mokki> omistamatMokit) {
+        this.omistamatMokit = omistamatMokit;
+    }
+
+    public void setOmistamatLiikkeet(List<Liike> omistamatLiikkeet) {
+        this.omistamatLiikkeet = omistamatLiikkeet;
+    }
+
     public void setPuolueenJasen(boolean puolueenJasen) {
         this.puolueenJasen = puolueenJasen;
     }

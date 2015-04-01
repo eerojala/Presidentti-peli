@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
 
 
-public class VerotarkastusTest {
+public class OdotaXKierrostaTest {
     Tapahtuma testi;
     Pelaaja pelaaja;
     
-    public VerotarkastusTest() {
+    public OdotaXKierrostaTest() {
     }
     
     @BeforeClass
@@ -27,19 +27,19 @@ public class VerotarkastusTest {
     
     @Before
     public void setUp() {
-        testi = new Verotarkastus();
-        pelaaja = new Pelaaja("Testi");
+       pelaaja = new Pelaaja("Testi");
     }
     
     @After
     public void tearDown() {
     }
 
-    
     @Test
-    public void ottaaPoisOikeudenLiikkeidenTuottoon() {
+    public void asettaaOikeanLuvun() {
+        pelaaja.setOdottaaVuoroaan(1);
+        testi = new OdotaXKierrosta(3);
         testi.suoritaTapahtuma(pelaaja);
-        assertEquals(false, pelaaja.isOikeutettuTuottoon()); // pelaajalla on oletusarvoisesti oikeus tuottoon
+        assertEquals(3, pelaaja.getOdottaaVuoroaan());
     }
     
 }

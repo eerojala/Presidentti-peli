@@ -89,4 +89,14 @@ public class SattumaAmmattienLuojaTest {
         }
         assertEquals(true, ehto);
     }
+    
+    @Test
+    public void luoduillaAmmateillaNimet() {
+        for (Ammatti ammatti : luoja.getAmmatit()) {
+            if (ammatti.getNimi() == null) {
+                ehto = false;
+            }
+        }
+        assertEquals(true, ehto);
+    }
 }

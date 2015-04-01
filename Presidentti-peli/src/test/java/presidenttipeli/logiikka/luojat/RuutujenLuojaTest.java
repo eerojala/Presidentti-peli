@@ -6,12 +6,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
 
 public class RuutujenLuojaTest {
 
     RuutujenLuoja luoja;
+    Pelaaja pelaaja;
+    boolean vaite;
 
     public RuutujenLuojaTest() {
     }
@@ -83,5 +86,16 @@ public class RuutujenLuojaTest {
                 + "SINUSTAKO PRESIDENTTI?\n"
                 + "Osallistu vaaliin!\n", luoja.getRuudut().get(luoja.getRuudut().size() - 1).getSeloste());
     }
+    
+    @Test
+    public void kaikillaRuuduillaSeloste() {
+        vaite = true;
+        for (Ruutu ruutu : luoja.getRuudut()) {
+            if (ruutu.getSeloste().equals("placeholder")) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
+    } 
 
 }

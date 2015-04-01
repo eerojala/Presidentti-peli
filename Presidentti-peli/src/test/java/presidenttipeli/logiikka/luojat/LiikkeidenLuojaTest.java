@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.logiikka.luojat;
 
 import org.junit.After;
@@ -13,13 +9,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Liike;
 
-/**
- *
- * @author Eero
- */
 public class LiikkeidenLuojaTest {
 
-    private LiikkeidenLuoja luokka;
+    LiikkeidenLuoja luokka;
+    boolean vaite;
 
     public LiikkeidenLuojaTest() {
     }
@@ -36,6 +29,7 @@ public class LiikkeidenLuojaTest {
     public void setUp() {
         luokka = new LiikkeidenLuoja();
         luokka.luo();
+        vaite = true;
     }
 
     @After
@@ -49,13 +43,12 @@ public class LiikkeidenLuojaTest {
 
     @Test
     public void asettaaArvonJaTuotonOikeinpain() {
-        boolean arvoJaTuottoOikeinPain = true;
         for (Liike liike : luokka.getLista()) {
             if (liike.getTuotto() > liike.getArvo()) {
-                arvoJaTuottoOikeinPain = false;
+                vaite = false;
             }
         }
-        assertEquals(true, arvoJaTuottoOikeinPain);
+        assertEquals(true, vaite);
     }
 
     @Test
@@ -77,4 +70,25 @@ public class LiikkeidenLuojaTest {
     public void viimeisellaLiikkeellaOikeaArvo() {
         assertEquals(15000, luokka.getLista().get(14).getArvo());
     }
+    
+    @Test
+    public void likkeillaOnNimi() {
+        for (Liike liike : luokka.getLista()) {
+            if (liike.getNimi() == null) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
+    }
+    
+    @Test
+    public void liikkeillaOnTyyppi() {
+        for (Liike liike : luokka.getLista()) {
+            if (liike.getTyyppi() == null) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
+    }
+    
 }

@@ -92,5 +92,16 @@ public class JohtajaAmmattienLuojaTest {
     public void viimeisellaAlkiollaOnOikeaPalkka() {
         assertEquals(12000, luokka.getJohtajaAmmatit().get(luokka.getJohtajaAmmatit().size() - 1).getPalkka());
     }
+    
+    @Test
+    public void luoduillaAmmateillaOnNimi() {
+        boolean vaite = true;
+        for (Ammatti ammatti : luokka.getJohtajaAmmatit()) {
+            if (ammatti.getNimi() == null) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
+    }
 
 }

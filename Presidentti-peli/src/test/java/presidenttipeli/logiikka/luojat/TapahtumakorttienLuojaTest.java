@@ -52,5 +52,15 @@ public class TapahtumakorttienLuojaTest {
     public void viimeisellaKortillaOikeaSeloste() {
         assertEquals("Huh! Ei tapahdu mitään\n", luoja.getLista().get(34).getSeloste());
     }
-
+    
+    @Test
+    public void kaikillaKorteillaOnSeloste() {
+        boolean vaite = true;
+        for (SelosteenOmaava apu : luoja.getLista()) {
+            if (apu.getSeloste() == null) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
+    }
 }

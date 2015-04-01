@@ -2,6 +2,7 @@
 package presidenttipeli.logiikka;
 
 import java.util.ArrayList;
+import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.logiikka.luojat.*;
@@ -18,6 +19,7 @@ public class KaikenLuoja {
     private TapahtumakorttienLuoja tLuoja;
     private PelaajienLuoja pLuoja;
     private NappuloidenLuoja nLuoja;
+    private Peli peli;
     
     public KaikenLuoja(ArrayList<String> pelaajienNimet) {
         this.pelaajienNimet = pelaajienNimet;
@@ -27,6 +29,7 @@ public class KaikenLuoja {
         lLuoja = new LiikkeidenLuoja();
         mLuoja = new MokkienLuoja();
         pLuoja = new PelaajienLuoja(pelaajienNimet);
+        luoKaikki();
     }
     
     private void luoKaikki() {
@@ -34,6 +37,8 @@ public class KaikenLuoja {
         luoAmmatitMokitJaLiikkeet();
         luoTapahtumaKortit();
         luoRuudut();
+        asetaNappulatAloitusruudulle();
+        luoPeli();
     }
     
     private void luoPelaajatJaNappulat() {
@@ -68,4 +73,23 @@ public class KaikenLuoja {
         rLuoja.luo();
         lauta.setRuudut(rLuoja.getRuudut());
     }
+    
+    private void asetaNappulatAloitusruudulle() {
+        for (Nappula nappula : lauta.getNappulat()) {
+            nappula.setSijainti(lauta.getRuudut().get(0));
+        }
+    }
+
+    public Pelilauta getLauta() {
+        return lauta;
+    }
+    
+    private void luoPeli() {
+        peli = new Peli(lauta);
+    }
+
+    public Peli getPeli() {
+        return peli;
+    }
+     
 }

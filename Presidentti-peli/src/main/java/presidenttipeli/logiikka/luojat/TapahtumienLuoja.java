@@ -74,8 +74,8 @@ public class TapahtumienLuoja extends Luoja{
         return new SiirraNappulaa(minne, lauta);
     }
     
-    public Tapahtuma luoVerotarkastusTapahtuma() {
-        return new Verotarkastus();
+    public Tapahtuma luoVieTaiAnnaOikeusLiikkeidenTuottoon(boolean oikeusTuottoon) {
+        return new VieTaiAnnaOikeusLiikkeidenTuottoon(oikeusTuottoon);
     }
     
     public Tapahtuma luoLiikkeenPoistoTapahtuma(boolean vakuutusKorvaa) {
@@ -96,5 +96,9 @@ public class TapahtumienLuoja extends Luoja{
     
     public Tapahtuma luoNostaLikkeidenTuottoTapahtuma() {
         return new NostaLiikkeidenTuotto();
+    }
+    
+    public Tapahtuma luoAloitaUusiKierros() {
+        return new AloitaUusiKierros(lauta);
     }
 }

@@ -111,7 +111,7 @@ public class RuutujenLuoja extends Luoja {
         luoNappulaaSiirtavaRuutu(26, 1);
         luoRahaanVaikuttavaRuutu(27, true, 20000);
         luoTapahtumakorttiRuutu(28);
-        luoVerotarkastusRuutu(29);
+        luoVerotarkastusRuutu(29, false);
         luoVaaliruutu(30);
     }
 
@@ -196,8 +196,8 @@ public class RuutujenLuoja extends Luoja {
         luoRuutu(false, false, false, numero, luoja.luoOtaTapahtumakorttiTapahtuma());
     }
 
-    private void luoVerotarkastusRuutu(int numero) {
-        luoRuutu(false, false, false, numero, luoja.luoVerotarkastusTapahtuma());
+    private void luoVerotarkastusRuutu(int numero, boolean oikeusTuottoon) {
+        luoRuutu(false, false, false, numero, luoja.luoVieTaiAnnaOikeusLiikkeidenTuottoon(oikeusTuottoon));
     }
 
 }

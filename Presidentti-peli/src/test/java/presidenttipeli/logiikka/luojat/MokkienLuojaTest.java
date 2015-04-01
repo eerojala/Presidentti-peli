@@ -8,10 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import presidenttipeli.domain.Mokki;
 
 
 public class MokkienLuojaTest {
     MokkienLuoja luokka;
+    boolean vaite;
     
     public MokkienLuojaTest() {
     }
@@ -28,6 +30,7 @@ public class MokkienLuojaTest {
     public void setUp() {
         luokka = new MokkienLuoja();
         luokka.luo();
+        vaite = true;
     }
     
     @After
@@ -57,5 +60,15 @@ public class MokkienLuojaTest {
     @Test
     public void viimeisellaMokillaOikeaArvo() {
         assertEquals(12000, luokka.getLista().get(14).getArvo());
+    }
+    
+    @Test
+    public void mokeillaOnNimi() {
+        for (Mokki mokki : luokka.getLista()) {
+            if (mokki.getNimi() == null) {
+                vaite = false;
+            }
+        }
+        assertEquals(true, vaite);
     }
 }

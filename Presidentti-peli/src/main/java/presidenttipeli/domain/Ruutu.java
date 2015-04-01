@@ -29,8 +29,6 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava{
     public String getSeloste() {
         return seloste;
     }
-    
-    
 
     public ArrayList<Tapahtuma> getTapahtumat() {
         return tapahtumat;
