@@ -12,3 +12,4 @@
 * 30.3.2015 4 tuntia, Koodasin lisää tapahtumaluokkia ja niiden testejä, Tutkinto on nyt boolean-arvon sijasta luokka
 * 31.3.2015 4 tuntia, Tapahtumakorttien-, pelaajien- ja nappuloidenluoja koodattu
 * 1.4.2015 3 tuntia, Uusia tapahtumaluokkia, lisää testejä, aloitin koodaamaan ohjelmalogiikkaa
+* 2.4.2015 3 tuntia, Heiluttelin käsiä käyttöliittymän kanssa, lisää luokkia ja testejä.
