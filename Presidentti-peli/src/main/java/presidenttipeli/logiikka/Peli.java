@@ -13,11 +13,13 @@ public class Peli {
     private TapahtumienLuoja tapahtumienluoja;
     private Tapahtuma uusiKierros;
     private Liikuttelija liikuttelija;
+    private Pankinjohtaja pankinjohtaja;
     
     public Peli(Pelilauta lauta) {
         this.lauta = lauta;
         tapahtumienluoja = new TapahtumienLuoja(lauta);
         liikuttelija = new Liikuttelija(lauta);
+        pankinjohtaja = new Pankinjohtaja(lauta);
     }
 
     public Pelilauta getLauta() {
@@ -33,7 +35,7 @@ public class Peli {
     public void eteneKierros() {
         for (Nappula nappula : lauta.getNappulat()) {
             if (liikuttelija.liikutaNappulaa(heitaNoppaa(), nappula) == true) {
-                tapahtumienluoja.luoAloitaUusiKierros().suoritaTapahtuma(nappula.getOmistaja());
+                pankinjohtaja.annaPelaajalleKuukaudenTuotot(nappula.getOmistaja());
             }
             
             if (onkoErikoisruutu(nappula.getSijainti())) { // erikoisruudussa tarvitaan käyttäjän syötettä
@@ -65,4 +67,9 @@ public class Peli {
     public boolean onkoErikoisruutu(Ruutu ruutu) {
         return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
     }
+
+    public Pankinjohtaja getPankinjohtaja() {
+        return pankinjohtaja;
+    }
+
 }

@@ -101,4 +101,8 @@ public class TapahtumienLuoja extends Luoja{
     public Tapahtuma luoAloitaUusiKierros() {
         return new AloitaUusiKierros(lauta);
     }
+    
+    public Tapahtuma luoVelkaanVaikuttavaTapahtuma(boolean velkaKasvaa, double maara) {
+        return new VelkaanVaikuttavaTapahtuma(velkaKasvaa, maara);
+    }
 }

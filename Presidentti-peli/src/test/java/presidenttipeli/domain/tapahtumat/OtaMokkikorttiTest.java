@@ -7,17 +7,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import presidenttipeli.domain.Liike;
+import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
 
-public class OtaLiikekorttiTest {
+public class OtaMokkikorttiTest {
     Pelilauta lauta;
     Pelaaja pelaaja;
     Tapahtuma testi;
     
-    public OtaLiikekorttiTest() {
+    public OtaMokkikorttiTest() {
     }
     
     @BeforeClass
@@ -31,8 +31,8 @@ public class OtaLiikekorttiTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta();
-        lauta.getLiikkeet().add(new Liike("Tyyppi", "Liike", 30000, 3000));
-        testi = new OtaLiikekortti(lauta);
+        lauta.getMokit().add(new Mokki("Testimokki", 10000));
+        testi = new OtaMokkikortti(lauta);
         pelaaja = new Pelaaja("testi");
     }
     
@@ -41,10 +41,10 @@ public class OtaLiikekorttiTest {
     }
 
     @Test
-    public void ottaaLiikepinostaYhdenKortin() {
-        int liikepinonkoko = lauta.getLiikkeet().size();
+    public void ottaaMokkipinostaYhdenKortin() {
+        int mokkipinonkoko = lauta.getMokit().size();
         testi.suoritaTapahtuma(pelaaja);
-        assertEquals(liikepinonkoko - 1, lauta.getLiikkeet().size());
+        assertEquals(mokkipinonkoko - 1, lauta.getMokit().size());
     }
     
 }

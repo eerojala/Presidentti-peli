@@ -10,6 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Ruutu;
+import presidenttipeli.logiikka.luojat.*;
 
 
 public class PeliTest {
@@ -44,6 +45,10 @@ public class PeliTest {
     public void tearDown() {
     }
 
-   
+    @Test
+    public void test() {
+        boolean vaite = true;
+        assertEquals(true, vaite);
+    }
     
 }
