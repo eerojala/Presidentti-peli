@@ -1,5 +1,5 @@
 # Tuntikirjanpito
-* 10.3.2015, ~2 tuntia, Gitin opettelua ja tiedostojen pushaamista
+* 10.3.2015, 2 tuntia, Gitin opettelua ja tiedostojen pushaamista
 * 11.3.2015, 1 tunti, Käyttötapausten kirjoittelua
 * 17.3.2015 1,5 tuntia, Aloitin koodauksen, domain luokkien koodausta
 * 18.3.2015 1 tunti, Kirjoitin pelin mukana tulleet säännöt md-tiedostoon
@@ -12,4 +12,5 @@
 * 30.3.2015 4 tuntia, Koodasin lisää tapahtumaluokkia ja niiden testejä, Tutkinto on nyt boolean-arvon sijasta luokka
 * 31.3.2015 4 tuntia, Tapahtumakorttien-, pelaajien- ja nappuloidenluoja koodattu
 * 1.4.2015 3 tuntia, Uusia tapahtumaluokkia, lisää testejä, aloitin koodaamaan ohjelmalogiikkaa
-* 2.4.2015 3 tuntia, Heiluttelin käsiä käyttöliittymän kanssa, lisää luokkia ja testejä.
+* 2.4.2015 3 tuntia, Heiluttelin käsiä käyttöliittymän kanssa, lisää luokkia ja testejä
+* 7.4.2015 4 tuntia, koodasin lisää logiikkaluokkia ja niiden testejä, vaalit koodattu
