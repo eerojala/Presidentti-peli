@@ -14,12 +14,18 @@ public class Peli {
     private Tapahtuma uusiKierros;
     private Liikuttelija liikuttelija;
     private Pankinjohtaja pankinjohtaja;
+    private Kiinteistonvalittaja kiinteistonvalittaja;
+    private Vaalienjarjestaja vaalienjarjestaja;
+    private Putka putka;
     
     public Peli(Pelilauta lauta) {
         this.lauta = lauta;
         tapahtumienluoja = new TapahtumienLuoja(lauta);
         liikuttelija = new Liikuttelija(lauta);
         pankinjohtaja = new Pankinjohtaja(lauta);
+        kiinteistonvalittaja = new Kiinteistonvalittaja(lauta);
+        vaalienjarjestaja = new Vaalienjarjestaja(lauta);
+        putka = new Putka(lauta);
     }
 
     public Pelilauta getLauta() {
@@ -72,4 +78,20 @@ public class Peli {
         return pankinjohtaja;
     }
 
+    public Kiinteistonvalittaja getKiinteistonvalittaja() {
+        return kiinteistonvalittaja;
+    }
+
+    public Putka getPutka() {
+        return putka;
+    }
+
+    public Liikuttelija getLiikuttelija() {
+        return liikuttelija;
+    }
+
+    public Vaalienjarjestaja getVaalienjarjestaja() {
+        return vaalienjarjestaja;
+    }
+    
 }

@@ -3,6 +3,8 @@ package presidenttipeli.logiikka.luojat;
 
 import java.util.ArrayList;
 import presidenttipeli.domain.Ammatti;
+import presidenttipeli.domain.Liike;
+import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.tapahtumat.*;
 
@@ -104,5 +106,21 @@ public class TapahtumienLuoja extends Luoja{
     
     public Tapahtuma luoVelkaanVaikuttavaTapahtuma(boolean velkaKasvaa, double maara) {
         return new VelkaanVaikuttavaTapahtuma(velkaKasvaa, maara);
+    }
+    
+    public Tapahtuma luoMokkeihinVaikuttavaTapahtuma(Mokki mokki, boolean pelaajalleMokki) {
+        return new MokkeihinVaikuttavaTapahtuma(mokki, pelaajalleMokki, lauta);
+    }
+    
+    public Tapahtuma luoLiikkeisiinVaikuttavaTapahtuma(Liike liike, boolean pelaajalleLiike) {
+        return new LiikkeisiinVaikuttavaTapahtuma(liike, pelaajalleLiike, lauta);
+    }
+    
+    public Vaalit luoVaalit(int tarvittavaAanimaara) {
+        return new Vaalit(tarvittavaAanimaara);
+    }
+    
+    public Tapahtuma luoKansanedustajuuteenVaikuttavaTapahtuma(boolean pelaajalleKansanedustajuus) {
+        return new KansanedustajuuteenVaikuttavaTapahtuma(pelaajalleKansanedustajuus);
     }
 }
