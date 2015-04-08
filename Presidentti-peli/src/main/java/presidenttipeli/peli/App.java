@@ -23,11 +23,17 @@ import presidenttipeli.logiikka.luojat.JohtajaAmmattienLuoja;
 import presidenttipeli.logiikka.luojat.Luoja;
 import presidenttipeli.logiikka.luojat.MokkienLuoja;
 import presidenttipeli.logiikka.luojat.RuutujenLuoja;
+import javax.swing.SwingUtilities;
+import presidenttipeli.gui.*;
 
 public class App {
 
     public static void main(String[] args) {
-
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AloitusGUI().setVisible(true);
+            }
+        });
     }
 
 }

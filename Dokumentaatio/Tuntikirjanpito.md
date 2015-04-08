@@ -14,3 +14,4 @@
 * 1.4.2015 3 tuntia, Uusia tapahtumaluokkia, lisää testejä, aloitin koodaamaan ohjelmalogiikkaa
 * 2.4.2015 3 tuntia, Heiluttelin käsiä käyttöliittymän kanssa, lisää luokkia ja testejä
 * 7.4.2015 4 tuntia, koodasin lisää logiikkaluokkia ja niiden testejä, vaalit koodattu
+* 8.4.2015 3,5 tuntia, Aloitin käyttöliittymän koodauksen, AloitusGUI luotu
