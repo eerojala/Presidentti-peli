@@ -4,6 +4,9 @@ import presidenttipeli.domain.Liike;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ * Tapahtumaluokka joka antaa tai ottaa pelaajalta liikkeen
+ */
 public class LiikkeisiinVaikuttavaTapahtuma implements Tapahtuma {
 
     private Liike liike;
@@ -16,6 +19,13 @@ public class LiikkeisiinVaikuttavaTapahtuma implements Tapahtuma {
         this.lauta = lauta;
     }
 
+    /**
+     * Metodi antaa pelaajalle liikkeen tai ottaa pelaajalta liikkeen ja asettaa
+     * sen takaisin laudalle
+     *
+     * @param pelaaja Pelaaja jolle annetaan tai otetaan liike
+     * @return Aina true
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (pelaajalleLiike) {

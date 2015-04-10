@@ -54,6 +54,11 @@ public class RuutuTest {
     }
     
     @Test
+    public void equalsToimiiJosNull() {
+        assertEquals(false, ruutu1.equals(ruutu2));
+    }
+    
+    @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
         ruutu2 = new Ruutu(2, true, true, true);
         ArrayList<Ruutu> ruudut = new ArrayList();

@@ -53,6 +53,10 @@ public class MokkiTest {
     }
     
     @Test
+    public void equalsToimiiJosNull() {
+        assertEquals(false, mokki1.equals(mokki2));
+    }
+    @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
         mokki2 = new Mokki("Mokki2", 10001);
         ArrayList<Mokki> mokit = new ArrayList();

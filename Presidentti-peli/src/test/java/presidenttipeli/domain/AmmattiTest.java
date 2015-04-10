@@ -55,6 +55,11 @@ public class AmmattiTest {
     }
     
     @Test
+    public void equalsToimiiJosNull() {
+        assertEquals(false, ammatti1.equals(ammatti2));
+    }
+    
+    @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
         ammatti2 = new Ammatti("Ammatti2", 10001, true, false, true);
         List<Ammatti> lista = new ArrayList();

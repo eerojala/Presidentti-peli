@@ -3,7 +3,10 @@ package presidenttipeli.domain;
 import java.util.ArrayList;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 
-public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava{
+/**
+ * Luokka joka pitää muistissa ruudun numeron, tapahtumat jne
+ */
+public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
 
     private int numero;
     private boolean ostoJaMyyntiruutu;
@@ -53,7 +56,7 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava{
     public void setPutkaruutu(boolean putkaruutu) {
         this.putkaruutu = putkaruutu;
     }
-    
+
     public void setSeloste(String seloste) {
         this.seloste = seloste;
     }
@@ -66,26 +69,44 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava{
         this.vaaliruutu = vaaliRuutu;
     }
 
+    /**
+     * Metodi joka vertaa kahta oliota toisiinsa
+     *
+     * @param obj Toinen olio
+     *
+     * @return ovatko kaksi oliota samoja (Molemmat ruutu-olioita ja sama
+     * numero)
+     */
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        
         if (obj.getClass() != this.getClass()) {
             return false;
         }
-        
+
         Ruutu ruutu = (Ruutu) obj;
-        
+
         if (ruutu.getNumero() != this.numero) {
             return false;
         }
-        
+
         // Samannumeroisia ruutuja ei ole
         return true;
     }
 
+    /**
+     *  Metodi joka vertaa kahta ruutua keskenään
+     * 
+     *  @param o Toinen ruutu
+     * 
+     *  @return Numeron joka määrää ruutujen keskenäisen järjestyksen 
+     */
     @Override
     public int compareTo(Ruutu o) {
         return this.numero - o.getNumero();
     }
-    
-    
+
 }

@@ -1,10 +1,13 @@
-
 package presidenttipeli.domain.tapahtumat;
 
 import presidenttipeli.domain.Pelaaja;
 
+/**
+ * Tapahtumaluokka joka suorittaa jommankumman tapahtumista riippuen omistaako pelaaja
+ * yhtaan liiketta tai mokkia
+ */
+public class LiikkeistaTaiMokeistaRiippuvaTapahtuma implements Tapahtuma {
 
-public class LiikkeistaTaiMokeistaRiippuvaTapahtuma implements Tapahtuma{
     Tapahtuma tapahtuma1;
     Tapahtuma tapahtuma2;
 
@@ -13,6 +16,13 @@ public class LiikkeistaTaiMokeistaRiippuvaTapahtuma implements Tapahtuma{
         this.tapahtuma2 = tapahtuma2;
     }
 
+    /**
+     * Metodi joka suorittaa jommankumman konstruktorille annetuista tapahtumistata
+     * riippuen siitä omistaako pelaaja yhtään liiketta tai mökkiä.
+     *
+     * @param pelaaja Pelaajalle jolle suoritetaan jompikumpi tapahtuma
+     * @return Onnistuiko suoritettu tapahtuma
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (!pelaaja.getOmistamatLiikkeet().isEmpty() || !pelaaja.getOmistamatMokit().isEmpty()) {
@@ -21,6 +31,5 @@ public class LiikkeistaTaiMokeistaRiippuvaTapahtuma implements Tapahtuma{
             return tapahtuma2.suoritaTapahtuma(pelaaja);
         }
     }
-    
-    
+
 }

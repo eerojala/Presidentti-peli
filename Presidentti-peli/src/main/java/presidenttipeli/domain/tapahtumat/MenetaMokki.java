@@ -5,6 +5,9 @@ import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ * Tapahtumaluokka joka ottaa pelaajalta pois hänen arvokkaimman mökkinsä.
+ */
 public class MenetaMokki implements Tapahtuma {
 
     private Pelilauta lauta;
@@ -15,6 +18,14 @@ public class MenetaMokki implements Tapahtuma {
         this.vakuutusKorvaa = vakuutusKorvaa;
     }
 
+    /**
+     * Metodi ottaa pelaajalta pois hänen arvokkaimman mökkinsä ja antaa
+     * korvauksena puolet sen arvosta mikäli konstruktorissa on asetettu muuttuja
+     * vakuutusKorvaa trueksi.
+     *
+     * @param pelaaja Pelaaja jolta otetaan hänen arvokkain mökkinsä pois
+     * @return Aina true
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (!pelaaja.getOmistamatMokit().isEmpty()) {

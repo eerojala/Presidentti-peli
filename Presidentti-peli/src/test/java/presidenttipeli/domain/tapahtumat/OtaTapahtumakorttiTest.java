@@ -60,4 +60,19 @@ public class OtaTapahtumakorttiTest {
         testi.suoritaTapahtuma(pelaaja);
         assertEquals(true, pelaaja.isPuolueenJasen());
     }
+    
+    @Test
+    public void palauttaaTrueJosKaikkiTapahtumatOnnistuivat() {
+        assertEquals(true, testi.suoritaTapahtuma(pelaaja));
+    }
+    
+    @Test
+    public void palauttaaFalseJosJokinTapahtumistaEpaonnistuu() {
+        Tapahtumakortti kortti3 = new Tapahtumakortti();
+        kortti3.getTapahtumat().add(new RahaanVaikuttavaTapahtuma(false, Integer.MAX_VALUE));
+        lauta.getTapahtumakortit().clear();
+        lauta.getTapahtumakortit().add(kortti3);
+        Tapahtuma testi2 = new OtaTapahtumakortti(lauta);
+        assertEquals(false, testi2.suoritaTapahtuma(pelaaja));
+    }
 }

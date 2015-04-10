@@ -306,8 +306,8 @@ public class AloitusGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_kuusiPelaajaaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArrayList<String> nimet = new ArrayList();
-        lisaaNimetListaan(nimet);
+        nimet.clear();
+        lisaaNimetListaan();
         boolean samuustarkastus = aloitus.samuustarkastus(nimet);
         boolean pituustarkastus = aloitus.pituustarkastus(nimet);
         if (samuustarkastus == false || pituustarkastus == false) {
@@ -319,20 +319,20 @@ public class AloitusGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void lisaaNimetListaan(ArrayList<String> nimet) {
+    private void lisaaNimetListaan() {
         nimet.add(pelaaja1Nimi.getText());
         nimet.add(pelaaja2Nimi.getText());
 
-        if (kolmePelaajaa.isEnabled()) {
+        if (pelaaja3Nimi.isEnabled()) {
             nimet.add(pelaaja3Nimi.getText());
         }
-        if (neljaPelaajaa.isEnabled()) {
+        if (pelaaja4Nimi.isEnabled()) {
             nimet.add(pelaaja4Nimi.getText());
         }
-        if (viisiPelaajaa.isEnabled()) {
+        if (pelaaja5Nimi.isEnabled()) {
             nimet.add(pelaaja5Nimi.getText());
         }
-        if (kuusiPelaajaa.isEnabled()) {
+        if (pelaaja6Nimi.isEnabled()) {
             nimet.add(pelaaja6Nimi.getText());
         }
     }
@@ -396,4 +396,5 @@ public class AloitusGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton viisiPelaajaa;
     // End of variables declaration//GEN-END:variables
     private Aloitus aloitus = new Aloitus();
+    private ArrayList<String> nimet = new ArrayList();
 }

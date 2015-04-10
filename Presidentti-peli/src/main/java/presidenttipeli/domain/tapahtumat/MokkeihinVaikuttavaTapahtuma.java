@@ -4,6 +4,9 @@ import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ * Tapahtumaluokka joka vaikuttaa pelaajan mökkeihin
+ */
 public class MokkeihinVaikuttavaTapahtuma implements Tapahtuma {
 
     private Mokki mokki;
@@ -15,7 +18,14 @@ public class MokkeihinVaikuttavaTapahtuma implements Tapahtuma {
         this.pelaajalleMokki = pelaajalleMokki;
         this.lauta = lauta;
     }
-    
+
+    /**
+     * Metodi antaa pelaajalle mökin tai ottaa pelaajalta mökin ja palauttaa sen
+     * takaisin laudalle.
+     *
+     * @param pelaaja Pelaaja joka saa tai menettää mökin.
+     * @return Aina true
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (pelaajalleMokki) {

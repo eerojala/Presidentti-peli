@@ -4,6 +4,9 @@ import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ * Tapahtumaluokka joka asettaa pelaajalle uuden ammattin
+ */
 public class AsetaAmmatti implements Tapahtuma {
 
     private Pelilauta lauta;
@@ -14,6 +17,16 @@ public class AsetaAmmatti implements Tapahtuma {
         this.ammatti = ammatti;
     }
 
+    /**
+     * Metodi asettaa pelaajalle konstruktorin määrittämän ammatin ja vie hänen 
+     * edellisen ammattinsavtakaisin pelilaudalle mikäli se oli johtaja- tai 
+     * sattuma-ammatti.
+     * Pelaajalta otetaan pois kansanedustajuus jos uusi ammatti ei salli sitä
+     * ja tutkintokin lähtee pois jos kyseessä ei ole yleissivistävä tutkinto.
+     *
+     * @param pelaaja Pelaaja jolle uusi ammatti asetetaan
+     * @return Aina true
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         Tapahtuma tapahtuma1 = new VieAmmattikorttiTakaisinPinoon(lauta, pelaaja.getAmmatti());
@@ -30,12 +43,12 @@ public class AsetaAmmatti implements Tapahtuma {
             tapahtuma.suoritaTapahtuma(pelaaja);
         }
     }
-    
+
     private void otaPoisTutkinto(Pelaaja pelaaja) {
         if (pelaaja.getTutkinto() == null) {
             return;
         }
-        
+
         if (!pelaaja.getTutkinto().isYleissivistava() && !ammatti.getNimi().equals("Työtön")) {
             Tapahtuma tapahtuma = new TutkintoonVaikuttavaTapahtuma(false, false);
             tapahtuma.suoritaTapahtuma(pelaaja);

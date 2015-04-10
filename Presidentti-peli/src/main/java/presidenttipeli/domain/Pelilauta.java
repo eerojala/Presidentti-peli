@@ -5,6 +5,9 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Luokka joka sisältää kaikki pelaajat ja muut peliin liittyvät oliot
+ */
 public class Pelilauta {
 
     private List<Ruutu> ruudut;

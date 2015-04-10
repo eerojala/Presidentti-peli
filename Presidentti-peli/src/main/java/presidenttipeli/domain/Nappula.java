@@ -1,5 +1,8 @@
 package presidenttipeli.domain;
 
+/**
+ * Luokka pitää muistissaan nappulan omistajaa ja sen sijantia.
+ */
 public class Nappula {
 
     private Pelaaja omistaja;

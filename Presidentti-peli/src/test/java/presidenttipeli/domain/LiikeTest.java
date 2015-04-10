@@ -53,6 +53,11 @@ public class LiikeTest {
         Object obj = new Object();
         assertEquals(false, liike1.equals(obj));
     }
+    
+    @Test
+    public void equalsToimiiJosNull() {
+        assertEquals(false, liike1.equals(liike2));
+    }
 
     @Test
     public void compareToJarjestaaOikeinJosEriArvot() {

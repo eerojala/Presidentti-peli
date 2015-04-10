@@ -1,11 +1,13 @@
-
 package presidenttipeli.domain.tapahtumat;
 
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Tutkinto;
 
+/**
+ * Tapahtumaluokka joka vaikuttaa pelaajan tutkintoon.
+ */
+public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma {
 
-public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma{
     private boolean pelaajalleTutkinto;
     private boolean yleissivistava;
 
@@ -14,6 +16,16 @@ public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma{
         this.yleissivistava = yleissivistava;
     }
 
+    /**
+     * Metodi antaa pelaajalle tutkinnon tai ottaa sellaisen pois riippuen
+     * konstruktorille annetusta totuusarvomuuttuja pelaajalleTutkinto:sta.
+     *
+     * Konstruktorille annettu totuusarvomuuttuja yleissivistava maaraa onko
+     * annettava tutkinto yleissivistävä vai ei.
+     *
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
+     * @return aina True
+     */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (pelaajalleTutkinto) {
@@ -27,6 +39,5 @@ public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma{
         }
         return true;
     }
-    
-    
+
 }

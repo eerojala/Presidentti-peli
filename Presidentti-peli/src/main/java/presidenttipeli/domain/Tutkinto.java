@@ -1,6 +1,9 @@
 
 package presidenttipeli.domain;
 
+/**
+ *  Luokka joka pitää muistissaan onko tutkinto yleissivistävä vai ei.
+ */
 
 public class Tutkinto {
     private boolean yleissivistava;

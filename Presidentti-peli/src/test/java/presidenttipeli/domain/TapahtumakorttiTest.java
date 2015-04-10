@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 public class TapahtumakorttiTest {
     Tapahtumakortti kortti1;
     Tapahtumakortti kortti2;
+    Tapahtumakortti kortti3;
     
     public TapahtumakorttiTest() {
     }
@@ -51,6 +52,11 @@ public class TapahtumakorttiTest {
     public void equalsToToimiiJosKaksiEriLuokkaa() {
         Object object = new Object();
         assertEquals(false, kortti1.equals(object));
+    }
+    
+    @Test
+    public void equalsToimiiJosNull() {
+        assertEquals(false, kortti1.equals(kortti3));
     }
     
     @Test

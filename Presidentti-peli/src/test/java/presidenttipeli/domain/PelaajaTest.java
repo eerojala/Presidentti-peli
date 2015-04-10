@@ -57,6 +57,12 @@ public class PelaajaTest {
     }
     
     @Test
+    public void equalsToimiiJosNull() {
+        test1 = new Pelaaja("d");
+        assertEquals(false, test1.equals(test2));
+    }
+    
+    @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
         test1 = new Pelaaja("test1");
         test2 = new Pelaaja("test2");

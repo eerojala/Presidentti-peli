@@ -3,6 +3,11 @@ package presidenttipeli.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka pitää muistissaan pelaajan nimestä, rahasta yms pelaajaan liittyvästä
+ * tiedosta
+ *
+ */
 public class Pelaaja implements Comparable<Pelaaja> {
 
     private String nimi;
@@ -127,8 +132,19 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.velkaa = velkaa;
     }
 
+    /**
+     * Metodi joka tarkistaa ovatko kaksi oliota samat
+     *
+     * @param obj Verrattava olio
+     *
+     * @return Ovatko oliot samoja (Molemmat pelaajia ja sama nimi)
+     */
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        
         if (this.getClass() != obj.getClass()) {
             return false;
         }
@@ -143,6 +159,13 @@ public class Pelaaja implements Comparable<Pelaaja> {
         return true;
     }
 
+    /**
+     *  Metodi joka vetaa kahta Pelaaja-oliota keskenään
+     * 
+     *  @param o Toinen pelaaja
+     * 
+     *  @return Numero joka määrää pelaajien keskenäisen järjestyksen
+     */
     @Override
     public int compareTo(Pelaaja o) {
         return o.getRahat() - this.rahat;
