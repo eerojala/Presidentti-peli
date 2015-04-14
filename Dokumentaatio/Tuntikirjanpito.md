@@ -16,3 +16,4 @@
 * 7.4.2015 4 tuntia, koodasin lisää logiikkaluokkia ja niiden testejä, vaalit koodattu
 * 8.4.2015 3,5 tuntia, Aloitin käyttöliittymän koodauksen, AloitusGUI luotu
 * 10.4.2015 4 tuntia, Javadocin kirjoittelua
+* 14.4.2015 4 tuntia, Aloitin peliGUI:n koodaamisen

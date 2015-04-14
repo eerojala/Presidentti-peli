@@ -65,8 +65,7 @@ public class RuutujenLuoja extends Luoja {
         }
     }
 
-    private void luoRuutu(boolean ostoJaMyyntiruutu, boolean vaaliruutu, boolean putkaruutu, int numero, Tapahtuma... tapahtumat) {
-        Ruutu ruutu = new Ruutu(numero, ostoJaMyyntiruutu, vaaliruutu, putkaruutu);
+    private void asetaRuudulleTapahtumat(Ruutu ruutu, Tapahtuma... tapahtumat) {
         for (Tapahtuma tapahtuma : tapahtumat) {
             ruutu.getTapahtumat().add(tapahtuma);
         }
@@ -74,73 +73,93 @@ public class RuutujenLuoja extends Luoja {
     }
 
     private void luoRuudut1() {
-        luoOstoJaMyyntiruutu(1);
-        luoYksinkertainenAmmattiruutu(2, tyoton);
-        luoYksinkertainenAmmattiruutu(3, new Ammatti("Opettaja", 5000, false, false, false));
-        luoYksinkertainenAmmattiruutu(4, new Ammatti("Autonkuljettaja", 3000, false, false, true));
-        luoYksinkertainenAmmattiruutu(5, tyoton);
-        luoYksinkertainenAmmattiruutu(6, new Ammatti("Päälikkö", 9000, false, false, false));
-        luoJohtajaTaiSattumaAmmattiruutu(7, false);
-        luoJasenkirjaanVaikuttavaRuutu(8, true);
-        luoRahaanVaikuttavaRuutu(9, true, 2000);
-        luoVaaliruutu(10);
+        luoOstoJaMyyntiruutu(1, 574, 374);
+        luoYksinkertainenAmmattiruutu(2, 513, 374, tyoton);
+        luoYksinkertainenAmmattiruutu(3, 450, 374, 
+                new Ammatti("Opettaja", 5000, false, false, false));
+        luoYksinkertainenAmmattiruutu(4, 387, 374, 
+                new Ammatti("Autonkuljettaja", 3000, false, false, true));
+        luoYksinkertainenAmmattiruutu(5, 324, 374, tyoton);
+        luoYksinkertainenAmmattiruutu(6, 261, 374, 
+                new Ammatti("Päälikkö", 9000, false, false, false));
+        luoJohtajaTaiSattumaAmmattiruutu(7, 198, 374, false);
+        luoJasenkirjaanVaikuttavaRuutu(8, 135, 374, true);
+        luoRahaanVaikuttavaRuutu(9, 72, 374, true, 2000);
+        luoVaaliruutu(10, 8, 374);
     }
 
     private void luoRuudut2() {
-        luoPalkastaRiippuvaRuutu(11, luoRuudun11Tapahtumat(), luoRuudun11Palkkarajat());
-        luoJasenkirjastaRiippuvaRuutu(12, luoja.luoOtaAmmattikorttiTapahtuma(true), luoja.luoOtaTapahtumakorttiTapahtuma());
-        luoTietystaAmmatistaRiippuvaRuutu(13, tyoton, luoja.luoTapahtumaJokaEiTeeMitaan(),
+        luoPalkastaRiippuvaRuutu(11, 8, 312,  
+                luoRuudun11Tapahtumat(), luoRuudun11Palkkarajat());
+        luoJasenkirjastaRiippuvaRuutu(12, 8, 251, 
+                luoja.luoOtaAmmattikorttiTapahtuma(true), luoja.luoOtaTapahtumakorttiTapahtuma());
+        luoTietystaAmmatistaRiippuvaRuutu(13, 8, 190,
+                tyoton, luoja.luoTapahtumaJokaEiTeeMitaan(),
                 luoja.luoRahaanVaikuttavaTapahtuma(false, 500));
-        luoTietystaAmmatistaRiippuvaRuutu(14, tyoton, luoja.luoTapahtumaJokaEiTeeMitaan(),
+        luoTietystaAmmatistaRiippuvaRuutu(14, 8, 129, tyoton, 
+                luoja.luoTapahtumaJokaEiTeeMitaan(),
                 luoja.luoRahaanVaikuttavaTapahtuma(true, 1000));
-        luoRahaanVaikuttavaRuutu(15, false, 5000);
-        luoOstoJaMyyntiruutu(16);
-        luoTutkintoonVaikuttavaRuutu(17, true, false);
-        luoYksinkertainenAmmattiruutu(18, tyoton);
-        luoOtaLiikekorttiRuutu(19);
-        luoOstoJaMyyntiruutu(20);
+        luoRahaanVaikuttavaRuutu(15, 8, 68, false, 5000);
+        luoOstoJaMyyntiruutu(16, 8, 7);
+        luoTutkintoonVaikuttavaRuutu(17, 72, 7, true, false);
+        luoYksinkertainenAmmattiruutu(18, 135, 7, tyoton);
+        luoOtaLiikekorttiRuutu(19, 198, 7);
+        luoOstoJaMyyntiruutu(20, 261, 7);
     }
 
     private void luoRuudut3() {
-        luoMokinpoistoruutu(21, true);
-        luoJohtajaTaiSattumaAmmattiruutu(22, true);
-        luoRuutuJossaUseampiTapahtuma(23, luoja.luoRahaanVaikuttavaTapahtuma(false, 500),
-                luoja.luoJohtajuudestaTaiKansanedustajuudestaRiippuvaTapahtuma(luoja.luoSiirraNappulaaTapahtuma(30), luoja.luoTapahtumaJokaEiTeeMitaan()));
-        luoPutkaruutu(24);
-        luoVaaliruutu(25);
-        luoNappulaaSiirtavaRuutu(26, 1);
-        luoRahaanVaikuttavaRuutu(27, true, 20000);
-        luoTapahtumakorttiRuutu(28);
-        luoVerotarkastusRuutu(29, false);
-        luoVaaliruutu(30);
+        luoMokinpoistoruutu(21, 324, 7, true);
+        luoJohtajaTaiSattumaAmmattiruutu(22, 387, 7, true);
+        luoRuutuJossaUseampiTapahtuma(23, 450, 7, luoja.luoRahaanVaikuttavaTapahtuma(false, 500),
+                luoja.luoJohtajuudestaTaiKansanedustajuudestaRiippuvaTapahtuma
+        (luoja.luoSiirraNappulaaTapahtuma(30), luoja.luoTapahtumaJokaEiTeeMitaan()));
+        luoPutkaruutu(24, 513, 7);
+        luoVaaliruutu(25, 575, 7);
+        luoNappulaaSiirtavaRuutu(26, 575, 68, 1);
+        luoRahaanVaikuttavaRuutu(27, 575, 129, true, 20000);
+        luoTapahtumakorttiRuutu(28, 575, 190);
+        luoVerotarkastusRuutu(29, 575, 251, false);
+        luoVaaliruutu(30, 575, 312);
     }
 
-    private void luoOstoJaMyyntiruutu(int numero) {
-        luoRuutu(true, false, false, numero);
+    private void luoOstoJaMyyntiruutu(int numero, int x, int y) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        ruutu.setOstoJaMyyntiruutu(true);
+        asetaRuudulleTapahtumat(ruutu);
     }
 
-    private void luoYksinkertainenAmmattiruutu(int numero, Ammatti ammatti) {
-        luoRuutu(false, false, false, numero, luoja.luoAsetaAmmattiTapahtuma(ammatti));
+    private void luoYksinkertainenAmmattiruutu(int numero, int x, int y, Ammatti ammatti) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoAsetaAmmattiTapahtuma(ammatti));
     }
 
-    private void luoJohtajaTaiSattumaAmmattiruutu(int numero, boolean johtajaAmmatti) {
-        luoRuutu(false, false, false, numero, luoja.luoOtaAmmattikorttiTapahtuma(johtajaAmmatti));
+    private void luoJohtajaTaiSattumaAmmattiruutu(int numero, int x, int y, boolean johtajaAmmatti) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoOtaAmmattikorttiTapahtuma(johtajaAmmatti));
     }
 
-    private void luoJasenkirjaanVaikuttavaRuutu(int numero, boolean pelaajalleJasenkirja) {
-        luoRuutu(false, false, false, numero, luoja.luoJasenkirjaanVaikuttavaTapahtuma(pelaajalleJasenkirja));
+    private void luoJasenkirjaanVaikuttavaRuutu(int numero, int x, int y, boolean pelaajalleJasenkirja) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, 
+                luoja.luoJasenkirjaanVaikuttavaTapahtuma(pelaajalleJasenkirja));
     }
 
-    private void luoRahaanVaikuttavaRuutu(int numero, boolean pelaajalleRahaa, int rahasumma) {
-        luoRuutu(false, false, false, numero, luoja.luoRahaanVaikuttavaTapahtuma(pelaajalleRahaa, rahasumma));
+    private void luoRahaanVaikuttavaRuutu(int numero, int x, int y, boolean pelaajalleRahaa, int rahasumma) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, 
+                luoja.luoRahaanVaikuttavaTapahtuma(pelaajalleRahaa, rahasumma));
     }
 
-    private void luoVaaliruutu(int numero) {
-        luoRuutu(false, true, false, numero);
+    private void luoVaaliruutu(int numero, int x, int y) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        ruutu.setVaaliruutu(true);
+        asetaRuudulleTapahtumat(ruutu);
     }
 
-    private void luoPalkastaRiippuvaRuutu(int numero, ArrayList<Tapahtuma> tapahtumat, ArrayList<Integer> palkkarajat) {
-        luoRuutu(false, false, false, numero, luoja.luoPalkastaRiippuvaTapahtuma(tapahtumat, palkkarajat));
+    private void luoPalkastaRiippuvaRuutu(int numero, int x, int y, ArrayList<Tapahtuma> tapahtumat, ArrayList<Integer> palkkarajat) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, 
+                luoja.luoPalkastaRiippuvaTapahtuma(tapahtumat, palkkarajat));
     }
 
     private ArrayList<Tapahtuma> luoRuudun11Tapahtumat() {
@@ -159,45 +178,57 @@ public class RuutujenLuoja extends Luoja {
         return palkkarajat;
     }
 
-    private void luoJasenkirjastaRiippuvaRuutu(int numero, Tapahtuma tapahtuma1, Tapahtuma tapahtuma2) {
-        luoRuutu(false, false, false, numero, luoja.luoTapahtumaJokaRiippuuJasenkirjasta(tapahtuma1, tapahtuma2));
+    private void luoJasenkirjastaRiippuvaRuutu(int numero, int x, int y, Tapahtuma tapahtuma1, Tapahtuma tapahtuma2) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, 
+                luoja.luoTapahtumaJokaRiippuuJasenkirjasta(tapahtuma1, tapahtuma2));
     }
 
-    private void luoTietystaAmmatistaRiippuvaRuutu(int numero, Ammatti ammatti, Tapahtuma tapahtuma1, Tapahtuma tapahtuma2) {
-        luoRuutu(false, false, false, numero,
+    private void luoTietystaAmmatistaRiippuvaRuutu(int numero, int x, int y, Ammatti ammatti, Tapahtuma tapahtuma1, Tapahtuma tapahtuma2) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu,
                 luoja.luoTietystaAmmatistaRiippuvaTapahtuma(ammatti, tapahtuma1, tapahtuma2));
     }
 
-    private void luoTutkintoonVaikuttavaRuutu(int numero, boolean pelaajalleTutkinto, boolean yleissivistava) {
-        luoRuutu(false, false, false, numero, luoja.luoTutkintoonVaikuttavaTapahtuma(pelaajalleTutkinto, yleissivistava));
+    private void luoTutkintoonVaikuttavaRuutu(int numero, int x, int y, boolean pelaajalleTutkinto, boolean yleissivistava) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, 
+                luoja.luoTutkintoonVaikuttavaTapahtuma(pelaajalleTutkinto, yleissivistava));
     }
 
-    private void luoOtaLiikekorttiRuutu(int numero) {
-        luoRuutu(false, false, false, numero, luoja.luoOtaLiikekorttiTapahtuma());
+    private void luoOtaLiikekorttiRuutu(int numero, int x, int y) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoOtaLiikekorttiTapahtuma());
     }
 
-    private void luoMokinpoistoruutu(int numero, boolean vakuutusKorvaa) {
-        luoRuutu(false, false, false, numero, luoja.luoMokinPoistoTapahtuma(vakuutusKorvaa));
+    private void luoMokinpoistoruutu(int numero, int x, int y, boolean vakuutusKorvaa) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoMokinPoistoTapahtuma(vakuutusKorvaa));
     }
 
-    private void luoRuutuJossaUseampiTapahtuma(int numero, Tapahtuma... tapahtumat) {
-        luoRuutu(false, false, false, numero, tapahtumat);
+    private void luoRuutuJossaUseampiTapahtuma(int numero, int x, int y, Tapahtuma... tapahtumat) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, tapahtumat);
     }
 
-    private void luoPutkaruutu(int numero) {
-        luoRuutu(false, false, true, numero);
+    private void luoPutkaruutu(int numero, int x, int y) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu);
     }
 
-    private void luoNappulaaSiirtavaRuutu(int numero, int minne) {
-        luoRuutu(false, false, false, numero, luoja.luoSiirraNappulaaTapahtuma(minne));
+    private void luoNappulaaSiirtavaRuutu(int numero, int x, int y, int minne) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoSiirraNappulaaTapahtuma(minne));
     }
 
-    private void luoTapahtumakorttiRuutu(int numero) {
-        luoRuutu(false, false, false, numero, luoja.luoOtaTapahtumakorttiTapahtuma());
+    private void luoTapahtumakorttiRuutu(int numero, int x, int y) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoOtaTapahtumakorttiTapahtuma());
     }
 
-    private void luoVerotarkastusRuutu(int numero, boolean oikeusTuottoon) {
-        luoRuutu(false, false, false, numero, luoja.luoVieTaiAnnaOikeusLiikkeidenTuottoon(oikeusTuottoon));
+    private void luoVerotarkastusRuutu(int numero, int x, int y, boolean oikeusTuottoon) {
+        Ruutu ruutu = new Ruutu(numero, x, y);
+        asetaRuudulleTapahtumat(ruutu, luoja.luoVieTaiAnnaOikeusLiikkeidenTuottoon(oikeusTuottoon));
     }
 
 }

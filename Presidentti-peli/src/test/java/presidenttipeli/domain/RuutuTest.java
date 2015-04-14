@@ -28,7 +28,7 @@ public class RuutuTest {
     
     @Before
     public void setUp() {
-        ruutu1 = new Ruutu(1, true, true, true);
+        ruutu1 = new Ruutu(1, 0, 0);
     }
     
     @After
@@ -37,13 +37,13 @@ public class RuutuTest {
 
     @Test
     public void equalsToimiiJosKaksiEriRuutua() {
-        ruutu2 = new Ruutu(2, true, true, true);
+        ruutu2 = new Ruutu(2, 0, 0);
         assertEquals(false, ruutu1.equals(ruutu2));
     }
     
     @Test
     public void equalsToimiiJosKaksiSamaaRuutua() {
-        ruutu2 = new Ruutu(1, false, false, false);
+        ruutu2 = new Ruutu(1, 0, 0);
         assertEquals(true, ruutu1.equals(ruutu2));
     }
     
@@ -60,7 +60,7 @@ public class RuutuTest {
     
     @Test
     public void compareToLaittaaOikeaanJarjestykseen() {
-        ruutu2 = new Ruutu(2, true, true, true);
+        ruutu2 = new Ruutu(2, 0, 0);
         ArrayList<Ruutu> ruudut = new ArrayList();
         ruudut.add(ruutu2);
         ruudut.add(ruutu1);

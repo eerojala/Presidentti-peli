@@ -36,9 +36,9 @@ public class SiirraNappulaaTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta();
-        lauta.getRuudut().add(new Ruutu(1, true, false, false));
-        lauta.getRuudut().add(new Ruutu(2, false, false, false));
-        lauta.getRuudut().add(new Ruutu(3, false, true, false));
+        lauta.getRuudut().add(new Ruutu(1, 0, 0));
+        lauta.getRuudut().add(new Ruutu(2, 0, 0));
+        lauta.getRuudut().add(new Ruutu(3, 0, 0));
         testi = new SiirraNappulaa(3, lauta);
         pelaaja = new Pelaaja("testi");
         Nappula nappula = new Nappula(pelaaja);

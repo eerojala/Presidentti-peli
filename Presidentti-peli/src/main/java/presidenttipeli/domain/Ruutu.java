@@ -9,17 +9,21 @@ import presidenttipeli.domain.tapahtumat.Tapahtuma;
 public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
 
     private int numero;
+    private int x;
+    private int y;
     private boolean ostoJaMyyntiruutu;
     private boolean vaaliruutu;
     private boolean putkaruutu;
     private ArrayList<Tapahtuma> tapahtumat;
     private String seloste;
 
-    public Ruutu(int numero, boolean ostoJaMyyntiruutu, boolean vaaliruutu, boolean putkaruutu) {
+    public Ruutu(int numero, int x, int y) {
         this.numero = numero;
-        this.ostoJaMyyntiruutu = ostoJaMyyntiruutu;
-        this.vaaliruutu = vaaliruutu;
-        this.putkaruutu = putkaruutu;
+        this.x = x;
+        this.y = y;
+        this.ostoJaMyyntiruutu = false;
+        this.vaaliruutu = false;
+        this.putkaruutu = false;
         tapahtumat = new ArrayList();
         seloste = "placeholder";
     }
@@ -33,6 +37,14 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
         return seloste;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
     public ArrayList<Tapahtuma> getTapahtumat() {
         return tapahtumat;
     }

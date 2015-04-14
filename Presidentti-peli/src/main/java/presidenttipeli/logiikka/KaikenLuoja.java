@@ -75,8 +75,8 @@ public class KaikenLuoja {
     }
     
     private void asetaNappulatAloitusruudulle() {
-        for (Nappula nappula : lauta.getNappulat()) {
-            nappula.setSijainti(lauta.getRuudut().get(0));
+        for (int i = 0; i < lauta.getNappulat().size(); i++) {
+            lauta.getNappulat().get(i).setSijainti(lauta.getRuudut().get(i));
         }
     }
 

@@ -36,8 +36,8 @@ public class SijainnistaRiippuvaTapahtumaTest {
     public void setUp() {
         tapahtuma1 = new JasenkirjaanVaikuttavaTapahtuma(true);
         tapahtuma2 = new TutkintoonVaikuttavaTapahtuma(true, false);
-        ruutu1 = new Ruutu(1, false, false, false);
-        ruutu2 = new Ruutu(2, false, false, false);
+        ruutu1 = new Ruutu(1, 0, 0);
+        ruutu2 = new Ruutu(2, 0, 0);
         pelaaja = new Pelaaja("Testi");
         nappula = new Nappula(pelaaja);
         testi = new SijainnistaRiippuvaTapahtuma(tapahtuma1, tapahtuma2, 1);

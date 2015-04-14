@@ -7,7 +7,9 @@ package presidenttipeli.gui;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import presidenttipeli.logiikka.Aloitus;
+import presidenttipeli.logiikka.KaikenLuoja;
 
 /**
  *
@@ -315,6 +317,8 @@ public class AloitusGUI extends javax.swing.JFrame {
                     + " pituuden tulisi olla 1-24 merkkiä", "Väärä syöte",
                     JOptionPane.WARNING_MESSAGE);
         } else {
+           KaikenLuoja luoja = new KaikenLuoja(nimet);
+           SwingUtilities.invokeLater(new PeliGUI(luoja.getPeli()));
            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
