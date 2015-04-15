@@ -5,7 +5,10 @@
  */
 package presidenttipeli.gui;
 
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import presidenttipeli.domain.Nappula;
+import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
 
 /**
@@ -27,7 +30,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     public void run() {
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,34 +40,42 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new Piirtoalusta(peli.getLauta());
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        piirtoalusta = new Piirtoalusta(peli.getLauta());
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pelinSyote = new javax.swing.JTextArea();
+        noppaButton = new javax.swing.JButton();
+        statusButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout piirtoalustaLayout = new javax.swing.GroupLayout(piirtoalusta);
+        piirtoalusta.setLayout(piirtoalustaLayout);
+        piirtoalustaLayout.setHorizontalGroup(
+            piirtoalustaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        piirtoalustaLayout.setVerticalGroup(
+            piirtoalustaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 427, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Liikutustesti");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pelinSyote.setEditable(false);
+        pelinSyote.setColumns(20);
+        pelinSyote.setRows(5);
+        pelinSyote.setText(peli.getNykyinenPelaaja() + " heitä noppaa");
+        jScrollPane1.setViewportView(pelinSyote);
+
+        noppaButton.setText("Noppa");
+        noppaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                noppaButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Poistotesti");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        statusButton.setText("Status");
+        statusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                statusButtonActionPerformed(evt);
             }
         });
 
@@ -73,51 +84,80 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 70, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jButton2)
-                .addGap(70, 70, 70)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(piirtoalusta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(noppaButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(statusButton)
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1)))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(20, 20, 20))
+                .addComponent(piirtoalusta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(noppaButton)
+                            .addComponent(statusButton))
+                        .addGap(85, 85, 85))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TESTIBUTTONI JOKA TESTAA ETTÄ NAPPULAT LIIKKUVAT OIKEIN
-        for (Nappula nappula : peli.getLauta().getNappulat()) {
-            peli.getLiikuttelija().liikutaNappulaa(1, nappula);
+    private void noppaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noppaButtonActionPerformed
+        int silmaluku = peli.heitaNoppaa();
+        odotaXSekuntia(1);
+        pelinSyote.setText(peli.getNykyinenPelaaja() + " heitti " + silmaluku);
+        odotaXSekuntia(0.5);
+        if (peli.liikutaPelaajaa(silmaluku) == true) {
+            peli.getPankinjohtaja().annaPelaajalleKuukaudenTuotot(peli.getNykyinenPelaaja());
+            JOptionPane.showMessageDialog(rootPane, peli.getNykyinenPelaaja()
+                    + " aloitti uuden kierroksen.\n" + "Kuukauden tuotot: "
+                    + peli.getPankinjohtaja().getKuukaudenTuotot() + " mk\n" +
+                    "Velka: " + peli.getNykyinenPelaaja().getVelkaa(), "Uusi kierros",
+                    JOptionPane.PLAIN_MESSAGE);
         }
-        jPanel1.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        piirtoalusta.repaint();
+    }//GEN-LAST:event_noppaButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        peli.getLauta().getNappulat().remove(0);
-        jPanel1.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void statusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusButtonActionPerformed
+        PelaajanStatus status = new PelaajanStatus(peli.getNykyinenPelaaja());
+        SwingUtilities.invokeLater(new PelaajanStatusGUI(status));
+        this.setVisible(true);
+    }//GEN-LAST:event_statusButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
+    private void odotaXSekuntia(double x) {
+        try {
+            Thread.sleep((long) x * 1000);
+        } catch (Exception e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton noppaButton;
+    private javax.swing.JTextArea pelinSyote;
+    private javax.swing.JPanel piirtoalusta;
+    private javax.swing.JToggleButton statusButton;
     // End of variables declaration//GEN-END:variables
+
     private Peli peli;
+
 }

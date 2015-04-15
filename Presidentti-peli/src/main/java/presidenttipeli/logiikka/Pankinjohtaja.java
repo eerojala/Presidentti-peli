@@ -3,12 +3,14 @@ package presidenttipeli.logiikka;
 
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.tapahtumat.UusiKierros;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 
 public class Pankinjohtaja {
     private Pelilauta lauta;
     private TapahtumienLuoja luoja;
+    private int kuukaudenTuotot;
 
     public Pankinjohtaja(Pelilauta lauta) {
         this.lauta = lauta;
@@ -16,7 +18,9 @@ public class Pankinjohtaja {
     }
     
     public void annaPelaajalleKuukaudenTuotot(Pelaaja pelaaja) {
-        luoja.luoAloitaUusiKierros().suoritaTapahtuma(pelaaja);
+        UusiKierros uusikierros = luoja.luoUusiKierros();
+        uusikierros.suoritaTapahtuma(pelaaja);
+        kuukaudenTuotot = uusikierros.getKuukaudenTuotot();
     }
     
     public boolean vahennaVelkaa(Pelaaja pelaaja, int maara) {
@@ -37,6 +41,10 @@ public class Pankinjohtaja {
             luoja.luoRahaanVaikuttavaTapahtuma(true, maara).suoritaTapahtuma(pelaaja);
             return true;
         }
+    }
+
+    public int getKuukaudenTuotot() {
+        return kuukaudenTuotot;
     }
     
 }

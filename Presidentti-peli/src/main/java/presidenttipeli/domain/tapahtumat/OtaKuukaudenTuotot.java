@@ -8,7 +8,7 @@ import presidenttipeli.domain.Pelaaja;
  * tuoton.
  */
 public class OtaKuukaudenTuotot implements Tapahtuma {
-
+    private int kuukaudenTuotot;
     public OtaKuukaudenTuotot() {
     }
 
@@ -21,15 +21,15 @@ public class OtaKuukaudenTuotot implements Tapahtuma {
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        int summa = 0;
-        summa += pelaaja.getAmmatti().getPalkka();
+        kuukaudenTuotot = 0;
+        kuukaudenTuotot += pelaaja.getAmmatti().getPalkka();
         if (pelaaja.getTutkinto() != null) {
-            summa += 1500;
+            kuukaudenTuotot += 1500;
         }
         if (pelaaja.isOikeutettuTuottoon()) {
-            summa += laskeLiikkeidenTuotto(pelaaja);
+            kuukaudenTuotot += laskeLiikkeidenTuotto(pelaaja);
         }
-        Tapahtuma tapahtuma = new RahaanVaikuttavaTapahtuma(true, summa);
+        Tapahtuma tapahtuma = new RahaanVaikuttavaTapahtuma(true, kuukaudenTuotot);
         tapahtuma.suoritaTapahtuma(pelaaja);
         return true;
     }
@@ -41,4 +41,10 @@ public class OtaKuukaudenTuotot implements Tapahtuma {
         }
         return tuotto;
     }
+
+    public int getKuukaudenTuotot() {
+        return kuukaudenTuotot;
+    }
+    
+    
 }

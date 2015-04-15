@@ -25,6 +25,7 @@ import presidenttipeli.logiikka.luojat.MokkienLuoja;
 import presidenttipeli.logiikka.luojat.RuutujenLuoja;
 import javax.swing.SwingUtilities;
 import presidenttipeli.gui.*;
+import presidenttipeli.logiikka.PelaajanStatus;
 
 public class App {
 

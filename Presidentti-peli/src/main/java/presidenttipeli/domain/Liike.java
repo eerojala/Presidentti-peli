@@ -91,4 +91,12 @@ public class Liike implements Comparable<Liike> {
         } // Ei ole liikkeitä joilla olisi sekä sama arvo että tuotto
     }
 
+    @Override
+    public String toString() {
+        return tyyppi + " " + nimi + ", Arvo: " + arvo + " mk, Tuotto: " + tuotto +
+                " mk/kk";
+    }
+    
+    
+
 }

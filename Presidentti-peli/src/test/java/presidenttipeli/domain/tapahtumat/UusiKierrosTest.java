@@ -12,7 +12,7 @@ import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Tutkinto;
 
-public class AloitaUusiKierrosTest {
+public class UusiKierrosTest {
     Tapahtuma testi;
     Pelilauta lauta;
     Pelaaja pelaaja;
@@ -21,7 +21,7 @@ public class AloitaUusiKierrosTest {
     int palkkaEnnen;
     
     
-    public AloitaUusiKierrosTest() {
+    public UusiKierrosTest() {
     }
     
     @BeforeClass
@@ -35,7 +35,7 @@ public class AloitaUusiKierrosTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta();
-        testi = new AloitaUusiKierros(lauta);
+        testi = new UusiKierros(lauta);
         pelaaja = new Pelaaja("Testi");
     }
     

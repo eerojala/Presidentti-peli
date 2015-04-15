@@ -39,7 +39,7 @@ public class LiikuttelijaTest {
         nimet.add("Testi2");
         luoja = new KaikenLuoja(nimet);
         lauta = luoja.getLauta();
-        liikuttelija = new Liikuttelija(lauta);
+        liikuttelija = new Liikuttelija(lauta, luoja.getPeli().getTapahtumienluoja());
     }
     
     @After
@@ -48,30 +48,27 @@ public class LiikuttelijaTest {
 
     @Test
     public void liikuttaaNappulaaEteenpain() {
-        silmaluku = 3;
         vanhaSijainti = lauta.getNappulat().get(0).getSijainti().getNumero();
-        liikuttelija.liikutaNappulaa(silmaluku, lauta.getNappulat().get(0));
-        assertEquals(vanhaSijainti + silmaluku, lauta.getNappulat().get(0).getSijainti().getNumero());
+        liikuttelija.liikutaNappulaa(lauta.getNappulat().get(0));
+        assertEquals(vanhaSijainti + 1, lauta.getNappulat().get(0).getSijainti().getNumero());
     }
     
     @Test
     public void liikuttaaNappulaaOikeinJosUusiKierrosAlkaa() {
-        silmaluku = 3;
         lauta.getNappulat().get(0).setSijainti(lauta.getRuudut().get(29));
-        liikuttelija.liikutaNappulaa(silmaluku, lauta.getNappulat().get(0));
-        assertEquals(silmaluku, lauta.getNappulat().get(0).getSijainti().getNumero());
+        liikuttelija.liikutaNappulaa(lauta.getNappulat().get(0));
+        assertEquals(1, lauta.getNappulat().get(0).getSijainti().getNumero());
     }
     
     @Test
-    public void palauttaaFalseJosUusiKierrosEiAlkanut() {
-        silmaluku = 29;       
-        assertEquals(false, liikuttelija.liikutaNappulaa(silmaluku, lauta.getNappulat().get(0)));
+    public void palauttaaFalseJosUusiKierrosEiAlkanut() {    
+        assertEquals(false, liikuttelija.liikutaNappulaa(lauta.getNappulat().get(0)));
     }
     
     @Test
     public void palauttaaTrueJosUusiKierrosAlkaa() {
-        silmaluku = 30;
-        assertEquals(true, liikuttelija.liikutaNappulaa(silmaluku, lauta.getNappulat().get(0)));
+        lauta.getNappulat().get(0).setSijainti(lauta.getRuudut().get(29));
+        assertEquals(true, liikuttelija.liikutaNappulaa(lauta.getNappulat().get(0)));
     }
     
 }

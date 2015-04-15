@@ -43,7 +43,6 @@ public class KaikenLuoja {
     
     private void luoPelaajatJaNappulat() {
         pLuoja.luo();
-        pLuoja.arvoJarjestys();
         ArrayList<Pelaaja> pelaajat = pLuoja.getPelaajat();
         nLuoja = new NappuloidenLuoja(pelaajat);
         nLuoja.luo();
@@ -75,11 +74,11 @@ public class KaikenLuoja {
     }
     
     private void asetaNappulatAloitusruudulle() {
-        for (int i = 0; i < lauta.getNappulat().size(); i++) {
-            lauta.getNappulat().get(i).setSijainti(lauta.getRuudut().get(i));
+        for (Nappula nappula : lauta.getNappulat()) {
+            nappula.setSijainti(lauta.getRuudut().get(0));
         }
     }
-
+    
     public Pelilauta getLauta() {
         return lauta;
     }

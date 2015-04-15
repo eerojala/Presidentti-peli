@@ -100,8 +100,8 @@ public class TapahtumienLuoja extends Luoja{
         return new NostaLiikkeidenTuotto();
     }
     
-    public Tapahtuma luoAloitaUusiKierros() {
-        return new AloitaUusiKierros(lauta);
+    public UusiKierros luoUusiKierros() {
+        return new UusiKierros(lauta);
     }
     
     public Tapahtuma luoVelkaanVaikuttavaTapahtuma(boolean velkaKasvaa, double maara) {

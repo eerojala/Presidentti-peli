@@ -17,3 +17,4 @@
 * 8.4.2015 3,5 tuntia, Aloitin käyttöliittymän koodauksen, AloitusGUI luotu
 * 10.4.2015 4 tuntia, Javadocin kirjoittelua
 * 14.4.2015 4 tuntia, Aloitin peliGUI:n koodaamisen
+* 15.4.2015 5 tuntia, StatusGUI koodattu, nappulat osaavat liikkua laudalla oikein.

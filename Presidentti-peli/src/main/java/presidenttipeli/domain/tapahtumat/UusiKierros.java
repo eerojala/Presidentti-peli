@@ -8,11 +8,12 @@ import presidenttipeli.domain.Pelilauta;
  * Tapahtumaluokka joka suorittaa jokaisen kierroksen alussa automaattisesti tapahtuvat
  * tapahtumat.
  */
-public class AloitaUusiKierros implements Tapahtuma {
+public class UusiKierros implements Tapahtuma {
 
     private Pelilauta lauta;
+    private int kuukaudenTuotot;
 
-    public AloitaUusiKierros(Pelilauta lauta) {
+    public UusiKierros(Pelilauta lauta) {
         this.lauta = lauta;
     }
 
@@ -25,8 +26,10 @@ public class AloitaUusiKierros implements Tapahtuma {
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        Tapahtuma tapahtuma = new OtaKuukaudenTuotot();
-        tapahtuma.suoritaTapahtuma(pelaaja);
+        Tapahtuma tapahtuma;
+        OtaKuukaudenTuotot tuotot = new OtaKuukaudenTuotot();
+        tuotot.suoritaTapahtuma(pelaaja);
+        kuukaudenTuotot = tuotot.getKuukaudenTuotot();
         tapahtuma = new VieTaiAnnaOikeusLiikkeidenTuottoon(true);
         tapahtuma.suoritaTapahtuma(pelaaja);
         tapahtuma = new AsetaAmmatti(lauta, new Ammatti("Työtön", 1000, false, false, true));
@@ -35,5 +38,11 @@ public class AloitaUusiKierros implements Tapahtuma {
         tapahtuma.suoritaTapahtuma(pelaaja);
         return true;
     }
+
+    public int getKuukaudenTuotot() {
+        return kuukaudenTuotot;
+    }
+    
+    
 
 }

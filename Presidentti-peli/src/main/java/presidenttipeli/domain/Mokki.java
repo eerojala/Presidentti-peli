@@ -59,4 +59,9 @@ public class Mokki implements Comparable<Mokki> {
         return o.getArvo() - this.arvo;
     }
 
+    @Override
+    public String toString() {
+        return nimi + ", Arvo: " + arvo + " mk";
+    }
+
 }

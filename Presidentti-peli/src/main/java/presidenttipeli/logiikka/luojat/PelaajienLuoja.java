@@ -24,11 +24,6 @@ public class PelaajienLuoja extends Luoja{
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
-    }
-    
-    public void arvoJarjestys() {
-        Collections.shuffle(pelaajat);
-    }
-    
+    }  
     
 }
