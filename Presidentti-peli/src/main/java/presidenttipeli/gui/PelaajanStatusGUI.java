@@ -87,7 +87,7 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
 
         jLabel7.setText("Tutkinto:");
 
-        jLabel8.setText("Puolueen jäsen:");
+        jLabel8.setText("Puolueessa:");
 
         jLabel9.setText("Kansanedustaja:");
 
@@ -139,8 +139,8 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pelaajanPalkka))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(puolueenJasen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -156,7 +156,7 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
                         .addComponent(pelaajanRahat))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(kansanedustaja))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)

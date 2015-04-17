@@ -26,10 +26,22 @@ import presidenttipeli.logiikka.luojat.RuutujenLuoja;
 import javax.swing.SwingUtilities;
 import presidenttipeli.gui.*;
 import presidenttipeli.logiikka.PelaajanStatus;
+import presidenttipeli.logiikka.Peli;
+import presidenttipeli.logiikka.Velkalaskuri;
 
 public class App {
 
     public static void main(String[] args) {
+        KaikenLuoja luoja;
+        ArrayList<String> nimet;
+        Peli peli;
+        nimet = new ArrayList();
+        nimet.add("Testi1");
+        nimet.add("Testi2");
+        nimet.add("Testi3");
+        luoja = new KaikenLuoja(nimet);
+        peli = luoja.getPeli();
+        peli.vaihdaVuoroa();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AloitusGUI().setVisible(true);

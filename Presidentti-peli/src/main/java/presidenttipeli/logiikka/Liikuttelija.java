@@ -16,18 +16,17 @@ public class Liikuttelija {
         this.luoja = luoja;
     }
     
-    public boolean liikutaNappulaa(Nappula nappula) {
+    public boolean liikutaNappulaa(Nappula nappula, int silmaluku) {
         int nykyinenSijainti = nappula.getSijainti().getNumero();
-        Tapahtuma tapahtuma;
         boolean uusiKierros = false;
-        
-        if (nykyinenSijainti == 30) {
-            tapahtuma = luoja.luoSiirraNappulaaTapahtuma(1);
-            uusiKierros = true;
-        } else {
-            tapahtuma = luoja.luoSiirraNappulaaTapahtuma(nykyinenSijainti + 1);
+        for (int i = 0; i < silmaluku; i++) {
+            nykyinenSijainti++;
+            if (nykyinenSijainti > 30) {
+                uusiKierros = true;
+                nykyinenSijainti = 1;
+            }
         }
-        tapahtuma.suoritaTapahtuma(nappula.getOmistaja());
+        luoja.luoSiirraNappulaaTapahtuma(nykyinenSijainti).suoritaTapahtuma(nappula.getOmistaja());
         return uusiKierros;
     }
 }

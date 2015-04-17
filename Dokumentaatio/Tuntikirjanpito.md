@@ -18,3 +18,5 @@
 * 10.4.2015 4 tuntia, Javadocin kirjoittelua
 * 14.4.2015 4 tuntia, Aloitin peliGUI:n koodaamisen
 * 15.4.2015 5 tuntia, StatusGUI koodattu, nappulat osaavat liikkua laudalla oikein.
+* 16.4.2015 5 tuntia, VelkaGUI koodattu
+* 17.4.2015 5 tuntia, Lisää GUI koodailua

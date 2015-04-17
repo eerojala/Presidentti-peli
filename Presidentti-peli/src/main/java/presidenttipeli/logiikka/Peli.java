@@ -9,6 +9,7 @@ import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
+import presidenttipeli.gui.PeliGUI;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 public class Peli {
@@ -22,6 +23,7 @@ public class Peli {
     private Putka putka;
     private Pelaaja nykyinenPelaaja;
     private int viimeisinSilmaluku;
+    private PeliGUI peligui; // haters will haters
 
     public Peli(Pelilauta lauta) {
         this.lauta = lauta;
@@ -55,31 +57,7 @@ public class Peli {
     public int getViimeisinSilmaluku() {
         return viimeisinSilmaluku;
     }
-
-    public void pelaa() {
-        while (true) {
-
-        }
-    }
-
-    public int heitaNoppaa() {
-        Random random = new Random();
-        return random.nextInt(6) + 1;
-    }
-
-    public boolean suoritaRuudunTapahtumat(Nappula nappula) {
-        for (Tapahtuma tapahtuma : nappula.getSijainti().getTapahtumat()) {
-            if (tapahtuma.suoritaTapahtuma(nappula.getOmistaja()) == false) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean onkoErikoisruutu(Ruutu ruutu) {
-        return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
-    }
-
+    
     public Pankinjohtaja getPankinjohtaja() {
         return pankinjohtaja;
     }
@@ -100,16 +78,92 @@ public class Peli {
         return vaalienjarjestaja;
     }
 
+    public void setNykyinenPelaaja(Pelaaja nykyinenPelaaja) {
+        this.nykyinenPelaaja = nykyinenPelaaja;
+    }
 
-    public boolean liikutaPelaajaa(int silmaluku) {
-        boolean uusiKierros = false;
-        for (int i = 0; i < silmaluku; i++) {
-            if (liikuttelija.liikutaNappulaa(nykyinenPelaaja.getNappula()) == true) {
-                uusiKierros = true;
-                
+    public void setPeligui(PeliGUI peligui) {
+        this.peligui = peligui;
+    }
+    
+    public int heitaNoppaa() {
+        Random random = new Random();
+        return random.nextInt(6) + 1;
+    }
+
+    public boolean suoritaRuudunTapahtumat() {
+        Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
+        if (onkoErikoisruutu(ruutu)) {
+
+        } else {
+
+            naytaKortti(ruutu.getNumero());
+
+            for (Tapahtuma tapahtuma : ruutu.getTapahtumat()) {
+                if (tapahtuma.suoritaTapahtuma(nykyinenPelaaja) == false) {
+                    return false;
+                }
             }
         }
-        return uusiKierros;
+        return true;
+    }
+
+    private int tarkistaRuutu() {
+        Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
+        if (ruutu.isOstoJaMyyntiruutu()) {
+            return 0;
+        } else if (ruutu.isVaaliruutu()) {
+            return 1;
+        } else if (ruutu.isPutkaruutu()) {
+            return 2;
+        } else {
+            return 3;
+        }
+
+    }
+
+    private void naytaKortti(int ruudunNro) {
+        String sisalto = "";
+
+        if (ruudunNro == 12 || ruudunNro == 16 || ruudunNro == 28) {
+            sisalto = lauta.getTapahtumakortit().peek().getSeloste();
+        } else if (ruudunNro == 7) {
+            sisalto = lauta.getSattumaAmmatit().peek().toString();
+        } else if (ruudunNro == 22) {
+            sisalto = lauta.getJohtajaAmmatit().get(0).toString();
+        } else if (ruudunNro == 19) {
+            sisalto = lauta.getLiikkeet().peek().toString();
+        } else {
+            return;
+        }
+        peligui.naytaKortinSisalto(sisalto);
+    }
+
+    private boolean onkoErikoisruutu(Ruutu ruutu) {
+        return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
+    }
+
+    public boolean liikutaPelaajaa(int silmaluku) {
+        return liikuttelija.liikutaNappulaa(nykyinenPelaaja.getNappula(), silmaluku);
+    }
+
+    public void vaihdaVuoroa() {
+        Pelaaja edellinenPelaaja = nykyinenPelaaja;
+        edellinenPelaaja.setOdottaaVuoroaan(edellinenPelaaja.getOdottaaVuoroaan() - 1);
+        for (int i = 0; i < lauta.getNappulat().size(); i++) {
+            if (lauta.getNappulat().get(i).getOmistaja() == nykyinenPelaaja) {
+                if (i == lauta.getNappulat().size() - 1) {
+                    nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
+                } else {
+                    nykyinenPelaaja = lauta.getNappulat().get(i + 1).getOmistaja();
+                }
+                if (nykyinenPelaaja.getOdottaaVuoroaan() > 0) {
+                    vaihdaVuoroa();
+                }
+                break;
+            }
+
+        }
     }
 
 }

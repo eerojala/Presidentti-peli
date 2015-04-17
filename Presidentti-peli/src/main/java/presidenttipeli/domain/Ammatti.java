@@ -87,4 +87,10 @@ public class Ammatti implements Comparable<Ammatti> {
         return o.getPalkka() - this.palkka;
     }
 
+    @Override
+    public String toString() {
+        return nimi + " , palkka: " + palkka + " mk/kk";
+    }
+    
+    
 }
