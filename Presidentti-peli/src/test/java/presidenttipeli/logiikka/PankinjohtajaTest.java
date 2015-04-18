@@ -149,4 +149,34 @@ public class PankinjohtajaTest {
     public void palauttaaFalseJosVelanKasvatusEpaonnistuu() {
         assertEquals(false, pankinjohtaja.kasvataVelkaa(pelaaja, 5001));
     }
+    
+    @Test
+    public void otaPelaajaltaRahaaPalauttaaTrueJosRahanOttaminenOnnistuu() {
+        assertEquals(true, pankinjohtaja.otaPelaajaltaRahaa(pelaaja, pelaaja.getRahat()));
+    }
+    
+    @Test
+    public void otaPelaajaltaRahaaOttaaPelaajaltaRahaaJosPelaajallaRiittaa() {
+        pankinjohtaja.otaPelaajaltaRahaa(pelaaja, pelaaja.getRahat() - 10);
+        assertEquals(10, pelaaja.getRahat());
+    }
+    
+    @Test
+    public void otaPelaajaltaRahaaPalauttaaFalseJosRahanOttaminenEpaonnistuu() {
+        assertEquals(false, pankinjohtaja.otaPelaajaltaRahaa(pelaaja, pelaaja.getRahat() + 1));
+    }
+    
+    @Test
+    public void otaPelaajaltaEiOtaRahaaPelaajaltaJosPelaajallaEiRiita() {
+        rahatEnnen = pelaaja.getRahat();
+        pankinjohtaja.otaPelaajaltaRahaa(pelaaja, pelaaja.getRahat() + 1);
+        assertEquals(rahatEnnen, pelaaja.getRahat());
+   }
+    
+   @Test
+   public void annaPelaajalleRahaaAntaaPelaajalleRahaa() {
+       rahatEnnen = pelaaja.getRahat();
+       pankinjohtaja.annaPelaajalleRahaa(pelaaja, pelaaja.getRahat());
+       assertEquals(rahatEnnen * 2, pelaaja.getRahat());
+   }
 }

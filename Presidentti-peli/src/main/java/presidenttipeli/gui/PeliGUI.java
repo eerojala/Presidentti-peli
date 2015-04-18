@@ -31,7 +31,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         peli.setPeligui(this);
         actionlistener = new PeliGUIActionListener(this.noppaButton, this.pelinSyote, 
         this.piirtoalusta, this.seuraavaVuoroButton, this.statusButton, 
-                this.velanhallintaButton, this.peli, this.getRootPane());
+                this.velanhallintaButton, this.peli, this.getRootPane(), this);
         lisaaNappuloilleActionListener();
     }
     

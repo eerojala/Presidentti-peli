@@ -28,7 +28,7 @@ public class Pankinjohtaja {
             return false;
         } else {
             luoja.luoVelkaanVaikuttavaTapahtuma(false, maara).suoritaTapahtuma(pelaaja);
-            luoja.luoRahaanVaikuttavaTapahtuma(false, maara).suoritaTapahtuma(pelaaja);
+            otaPelaajaltaRahaa(pelaaja, maara);
             return true;
         }
     }
@@ -38,9 +38,22 @@ public class Pankinjohtaja {
             return false;
         } else {
             luoja.luoVelkaanVaikuttavaTapahtuma(true, maara).suoritaTapahtuma(pelaaja);
-            luoja.luoRahaanVaikuttavaTapahtuma(true, maara).suoritaTapahtuma(pelaaja);
+            annaPelaajalleRahaa(pelaaja, maara);
             return true;
         }
+    }
+    
+    public boolean otaPelaajaltaRahaa(Pelaaja pelaaja, int maara) {
+        if (pelaaja.getRahat() < maara) {
+            return false;
+        } else {
+            luoja.luoRahaanVaikuttavaTapahtuma(false, maara).suoritaTapahtuma(pelaaja);
+            return true;
+        }
+    }
+    
+    public void annaPelaajalleRahaa(Pelaaja pelaaja, int maara) {
+        luoja.luoRahaanVaikuttavaTapahtuma(true, maara).suoritaTapahtuma(pelaaja);
     }
 
     public int getKuukaudenTuotot() {

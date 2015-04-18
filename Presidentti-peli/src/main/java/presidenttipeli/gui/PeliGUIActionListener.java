@@ -23,8 +23,9 @@ public class PeliGUIActionListener implements ActionListener {
     private JButton velanhallintaButton;
     private Peli peli;
     private JRootPane rootPane;
+    private JFrame frame;
 
-    public PeliGUIActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane) {
+    public PeliGUIActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane, JFrame frame) {
         this.noppaButton = noppaButton;
         this.pelinSyote = pelinSyote;
         this.piirtoalusta = piirtoalusta;
@@ -33,6 +34,7 @@ public class PeliGUIActionListener implements ActionListener {
         this.velanhallintaButton = velanhallintaButton;
         this.peli = peli;
         this.rootPane = rootPane;
+        this.frame = frame;
     }
 
     @Override
@@ -63,7 +65,8 @@ public class PeliGUIActionListener implements ActionListener {
         int silmaluku = peli.heitaNoppaa();
         pelinSyote.setText(peli.getNykyinenPelaaja() + " heitti " + silmaluku);
         piirtoalusta.repaint();
-        if (peli.liikutaPelaajaa(silmaluku) == true) {
+        if (peli.getLiikuttelija().liikutaNappulaa(peli.getNykyinenPelaaja().getNappula(),
+                silmaluku) == true) {
             uusiKierros();
         }
         naytaSelostus();
@@ -95,6 +98,17 @@ public class PeliGUIActionListener implements ActionListener {
     private void suoritaTapahtuma() {
         if (peli.suoritaRuudunTapahtumat() == false) {
             SwingUtilities.invokeLater(new VelanhallintaGUI(peli));
+            if (peli.suoritaRuudunTapahtumat() == false) {
+                JOptionPane.showMessageDialog(rootPane,
+                        peli.getNykyinenPelaaja().getNimi() + " tippui pelista",
+                        "Pelaaja tippui pelista", JOptionPane.WARNING_MESSAGE);
+                if (peli.tiputaPelaajaPelista() == true) {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "Peli päättyy koska pelaajia ei ole enää jäjlellä",
+                            "Peli päättyy", JOptionPane.WARNING_MESSAGE);
+                    frame.dispose();
+                }
+            }
         }
 
     }

@@ -41,7 +41,9 @@ public class App {
         nimet.add("Testi3");
         luoja = new KaikenLuoja(nimet);
         peli = luoja.getPeli();
-        peli.vaihdaVuoroa();
+        tiputaMuutPelaajat(peli);
+        peli.tiputaPelaajaPelista();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AloitusGUI().setVisible(true);
@@ -49,4 +51,10 @@ public class App {
         });
     }
 
+    private static void tiputaMuutPelaajat(Peli peli) {
+        for (int i = 0; i < peli.getLauta().getNappulat().size(); i++) {
+            peli.tiputaPelaajaPelista();
+            peli.vaihdaVuoroa();
+        }
+    }
 }

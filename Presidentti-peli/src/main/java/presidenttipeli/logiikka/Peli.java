@@ -23,6 +23,7 @@ public class Peli {
     private Putka putka;
     private Pelaaja nykyinenPelaaja;
     private int viimeisinSilmaluku;
+    private int nykyisenPelaajanIndeksi;
     private PeliGUI peligui; // haters will haters
 
     public Peli(Pelilauta lauta) {
@@ -30,11 +31,12 @@ public class Peli {
         tapahtumienluoja = new TapahtumienLuoja(lauta);
         liikuttelija = new Liikuttelija(lauta, tapahtumienluoja);
         pankinjohtaja = new Pankinjohtaja(lauta);
-        kiinteistonvalittaja = new Kiinteistonvalittaja(lauta);
+        kiinteistonvalittaja = new Kiinteistonvalittaja(lauta, pankinjohtaja);
         vaalienjarjestaja = new Vaalienjarjestaja(lauta);
         putka = new Putka(lauta);
         arvoJarjestys();
         nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
+        nykyisenPelaajanIndeksi = 0;
         viimeisinSilmaluku = 0;
     }
 
@@ -57,7 +59,7 @@ public class Peli {
     public int getViimeisinSilmaluku() {
         return viimeisinSilmaluku;
     }
-    
+
     public Pankinjohtaja getPankinjohtaja() {
         return pankinjohtaja;
     }
@@ -85,7 +87,7 @@ public class Peli {
     public void setPeligui(PeliGUI peligui) {
         this.peligui = peligui;
     }
-    
+
     public int heitaNoppaa() {
         Random random = new Random();
         return random.nextInt(6) + 1;
@@ -108,20 +110,26 @@ public class Peli {
         return true;
     }
 
-    private int tarkistaRuutu() {
+    private void tarkistaRuutu() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (ruutu.isOstoJaMyyntiruutu()) {
-            return 0;
+            
         } else if (ruutu.isVaaliruutu()) {
-            return 1;
+            suoritaVaaliruutu(ruutu);
         } else if (ruutu.isPutkaruutu()) {
-            return 2;
+
         } else {
-            return 3;
+
         }
 
     }
-
+    
+    private void suoritaVaaliruutu(Ruutu ruutu) {
+        if (ruutu.getNumero() == 10) {
+            
+        }
+    }
+    
     private void naytaKortti(int ruudunNro) {
         String sisalto = "";
 
@@ -143,20 +151,28 @@ public class Peli {
         return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
     }
 
-    public boolean liikutaPelaajaa(int silmaluku) {
-        return liikuttelija.liikutaNappulaa(nykyinenPelaaja.getNappula(), silmaluku);
-    }
-
     public void vaihdaVuoroa() {
         Pelaaja edellinenPelaaja = nykyinenPelaaja;
         edellinenPelaaja.setOdottaaVuoroaan(edellinenPelaaja.getOdottaaVuoroaan() - 1);
+        if (!lauta.getNappulat().contains(nykyinenPelaaja.getNappula())) {
+            vaihdaVuoroaKunEdellinenTippuiPelista();
+        } else {
+            etsiUusiPelaaja();
+        }
+
+    }
+
+    private void etsiUusiPelaaja() {
         for (int i = 0; i < lauta.getNappulat().size(); i++) {
             if (lauta.getNappulat().get(i).getOmistaja() == nykyinenPelaaja) {
                 if (i == lauta.getNappulat().size() - 1) {
                     nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
+                    nykyisenPelaajanIndeksi = 0;
                 } else {
                     nykyinenPelaaja = lauta.getNappulat().get(i + 1).getOmistaja();
+                    nykyisenPelaajanIndeksi = i + 1;
                 }
+
                 if (nykyinenPelaaja.getOdottaaVuoroaan() > 0) {
                     vaihdaVuoroa();
                 }
@@ -164,6 +180,19 @@ public class Peli {
             }
 
         }
+    }
+
+    private void vaihdaVuoroaKunEdellinenTippuiPelista() {
+        if (nykyisenPelaajanIndeksi == lauta.getNappulat().size() - 1) {
+            nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
+        } else {
+            nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi).getOmistaja();
+        }
+    }
+
+    public boolean tiputaPelaajaPelista() {
+        lauta.getNappulat().remove(nykyinenPelaaja.getNappula());
+        return lauta.getNappulat().isEmpty();
     }
 
 }
