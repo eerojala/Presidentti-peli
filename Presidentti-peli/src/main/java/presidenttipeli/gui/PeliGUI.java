@@ -31,7 +31,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         run();
         this.setVisible(true);
         peli.setPeligui(this);
-        actionlistener = new PeliGUIActionListener(this.noppaButton, this.pelinSyote,
+        actionlistener = new PeliActionListener(this.noppaButton, this.pelinSyote,
                 this.piirtoalusta, this.seuraavaVuoroButton, this.statusButton,
                 this.velanhallintaButton, this.peli, this.getRootPane(), this);
         lisaaNappuloilleActionListener();
@@ -191,6 +191,13 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
                 + "\n Tarvittava äänimäärä: " + tarvittavaAanimaara,
                 title, JOptionPane.PLAIN_MESSAGE);
     }
+    
+    public void peliVoitettu() {
+        JOptionPane.showMessageDialog(rootPane, "Onneksi olkoon " 
+                + peli.getNykyinenPelaaja() + "! Voitit pelin!",
+                "Peli päättyy", JOptionPane.PLAIN_MESSAGE);
+        this.dispose();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noppaButton;
@@ -202,6 +209,6 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     // End of variables declaration//GEN-END:variables
 
     private Peli peli;
-    private PeliGUIActionListener actionlistener;
+    private PeliActionListener actionlistener;
 
 }

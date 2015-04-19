@@ -27,23 +27,26 @@ import javax.swing.SwingUtilities;
 import presidenttipeli.gui.*;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
+import presidenttipeli.logiikka.Presidentinvaalienhallinta;
 import presidenttipeli.logiikka.Velkalaskuri;
 
 public class App {
 
     public static void main(String[] args) {
-        KaikenLuoja luoja;
-        ArrayList<String> nimet;
-        Peli peli;
-        nimet = new ArrayList();
-        nimet.add("Testi1");
-        nimet.add("Testi2");
-        nimet.add("Testi3");
-        luoja = new KaikenLuoja(nimet);
-        peli = luoja.getPeli();
-        tiputaMuutPelaajat(peli);
-        peli.tiputaPelaajaPelista();
-        
+        Presidentinvaalienhallinta hallinta;
+        Pelaaja pelaaja;
+        Ammatti johtaja;
+        ArrayList<String> nimet = new ArrayList();
+        nimet.add("testi");
+        KaikenLuoja luoja = new KaikenLuoja(nimet);
+        pelaaja = luoja.getLauta().getNappulat().get(0).getOmistaja();
+        hallinta = new Presidentinvaalienhallinta(pelaaja, luoja.getPeli().getVaalienjarjestaja(),
+                luoja.getPeli().getPankinjohtaja(), luoja.getPeli().getKiinteistonvalittaja());
+        johtaja = new Ammatti("Johtaja", 10000, true, false, false);
+        pelaaja.setKansanedustaja(true);
+        hallinta.vaihtoehto1();
+
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AloitusGUI().setVisible(true);
@@ -51,10 +54,4 @@ public class App {
         });
     }
 
-    private static void tiputaMuutPelaajat(Peli peli) {
-        for (int i = 0; i < peli.getLauta().getNappulat().size(); i++) {
-            peli.tiputaPelaajaPelista();
-            peli.vaihdaVuoroa();
-        }
-    }
 }

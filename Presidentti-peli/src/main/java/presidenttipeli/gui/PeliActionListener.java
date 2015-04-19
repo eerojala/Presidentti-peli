@@ -13,7 +13,7 @@ import presidenttipeli.domain.Ruutu;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
 
-public class PeliGUIActionListener implements ActionListener {
+public class PeliActionListener implements ActionListener {
 
     private JButton noppaButton;
     private JTextArea pelinSyote;
@@ -25,7 +25,7 @@ public class PeliGUIActionListener implements ActionListener {
     private JRootPane rootPane;
     private JFrame frame;
 
-    public PeliGUIActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane, JFrame frame) {
+    public PeliActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane, JFrame frame) {
         this.noppaButton = noppaButton;
         this.pelinSyote = pelinSyote;
         this.piirtoalusta = piirtoalusta;
