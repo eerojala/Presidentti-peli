@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.util.Collections;
 import java.util.Random;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
@@ -126,6 +127,14 @@ public class Peli {
     
     private void suoritaVaaliruutu(Ruutu ruutu) {
         if (ruutu.getNumero() == 10) {
+            peligui.avaaEduskuntavaalienHallintaGUI(new Eduskuntavaalienhallinta(nykyinenPelaaja, 
+                    vaalienjarjestaja, pankinjohtaja));
+        } else if (ruutu.getNumero() == 25) {
+            if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
+                boolean tulos = vaalienjarjestaja.jarjestaPresidentinvaalit(80, nykyinenPelaaja);
+                peligui.ilmoitaTulos(tulos, vaalienjarjestaja.getSaadutAanet(), vaalienjarjestaja.getSaadutAanetSummattuna(), 80);
+            }
+        } else if (ruutu.getNumero() == 30) {
             
         }
     }

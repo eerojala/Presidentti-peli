@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import presidenttipeli.domain.Pelaaja;
-import presidenttipeli.logiikka.EduskuntavaalienHallinta;
+import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
 import presidenttipeli.logiikka.Pankinjohtaja;
 import presidenttipeli.logiikka.Vaalienjarjestaja;
 
@@ -17,12 +17,12 @@ import presidenttipeli.logiikka.Vaalienjarjestaja;
  *
  * @author Eero
  */
-public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements Runnable {
+public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements Runnable {
 
-    public EduskuntavaalienHallintaGUI(EduskuntavaalienHallinta hallinta) {
+    public EduskuntavaalienhallintaGUI(Eduskuntavaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
+        this.peligui = peligui;
         run();
-        lisaaRadiobuttonitListaan();
         this.setVisible(true);
     }
 
@@ -30,16 +30,7 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
     public void run() {
         initComponents();
     }
-    
-    private void lisaaRadiobuttonitListaan() {
-        this.radiobuttonit = new ArrayList();
-        radiobuttonit.add(this.jRadioButton1);
-        radiobuttonit.add(this.jRadioButton2);
-        radiobuttonit.add(this.jRadioButton3);
-        radiobuttonit.add(this.jRadioButton4);
-        radiobuttonit.add(this.jRadioButton5);
-        radiobuttonit.add(this.jRadioButton6);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +61,8 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Maksettava summa:");
 
@@ -144,7 +137,7 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
 
         jLabel9.setText("Pelaajan rahat:");
 
-        jLabel10.setText(hallinta.getPelaaja().getRahat());
+        jLabel10.setText(hallinta.getPelaaja().getRahat() + " mk");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,24 +169,12 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel2)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel3)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(jButton1)))
@@ -252,23 +233,22 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (tarkistaOnkoMitaanRadioButtoniaPainettu() == false) {
-           ilmoitaTulos(hallinta.suoritaVaalit());
+        boolean tulos;
+        if (hallinta.riittaakoRahaaSuorittaaVaalit() == false) {
+            JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän summan maksamiseen",
+                    "Rahat eivät riitä", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (hallinta.riittaakoRahaaSuorittaaVaalit() == false) {
-                JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän summan maksamiseen",
-                        "Rahat eivät riitä", JOptionPane.WARNING_MESSAGE);
-            } else {
-                ilmoitaTulos(hallinta.suoritaVaalit());
-                this.dispose();
-            }
+            tulos = hallinta.suoritaVaalit();
+            peligui.ilmoitaTulos(tulos, hallinta.getJarjestaja().getSaadutAanet(),
+                    hallinta.getJarjestaja().getSaadutAanetSummattuna(), hallinta.getTarvittavaAanimaara());
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -295,33 +275,10 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
         hallinta.maksa50000Vaaleista();
     }//GEN-LAST:event_jRadioButton6ActionPerformed
-    
-    private boolean tarkistaOnkoMitaanRadioButtoniaPainettu() {
-        for (JRadioButton button : this.radiobuttonit) {
-            if (button.isSelected()) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private void ilmoitaTulos(boolean onnistui) {
-        String title;
-        if (onnistui) {
-            title = "Voitit vaaleissa!";
-        } else {
-            title = "Et voittanut vaaleissa";
-        }
-        JOptionPane.showMessageDialog(rootPane,
-                "Saamasi äänet: " + hallinta.getJarjestaja().getSaadutAanet()
-        + "\n Yhteensä: " + hallinta.getJarjestaja().getSaadutAanetSummattuna()
-        + "\n Tarvittava äänimäärä: " + hallinta.getTarvittavaAanimaara(),
-                title, JOptionPane.PLAIN_MESSAGE);
-    }
+
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -345,6 +302,6 @@ public class EduskuntavaalienHallintaGUI extends javax.swing.JFrame implements R
     private javax.swing.JRadioButton jRadioButton6;
     // End of variables declaration//GEN-END:variables
 
-    private ArrayList<JRadioButton> radiobuttonit;
-    private EduskuntavaalienHallinta hallinta;
+    private Eduskuntavaalienhallinta hallinta;
+    private PeliGUI peligui;
 }

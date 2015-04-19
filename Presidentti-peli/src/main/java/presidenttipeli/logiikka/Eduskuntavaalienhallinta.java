@@ -2,7 +2,7 @@ package presidenttipeli.logiikka;
 
 import presidenttipeli.domain.Pelaaja;
 
-public class EduskuntavaalienHallinta {
+public class Eduskuntavaalienhallinta {
 
     private Pelaaja pelaaja;
     private Vaalienjarjestaja jarjestaja;
@@ -10,7 +10,7 @@ public class EduskuntavaalienHallinta {
     private int maksettavaRaha = 0;
     private int tarvittavaAanimaara = 110;
 
-    public EduskuntavaalienHallinta(Pelaaja pelaaja, Vaalienjarjestaja jarjestaja, Pankinjohtaja pankinjohtaja) {
+    public Eduskuntavaalienhallinta(Pelaaja pelaaja, Vaalienjarjestaja jarjestaja, Pankinjohtaja pankinjohtaja) {
         this.pelaaja = pelaaja;
         this.jarjestaja = jarjestaja;
         this.pankinjohtaja = pankinjohtaja;
@@ -65,6 +65,10 @@ public class EduskuntavaalienHallinta {
 
     public Vaalienjarjestaja getJarjestaja() {
         return jarjestaja;
+    }
+
+    public Pelaaja getPelaaja() {
+        return pelaaja;
     }
 
 }

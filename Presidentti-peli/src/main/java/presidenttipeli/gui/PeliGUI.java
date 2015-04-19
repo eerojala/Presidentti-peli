@@ -7,11 +7,13 @@ package presidenttipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Ruutu;
+import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
 
@@ -29,20 +31,19 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         run();
         this.setVisible(true);
         peli.setPeligui(this);
-        actionlistener = new PeliGUIActionListener(this.noppaButton, this.pelinSyote, 
-        this.piirtoalusta, this.seuraavaVuoroButton, this.statusButton, 
+        actionlistener = new PeliGUIActionListener(this.noppaButton, this.pelinSyote,
+                this.piirtoalusta, this.seuraavaVuoroButton, this.statusButton,
                 this.velanhallintaButton, this.peli, this.getRootPane(), this);
         lisaaNappuloilleActionListener();
     }
-    
+
     private void lisaaNappuloilleActionListener() {
         this.statusButton.addActionListener(actionlistener);
         this.velanhallintaButton.addActionListener(actionlistener);
         this.noppaButton.addActionListener(actionlistener);
         this.seuraavaVuoroButton.addActionListener(actionlistener);
     }
-   
-    
+
     @Override
     public void run() {
         initComponents();
@@ -160,7 +161,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_noppaButtonActionPerformed
 
     private void velanhallintaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velanhallintaButtonActionPerformed
-        
+
     }//GEN-LAST:event_velanhallintaButtonActionPerformed
 
     private void seuraavaVuoroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seuraavaVuoroButtonActionPerformed
@@ -171,7 +172,25 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         JOptionPane.showMessageDialog(rootPane, teksti, "Kortin sisältö", JOptionPane.PLAIN_MESSAGE);
     }
 
+    public void avaaEduskuntavaalienHallintaGUI(Eduskuntavaalienhallinta hallinta) {
+        SwingUtilities.invokeLater(new EduskuntavaalienhallintaGUI(hallinta, this));
+    }
 
+    public void ilmoitaTulos(boolean onnistui, ArrayList<Integer> saadutAanet,
+            int saadutAanetSummattuna, int tarvittavaAanimaara) {
+        String title;
+        
+        if (onnistui) {
+            title = "Voitit vaaleissa!";
+        } else {
+            title = "Et voittanut vaaleissa";
+        }
+        
+        JOptionPane.showMessageDialog(rootPane,
+                "Saamasi äänet: " + saadutAanet + "\n Yhteensä: " + saadutAanetSummattuna
+                + "\n Tarvittava äänimäärä: " + tarvittavaAanimaara,
+                title, JOptionPane.PLAIN_MESSAGE);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noppaButton;

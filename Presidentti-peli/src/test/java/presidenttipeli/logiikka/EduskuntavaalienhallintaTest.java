@@ -9,12 +9,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
 
-public class EduskuntavaalienHallintaTest {
+public class EduskuntavaalienhallintaTest {
 
-    EduskuntavaalienHallinta hallinta;
+    Eduskuntavaalienhallinta hallinta;
     Pelaaja pelaaja;
 
-    public EduskuntavaalienHallintaTest() {
+    public EduskuntavaalienhallintaTest() {
     }
 
     @BeforeClass
@@ -30,7 +30,7 @@ public class EduskuntavaalienHallintaTest {
         ArrayList<String> nimet = new ArrayList();
         nimet.add("testi1");
         KaikenLuoja luoja = new KaikenLuoja(nimet);
-        hallinta = new EduskuntavaalienHallinta(luoja.getLauta().getNappulat().get(0).getOmistaja(),
+        hallinta = new Eduskuntavaalienhallinta(luoja.getLauta().getNappulat().get(0).getOmistaja(),
         luoja.getPeli().getVaalienjarjestaja(), luoja.getPeli().getPankinjohtaja());
     }
 
@@ -39,9 +39,10 @@ public class EduskuntavaalienHallintaTest {
     }
 
     @Test
-    public void yritaSuorittaaVaalitPalauttaaFalseJosPelaajallaEiRiitaRahaaHaluamaansaMaksuun() {
+    public void riittaakoRahaaSuorittaaVaalitPalauttaaFalseJosPelaajallaEiRiitaRahaaHaluamaansaMaksuun() {
         hallinta.maksa10000Vaaleista();
         assertEquals(false, hallinta.riittaakoRahaaSuorittaaVaalit());
     }
+    
 
 }
