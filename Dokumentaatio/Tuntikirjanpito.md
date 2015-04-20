@@ -20,3 +20,5 @@
 * 15.4.2015 5 tuntia, StatusGUI koodattu, nappulat osaavat liikkua laudalla oikein.
 * 16.4.2015 5 tuntia, VelkaGUI koodattu
 * 17.4.2015 5 tuntia, Lisää GUI koodailua
+* 18.4.2015 7 tuntia, EduskuntavaaliGUI koodattu
+* 19.4.2015 10 tuntia, PresidentinvaaliGUI koodattu
