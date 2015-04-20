@@ -209,6 +209,13 @@ public class Presidentinvaalienhallinta {
         }
     }
 
+    public void lisaaMokkiTaulukkoon(Mokki mokki) {
+        mokit[mokit.length - 1] = mokki.toString();
+    }
+    
+    public void lisaaLiikeTaulukkoon(Liike liike) {
+        liikkeet[liikkeet.length - 1] = liike.toString();
+    }
     public Mokki getValittuMokki(int i) {
         return pelaaja.getOmistamatMokit().get(i);
     }

@@ -47,6 +47,7 @@ public class PresidentinvaalienhallintaTest {
         mokit = new ArrayList();
         mokit.add(new Mokki("Testi", 10000));
         tutkinto = new Tutkinto(false);
+
     }
 
     @After
@@ -175,98 +176,98 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(true, hallinta.pelaajallaLiike());
     }
-    
+
     @Test
     public void pelaajallaLiikePalauttaaFalseJosEiOleLiikkeita() {
         assertEquals(false, hallinta.pelaajallaLiike());
     }
-    
+
     @Test
     public void pelaajallaMokkiPalauttaaTrueJosOnMokkeja() {
         pelaaja.setOmistamatMokit(mokit);
         assertEquals(true, hallinta.pelaajallaMokki());
     }
-    
+
     @Test
     public void pelaajallaMokkiPalauttaaFalseJosEiOleMokkeja() {
         assertEquals(false, hallinta.pelaajallaMokki());
     }
-    
+
     @Test
     public void pelaajallaMokkiTaiLiikePalauttaaTrueJosOnMokkeja() {
         pelaaja.setOmistamatMokit(mokit);
         assertEquals(true, hallinta.pelaajallaMokkiTaiLiike());
     }
-    
+
     @Test
     public void pelaajallaMokkiTaiLiikePalauttaaTrueJosOnLiikkeita() {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(true, hallinta.pelaajallaMokkiTaiLiike());
     }
-    
+
     @Test
     public void pelaajallaMokkiTailiikePalauttaaTrueJosOnMokkejaJaLiikkeita() {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         pelaaja.setOmistamatMokit(mokit);
         assertEquals(true, hallinta.pelaajallaMokkiTaiLiike());
     }
-    
+
     @Test
     public void pelaajallaMokkiTaiLiikePalauttaaFalseJosEiMokkejaTaiLiikkeita() {
         assertEquals(false, hallinta.pelaajallaMokkiTaiLiike());
     }
-    
+
     @Test
     public void pelaajallaTutkintoPalauttaaTrueJosPelaajallaTutkinto() {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(true, hallinta.pelaajallaTutkinto());
     }
-    
+
     @Test
     public void pelaajallaTutkintoPalauttaaFalseJosPelaajallaEiTutkintoa() {
         assertEquals(false, hallinta.pelaajallaTutkinto());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon1PalauttaaTrueJosRahaa() {
         pelaaja.setKansanedustaja(true);
         pelaaja.setRahat(40000);
         assertEquals(true, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon1PalauttaaFalseJosEiRahaa() {
         pelaaja.setKansanedustaja(true);
         pelaaja.setRahat(39999);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon1PalauttaaFalseJosEiKansanedustaja() {
         pelaaja.setRahat(40000);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon1PalauttaaTrueJosRahaa() {
         pelaaja.setAmmatti(johtaja);
         pelaaja.setRahat(50000);
         assertEquals(true, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon1PalauttaaFalseJosEiRahaa() {
         pelaaja.setAmmatti(johtaja);
         pelaaja.setRahat(49999);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon1PalauttaaFalseJosEiJohtaja() {
         pelaaja.setRahat(50000);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon1());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon2PalauttaaTrueJosEhdotTayttyvat() {
         pelaaja.setKansanedustaja(true);
@@ -274,29 +275,29 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setRahat(30000);
         assertEquals(true, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon2PalauttaaFalseJosEiLiikkeitaTaiMokkeja() {
         pelaaja.setKansanedustaja(true);
         pelaaja.setRahat(30000);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon2PalauttaaFalseJosEiRahaa() {
         pelaaja.setKansanedustaja(true);
         pelaaja.setRahat(29999);
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon2());
-    } 
-    
+    }
+
     @Test
     public void pelaajaKykeeneeKansanedustajanVaihtoehtoon2PalauttaaFalseJosEiKansanedustaja() {
         pelaaja.setRahat(30000);
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon2PalauttaaTrueJosEhdotTayttyvat() {
         pelaaja.setAmmatti(johtaja);
@@ -304,7 +305,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(true, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon2PalauttaaFalseJosEiRahaa() {
         pelaaja.setAmmatti(johtaja);
@@ -312,21 +313,21 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon2PalauttaaFalseJosEiLiikkeitaTaiMokkeja() {
         pelaaja.setAmmatti(johtaja);
         pelaaja.setRahat(40000);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon2PalauttaaFalseJosEiJohtaja() {
         pelaaja.setRahat(40000);
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon2());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon3PalauttaaTrueJosEhdotTayttyvat() {
         pelaaja.setKansanedustaja(true);
@@ -335,7 +336,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(true, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon3PalauttaaFalseJosEiRahaa() {
         pelaaja.setKansanedustaja(true);
@@ -344,7 +345,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon3PalauttaaFalseJosEiLiikkeitaTaiMokkeja() {
         pelaaja.setKansanedustaja(true);
@@ -352,7 +353,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon3PalauttaaFalseJosEiTutkintoa() {
         pelaaja.setKansanedustaja(true);
@@ -360,7 +361,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeKansanedustajanVaihtoehtoon3PalauttaaFalseJosEiKansanedustaja() {
         pelaaja.setRahat(10000);
@@ -368,7 +369,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon3PalauttaaTrueJosEhdotTayttyvat() {
         pelaaja.setAmmatti(johtaja);
@@ -377,7 +378,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(true, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon3PalauttaaFalseJosRahaEiRiita() {
         pelaaja.setAmmatti(johtaja);
@@ -386,7 +387,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon3PalauttaaFalseJosEiLiikkeitaTaiMokkeja() {
         pelaaja.setAmmatti(johtaja);
@@ -394,7 +395,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon3PalauttaaFalseJosEiTutkintoa() {
         pelaaja.setAmmatti(johtaja);
@@ -402,7 +403,7 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setOmistamatLiikkeet(liikkeet);
         assertEquals(false, hallinta.pelaajaKykeneeJohtajanVaihtoehtoon3());
     }
-    
+
     @Test
     public void pelaajaKykeneeJohtajanVaihtoehtoon3PalauttaaFalseJosEiJohtaja() {
         pelaaja.setRahat(20000);
@@ -410,5 +411,122 @@ public class PresidentinvaalienhallintaTest {
         pelaaja.setTutkinto(tutkinto);
         assertEquals(false, hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon3());
     }
-}
 
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaTrueJosKAEhto1True() {
+        pelaaja.setRahat(40000);
+        pelaaja.setKansanedustaja(true);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaTrueJosJEhto1True() {
+        pelaaja.setRahat(50000);
+        pelaaja.setAmmatti(johtaja);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaTrueJosKAEhto2True() {
+        pelaaja.setRahat(30000);
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        pelaaja.setKansanedustaja(true);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaTrueJosJEhto2True() {
+        pelaaja.setRahat(40000);
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        pelaaja.setAmmatti(johtaja);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaaanVaaleihinPalauttaaTrueJosKAEhto3True() {
+        pelaaja.setRahat(10000);
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        pelaaja.setTutkinto(tutkinto);
+        pelaaja.setKansanedustaja(true);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaTrueJosJEhto3True() {
+        pelaaja.setRahat(20000);
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        pelaaja.setTutkinto(tutkinto);
+        pelaaja.setAmmatti(johtaja);
+        assertEquals(true, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void pystyykoPelaajaOsallistumaanVaaleihinPalauttaaFalseJosMikaanEhdoistaEiTayty() {
+        assertEquals(false, hallinta.pystyykoPelaajaOsallistumaanVaaleihin());
+    }
+
+    @Test
+    public void mokkitaulukonEnsimmainenAlkioOnNone() {
+        assertEquals("none", hallinta.getMokit()[0]);
+    }
+
+    @Test
+    public void liiketaulukonEnsimmainenAlkioOnNone() {
+        assertEquals("none", hallinta.getLiikkeet()[0]);
+    }
+
+    @Test
+    public void uhraaLiikePoistaaLiikkeenPelaajalta1() {
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        Liike liike = pelaaja.getOmistamatLiikkeet().get(0);
+        hallinta.uhraaLiike(0);
+        assertEquals(false, pelaaja.getOmistamatLiikkeet().contains(liike));
+    }
+
+    @Test
+    public void uhraaLiikePoistaaLiikkeenPelaajalta2() {
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        int maaraEnnen = pelaaja.getOmistamatLiikkeet().size();
+        hallinta.uhraaLiike(0);
+        assertEquals(maaraEnnen - 1, pelaaja.getOmistamatLiikkeet().size());
+    }
+
+    @Test
+    public void uhraaLiikeEiAnnaKompensaatiotaPelaajalle() {
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        int rahatEnnen = hallinta.getPelaaja().getRahat();
+        hallinta.uhraaLiike(0);
+        assertEquals(rahatEnnen, pelaaja.getRahat());
+    }
+
+    @Test
+    public void uhraaMokkiPoistaaMokinPelaajalta1() {
+        pelaaja.setOmistamatMokit(mokit);
+        Mokki mokki = pelaaja.getOmistamatMokit().get(0);
+        hallinta.uhraaMokki(0);
+        assertEquals(false, pelaaja.getOmistamatMokit().contains(mokki));
+    }
+    
+    @Test
+    public void uhraaMokkiPoistaaMokinPelaajalta2() {
+        pelaaja.setOmistamatMokit(mokit);
+        int mokitEnnen = pelaaja.getOmistamatMokit().size();
+        hallinta.uhraaMokki(0);
+        assertEquals(mokitEnnen - 1, pelaaja.getOmistamatMokit().size()); 
+    }
+    
+    @Test
+    public void uhraaMokkiEiAnnaKompensaatiotaPelaajalle(){
+        pelaaja.setOmistamatMokit(mokit);
+        int rahatEnnen = pelaaja.getRahat();
+        hallinta.uhraaMokki(0);
+        assertEquals(rahatEnnen, pelaaja.getRahat());
+    }
+    
+    @Test
+    public void uhraaTutkintoPoistaaPelaajanTutkinnon() {
+        pelaaja.setTutkinto(tutkinto);
+        hallinta.uhraaTutkinto();
+        assertEquals(null, pelaaja.getTutkinto());
+    }
+}

@@ -71,4 +71,8 @@ public class Eduskuntavaalienhallinta {
         return pelaaja;
     }
 
+    public int getMaksettavaRaha() {
+        return maksettavaRaha;
+    }
+
 }
