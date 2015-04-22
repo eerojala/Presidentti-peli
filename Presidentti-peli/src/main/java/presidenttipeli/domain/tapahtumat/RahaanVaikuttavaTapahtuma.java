@@ -37,4 +37,14 @@ public class RahaanVaikuttavaTapahtuma implements Tapahtuma {
         return false;
     }
 
+    public int getSumma() {
+        return summa;
+    }
+
+    public boolean isPelaajalleRahaa() {
+        return pelaajalleRahaa;
+    }
+    
+    
+
 }

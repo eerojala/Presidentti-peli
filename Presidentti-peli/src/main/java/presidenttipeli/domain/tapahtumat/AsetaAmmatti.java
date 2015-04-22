@@ -39,7 +39,7 @@ public class AsetaAmmatti implements Tapahtuma {
 
     private void otaPoisKansanedustajuus(Pelaaja pelaaja) {
         if (pelaaja.isKansanedustaja() && ammatti.salliiKansanedustajuuden() == false) {
-            Tapahtuma tapahtuma = new KansanedustajuuteenVaikuttavaTapahtuma(false);
+            Tapahtuma tapahtuma = new KansanedustajuuteenVaikuttavaTapahtuma(false, lauta);
             tapahtuma.suoritaTapahtuma(pelaaja);
         }
     }

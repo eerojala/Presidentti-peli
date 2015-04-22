@@ -37,7 +37,7 @@ public class PalkastaRiippuvaTapahtumaTest {
     private ArrayList<Tapahtuma> luoTapahtumat() {
         ArrayList<Tapahtuma> tapahtumat = new ArrayList();
         tapahtumat.add(new JasenkirjaanVaikuttavaTapahtuma(true));
-        tapahtumat.add(new KansanedustajuuteenVaikuttavaTapahtuma(true));
+        tapahtumat.add(new KansanedustajuuteenVaikuttavaTapahtuma(true, new Pelilauta()));
         tapahtumat.add(new TutkintoonVaikuttavaTapahtuma(true, false));
         return tapahtumat;
     }

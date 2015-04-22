@@ -100,7 +100,7 @@ public class PresidentiinvaalienhallintaActionListener implements ActionListener
 
     private boolean uhraaMokkiTaiLiike() {
         if (onkoMokkiaValittu()) {
-            hallinta.uhraaMokki(liikkeet.getSelectedIndex() - 1);
+            hallinta.uhraaMokki(mokit.getSelectedIndex() - 1);
             return true;
         } else if (onkoLiikettaValittu()) {
             hallinta.uhraaLiike(liikkeet.getSelectedIndex() - 1);

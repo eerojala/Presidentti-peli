@@ -24,6 +24,9 @@ import presidenttipeli.logiikka.luojat.Luoja;
 import presidenttipeli.logiikka.luojat.MokkienLuoja;
 import presidenttipeli.logiikka.luojat.RuutujenLuoja;
 import javax.swing.SwingUtilities;
+import presidenttipeli.domain.Tutkinto;
+import presidenttipeli.domain.tapahtumat.OdotaXKierrosta;
+import presidenttipeli.domain.tapahtumat.RahaanVaikuttavaTapahtuma;
 import presidenttipeli.gui.*;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
@@ -33,25 +36,32 @@ import presidenttipeli.logiikka.Velkalaskuri;
 public class App {
 
     public static void main(String[] args) {
-        Presidentinvaalienhallinta hallinta;
-        Pelaaja pelaaja;
-        Ammatti johtaja;
-        ArrayList<String> nimet = new ArrayList();
-        nimet.add("testi");
+        java.awt.EventQueue.invokeLater(new AloitusGUI());
+        //presidentinVaaliTestaus();
+
+    }
+
+    private static void presidentinVaaliTestaus() {
+        ArrayList<String> nimet = new ArrayList<String>();
+        nimet.add("Testi");
         KaikenLuoja luoja = new KaikenLuoja(nimet);
-        pelaaja = luoja.getLauta().getNappulat().get(0).getOmistaja();
-        hallinta = new Presidentinvaalienhallinta(pelaaja, luoja.getPeli().getVaalienjarjestaja(),
-                luoja.getPeli().getPankinjohtaja(), luoja.getPeli().getKiinteistonvalittaja());
-        johtaja = new Ammatti("Johtaja", 10000, true, false, false);
+        Peli peli = luoja.getPeli();
+        PeliGUI peligui = new PeliGUI(peli);
+        Pelaaja pelaaja = peli.getNykyinenPelaaja();
+        //pelaaja.setAmmatti(new Ammatti("Johtaja", 10000, true, false, false));
         pelaaja.setKansanedustaja(true);
-        hallinta.vaihtoehto1();
+        pelaaja.setRahat(40000);
+        ArrayList<Mokki> mokit = new ArrayList();
+        ArrayList<Liike> liikkeet = new ArrayList();
+        mokit.add(new Mokki("hassula", 10000));
+        mokit.add(new Mokki("dipoli", 20000));
+        liikkeet.add(new Liike("testiliike", "testi", 30000, 5000));
+        pelaaja.setOmistamatMokit(mokit);
+        pelaaja.setOmistamatLiikkeet(liikkeet);
+        pelaaja.setTutkinto(new Tutkinto(true));
+        Presidentinvaalienhallinta hallinta = new Presidentinvaalienhallinta(peli.getNykyinenPelaaja(), peli.getVaalienjarjestaja(), peli.getPankinjohtaja(), peli.getKiinteistonvalittaja());
+        java.awt.EventQueue.invokeLater(new PresidentinvaalienhallintaGUI(hallinta, peligui));
 
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AloitusGUI().setVisible(true);
-            }
-        });
     }
 
 }

@@ -11,5 +11,6 @@ public interface Tapahtuma {
 
 
     public boolean suoritaTapahtuma(Pelaaja pelaaja);
+    
 
 }

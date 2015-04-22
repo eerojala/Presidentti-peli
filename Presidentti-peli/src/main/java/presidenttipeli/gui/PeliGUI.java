@@ -198,6 +198,18 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
                 "Peli päättyy", JOptionPane.PLAIN_MESSAGE);
         this.dispose();
     }
+    
+    public void varallisuusEiRiitaVaaleihin() {
+        JOptionPane.showMessageDialog(rootPane, 
+                "Et ole kansanedustaja tai johtaja-ammatissa ja/tai varallisuutesi ei riita vaalikampanjaan",
+                "Vaalien aloittaminen epäonnistui", JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    public void varallisuusEiRiitaMaksuun() {
+        JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän maksun maksamiseen", 
+                "Rahat eivät riitä", JOptionPane.WARNING_MESSAGE);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noppaButton;

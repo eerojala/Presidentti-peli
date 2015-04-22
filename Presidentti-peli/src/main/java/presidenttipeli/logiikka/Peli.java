@@ -9,8 +9,12 @@ import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
+import presidenttipeli.domain.Tapahtumakortti;
+import presidenttipeli.domain.tapahtumat.OtaMokkikortti;
+import presidenttipeli.domain.tapahtumat.RahaanVaikuttavaTapahtuma;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import presidenttipeli.gui.PeliGUI;
+import presidenttipeli.gui.PresidentinvaalienhallintaGUI;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 public class Peli {
@@ -97,24 +101,32 @@ public class Peli {
     public boolean suoritaRuudunTapahtumat() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (onkoErikoisruutu(ruutu)) {
-
+            tarkistaRuutu();
+            return true;
         } else {
-
+            if (onkoTapahtumakorttiRuutu(ruutu)) {
+                if (tapahtumakorttiRuutu(ruutu) == false) {
+                    return false;
+                }
+            }
             naytaKortti(ruutu.getNumero());
-
-            for (Tapahtuma tapahtuma : ruutu.getTapahtumat()) {
+            return suoritaRuudunTapahtumat(ruutu);   
+        }
+    }
+    
+    private boolean suoritaRuudunTapahtumat(Ruutu ruutu) {
+        for (Tapahtuma tapahtuma : ruutu.getTapahtumat()) {
                 if (tapahtuma.suoritaTapahtuma(nykyinenPelaaja) == false) {
                     return false;
                 }
             }
-        }
         return true;
     }
 
     private void tarkistaRuutu() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (ruutu.isOstoJaMyyntiruutu()) {
-            
+
         } else if (ruutu.isVaaliruutu()) {
             suoritaVaaliruutu(ruutu);
         } else if (ruutu.isPutkaruutu()) {
@@ -124,10 +136,10 @@ public class Peli {
         }
 
     }
-    
+
     private void suoritaVaaliruutu(Ruutu ruutu) {
         if (ruutu.getNumero() == 10) {
-            peligui.avaaEduskuntavaalienHallintaGUI(new Eduskuntavaalienhallinta(nykyinenPelaaja, 
+            peligui.avaaEduskuntavaalienHallintaGUI(new Eduskuntavaalienhallinta(nykyinenPelaaja,
                     vaalienjarjestaja, pankinjohtaja));
         } else if (ruutu.getNumero() == 25) {
             if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
@@ -135,10 +147,16 @@ public class Peli {
                 peligui.ilmoitaTulos(tulos, vaalienjarjestaja.getSaadutAanet(), vaalienjarjestaja.getSaadutAanetSummattuna(), 80);
             }
         } else if (ruutu.getNumero() == 30) {
-            
+            Presidentinvaalienhallinta hallinta = new Presidentinvaalienhallinta(nykyinenPelaaja,
+                    vaalienjarjestaja, pankinjohtaja, kiinteistonvalittaja);
+            if (hallinta.pystyykoPelaajaOsallistumaanVaaleihin() == false) {
+                peligui.varallisuusEiRiitaVaaleihin();
+            } else {
+                SwingUtilities.invokeLater(new PresidentinvaalienhallintaGUI(hallinta, peligui));
+            }
         }
     }
-    
+
     private void naytaKortti(int ruudunNro) {
         String sisalto = "";
 
@@ -204,4 +222,58 @@ public class Peli {
         return lauta.getNappulat().isEmpty();
     }
 
+    private boolean tarkistaPystyykoPelaajaMaksamaanTapahtumakortinMaksua() {
+        Tapahtumakortti kortti = lauta.getTapahtumakortit().peek();
+        Tapahtuma tapahtuma = kortti.getTapahtumat().get(0);
+        if (onkoRahaanVaikuttavaTapahtuma(tapahtuma) == false) {
+            return true;
+        }
+
+        RahaanVaikuttavaTapahtuma kortinTapahtuma = (RahaanVaikuttavaTapahtuma) tapahtuma;
+
+        if (viekoTapahtumaPelaajaltaRahaa(kortinTapahtuma)) {
+            return riittaakoPelaajanRahat(kortinTapahtuma);
+        }
+        return true;
+    }
+
+    private boolean onkoRahaanVaikuttavaTapahtuma(Tapahtuma tapahtuma) {
+        RahaanVaikuttavaTapahtuma verrattava = new RahaanVaikuttavaTapahtuma(true, 0);
+
+        if (tapahtuma.getClass() == verrattava.getClass()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean viekoTapahtumaPelaajaltaRahaa(RahaanVaikuttavaTapahtuma tapahtuma) {
+        if (tapahtuma.isPelaajalleRahaa()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean riittaakoPelaajanRahat(RahaanVaikuttavaTapahtuma tapahtuma) {
+        return nykyinenPelaaja.getRahat() >= tapahtuma.getSumma();
+    }
+
+    private boolean onkoTapahtumakorttiRuutu(Ruutu ruutu) {
+        if (ruutu.getNumero() == 12 || ruutu.getNumero() == 28) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean tapahtumakorttiRuutu(Ruutu ruutu) {
+        if (ruutu.getNumero() == 12 && nykyinenPelaaja.isPuolueenJasen()) {
+            return true;
+        }
+        
+        if (tarkistaPystyykoPelaajaMaksamaanTapahtumakortinMaksua() == false) {
+            naytaKortti(ruutu.getNumero());
+            peligui.varallisuusEiRiitaMaksuun();
+            return false;
+        }
+        return true;
+    }
 }

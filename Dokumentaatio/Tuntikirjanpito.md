@@ -22,3 +22,4 @@
 * 17.4.2015 5 tuntia, Lisää GUI koodailua
 * 18.4.2015 7 tuntia, EduskuntavaaliGUI koodattu
 * 19.4.2015 10 tuntia, PresidentinvaaliGUI koodattu
+* 22.4 2015 3 tuntia, PresidentinvaaliGUIn viimeistely, tapahtumakorttien suoritusta paranneltu

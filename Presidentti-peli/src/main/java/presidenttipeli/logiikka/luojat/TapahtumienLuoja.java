@@ -121,6 +121,6 @@ public class TapahtumienLuoja extends Luoja{
     }
     
     public Tapahtuma luoKansanedustajuuteenVaikuttavaTapahtuma(boolean pelaajalleKansanedustajuus) {
-        return new KansanedustajuuteenVaikuttavaTapahtuma(pelaajalleKansanedustajuus);
+        return new KansanedustajuuteenVaikuttavaTapahtuma(pelaajalleKansanedustajuus, lauta);
     }
 }

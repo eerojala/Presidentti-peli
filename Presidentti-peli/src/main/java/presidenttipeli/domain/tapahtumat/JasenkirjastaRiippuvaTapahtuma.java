@@ -32,4 +32,14 @@ public class JasenkirjastaRiippuvaTapahtuma implements Tapahtuma {
         }
     }
 
+    public Tapahtuma getTapahtuma1() {
+        return tapahtuma1;
+    }
+
+    public Tapahtuma getTapahtuma2() {
+        return tapahtuma2;
+    }
+    
+    
+
 }
