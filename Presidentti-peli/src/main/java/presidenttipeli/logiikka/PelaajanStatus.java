@@ -19,7 +19,11 @@ public class PelaajanStatus {
 
     public PelaajanStatus(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
-        this.kuva = pelaaja.getNappula().getKuva();
+        try {
+            this.kuva = pelaaja.getNappula().getKuva();
+        } catch (Exception e) {
+
+        }
         asetaTotuusarvot();
         lisaaLiikkeetJaMokitTaulukkoon();
     }

@@ -25,15 +25,19 @@ public class OtaTapahtumakortti implements Tapahtuma {
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
-        Tapahtumakortti kortti = lauta.getTapahtumakortit().pollFirst();
+        Tapahtumakortti kortti = lauta.getTapahtumakortit().peek();
         boolean onnistuikoKaikki = true;
-        
+
         for (Tapahtuma tapahtuma : kortti.getTapahtumat()) {
             if (tapahtuma.suoritaTapahtuma(pelaaja) == false) {
                 onnistuikoKaikki = false;
             }
         }
-        lauta.getTapahtumakortit().add(kortti);
+
+        if (onnistuikoKaikki) {
+            lauta.getTapahtumakortit().poll();
+            lauta.getTapahtumakortit().add(kortti);
+        }
         return onnistuikoKaikki;
     }
 

@@ -23,3 +23,5 @@
 * 18.4.2015 7 tuntia, EduskuntavaaliGUI koodattu
 * 19.4.2015 10 tuntia, PresidentinvaaliGUI koodattu
 * 22.4 2015 3 tuntia, PresidentinvaaliGUIn viimeistely, tapahtumakorttien suoritusta paranneltu
+* 23.4.2015 3 tuntia, OstoJaMyyntiGUIn koodaus aloitettu
+* 24.4.2015 7 tuntia, OstoJaMyyntiGUI valmis, huomioitu jos ei laudalla ei mökkejä tai liikkeitä. Peli melkein valmis.

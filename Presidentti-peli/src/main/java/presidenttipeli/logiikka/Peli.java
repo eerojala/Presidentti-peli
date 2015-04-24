@@ -101,43 +101,41 @@ public class Peli {
     public boolean suoritaRuudunTapahtumat() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (onkoErikoisruutu(ruutu)) {
-            tarkistaRuutu();
-            return true;
+            return suoritaErikoisruutu();
         } else {
-            if (onkoTapahtumakorttiRuutu(ruutu)) {
-                if (tapahtumakorttiRuutu(ruutu) == false) {
-                    return false;
-                }
+            if (ruutu.getNumero() == 19 && !onkoPinossaLiikkeita()) {
+                peligui.liikkeitaEiOleEnaaJaljella();
+                return true;
             }
             naytaKortti(ruutu.getNumero());
-            return suoritaRuudunTapahtumat(ruutu);   
+            return suoritaRuudunTapahtumat(ruutu);
         }
     }
-    
+
     private boolean suoritaRuudunTapahtumat(Ruutu ruutu) {
         for (Tapahtuma tapahtuma : ruutu.getTapahtumat()) {
-                if (tapahtuma.suoritaTapahtuma(nykyinenPelaaja) == false) {
-                    return false;
-                }
+            if (tapahtuma.suoritaTapahtuma(nykyinenPelaaja) == false) {
+                return false;
             }
+        }
         return true;
     }
 
-    private void tarkistaRuutu() {
+    private boolean suoritaErikoisruutu() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (ruutu.isOstoJaMyyntiruutu()) {
-
+            return suoritaOstoJaMyyntiruutu(ruutu);
         } else if (ruutu.isVaaliruutu()) {
-            suoritaVaaliruutu(ruutu);
+            return suoritaVaaliruutu(ruutu);
         } else if (ruutu.isPutkaruutu()) {
 
         } else {
 
         }
-
+        return true;
     }
 
-    private void suoritaVaaliruutu(Ruutu ruutu) {
+    private boolean suoritaVaaliruutu(Ruutu ruutu) {
         if (ruutu.getNumero() == 10) {
             peligui.avaaEduskuntavaalienHallintaGUI(new Eduskuntavaalienhallinta(nykyinenPelaaja,
                     vaalienjarjestaja, pankinjohtaja));
@@ -155,6 +153,7 @@ public class Peli {
                 SwingUtilities.invokeLater(new PresidentinvaalienhallintaGUI(hallinta, peligui));
             }
         }
+        return true;
     }
 
     private void naytaKortti(int ruudunNro) {
@@ -174,7 +173,7 @@ public class Peli {
         peligui.naytaKortinSisalto(sisalto);
     }
 
-    private boolean onkoErikoisruutu(Ruutu ruutu) {
+    public boolean onkoErikoisruutu(Ruutu ruutu) {
         return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
     }
 
@@ -222,58 +221,45 @@ public class Peli {
         return lauta.getNappulat().isEmpty();
     }
 
-    private boolean tarkistaPystyykoPelaajaMaksamaanTapahtumakortinMaksua() {
-        Tapahtumakortti kortti = lauta.getTapahtumakortit().peek();
-        Tapahtuma tapahtuma = kortti.getTapahtumat().get(0);
-        if (onkoRahaanVaikuttavaTapahtuma(tapahtuma) == false) {
-            return true;
-        }
-
-        RahaanVaikuttavaTapahtuma kortinTapahtuma = (RahaanVaikuttavaTapahtuma) tapahtuma;
-
-        if (viekoTapahtumaPelaajaltaRahaa(kortinTapahtuma)) {
-            return riittaakoPelaajanRahat(kortinTapahtuma);
+    private boolean suoritaOstoJaMyyntiruutu(Ruutu ruutu) {
+        OstoJaMyynti ostoJaMyynti;
+        if (ruutu.getNumero() == 1) {
+            ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, false);
+            peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
+        } else if (ruutu.getNumero() == 16) {
+            return suoritaRuutu16(ruutu);
+        } else if (ruutu.getNumero() == 20) {
+            ostoJaMyynti = luoUusiOstoJaMyynti(false, 0.1, true, false);
+            peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         }
         return true;
     }
 
-    private boolean onkoRahaanVaikuttavaTapahtuma(Tapahtuma tapahtuma) {
-        RahaanVaikuttavaTapahtuma verrattava = new RahaanVaikuttavaTapahtuma(true, 0);
-
-        if (tapahtuma.getClass() == verrattava.getClass()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean viekoTapahtumaPelaajaltaRahaa(RahaanVaikuttavaTapahtuma tapahtuma) {
-        if (tapahtuma.isPelaajalleRahaa()) {
+    private boolean suoritaRuutu16(Ruutu ruutu) {
+        OstoJaMyynti ostoJaMyynti;
+        if (suoritaRuudunTapahtumat(ruutu) == false) {
             return false;
         }
+        int silmaluku = heitaNoppaa();
+        boolean tarjous = false;
+        if (silmaluku == 6) {
+            tarjous = true;
+        }
+        ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, tarjous);
+        peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         return true;
     }
 
-    private boolean riittaakoPelaajanRahat(RahaanVaikuttavaTapahtuma tapahtuma) {
-        return nykyinenPelaaja.getRahat() >= tapahtuma.getSumma();
+    private OstoJaMyynti luoUusiOstoJaMyynti(boolean saaMyyda, double kerroin,
+            boolean ruutu20, boolean ruutu16Tarjous) {
+        OstoJaMyynti ostojamyynti = new OstoJaMyynti(saaMyyda, kerroin, ruutu20,
+                nykyinenPelaaja, kiinteistonvalittaja, lauta.getMokit().peek(),
+                lauta.getLiikkeet().peek(), lauta, ruutu16Tarjous);
+        return ostojamyynti;
+    }
+    
+    public boolean onkoPinossaLiikkeita() {
+        return !lauta.getLiikkeet().isEmpty();
     }
 
-    private boolean onkoTapahtumakorttiRuutu(Ruutu ruutu) {
-        if (ruutu.getNumero() == 12 || ruutu.getNumero() == 28) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean tapahtumakorttiRuutu(Ruutu ruutu) {
-        if (ruutu.getNumero() == 12 && nykyinenPelaaja.isPuolueenJasen()) {
-            return true;
-        }
-        
-        if (tarkistaPystyykoPelaajaMaksamaanTapahtumakortinMaksua() == false) {
-            naytaKortti(ruutu.getNumero());
-            peligui.varallisuusEiRiitaMaksuun();
-            return false;
-        }
-        return true;
-    }
 }

@@ -14,6 +14,7 @@ import javax.swing.Timer;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Ruutu;
 import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
+import presidenttipeli.logiikka.OstoJaMyynti;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
 
@@ -36,14 +37,14 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
                 this.velanhallintaButton, this.peli, this.getRootPane(), this);
         lisaaNappuloilleActionListener();
     }
-
+    
     private void lisaaNappuloilleActionListener() {
         this.statusButton.addActionListener(actionlistener);
         this.velanhallintaButton.addActionListener(actionlistener);
         this.noppaButton.addActionListener(actionlistener);
         this.seuraavaVuoroButton.addActionListener(actionlistener);
     }
-
+    
     @Override
     public void run() {
         initComponents();
@@ -167,15 +168,15 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     private void seuraavaVuoroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seuraavaVuoroButtonActionPerformed
 
     }//GEN-LAST:event_seuraavaVuoroButtonActionPerformed
-
+    
     public void naytaKortinSisalto(String teksti) {
         JOptionPane.showMessageDialog(rootPane, teksti, "Kortin sisältö", JOptionPane.PLAIN_MESSAGE);
     }
-
+    
     public void avaaEduskuntavaalienHallintaGUI(Eduskuntavaalienhallinta hallinta) {
         SwingUtilities.invokeLater(new EduskuntavaalienhallintaGUI(hallinta, this));
     }
-
+    
     public void ilmoitaTulos(boolean onnistui, ArrayList<Integer> saadutAanet,
             int saadutAanetSummattuna, int tarvittavaAanimaara) {
         String title;
@@ -193,23 +194,31 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
     
     public void peliVoitettu() {
-        JOptionPane.showMessageDialog(rootPane, "Onneksi olkoon " 
+        JOptionPane.showMessageDialog(rootPane, "Onneksi olkoon "
                 + peli.getNykyinenPelaaja() + "! Voitit pelin!",
                 "Peli päättyy", JOptionPane.PLAIN_MESSAGE);
         this.dispose();
     }
     
     public void varallisuusEiRiitaVaaleihin() {
-        JOptionPane.showMessageDialog(rootPane, 
+        JOptionPane.showMessageDialog(rootPane,
                 "Et ole kansanedustaja tai johtaja-ammatissa ja/tai varallisuutesi ei riita vaalikampanjaan",
                 "Vaalien aloittaminen epäonnistui", JOptionPane.PLAIN_MESSAGE);
     }
     
     public void varallisuusEiRiitaMaksuun() {
-        JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän maksun maksamiseen", 
+        JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän maksun maksamiseen",
                 "Rahat eivät riitä", JOptionPane.WARNING_MESSAGE);
     }
     
+    public void liikkeitaEiOleEnaaJaljella() {
+        JOptionPane.showMessageDialog(rootPane, "Liikkeita ei ole enää jäljellä",
+                "Likkeitä ei ole enää jäljellä", JOptionPane.WARNING_MESSAGE);
+    }
+    public void avaaOstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti) {
+        SwingUtilities.invokeLater(new OstoJaMyyntiGUI(ostoJaMyynti));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noppaButton;
@@ -222,5 +231,5 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
 
     private Peli peli;
     private PeliActionListener actionlistener;
-
+    
 }

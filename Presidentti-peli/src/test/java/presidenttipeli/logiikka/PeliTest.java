@@ -143,4 +143,44 @@ public class PeliTest {
         assertEquals("Opettaja", peli.getNykyinenPelaaja().getAmmatti().getNimi());
     }
     
+    @Test
+    public void suoritaRuudunTapahtumatPalauttaaTrueJosTapahtumaOnnistuu() {
+        peli.getLiikuttelija().liikutaNappulaa(peli.getNykyinenPelaaja().getNappula(), 2);
+        assertEquals(true, peli.suoritaRuudunTapahtumat());
+    }
+    
+    @Test
+    public void suoritaRuudunTapahtumanPalauttaaFalseJosTapahtumaEpaonnistuu() {
+        peli.getLiikuttelija().liikutaNappulaa(peli.getNykyinenPelaaja().getNappula(), 14);
+        peli.getNykyinenPelaaja().setRahat(0);
+        assertEquals(false, peli.suoritaRuudunTapahtumat());
+    }
+    
+    @Test
+    public void onkoErikoisruutuPalauttaaTrueJosOstoTaiMyyntiruutu() {
+        Ruutu ruutu = new Ruutu(1, 1, 1);
+        ruutu.setOstoJaMyyntiruutu(true);
+        assertEquals(true, peli.onkoErikoisruutu(ruutu));
+    }
+    
+    @Test
+    public void onkoErikoisruutuPalauttaaTrueJosVaaliruutu() {
+        Ruutu ruutu = new Ruutu(1, 1, 1);
+        ruutu.setVaaliruutu(true);
+        assertEquals(true, peli.onkoErikoisruutu(ruutu));
+    }
+    
+    @Test
+    public void onkoErikoisruutuPalauttaaTrueJosPutkaruutu() {
+        Ruutu ruutu = new Ruutu(1, 1, 1);
+        ruutu.setVaaliruutu(true);
+        assertEquals(true, peli.onkoErikoisruutu(ruutu));
+    }
+    
+    @Test
+    public void onkoErikoisRuutuPalauttaaFalseJosEiErikoisruutu() {
+        Ruutu ruutu = new Ruutu(1, 1, 1);
+        assertEquals(false, peli.onkoErikoisruutu(ruutu));
+    }
+    
 }

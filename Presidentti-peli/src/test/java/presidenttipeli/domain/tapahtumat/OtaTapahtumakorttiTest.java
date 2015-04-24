@@ -75,4 +75,15 @@ public class OtaTapahtumakorttiTest {
         Tapahtuma testi2 = new OtaTapahtumakortti(lauta);
         assertEquals(false, testi2.suoritaTapahtuma(pelaaja));
     }
+    
+    @Test
+    public void eiVieKorttiaTakaisinPinoonJosJokinTapahtumistaEpaonnistuu() {
+        Tapahtumakortti kortti3 = new Tapahtumakortti();
+        kortti3.getTapahtumat().add(new RahaanVaikuttavaTapahtuma(false, Integer.MAX_VALUE));
+        lauta.getTapahtumakortit().clear();
+        lauta.getTapahtumakortit().add(kortti3);
+        Tapahtuma testi2 = new OtaTapahtumakortti(lauta);
+        testi2.suoritaTapahtuma(pelaaja);
+        assertEquals(true, lauta.getTapahtumakortit().peek().equals(kortti3));
+    }
 }
