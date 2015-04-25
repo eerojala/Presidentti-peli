@@ -17,8 +17,6 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
     public PresidentinvaalienhallintaGUI(Presidentinvaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
         this.peligui = peligui;
-        run();
-        this.setVisible(true);
     }
 
     @Override
@@ -127,6 +125,11 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                sulje(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -299,6 +302,10 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setEnabled(true);
+    }//GEN-LAST:event_sulje
 
 
 

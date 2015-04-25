@@ -5,7 +5,7 @@
  */
 package presidenttipeli.gui;
 
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import presidenttipeli.logiikka.Pankinjohtaja;
 import presidenttipeli.logiikka.Peli;
 import presidenttipeli.logiikka.Velkalaskuri;
@@ -16,20 +16,37 @@ import presidenttipeli.logiikka.Velkalaskuri;
  */
 public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
 
-    /**
-     * Creates new form VelkaGUI
-     */
-    public VelanhallintaGUI(Peli peli) {
+    public VelanhallintaGUI(Peli peli, JFrame frame, boolean pakkoOttaaVelkaa) {
         this.peli = peli;
+        this.pakkoOttaaVelkaa = pakkoOttaaVelkaa;
         pankinjohtaja = peli.getPankinjohtaja();
         laskuri = new Velkalaskuri(peli.getNykyinenPelaaja());
-        run();
-        this.setVisible(true);
+        this.frame = frame;
     }
 
     @Override
     public void run() {
         initComponents();
+        lisaaNappuloilleActionListener();
+    }
+
+    private void lisaaNappuloilleActionListener() {
+        VelanhallintaActionListener listener = new VelanhallintaActionListener(
+                hyvaksyTakaisinmaksu, hyvaksyVelanotto, maksurahaMinus100, maksurahaMinus1000,
+                maksurahaPlus100, maksurahaPlus1000, ottorahaMinus100, ottorahaMinus1000,
+                ottorahaPlus100, ottorahaPlus1000, suljeButton, maksurahat, ottorahat,
+                pelaajanRahat, pelaajanVelat, this, rootPane, peli, laskuri, pankinjohtaja);
+        hyvaksyTakaisinmaksu.addActionListener(listener);
+        hyvaksyVelanotto.addActionListener(listener);
+        maksurahaMinus100.addActionListener(listener);
+        maksurahaMinus1000.addActionListener(listener);
+        maksurahaPlus100.addActionListener(listener);
+        maksurahaPlus1000.addActionListener(listener);
+        ottorahaMinus100.addActionListener(listener);
+        ottorahaMinus1000.addActionListener(listener);
+        ottorahaPlus100.addActionListener(listener);
+        ottorahaPlus1000.addActionListener(listener);
+        suljeButton.addActionListener(listener);
     }
 
     /**
@@ -47,24 +64,29 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
         jLabel2 = new javax.swing.JLabel();
         pelaajanVelat = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ottorahatMinus1000 = new javax.swing.JButton();
+        ottorahaMinus1000 = new javax.swing.JButton();
         ottorahaMinus100 = new javax.swing.JButton();
         ottorahat = new javax.swing.JTextField();
-        ottorahaPlus100 = new javax.swing.JToggleButton();
-        ottorahatPlus1000 = new javax.swing.JButton();
-        hyvaksyVelanOtto = new javax.swing.JButton();
+        ottorahaPlus1000 = new javax.swing.JButton();
+        hyvaksyVelanotto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         maksurahaMinus1000 = new javax.swing.JButton();
         maksurahaMinus100 = new javax.swing.JButton();
         maksurahat = new javax.swing.JTextField();
         maksurahaPlus100 = new javax.swing.JButton();
         maksurahaPlus1000 = new javax.swing.JButton();
-        hyvaksyTakaisinMaksu = new javax.swing.JButton();
+        hyvaksyTakaisinmaksu = new javax.swing.JButton();
         suljeButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         pelaajanNimi = new javax.swing.JLabel();
+        ottorahaPlus100 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                sulje(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -78,10 +100,10 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
 
         jLabel3.setText("Ota velkaa:");
 
-        ottorahatMinus1000.setText("-1000");
-        ottorahatMinus1000.addActionListener(new java.awt.event.ActionListener() {
+        ottorahaMinus1000.setText("-1000");
+        ottorahaMinus1000.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ottorahatMinus1000ActionPerformed(evt);
+                ottorahaMinus1000ActionPerformed(evt);
             }
         });
 
@@ -95,24 +117,17 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
         ottorahat.setEditable(false);
         ottorahat.setText("00000");
 
-        ottorahaPlus100.setText("+100");
-        ottorahaPlus100.addActionListener(new java.awt.event.ActionListener() {
+        ottorahaPlus1000.setText("+1000");
+        ottorahaPlus1000.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ottorahaPlus100ActionPerformed(evt);
+                ottorahaPlus1000ActionPerformed(evt);
             }
         });
 
-        ottorahatPlus1000.setText("+1000");
-        ottorahatPlus1000.addActionListener(new java.awt.event.ActionListener() {
+        hyvaksyVelanotto.setText("OK");
+        hyvaksyVelanotto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ottorahatPlus1000ActionPerformed(evt);
-            }
-        });
-
-        hyvaksyVelanOtto.setText("OK");
-        hyvaksyVelanOtto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hyvaksyVelanOttoActionPerformed(evt);
+                hyvaksyVelanottoActionPerformed(evt);
             }
         });
 
@@ -154,10 +169,10 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        hyvaksyTakaisinMaksu.setText("OK");
-        hyvaksyTakaisinMaksu.addActionListener(new java.awt.event.ActionListener() {
+        hyvaksyTakaisinmaksu.setText("OK");
+        hyvaksyTakaisinmaksu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hyvaksyTakaisinMaksuActionPerformed(evt);
+                hyvaksyTakaisinmaksuActionPerformed(evt);
             }
         });
 
@@ -171,6 +186,8 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
         jLabel5.setText("Pelaaja:");
 
         pelaajanNimi.setText(peli.getNykyinenPelaaja().getNimi());
+
+        ottorahaPlus100.setText("+100");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,7 +218,7 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(maksurahaPlus1000)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(hyvaksyTakaisinMaksu))
+                                .addComponent(hyvaksyTakaisinmaksu))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -213,15 +230,15 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(pelaajanVelat))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(ottorahatMinus1000, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ottorahaMinus1000, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(ottorahaMinus100)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(ottorahaPlus100)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ottorahatPlus1000)
+                                        .addComponent(ottorahaPlus1000)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(hyvaksyVelanOtto)))
+                                        .addComponent(hyvaksyVelanotto)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -239,12 +256,12 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ottorahatMinus1000)
+                    .addComponent(ottorahaMinus1000)
                     .addComponent(ottorahaMinus100)
-                    .addComponent(ottorahaPlus100)
-                    .addComponent(ottorahatPlus1000)
+                    .addComponent(ottorahaPlus1000)
                     .addComponent(ottorahat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hyvaksyVelanOtto))
+                    .addComponent(hyvaksyVelanotto)
+                    .addComponent(ottorahaPlus100))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,7 +270,7 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
                     .addComponent(maksurahaMinus1000)
                     .addComponent(maksurahaMinus100)
                     .addComponent(maksurahaPlus100)
-                    .addComponent(hyvaksyTakaisinMaksu)
+                    .addComponent(hyvaksyTakaisinmaksu)
                     .addComponent(maksurahaPlus1000))
                 .addGap(18, 18, 18)
                 .addComponent(suljeButton)
@@ -280,106 +297,64 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ottorahatMinus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahatMinus1000ActionPerformed
-        laskuri.vahennaOttorahaaTuhannella();
-        paivitaOttoraha();
-    }//GEN-LAST:event_ottorahatMinus1000ActionPerformed
+    private void ottorahaMinus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahaMinus1000ActionPerformed
+
+    }//GEN-LAST:event_ottorahaMinus1000ActionPerformed
 
     private void ottorahaMinus100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahaMinus100ActionPerformed
-        laskuri.vahennaOttorahaaSadalla();
-        paivitaOttoraha();
+
     }//GEN-LAST:event_ottorahaMinus100ActionPerformed
 
-    private void ottorahaPlus100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahaPlus100ActionPerformed
-        laskuri.kasvataOttorahaaSadalla();
-        paivitaOttoraha();
-    }//GEN-LAST:event_ottorahaPlus100ActionPerformed
+    private void ottorahaPlus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahaPlus1000ActionPerformed
 
-    private void ottorahatPlus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ottorahatPlus1000ActionPerformed
-        laskuri.kasvataOttorahaaTuhannella();
-        paivitaOttoraha();
-    }//GEN-LAST:event_ottorahatPlus1000ActionPerformed
+    }//GEN-LAST:event_ottorahaPlus1000ActionPerformed
 
     private void maksurahaMinus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maksurahaMinus1000ActionPerformed
-        laskuri.vahennaMaksurahaaTuhannella();
-        paivitaMaksuraha();
+
     }//GEN-LAST:event_maksurahaMinus1000ActionPerformed
 
     private void maksurahaMinus100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maksurahaMinus100ActionPerformed
-        laskuri.vahennaMaksurahaaSadalla();
-        paivitaMaksuraha();
+
     }//GEN-LAST:event_maksurahaMinus100ActionPerformed
 
     private void maksurahaPlus100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maksurahaPlus100ActionPerformed
-        laskuri.kasvataMaksurahaaSadalla();
-        paivitaMaksuraha();
+
     }//GEN-LAST:event_maksurahaPlus100ActionPerformed
 
     private void maksurahaPlus1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maksurahaPlus1000ActionPerformed
-        laskuri.kasvataMaksurahaaTuhannella();
-        paivitaMaksuraha();
+
     }//GEN-LAST:event_maksurahaPlus1000ActionPerformed
 
-    private void hyvaksyVelanOttoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyvaksyVelanOttoActionPerformed
-        if (pankinjohtaja.kasvataVelkaa(peli.getNykyinenPelaaja(),
-                Integer.parseInt(ottorahat.getText())) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Haluamasi velka ylitti 5000 mk:n rajan",
-                    "Velan ottaminen epäonnistui", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Velan ottaminen onnistui",
-                    "Velan ottaminen onnistui", JOptionPane.PLAIN_MESSAGE);
-        }
-        paivitaPelaajanRahat();
-        paivitaPelaajanVelat();
-    }//GEN-LAST:event_hyvaksyVelanOttoActionPerformed
+    private void hyvaksyVelanottoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyvaksyVelanottoActionPerformed
+
+    }//GEN-LAST:event_hyvaksyVelanottoActionPerformed
 
     private void maksurahatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maksurahatActionPerformed
 
     }//GEN-LAST:event_maksurahatActionPerformed
 
     private void suljeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suljeButtonActionPerformed
-        this.dispose();
+
     }//GEN-LAST:event_suljeButtonActionPerformed
 
-    private void hyvaksyTakaisinMaksuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyvaksyTakaisinMaksuActionPerformed
-        if (pankinjohtaja.vahennaVelkaa(peli.getNykyinenPelaaja(),
-                Integer.parseInt(maksurahat.getText())) == false) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Velkojen maksaminen epäonnistui",
-                    "Velkojen maksaminen epäonnistui", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Velkojen maksaminen onnistui",
-                    "Velkojen maksaminen onnistui", JOptionPane.PLAIN_MESSAGE);
+    private void hyvaksyTakaisinmaksuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hyvaksyTakaisinmaksuActionPerformed
+
+    }//GEN-LAST:event_hyvaksyTakaisinmaksuActionPerformed
+
+    private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        frame.setEnabled(true);
+        if (pakkoOttaaVelkaa) {
+            peli.yritaSuorittaaTapahtumaaToisenKerran();
         }
-        paivitaPelaajanRahat();
-        paivitaPelaajanVelat();
-    }//GEN-LAST:event_hyvaksyTakaisinMaksuActionPerformed
+    }//GEN-LAST:event_sulje
 
-    private void paivitaOttoraha() {
-        ottorahat.setText("" + laskuri.getOttoraha());
-    }
-
-    private void paivitaMaksuraha() {
-        maksurahat.setText("" + laskuri.getMaksuraha());
-    }
-
-    private void paivitaPelaajanRahat() {
-        laskuri.paivitaPelaajanRahat();
-        pelaajanRahat.setText(laskuri.getPelaajanRahat() + " mk");
-    }
-
-    private void paivitaPelaajanVelat() {
-        laskuri.paivitaPelaajanVelka();
-        pelaajanVelat.setText(laskuri.getPelaajanVelat() + " ");
-    }
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton hyvaksyTakaisinMaksu;
-    private javax.swing.JButton hyvaksyVelanOtto;
+    private javax.swing.JButton hyvaksyTakaisinmaksu;
+    private javax.swing.JButton hyvaksyVelanotto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -392,10 +367,10 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton maksurahaPlus1000;
     private javax.swing.JTextField maksurahat;
     private javax.swing.JButton ottorahaMinus100;
-    private javax.swing.JToggleButton ottorahaPlus100;
+    private javax.swing.JButton ottorahaMinus1000;
+    private javax.swing.JButton ottorahaPlus100;
+    private javax.swing.JButton ottorahaPlus1000;
     private javax.swing.JTextField ottorahat;
-    private javax.swing.JButton ottorahatMinus1000;
-    private javax.swing.JButton ottorahatPlus1000;
     private javax.swing.JLabel pelaajanNimi;
     private javax.swing.JLabel pelaajanRahat;
     private javax.swing.JLabel pelaajanVelat;
@@ -404,4 +379,6 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
     private Peli peli;
     private Velkalaskuri laskuri;
     private Pankinjohtaja pankinjohtaja;
+    private JFrame frame;
+    private boolean pakkoOttaaVelkaa;
 }

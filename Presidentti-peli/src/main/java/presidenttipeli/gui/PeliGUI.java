@@ -17,6 +17,7 @@ import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
 import presidenttipeli.logiikka.OstoJaMyynti;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
+import presidenttipeli.logiikka.Presidentinvaalienhallinta;
 
 /**
  *
@@ -49,7 +50,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     public void run() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,7 +175,17 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
     
     public void avaaEduskuntavaalienHallintaGUI(Eduskuntavaalienhallinta hallinta) {
-        SwingUtilities.invokeLater(new EduskuntavaalienhallintaGUI(hallinta, this));
+        this.setEnabled(false);
+        EduskuntavaalienhallintaGUI gui = new EduskuntavaalienhallintaGUI(hallinta, this);
+        SwingUtilities.invokeLater(gui);
+        gui.setVisible(true);
+    }
+    
+    public void avaaPresidentinvaalienHallintaGUI(Presidentinvaalienhallinta hallinta) {
+        this.setEnabled(false);
+        PresidentinvaalienhallintaGUI gui = new PresidentinvaalienhallintaGUI(hallinta, this);
+        SwingUtilities.invokeLater(gui);
+        gui.setVisible(true);
     }
     
     public void ilmoitaTulos(boolean onnistui, ArrayList<Integer> saadutAanet,
@@ -215,8 +226,37 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
         JOptionPane.showMessageDialog(rootPane, "Liikkeita ei ole enää jäljellä",
                 "Likkeitä ei ole enää jäljellä", JOptionPane.WARNING_MESSAGE);
     }
+    
     public void avaaOstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti) {
-        SwingUtilities.invokeLater(new OstoJaMyyntiGUI(ostoJaMyynti));
+        this.setEnabled(false);
+        OstoJaMyyntiGUI gui = new OstoJaMyyntiGUI(ostoJaMyynti, this);
+        SwingUtilities.invokeLater(gui);
+        gui.setVisible(true);
+    }
+    
+    public void avaaPutkakyselyGUI() {
+        this.setEnabled(false);
+        PutkakyselyGUI gui = new PutkakyselyGUI(peli, this);
+        SwingUtilities.invokeLater(gui);
+        gui.setVisible(true);
+    }
+    
+    public void pelaajaJoutuuPutkaan() {
+        JOptionPane.showMessageDialog(rootPane, "Jouduit putkaan 2 vuoron ajaksi",
+                "Jouduit putkaan", JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    public void pelaajaTippuuPelista() {
+        JOptionPane.showMessageDialog(rootPane,
+                        peli.getNykyinenPelaaja().getNimi() + " tippui pelista",
+                        "Pelaaja tippui pelista", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public void kaikkiHavisivat() {
+        JOptionPane.showMessageDialog(rootPane,
+                            "Peli päättyy koska pelaajia ei ole enää jäjlellä",
+                            "Peli päättyy", JOptionPane.WARNING_MESSAGE);
+                    this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

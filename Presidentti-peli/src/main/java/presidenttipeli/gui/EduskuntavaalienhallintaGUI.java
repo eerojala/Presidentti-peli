@@ -22,8 +22,6 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
     public EduskuntavaalienhallintaGUI(Eduskuntavaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
         this.peligui = peligui;
-        run();
-        this.setVisible(true);
     }
 
     @Override
@@ -61,6 +59,11 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                sulje(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -240,6 +243,7 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         boolean tulos;
         if (hallinta.riittaakoRahaaSuorittaaVaalit() == false) {
             JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän summan maksamiseen",
@@ -275,6 +279,10 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
         hallinta.maksa50000Vaaleista();
     }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setEnabled(true);
+    }//GEN-LAST:event_sulje
 
     /**
      * @param args the command line arguments

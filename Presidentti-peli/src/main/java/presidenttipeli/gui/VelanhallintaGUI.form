@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="sulje"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -80,7 +83,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="maksurahaPlus1000" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="hyvaksyTakaisinMaksu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hyvaksyTakaisinmaksu" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -94,15 +97,15 @@
                                           <Component id="pelaajanVelat" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="ottorahatMinus1000" min="-2" pref="61" max="-2" attributes="0"/>
+                                          <Component id="ottorahaMinus1000" min="-2" pref="61" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="ottorahaMinus100" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="ottorahaPlus100" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="ottorahatPlus1000" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ottorahaPlus1000" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="hyvaksyVelanOtto" min="-2" max="-2" attributes="0"/>
+                                          <Component id="hyvaksyVelanotto" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -129,12 +132,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ottorahatMinus1000" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ottorahaMinus1000" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ottorahaMinus100" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ottorahaPlus100" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ottorahatPlus1000" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ottorahaPlus1000" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ottorahat" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hyvaksyVelanOtto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hyvaksyVelanotto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ottorahaPlus100" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -144,7 +147,7 @@
                       <Component id="maksurahaMinus1000" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="maksurahaMinus100" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="maksurahaPlus100" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hyvaksyTakaisinMaksu" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hyvaksyTakaisinmaksu" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="maksurahaPlus1000" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -184,12 +187,12 @@
             <Property name="text" type="java.lang.String" value="Ota velkaa:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="ottorahatMinus1000">
+        <Component class="javax.swing.JButton" name="ottorahaMinus1000">
           <Properties>
             <Property name="text" type="java.lang.String" value="-1000"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ottorahatMinus1000ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ottorahaMinus1000ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ottorahaMinus100">
@@ -206,28 +209,20 @@
             <Property name="text" type="java.lang.String" value="00000"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="ottorahaPlus100">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="+100"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ottorahaPlus100ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="ottorahatPlus1000">
+        <Component class="javax.swing.JButton" name="ottorahaPlus1000">
           <Properties>
             <Property name="text" type="java.lang.String" value="+1000"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ottorahatPlus1000ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ottorahaPlus1000ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="hyvaksyVelanOtto">
+        <Component class="javax.swing.JButton" name="hyvaksyVelanotto">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hyvaksyVelanOttoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hyvaksyVelanottoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -276,12 +271,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maksurahaPlus1000ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="hyvaksyTakaisinMaksu">
+        <Component class="javax.swing.JButton" name="hyvaksyTakaisinmaksu">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hyvaksyTakaisinMaksuActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hyvaksyTakaisinmaksuActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="suljeButton">
@@ -302,6 +297,11 @@
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="peli.getNykyinenPelaaja().getNimi()" type="code"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="ottorahaPlus100">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="+100"/>
           </Properties>
         </Component>
       </SubComponents>

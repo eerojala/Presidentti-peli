@@ -21,8 +21,7 @@ public class AloitusGUI extends javax.swing.JFrame implements Runnable{
      * Creates new form AloitusGUI
      */
     public AloitusGUI() {
-        initComponents();
-        this.setVisible(true);
+
     }
 
     @Override
@@ -326,7 +325,7 @@ public class AloitusGUI extends javax.swing.JFrame implements Runnable{
                     JOptionPane.WARNING_MESSAGE);
         } else {
            KaikenLuoja luoja = new KaikenLuoja(nimet);
-           SwingUtilities.invokeLater(new PeliGUI(luoja.getPeli()));
+           PeliGUI peligui = new PeliGUI(luoja.getPeli());
            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

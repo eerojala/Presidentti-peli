@@ -128,17 +128,18 @@ public class Peli {
         } else if (ruutu.isVaaliruutu()) {
             return suoritaVaaliruutu(ruutu);
         } else if (ruutu.isPutkaruutu()) {
-
+            suoritaPutkaruutu();
+            return true;
         } else {
-
+            return true;
         }
-        return true;
     }
 
     private boolean suoritaVaaliruutu(Ruutu ruutu) {
         if (ruutu.getNumero() == 10) {
-            peligui.avaaEduskuntavaalienHallintaGUI(new Eduskuntavaalienhallinta(nykyinenPelaaja,
-                    vaalienjarjestaja, pankinjohtaja));
+            Eduskuntavaalienhallinta hallinta = new Eduskuntavaalienhallinta(nykyinenPelaaja,
+                    vaalienjarjestaja, pankinjohtaja);
+            peligui.avaaEduskuntavaalienHallintaGUI(hallinta);
         } else if (ruutu.getNumero() == 25) {
             if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
                 boolean tulos = vaalienjarjestaja.jarjestaPresidentinvaalit(80, nykyinenPelaaja);
@@ -150,7 +151,7 @@ public class Peli {
             if (hallinta.pystyykoPelaajaOsallistumaanVaaleihin() == false) {
                 peligui.varallisuusEiRiitaVaaleihin();
             } else {
-                SwingUtilities.invokeLater(new PresidentinvaalienhallintaGUI(hallinta, peligui));
+                peligui.avaaPresidentinvaalienHallintaGUI(hallinta);
             }
         }
         return true;
@@ -212,7 +213,11 @@ public class Peli {
         if (nykyisenPelaajanIndeksi == lauta.getNappulat().size() - 1) {
             nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
         } else {
-            nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi).getOmistaja();
+            if (nykyisenPelaajanIndeksi == lauta.getNappulat().size()) {
+                nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi - 1).getOmistaja();
+            } else {
+                nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi).getOmistaja();
+            }
         }
     }
 
@@ -237,16 +242,20 @@ public class Peli {
 
     private boolean suoritaRuutu16(Ruutu ruutu) {
         OstoJaMyynti ostoJaMyynti;
+        naytaKortti(ruutu.getNumero());
         if (suoritaRuudunTapahtumat(ruutu) == false) {
             return false;
+        } else if (nykyinenPelaaja.getNappula().getSijainti().getNumero() == 16) {
+            // jos tulee tapahtumakortti joka siirtää pelaajan muualle niin
+            // pelaaja ei voi enää ostaa tai myydä omistuskirjojaan
+            int silmaluku = heitaNoppaa();
+            boolean tarjous = false;
+            if (silmaluku == 6) {
+                tarjous = true;
+            }
+            ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, tarjous);
+            peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         }
-        int silmaluku = heitaNoppaa();
-        boolean tarjous = false;
-        if (silmaluku == 6) {
-            tarjous = true;
-        }
-        ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, tarjous);
-        peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         return true;
     }
 
@@ -257,9 +266,26 @@ public class Peli {
                 lauta.getLiikkeet().peek(), lauta, ruutu16Tarjous);
         return ostojamyynti;
     }
-    
+
     public boolean onkoPinossaLiikkeita() {
         return !lauta.getLiikkeet().isEmpty();
     }
 
+    private void suoritaPutkaruutu() {
+        if (nykyinenPelaaja.getRahat() >= 4000) {
+            peligui.avaaPutkakyselyGUI();
+        } else {
+            peligui.pelaajaJoutuuPutkaan();
+        }
+    }
+
+    public void yritaSuorittaaTapahtumaaToisenKerran() {
+        this.naytaKortti(nykyinenPelaaja.getNappula().getSijainti().getNumero());
+        if (suoritaRuudunTapahtumat() == false) {
+            peligui.pelaajaTippuuPelista();
+            if (tiputaPelaajaPelista() == true) {
+                peligui.kaikkiHavisivat();
+            }
+        }
+    }
 }

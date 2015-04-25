@@ -18,10 +18,9 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
     /**
      * Creates new form PelaajanStatusGUI
      */
-    public PelaajanStatusGUI(PelaajanStatus status) {
+    public PelaajanStatusGUI(PelaajanStatus status, JFrame frame) {
         this.status = status;
-        run();
-        this.setVisible(true);
+        this.frame = frame;
     }
 
     @Override
@@ -68,6 +67,11 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
         jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                sulje(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -279,6 +283,10 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        frame.setEnabled(true);
+    }//GEN-LAST:event_sulje
+
     /**
      * @param args the command line arguments
      */
@@ -314,4 +322,5 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel saaLiikkua;
     // End of variables declaration//GEN-END:variables
     private PelaajanStatus status;
+    private JFrame frame;
 }

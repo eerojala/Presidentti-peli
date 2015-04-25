@@ -2,6 +2,7 @@ package presidenttipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import presidenttipeli.domain.Ruutu;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
@@ -51,12 +53,18 @@ public class PeliActionListener implements ActionListener {
     }
 
     private void statusButtonPainettu() {
+        frame.setEnabled(false);
         PelaajanStatus status = new PelaajanStatus(peli.getNykyinenPelaaja());
-        SwingUtilities.invokeLater(new PelaajanStatusGUI(status));
+        PelaajanStatusGUI gui = new PelaajanStatusGUI(status, frame);
+        SwingUtilities.invokeLater(gui);
+        gui.setVisible(true);
     }
 
     private void velanhallintaButtonPainettu() {
-        SwingUtilities.invokeLater(new VelanhallintaGUI(peli));
+        frame.setEnabled(false);
+        VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, frame, false);
+        SwingUtilities.invokeLater(velanhallintagui);
+        velanhallintagui.setVisible(true);
     }
 
     private void noppaButtonPainettu() {
@@ -97,18 +105,10 @@ public class PeliActionListener implements ActionListener {
 
     private void suoritaTapahtuma() {
         if (peli.suoritaRuudunTapahtumat() == false) {
-            SwingUtilities.invokeLater(new VelanhallintaGUI(peli));
-            if (peli.suoritaRuudunTapahtumat() == false) {
-                JOptionPane.showMessageDialog(rootPane,
-                        peli.getNykyinenPelaaja().getNimi() + " tippui pelista",
-                        "Pelaaja tippui pelista", JOptionPane.WARNING_MESSAGE);
-                if (peli.tiputaPelaajaPelista() == true) {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "Peli päättyy koska pelaajia ei ole enää jäjlellä",
-                            "Peli päättyy", JOptionPane.WARNING_MESSAGE);
-                    frame.dispose();
-                }
-            }
+            frame.setEnabled(false);
+            VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, frame, true);
+            SwingUtilities.invokeLater(velanhallintagui);
+            velanhallintagui.setVisible(true);
         }
 
     }

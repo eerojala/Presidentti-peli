@@ -4,9 +4,9 @@ import presidenttipeli.logiikka.OstoJaMyynti;
 
 public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
 
-    public OstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti) {
+    public OstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti, PeliGUI peligui) {
         this.ostoJaMyynti = ostoJaMyynti;
-        run();
+        this.peligui = peligui;
     }
 
     @Override
@@ -14,7 +14,6 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
         initComponents();
         kustomoiGUI();
         asetaNappuloilleActionListener();
-        this.setVisible(true);
     }
 
     private void kustomoiGUI() {
@@ -168,6 +167,11 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
         mokinNimi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                sulje(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -347,6 +351,10 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setEnabled(true);
+    }//GEN-LAST:event_sulje
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -378,4 +386,5 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
     // End of variables declaration//GEN-END:variables
     private OstoJaMyynti ostoJaMyynti;
     private OstoJaMyyntiActionListener actionlistener;
+    private PeliGUI peligui;
 }
