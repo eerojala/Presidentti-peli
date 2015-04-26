@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
+import presidenttipeli.domain.Tutkinto;
 
 public class TutkintoonVaikuttavaTapahtumaTest {
     Pelaaja pelaaja;
@@ -54,6 +55,13 @@ public class TutkintoonVaikuttavaTapahtumaTest {
     @Test
     public void yleissivistavanTutkinnonAntaminenOnnistuu() {
         testi3.suoritaTapahtuma(pelaaja);
+        assertEquals(true, pelaaja.getTutkinto().isYleissivistava());
+    }
+    
+    @Test
+    public void eiAnnaNormaaliaTutkintoaJosPelaajallaOnYleissivistävaTutkinto() {
+        pelaaja.setTutkinto(new Tutkinto(true));
+        testi1.suoritaTapahtuma(pelaaja);
         assertEquals(true, pelaaja.getTutkinto().isYleissivistava());
     }
 }

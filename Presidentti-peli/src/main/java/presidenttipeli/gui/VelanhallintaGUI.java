@@ -342,6 +342,7 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_hyvaksyTakaisinmaksuActionPerformed
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        frame.setVisible(true);
         frame.setEnabled(true);
         if (pakkoOttaaVelkaa) {
             peli.yritaSuorittaaTapahtumaaToisenKerran();

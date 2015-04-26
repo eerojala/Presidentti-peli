@@ -284,6 +284,7 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        frame.setVisible(true);
         frame.setEnabled(true);
     }//GEN-LAST:event_sulje
 

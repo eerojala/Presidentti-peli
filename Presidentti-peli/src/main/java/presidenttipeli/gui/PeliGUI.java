@@ -176,6 +176,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     
     public void avaaEduskuntavaalienHallintaGUI(Eduskuntavaalienhallinta hallinta) {
         this.setEnabled(false);
+        this.setVisible(false);
         EduskuntavaalienhallintaGUI gui = new EduskuntavaalienhallintaGUI(hallinta, this);
         SwingUtilities.invokeLater(gui);
         gui.setVisible(true);
@@ -183,6 +184,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     
     public void avaaPresidentinvaalienHallintaGUI(Presidentinvaalienhallinta hallinta) {
         this.setEnabled(false);
+        this.setVisible(false);
         PresidentinvaalienhallintaGUI gui = new PresidentinvaalienhallintaGUI(hallinta, this);
         SwingUtilities.invokeLater(gui);
         gui.setVisible(true);
@@ -229,6 +231,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     
     public void avaaOstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti) {
         this.setEnabled(false);
+        this.setVisible(false);
         OstoJaMyyntiGUI gui = new OstoJaMyyntiGUI(ostoJaMyynti, this);
         SwingUtilities.invokeLater(gui);
         gui.setVisible(true);
@@ -236,6 +239,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     
     public void avaaPutkakyselyGUI() {
         this.setEnabled(false);
+        this.setVisible(false);
         PutkakyselyGUI gui = new PutkakyselyGUI(peli, this);
         SwingUtilities.invokeLater(gui);
         gui.setVisible(true);
@@ -257,6 +261,23 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
                             "Peli päättyy koska pelaajia ei ole enää jäjlellä",
                             "Peli päättyy", JOptionPane.WARNING_MESSAGE);
                     this.dispose();
+    }
+    
+    public void avaaRuutu25KyselyGUI() {
+        Ruutu25KyselyGUI kysely = new Ruutu25KyselyGUI(this, peli);
+        this.setEnabled(false);
+        this.setVisible(false);
+        SwingUtilities.invokeLater(kysely);
+        kysely.setVisible(true);
+    }
+    
+    public void uusiKierros() {
+        peli.getPankinjohtaja().annaPelaajalleKuukaudenTuotot(peli.getNykyinenPelaaja());
+        JOptionPane.showMessageDialog(rootPane, peli.getNykyinenPelaaja()
+                + " aloitti uuden kierroksen.\n" + "Kuukauden tuotot: "
+                + peli.getPankinjohtaja().getKuukaudenTuotot() + " mk\n"
+                + "Velka: " + peli.getNykyinenPelaaja().getVelkaa(), "Uusi kierros",
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

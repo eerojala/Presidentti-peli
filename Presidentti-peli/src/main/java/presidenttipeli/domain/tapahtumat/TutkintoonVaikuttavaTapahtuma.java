@@ -32,7 +32,13 @@ public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma {
             if (yleissivistava) {
                 pelaaja.setTutkinto(new Tutkinto(true));
             } else {
-                pelaaja.setTutkinto(new Tutkinto(false));
+                if (pelaaja.getTutkinto() == null) {
+                    pelaaja.setTutkinto(new Tutkinto(false));
+                } else {
+                    if (!pelaaja.getTutkinto().isYleissivistava()) {
+                        pelaaja.setTutkinto(new Tutkinto(false));
+                    }
+                }
             }
         } else {
             pelaaja.setTutkinto(null);

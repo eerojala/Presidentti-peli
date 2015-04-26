@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.gui;
 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import presidenttipeli.domain.Pelaaja;
-import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
-import presidenttipeli.logiikka.Pankinjohtaja;
-import presidenttipeli.logiikka.Vaalienjarjestaja;
 
-/**
- *
- * @author Eero
- */
+import javax.swing.JOptionPane;
+import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
+
+
 public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements Runnable {
 
     public EduskuntavaalienhallintaGUI(Eduskuntavaalienhallinta hallinta, PeliGUI peligui) {
@@ -281,12 +270,10 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setVisible(true);
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

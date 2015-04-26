@@ -128,6 +128,8 @@ public class OstoJaMyynti {
     public boolean riittaakoRahatMokkiin() {
         if (paallimmainenMokki == null) {
             return false;
+        } else if (ruutu20) {
+            return pelaaja.getRahat() >= paallimmainenMokki.getArvo() / 10;
         }
         return pelaaja.getRahat() >= paallimmainenMokki.getArvo();
     }

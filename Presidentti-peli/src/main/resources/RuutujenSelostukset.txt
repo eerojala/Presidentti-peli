@@ -56,7 +56,7 @@ Jos palkkasi on
 Yli 4000 mk maksa 1500,-
 
 12. PERJANTAI
-Jos sinulla on puoluuen jäsenkirja, valitse johtaja-ammatti
+Jos sinulla on puoluuen jäsenkirja, ota johtaja-ammatti
 Muutoin nosta tapahtumakortti
 
 13. LAUANTAI
@@ -101,7 +101,7 @@ Nosta vakuutussumma pankista
 
 22. MAANANTAI
 Sinut koulutetaan uusiin tehtäviin
-Valitse johtaja-ammatti
+Ota johtaja-ammatti
 
 23. TIISTAI
 VUOKRAN KOROTUS

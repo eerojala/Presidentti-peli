@@ -216,6 +216,7 @@ public class RuutujenLuoja extends Luoja {
 
     private void luoPutkaruutu(int numero, int x, int y) {
         Ruutu ruutu = new Ruutu(numero, x, y);
+        ruutu.setPutkaruutu(true);
         asetaRuudulleTapahtumat(ruutu);
     }
 

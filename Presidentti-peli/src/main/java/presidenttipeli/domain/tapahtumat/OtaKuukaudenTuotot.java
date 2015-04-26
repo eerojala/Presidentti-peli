@@ -23,7 +23,7 @@ public class OtaKuukaudenTuotot implements Tapahtuma {
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         kuukaudenTuotot = 0;
         kuukaudenTuotot += pelaaja.getAmmatti().getPalkka();
-        if (pelaaja.getTutkinto() != null) {
+        if (pelaaja.getTutkinto() != null && !pelaaja.getAmmatti().getNimi().equals("Työtön")) {
             kuukaudenTuotot += 1500;
         }
         if (pelaaja.isOikeutettuTuottoon()) {

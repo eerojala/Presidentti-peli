@@ -138,6 +138,7 @@ public class PutkakyselyGUI extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_odotaButtonActionPerformed
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setVisible(true);
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
 

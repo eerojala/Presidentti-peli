@@ -54,7 +54,7 @@ public class OstoJaMyyntiActionListener implements ActionListener{
     } 
     
     private void myyMokki() {
-        ostoJaMyynti.myyMokki(pelaajanLiikkeet.getSelectedIndex());
+        ostoJaMyynti.myyMokki(pelaajanMokit.getSelectedIndex());
     }
     
     private void ostaLiike() {

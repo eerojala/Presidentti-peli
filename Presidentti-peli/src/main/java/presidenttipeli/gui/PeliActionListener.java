@@ -25,9 +25,9 @@ public class PeliActionListener implements ActionListener {
     private JButton velanhallintaButton;
     private Peli peli;
     private JRootPane rootPane;
-    private JFrame frame;
+    private PeliGUI peligui;
 
-    public PeliActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane, JFrame frame) {
+    public PeliActionListener(JButton noppaButton, JTextArea pelinSyote, JPanel piirtoalusta, JButton seuraavaVuoroButton, JButton statusButton, JButton velanhallintaButton, Peli peli, JRootPane rootPane, PeliGUI frame) {
         this.noppaButton = noppaButton;
         this.pelinSyote = pelinSyote;
         this.piirtoalusta = piirtoalusta;
@@ -36,7 +36,7 @@ public class PeliActionListener implements ActionListener {
         this.velanhallintaButton = velanhallintaButton;
         this.peli = peli;
         this.rootPane = rootPane;
-        this.frame = frame;
+        this.peligui = frame;
     }
 
     @Override
@@ -53,16 +53,18 @@ public class PeliActionListener implements ActionListener {
     }
 
     private void statusButtonPainettu() {
-        frame.setEnabled(false);
+        peligui.setVisible(false);
+        peligui.setEnabled(false);
         PelaajanStatus status = new PelaajanStatus(peli.getNykyinenPelaaja());
-        PelaajanStatusGUI gui = new PelaajanStatusGUI(status, frame);
+        PelaajanStatusGUI gui = new PelaajanStatusGUI(status, peligui);
         SwingUtilities.invokeLater(gui);
         gui.setVisible(true);
     }
 
     private void velanhallintaButtonPainettu() {
-        frame.setEnabled(false);
-        VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, frame, false);
+        peligui.setVisible(false);
+        peligui.setEnabled(false);
+        VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, peligui, false);
         SwingUtilities.invokeLater(velanhallintagui);
         velanhallintagui.setVisible(true);
     }
@@ -75,7 +77,7 @@ public class PeliActionListener implements ActionListener {
         piirtoalusta.repaint();
         if (peli.getLiikuttelija().liikutaNappulaa(peli.getNykyinenPelaaja().getNappula(),
                 silmaluku) == true) {
-            uusiKierros();
+            peligui.uusiKierros();
         }
         naytaSelostus();
         suoritaTapahtuma();
@@ -88,15 +90,6 @@ public class PeliActionListener implements ActionListener {
         this.noppaButton.setEnabled(true);
     }
 
-    private void uusiKierros() {
-        peli.getPankinjohtaja().annaPelaajalleKuukaudenTuotot(peli.getNykyinenPelaaja());
-        JOptionPane.showMessageDialog(rootPane, peli.getNykyinenPelaaja()
-                + " aloitti uuden kierroksen.\n" + "Kuukauden tuotot: "
-                + peli.getPankinjohtaja().getKuukaudenTuotot() + " mk\n"
-                + "Velka: " + peli.getNykyinenPelaaja().getVelkaa(), "Uusi kierros",
-                JOptionPane.PLAIN_MESSAGE);
-    }
-
     private void naytaSelostus() {
         Ruutu ruutu = peli.getNykyinenPelaaja().getNappula().getSijainti();
         JOptionPane.showMessageDialog(rootPane, ruutu.getSeloste(), "Ruutu "
@@ -105,8 +98,9 @@ public class PeliActionListener implements ActionListener {
 
     private void suoritaTapahtuma() {
         if (peli.suoritaRuudunTapahtumat() == false) {
-            frame.setEnabled(false);
-            VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, frame, true);
+            peligui.setVisible(false);
+            peligui.setEnabled(false);
+            VelanhallintaGUI velanhallintagui = new VelanhallintaGUI(peli, peligui, true);
             SwingUtilities.invokeLater(velanhallintagui);
             velanhallintagui.setVisible(true);
         }

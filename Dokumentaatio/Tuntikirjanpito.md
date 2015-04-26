@@ -26,3 +26,4 @@
 * 23.4.2015 3 tuntia, OstoJaMyyntiGUIn koodaus aloitettu
 * 24.4.2015 7 tuntia, OstoJaMyyntiGUI valmis, huomioitu jos ei laudalla ei mökkejä tai liikkeitä. Peli melkein valmis.
 * 25.4.2015 5 tuntia, Pelin toiminnallisuus valmis. Tarvitsee vielä testata onko peli käyttökelpoinen.
+* 26.4.2015 4 tuntia, Pieniä sääntövirheitä ja GUIkoodia korjailtu, pelin pitäisi olla nyt pelikelpoinen.

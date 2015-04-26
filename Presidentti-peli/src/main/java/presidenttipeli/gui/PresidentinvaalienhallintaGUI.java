@@ -304,6 +304,7 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setVisible(true);
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
 

@@ -73,7 +73,7 @@
                                   <Component id="mokinNimi" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="mokkiArvoJLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mokkiOstohintaJLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="mokinArvo" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -94,7 +94,7 @@
                                   <Component id="liikkeenTuotto" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="liikeArvoJLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="liikeOstohintaJLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="liikkeenArvo" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -144,9 +144,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="mokkiArvoJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="mokkiOstohintaJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="mokinArvo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="liikeArvoJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="liikeOstohintaJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="liikkeenArvo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -216,9 +216,9 @@
             <Property name="text" type="java.lang.String" value="Nimi:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="mokkiArvoJLabel">
+        <Component class="javax.swing.JLabel" name="mokkiOstohintaJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arvo:"/>
+            <Property name="text" type="java.lang.String" value="Ostohinta"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="mokinArvo">
@@ -236,9 +236,9 @@
             <Property name="text" type="java.lang.String" value="Nimi:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="liikeArvoJLabel">
+        <Component class="javax.swing.JLabel" name="liikeOstohintaJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arvo:"/>
+            <Property name="text" type="java.lang.String" value="Ostohinta"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="liikkeenArvo">

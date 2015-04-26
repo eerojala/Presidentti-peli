@@ -31,27 +31,27 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
         if (ostoJaMyynti.getPelaajanMokit().length == 0) {
             eiVoiMyydaMokkeja();
         }
-        
+
         if (!ostoJaMyynti.riittaakoRahatMokkiin()) {
             eiVoiOstaaMokkia();
         }
-        
+
         if (!ostoJaMyynti.riittaakoRahatLiikkeeseen()) {
             eiVoiOstaaLiiketta();
         }
-        
+
         if (ostoJaMyynti.isRuutu16Tarjous()) {
             myyMokki.setText("Myy 2x hinnalla");
             myyLiike.setText("Myy 2x hinnalla");
         }
-        
+
         if (ostoJaMyynti.getPaallimmainenMokki() == null) {
             eiMokkejaJaljella();
             eiVoiOstaaMokkia();
         } else {
             asetaMokinTiedot();
         }
-        
+
         if (ostoJaMyynti.getPaallimmainenLiike() == null) {
             eiLiikkeitaJaljella();
             eiVoiOstaaLiiketta();
@@ -59,10 +59,10 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
             asetaLiikkeenTiedot();
         }
     }
-    
+
     private void asetaNappuloilleActionListener() {
         actionlistener = new OstoJaMyyntiActionListener(myyLiike, myyMokki, okButton,
-        ostaLiike, ostaMokki, pelaajanLiikkeet, pelaajanMokit, this, ostoJaMyynti);
+                ostaLiike, ostaMokki, pelaajanLiikkeet, pelaajanMokit, this, ostoJaMyynti);
         myyLiike.addActionListener(actionlistener);
         myyMokki.addActionListener(actionlistener);
         okButton.addActionListener(actionlistener);
@@ -90,44 +90,48 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
     private void eiVoiOstaaLiiketta() {
         liikeJLabel.setEnabled(false);
         liikeNimiJLabel.setEnabled(false);
-        liikeArvoJLabel.setEnabled(false);
+        liikeOstohintaJLabel.setEnabled(false);
         liikeTuottoJLabel.setEnabled(false);
         ostaLiike.setEnabled(false);
         liikkeenArvo.setEnabled(false);
         liikkeenNimi.setEnabled(false);
         liikkeenTuotto.setEnabled(false);
     }
-    
+
     private void eiVoiOstaaMokkia() {
         mokkiJLabel.setEnabled(false);
         mokkiNimiJLabel.setEnabled(false);
-        mokkiArvoJLabel.setEnabled(false);
+        mokkiOstohintaJLabel.setEnabled(false);
         ostaMokki.setEnabled(false);
         mokinNimi.setEnabled(false);
         mokinArvo.setEnabled(false);
     }
-    
+
     private void eiMokkejaJaljella() {
         mokinNimi.setText("Ei mökkejä jäljellä");
         mokinArvo.setText("Ei mökkejä jäljellä");
     }
-    
+
     private void eiLiikkeitaJaljella() {
         liikkeenNimi.setText("Ei liikkeita jäljellä");
         liikkeenArvo.setText("Ei liikkeita jäljellä");
         liikkeenTuotto.setText("Ei liikkeita jäljellä");
     }
-    
+
     private void asetaMokinTiedot() {
         mokinNimi.setText(ostoJaMyynti.getPaallimmainenMokki().getNimi());
-        mokinArvo.setText(ostoJaMyynti.getPaallimmainenLiike().getArvo() + " mk");
+        if (ostoJaMyynti.isRuutu20()) {
+            mokinArvo.setText(ostoJaMyynti.getPaallimmainenMokki().getArvo() / 10 + " mk");
+        } else {
+            mokinArvo.setText(ostoJaMyynti.getPaallimmainenMokki().getArvo() + " mk");
+        }
     }
-    
+
     private void asetaLiikkeenTiedot() {
         liikkeenNimi.setText(ostoJaMyynti.getPaallimmainenLiike().getTyyppi() + " "
-        + ostoJaMyynti.getPaallimmainenLiike().getNimi());
+                + ostoJaMyynti.getPaallimmainenLiike().getNimi());
         liikkeenArvo.setText(ostoJaMyynti.getPaallimmainenLiike().getArvo() + " mk");
-        liikkeenTuotto.setText(ostoJaMyynti.getPaallimmainenLiike().getArvo() + " mk/kk");
+        liikkeenTuotto.setText(ostoJaMyynti.getPaallimmainenLiike().getTuotto() + " mk/kk");
     }
 
     /**
@@ -146,11 +150,11 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
         pelaajanRahat = new javax.swing.JLabel();
         mokkiJLabel = new javax.swing.JLabel();
         mokkiNimiJLabel = new javax.swing.JLabel();
-        mokkiArvoJLabel = new javax.swing.JLabel();
+        mokkiOstohintaJLabel = new javax.swing.JLabel();
         mokinArvo = new javax.swing.JLabel();
         liikeJLabel = new javax.swing.JLabel();
         liikeNimiJLabel = new javax.swing.JLabel();
-        liikeArvoJLabel = new javax.swing.JLabel();
+        liikeOstohintaJLabel = new javax.swing.JLabel();
         liikkeenArvo = new javax.swing.JLabel();
         liikeTuottoJLabel = new javax.swing.JLabel();
         liikkeenTuotto = new javax.swing.JLabel();
@@ -187,7 +191,7 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
 
         mokkiNimiJLabel.setText("Nimi:");
 
-        mokkiArvoJLabel.setText("Arvo:");
+        mokkiOstohintaJLabel.setText("Ostohinta");
 
         mokinArvo.setText("Arvo");
 
@@ -195,7 +199,7 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
 
         liikeNimiJLabel.setText("Nimi:");
 
-        liikeArvoJLabel.setText("Arvo:");
+        liikeOstohintaJLabel.setText("Ostohinta");
 
         liikkeenArvo.setText("Arvo");
 
@@ -246,7 +250,7 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(mokinNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(mokkiArvoJLabel)
+                                .addComponent(mokkiOstohintaJLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(mokinArvo))
                             .addComponent(ostaMokki)
@@ -264,7 +268,7 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(liikkeenTuotto))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(liikeArvoJLabel)
+                                .addComponent(liikeOstohintaJLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(liikkeenArvo))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -302,9 +306,9 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
                     .addComponent(mokinNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mokkiArvoJLabel)
+                    .addComponent(mokkiOstohintaJLabel)
                     .addComponent(mokinArvo)
-                    .addComponent(liikeArvoJLabel)
+                    .addComponent(liikeOstohintaJLabel)
                     .addComponent(liikkeenArvo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -352,6 +356,7 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sulje(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_sulje
+        peligui.setVisible(true);
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
 
@@ -360,18 +365,18 @@ public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel liikeArvoJLabel;
     private javax.swing.JLabel liikeJLabel;
     private javax.swing.JLabel liikeNimiJLabel;
+    private javax.swing.JLabel liikeOstohintaJLabel;
     private javax.swing.JLabel liikeTuottoJLabel;
     private javax.swing.JLabel liikkeenArvo;
     private javax.swing.JTextField liikkeenNimi;
     private javax.swing.JLabel liikkeenTuotto;
     private javax.swing.JLabel mokinArvo;
     private javax.swing.JTextField mokinNimi;
-    private javax.swing.JLabel mokkiArvoJLabel;
     private javax.swing.JLabel mokkiJLabel;
     private javax.swing.JLabel mokkiNimiJLabel;
+    private javax.swing.JLabel mokkiOstohintaJLabel;
     private javax.swing.JButton myyLiike;
     private javax.swing.JLabel myyLiikeJLabel;
     private javax.swing.JButton myyMokki;

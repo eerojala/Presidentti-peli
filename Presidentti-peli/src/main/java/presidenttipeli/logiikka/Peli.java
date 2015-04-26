@@ -1,20 +1,12 @@
 package presidenttipeli.logiikka;
 
-import java.awt.Component;
 import java.util.Collections;
 import java.util.Random;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
-import presidenttipeli.domain.Tapahtumakortti;
-import presidenttipeli.domain.tapahtumat.OtaMokkikortti;
-import presidenttipeli.domain.tapahtumat.RahaanVaikuttavaTapahtuma;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import presidenttipeli.gui.PeliGUI;
-import presidenttipeli.gui.PresidentinvaalienhallintaGUI;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 public class Peli {
@@ -27,7 +19,6 @@ public class Peli {
     private Vaalienjarjestaja vaalienjarjestaja;
     private Putka putka;
     private Pelaaja nykyinenPelaaja;
-    private int viimeisinSilmaluku;
     private int nykyisenPelaajanIndeksi;
     private PeliGUI peligui; // haters will haters
 
@@ -42,7 +33,6 @@ public class Peli {
         arvoJarjestys();
         nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
         nykyisenPelaajanIndeksi = 0;
-        viimeisinSilmaluku = 0;
     }
 
     private void arvoJarjestys() {
@@ -59,10 +49,6 @@ public class Peli {
 
     public TapahtumienLuoja getTapahtumienluoja() {
         return tapahtumienluoja;
-    }
-
-    public int getViimeisinSilmaluku() {
-        return viimeisinSilmaluku;
     }
 
     public Pankinjohtaja getPankinjohtaja() {
@@ -113,10 +99,23 @@ public class Peli {
     }
 
     private boolean suoritaRuudunTapahtumat(Ruutu ruutu) {
+        Ruutu vanha = nykyinenPelaaja.getNappula().getSijainti();
         for (Tapahtuma tapahtuma : ruutu.getTapahtumat()) {
             if (tapahtuma.suoritaTapahtuma(nykyinenPelaaja) == false) {
                 return false;
             }
+        }
+
+        if (ruutu.getNumero() == 22 || (ruutu.getNumero() == 12 && nykyinenPelaaja.isPuolueenJasen())) {
+            peligui.naytaKortinSisalto(nykyinenPelaaja.getAmmatti().toString());
+        }
+        
+        if (nykyinenPelaaja.getNappula().getSijainti().getNumero() == 1) {
+            peligui.uusiKierros();
+        }
+        
+        if (!vanha.equals(nykyinenPelaaja.getNappula().getSijainti())) {
+            suoritaRuudunTapahtumat();
         }
         return true;
     }
@@ -142,8 +141,7 @@ public class Peli {
             peligui.avaaEduskuntavaalienHallintaGUI(hallinta);
         } else if (ruutu.getNumero() == 25) {
             if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
-                boolean tulos = vaalienjarjestaja.jarjestaPresidentinvaalit(80, nykyinenPelaaja);
-                peligui.ilmoitaTulos(tulos, vaalienjarjestaja.getSaadutAanet(), vaalienjarjestaja.getSaadutAanetSummattuna(), 80);
+                peligui.avaaRuutu25KyselyGUI();
             }
         } else if (ruutu.getNumero() == 30) {
             Presidentinvaalienhallinta hallinta = new Presidentinvaalienhallinta(nykyinenPelaaja,
@@ -160,12 +158,11 @@ public class Peli {
     private void naytaKortti(int ruudunNro) {
         String sisalto = "";
 
-        if (ruudunNro == 12 || ruudunNro == 16 || ruudunNro == 28) {
+        if ((ruudunNro == 12 && !nykyinenPelaaja.isPuolueenJasen()) || ruudunNro == 16
+                || ruudunNro == 28) {
             sisalto = lauta.getTapahtumakortit().peek().getSeloste();
         } else if (ruudunNro == 7) {
             sisalto = lauta.getSattumaAmmatit().peek().toString();
-        } else if (ruudunNro == 22) {
-            sisalto = lauta.getJohtajaAmmatit().get(0).toString();
         } else if (ruudunNro == 19) {
             sisalto = lauta.getLiikkeet().peek().toString();
         } else {
@@ -228,7 +225,7 @@ public class Peli {
 
     private boolean suoritaOstoJaMyyntiruutu(Ruutu ruutu) {
         OstoJaMyynti ostoJaMyynti;
-        if (ruutu.getNumero() == 1) {
+        if (ruutu.getNumero() == 1) { 
             ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, false);
             peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         } else if (ruutu.getNumero() == 16) {
@@ -280,7 +277,7 @@ public class Peli {
     }
 
     public void yritaSuorittaaTapahtumaaToisenKerran() {
-        this.naytaKortti(nykyinenPelaaja.getNappula().getSijainti().getNumero());
+        naytaKortti(nykyinenPelaaja.getNappula().getSijainti().getNumero());
         if (suoritaRuudunTapahtumat() == false) {
             peligui.pelaajaTippuuPelista();
             if (tiputaPelaajaPelista() == true) {

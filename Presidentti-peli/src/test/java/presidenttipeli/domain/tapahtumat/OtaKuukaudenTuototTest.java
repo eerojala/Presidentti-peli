@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Liike;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Tutkinto;
@@ -57,6 +58,7 @@ public class OtaKuukaudenTuototTest {
     @Test
     public void ottaaTutkinnonMukaan() {
         pelaaja.setTutkinto(new Tutkinto(false));
+        pelaaja.setAmmatti(new Ammatti("Testi", 1000, false, false, false));
         testi.suoritaTapahtuma(pelaaja);
         assertEquals(rahaViimekuussa + pelaaja.getAmmatti().getPalkka() + 1500, pelaaja.getRahat());
     }
@@ -83,5 +85,12 @@ public class OtaKuukaudenTuototTest {
         pelaaja.setOikeutettuTuottoon(false);
         testi.suoritaTapahtuma(pelaaja);
         assertEquals(rahaViimekuussa + pelaaja.getAmmatti().getPalkka(), pelaaja.getRahat());
+    }
+    
+    @Test
+    public void eiLaskeTutkintoaMukaanJosTyoton() {
+        pelaaja.setTutkinto(new Tutkinto(false));
+        testi.suoritaTapahtuma(pelaaja);
+        assertEquals(rahaViimekuussa + 1000, pelaaja.getRahat());
     }
 }
