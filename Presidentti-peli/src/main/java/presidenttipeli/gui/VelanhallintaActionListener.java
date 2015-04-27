@@ -12,6 +12,9 @@ import presidenttipeli.logiikka.Pankinjohtaja;
 import presidenttipeli.logiikka.Peli;
 import presidenttipeli.logiikka.Velkalaskuri;
 
+/**
+ * VelanhallintaGUIn nappuloille tarkoitettu ActionListener-luokka.
+ */
 public class VelanhallintaActionListener implements ActionListener {
 
     private JButton hyvaksyTakaisinmaksu;
@@ -84,7 +87,7 @@ public class VelanhallintaActionListener implements ActionListener {
             hyvaksyTakaisinmaksuPainettu();
         }
     }
-    
+
     private void hyvaksyTakaisinmaksuPainettu() {
         if (pankinjohtaja.vahennaVelkaa(peli.getNykyinenPelaaja(),
                 Integer.parseInt(maksurahat.getText())) == false) {
@@ -98,7 +101,7 @@ public class VelanhallintaActionListener implements ActionListener {
         paivitaPelaajanRahat();
         paivitaPelaajanVelat();
     }
-    
+
     private void hyvaksyVelanottoPainettu() {
         if (pankinjohtaja.kasvataVelkaa(peli.getNykyinenPelaaja(),
                 Integer.parseInt(ottorahat.getText())) == false) {

@@ -1,13 +1,13 @@
-
 package presidenttipeli.gui;
-
 
 import javax.swing.JOptionPane;
 import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
 
-
 public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements Runnable {
 
+    /**
+     * GUI joka kyselee paljonko rahaa pelaaja haluaa käyttää eduskuntavaaleihin
+     */
     public EduskuntavaalienhallintaGUI(Eduskuntavaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
         this.peligui = peligui;
@@ -232,7 +232,7 @@ public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements R
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         boolean tulos;
         if (hallinta.riittaakoRahaaSuorittaaVaalit() == false) {
             JOptionPane.showMessageDialog(rootPane, "Rahasi eivät riitä tämän summan maksamiseen",

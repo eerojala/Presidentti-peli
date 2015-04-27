@@ -1,13 +1,14 @@
-
 package presidenttipeli.logiikka;
 
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelilauta;
-import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
-
+/**
+ * Logiikkaluoka joka liikuttaa pelaajien nappuloita ympäri lautaa.
+ */
 public class Liikuttelija {
+
     private Pelilauta lauta;
     private TapahtumienLuoja luoja;
 
@@ -15,7 +16,15 @@ public class Liikuttelija {
         this.lauta = lauta;
         this.luoja = luoja;
     }
-    
+
+    /**
+     * Liikuttaa nappulaa annetun luvun verran askelia eteenpäin laudalla.
+     *
+     * @param nappula Nappula jota liikutetaan.
+     * @param silmaluku Kuinka monta askelta nappulaa liikutetaan
+     *
+     * @return Siirtyikö nappula seuraavalle kierrokselle.
+     */
     public boolean liikutaNappulaa(Nappula nappula, int silmaluku) {
         int nykyinenSijainti = nappula.getSijainti().getNumero();
         boolean uusiKierros = false;

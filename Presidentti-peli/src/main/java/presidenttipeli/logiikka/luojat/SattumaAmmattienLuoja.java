@@ -17,14 +17,9 @@ public class SattumaAmmattienLuoja extends Luoja {
 
     @Override
     public void luo() {
-        classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("tekstit/SattumaAmmatit.txt").getFile());
-        try {
-            lukija = new Scanner(tiedosto, "UTF-8");
-            luoAmmatit(lukija);
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui");
-        }
+        asetaScannerilleTiedosto("tekstit/SattumaAmmatit.txt",
+                SattumaAmmattienLuoja.class.getClassLoader());
+        luoAmmatit(lukija);
     }
 
     private void luoAmmatit(Scanner lukija) {

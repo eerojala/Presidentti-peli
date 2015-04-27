@@ -1,9 +1,7 @@
 package presidenttipeli.domain.tapahtumat;
 
-import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
-import presidenttipeli.domain.Ruutu;
 
 /**
  *  Tapahtumaluokka joka siirtää nappulan uuteen sijaintiin.

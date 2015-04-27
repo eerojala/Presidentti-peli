@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presidenttipeli.gui;
 
 import presidenttipeli.logiikka.Presidentinvaalienhallinta;
 
 /**
- *
- * @author Eero
+ *  GUI jonka avulla pelaaja pystyy hallitsemaan vaalikampanjaan käytettäviä varoja.
  */
-public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements Runnable{
+public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements Runnable {
 
-    
     public PresidentinvaalienhallintaGUI(Presidentinvaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
         this.peligui = peligui;
@@ -23,19 +16,19 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
     public void run() {
         initComponents();
         asetaOikeatTiedotNakyviin();
-        listener = new PresidentiinvaalienhallintaActionListener(okButton, 
+        listener = new PresidentiinvaalienhallintaActionListener(okButton,
                 liikkeet, mokit, vaihtoehto1, vaihtoehto2, vaihtoehto3, this,
-        rootPane, peligui, hallinta); 
+                rootPane, peligui, hallinta);
         lisaaNappuloilleActionListener();
     }
-    
-    private void lisaaNappuloilleActionListener () {
+
+    private void lisaaNappuloilleActionListener() {
         okButton.addActionListener(listener);
         vaihtoehto1.addActionListener(listener);
         vaihtoehto2.addActionListener(listener);
         vaihtoehto3.addActionListener(listener);
     }
-    
+
     private void asetaOikeatTiedotNakyviin() {
         if (hallinta.getPelaaja().isKansanedustaja()) {
             asetaKansanedustajanTiedotNakyviin();
@@ -43,7 +36,7 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
             asetaJohtajanTiedotNakyviin();
         }
     }
-    
+
     private void asetaKansanedustajanTiedotNakyviin() {
         vaihtoehto1.setText("40000 mk");
         vaihtoehto1Aanimaara.setText("100");
@@ -53,7 +46,7 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
         vaihtoehto3Aanimaara.setText("75");
         otaPoisKansanedustajanVaihtoehtoja();
     }
-    
+
     private void asetaJohtajanTiedotNakyviin() {
         vaihtoehto1.setText("50000 mk");
         vaihtoehto1Aanimaara.setText("110");
@@ -63,8 +56,8 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
         vaihtoehto3Aanimaara.setText("85");
         otaPoisJohtajanVaihtoehtoja();
     }
-    
-    private void otaPoisKansanedustajanVaihtoehtoja () {
+
+    private void otaPoisKansanedustajanVaihtoehtoja() {
         if (hallinta.pelaajaKykeneeKansanedustajanVaihtoehtoon1() == false) {
             vaihtoehto1.setEnabled(false);
             vaihtoehto1Aanimaara.setEnabled(false);
@@ -78,7 +71,7 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
             vaihtoehto3Aanimaara.setEnabled(false);
         }
     }
-    
+
     private void otaPoisJohtajanVaihtoehtoja() {
         if (hallinta.pelaajaKykeneeJohtajanVaihtoehtoon1() == false) {
             vaihtoehto1.setEnabled(false);
@@ -307,7 +300,6 @@ public class PresidentinvaalienhallintaGUI extends javax.swing.JFrame implements
         peligui.setVisible(true);
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

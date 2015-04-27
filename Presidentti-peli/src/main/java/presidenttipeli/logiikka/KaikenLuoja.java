@@ -1,14 +1,17 @@
-
 package presidenttipeli.logiikka;
 
 import java.util.ArrayList;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.domain.util.KuvanLataaja;
 import presidenttipeli.logiikka.luojat.*;
 
-
+/**
+ *  Luokka joka luo pelin tarvitsemat domain-oliot sekä itse pelin päälogiikan.
+ */
 public class KaikenLuoja {
+
     private ArrayList<String> pelaajienNimet;
     private Pelilauta lauta;
     private JohtajaAmmattienLuoja jALuoja;
@@ -20,7 +23,7 @@ public class KaikenLuoja {
     private PelaajienLuoja pLuoja;
     private NappuloidenLuoja nLuoja;
     private Peli peli;
-    
+
     public KaikenLuoja(ArrayList<String> pelaajienNimet) {
         this.pelaajienNimet = pelaajienNimet;
         lauta = new Pelilauta();
@@ -31,8 +34,9 @@ public class KaikenLuoja {
         pLuoja = new PelaajienLuoja(pelaajienNimet);
         luoKaikki();
     }
-    
+
     private void luoKaikki() {
+        lauta.setKuva(KuvanLataaja.palautaKuva("/kuvat/Pelilauta.png"));
         luoPelaajatJaNappulat();
         luoAmmatitMokitJaLiikkeet();
         luoTapahtumaKortit();
@@ -40,7 +44,7 @@ public class KaikenLuoja {
         asetaNappulatAloitusruudulle();
         luoPeli();
     }
-    
+
     private void luoPelaajatJaNappulat() {
         pLuoja.luo();
         ArrayList<Pelaaja> pelaajat = pLuoja.getPelaajat();
@@ -49,7 +53,7 @@ public class KaikenLuoja {
         lauta.setNappulat(nLuoja.getNappulat());
 
     }
-    
+
     private void luoAmmatitMokitJaLiikkeet() {
         jALuoja.luo();
         sALuoja.luo();
@@ -60,29 +64,29 @@ public class KaikenLuoja {
         lauta.setMokit(mLuoja.getSekoitetutMokit());
         lauta.setSattumaAmmatit(sALuoja.getSekoitetutAmmatit());
     }
-    
+
     private void luoTapahtumaKortit() {
         tLuoja = new TapahtumakorttienLuoja(lauta);
         tLuoja.luo();
         lauta.setTapahtumakortit(tLuoja.getKortit());
     }
-    
+
     private void luoRuudut() {
         rLuoja = new RuutujenLuoja(lauta);
         rLuoja.luo();
         lauta.setRuudut(rLuoja.getRuudut());
     }
-    
+
     private void asetaNappulatAloitusruudulle() {
         for (Nappula nappula : lauta.getNappulat()) {
             nappula.setSijainti(lauta.getRuudut().get(0));
         }
     }
-    
+
     public Pelilauta getLauta() {
         return lauta;
     }
-    
+
     private void luoPeli() {
         peli = new Peli(lauta);
     }
@@ -90,5 +94,5 @@ public class KaikenLuoja {
     public Peli getPeli() {
         return peli;
     }
-     
+
 }

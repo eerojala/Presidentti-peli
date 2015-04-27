@@ -2,6 +2,10 @@ package presidenttipeli.gui;
 
 import presidenttipeli.logiikka.OstoJaMyynti;
 
+/**
+ *  GUI jonka avulla pelaaja voi ostaa uusia mökkejä ja liikkeitä sekä
+ *  myydä omistamiaan pois.
+ */
 public class OstoJaMyyntiGUI extends javax.swing.JFrame implements Runnable {
 
     public OstoJaMyyntiGUI(OstoJaMyynti ostoJaMyynti, PeliGUI peligui) {

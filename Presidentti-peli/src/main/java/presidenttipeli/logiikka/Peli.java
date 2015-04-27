@@ -111,6 +111,7 @@ public class Peli {
         }
         
         if (nykyinenPelaaja.getNappula().getSijainti().getNumero() == 1) {
+            pankinjohtaja.annaPelaajalleKuukaudenTuotot(nykyinenPelaaja);
             peligui.uusiKierros();
         }
         

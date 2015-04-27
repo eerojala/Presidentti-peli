@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JRootPane;
 import presidenttipeli.logiikka.OstoJaMyynti;
  
+/**
+ * OstoJaMyyntiGUIn nappuloille tarkoitettu ActionListener-luokka.
+ */
 public class OstoJaMyyntiActionListener implements ActionListener{
     private JButton myyLiike;
     private JButton myyMokki;

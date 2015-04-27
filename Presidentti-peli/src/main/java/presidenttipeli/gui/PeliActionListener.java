@@ -2,19 +2,19 @@ package presidenttipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.AbstractAction;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 import presidenttipeli.domain.Ruutu;
 import presidenttipeli.logiikka.PelaajanStatus;
 import presidenttipeli.logiikka.Peli;
 
+/**
+ *  PeliGUIn nappuloille tarkoitettu ActionListener-luokka.
+ */
 public class PeliActionListener implements ActionListener {
 
     private JButton noppaButton;

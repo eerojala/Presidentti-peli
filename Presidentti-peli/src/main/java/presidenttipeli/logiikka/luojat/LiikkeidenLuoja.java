@@ -17,14 +17,9 @@ public class LiikkeidenLuoja extends Luoja {
 
     @Override
     public void luo() {
-        classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("tekstit/Liikkeet.txt").getFile());
-        try {
-            lukija = new Scanner(tiedosto);
-            luoLiikkeet(lukija);
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui");
-        }
+        asetaScannerilleTiedosto("tekstit/Liikkeet.txt", 
+                LiikkeidenLuoja.class.getClassLoader());
+        luoLiikkeet(lukija);
     }
 
     private void luoLiikkeet(Scanner lukija) {

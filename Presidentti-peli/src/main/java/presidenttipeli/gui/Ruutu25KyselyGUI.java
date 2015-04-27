@@ -2,6 +2,9 @@ package presidenttipeli.gui;
 
 import presidenttipeli.logiikka.Peli;
 
+/**
+ * GUI joka kysyy haluaako pelaaja osallistua ruudun 25 vaaleihin.
+ */
 public class Ruutu25KyselyGUI extends javax.swing.JFrame implements Runnable {
 
     public Ruutu25KyselyGUI(PeliGUI peligui, Peli peli) {
@@ -121,8 +124,9 @@ public class Ruutu25KyselyGUI extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void kyllaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kyllaButtonActionPerformed
-        boolean tulos = peli.getVaalienjarjestaja().jarjestaPresidentinvaalit(80, peli.getNykyinenPelaaja());
-        peligui.ilmoitaTulos(tulos, peli.getVaalienjarjestaja().getSaadutAanet(),
+        peli.getVaalienjarjestaja().jarjestaEduskuntavaalit(80, peli.getNykyinenPelaaja());
+        peligui.ilmoitaTulos(peli.getNykyinenPelaaja().isKansanedustaja(), 
+                peli.getVaalienjarjestaja().getSaadutAanet(),
                 peli.getVaalienjarjestaja().getSaadutAanetSummattuna(), 80);
         this.dispose();
     }//GEN-LAST:event_kyllaButtonActionPerformed

@@ -2,6 +2,9 @@ package presidenttipeli.logiikka;
 
 import presidenttipeli.domain.Pelaaja;
 
+/**
+ * EduskuntavaalienhallintaGUIhin liittyvä logiikkaluokka.
+ */
 public class Eduskuntavaalienhallinta {
 
     private Pelaaja pelaaja;
@@ -16,36 +19,59 @@ public class Eduskuntavaalienhallinta {
         this.pankinjohtaja = pankinjohtaja;
     }
 
+    /**
+     * Asettaa maksettavan rahan 0 ja tarvittavan äänimäärän 110.
+     */
     public void maksa0Vaaleista() {
         maksettavaRaha = 0;
         tarvittavaAanimaara = 110;
     }
 
+    /**
+     * Asettaa maksettavan rahan 10000 ja tarvittavan äänimäärän 100.
+     */
     public void maksa10000Vaaleista() {
         maksettavaRaha = 10000;
         tarvittavaAanimaara = 100;
     }
 
+    /**
+     * Asettaa maksettavan rahan 20000 ja tarvittavan äänimäärän 90.
+     */
     public void maksa20000Vaaleista() {
         maksettavaRaha = 20000;
         tarvittavaAanimaara = 90;
     }
 
+    /**
+     * Asettaa maksettavan rahan 30000 ja tarvittavan äänimäärän 80.
+     */
     public void maksa30000Vaaleista() {
         maksettavaRaha = 30000;
         tarvittavaAanimaara = 80;
     }
 
+    /**
+     * Asettaa maksettavan rahan 40000 ja tarvittavan äänimäärän 70.
+     */
     public void maksa40000Vaaleista() {
         maksettavaRaha = 40000;
         tarvittavaAanimaara = 70;
     }
 
+    /**
+     * Asettaa maksettavan rahan 50000 ja tarvittavan äänimäärän 60.
+     */
     public void maksa50000Vaaleista() {
         maksettavaRaha = 50000;
         tarvittavaAanimaara = 60;
     }
 
+    /**
+     * Tarkistaa riittääkö pelaajan rahat hänen haluamaansa vaalien hintaan.
+     *
+     * @return Riittääkö pelaajan rahat.
+     */
     public boolean riittaakoRahaaSuorittaaVaalit() {
         if (pankinjohtaja.otaPelaajaltaRahaa(pelaaja, maksettavaRaha) == false) {
             return false;
@@ -54,6 +80,11 @@ public class Eduskuntavaalienhallinta {
         }
     }
 
+    /**
+     * Suorittaa vaalit.
+     *
+     * @return Onnistuivatko vaalit.
+     */
     public boolean suoritaVaalit() {
         jarjestaja.jarjestaEduskuntavaalit(tarvittavaAanimaara, pelaaja);
         return pelaaja.isKansanedustaja();

@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JRootPane;
-import presidenttipeli.domain.Liike;
-import presidenttipeli.domain.Mokki;
 import presidenttipeli.logiikka.Presidentinvaalienhallinta;
 
+/**
+ *  PresidentinvaalienhallintaGUIn nappuloille tarkoitettu ActionLitener-luokka.
+ */
 public class PresidentiinvaalienhallintaActionListener implements ActionListener {
 
     private JButton okButton;

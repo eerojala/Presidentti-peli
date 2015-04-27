@@ -1,7 +1,5 @@
 package presidenttipeli.domain.tapahtumat;
 
-import presidenttipeli.domain.Liike;
-import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
 
 /**

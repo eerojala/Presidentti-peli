@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presidenttipeli.gui;
 
 import presidenttipeli.logiikka.Peli;
 
 /**
- *
- * @author Eero
+ *  GUI joka kysyy pelaajalta haluaako hän maksaa 4000 mk vai jäädä odottamaan
+ *  vuoroaan 2 vuoron ajaksi.
  */
 public class PutkakyselyGUI extends javax.swing.JFrame implements Runnable {
 
@@ -22,8 +17,6 @@ public class PutkakyselyGUI extends javax.swing.JFrame implements Runnable {
     public void run() {
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,8 +135,6 @@ public class PutkakyselyGUI extends javax.swing.JFrame implements Runnable {
         peligui.setEnabled(true);
     }//GEN-LAST:event_sulje
 
-
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

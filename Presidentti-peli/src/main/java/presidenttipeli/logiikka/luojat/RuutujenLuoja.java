@@ -1,6 +1,7 @@
 package presidenttipeli.logiikka.luojat;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -32,7 +33,8 @@ public class RuutujenLuoja extends Luoja {
     @Override
     public void luo() {
         luoRuudut();
-        lueTiedosto();
+        asetaScannerilleTiedosto("tekstit/RuutujenSelostukset.txt", RuutujenLuoja.class.getClassLoader());
+        asettaja.asetaSelosteet(lista, lukija);
         ruudut = muunnaRuuduiksi();
     }
 
@@ -52,17 +54,6 @@ public class RuutujenLuoja extends Luoja {
         luoRuudut1();
         luoRuudut2();
         luoRuudut3();
-    }
-
-    private void lueTiedosto() {
-        classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("tekstit/RuutujenSelostukset.txt").getFile());
-        try {
-            lukija = new Scanner(tiedosto, "UTF-8");
-            asettaja.asetaSelosteet(lista, lukija);
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui");
-        }
     }
 
     private void asetaRuudulleTapahtumat(Ruutu ruutu, Tapahtuma... tapahtumat) {

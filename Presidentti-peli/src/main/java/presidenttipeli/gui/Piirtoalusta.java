@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ *  JPanel luokka joka piirtää nykyisen tilanteen pelilaudalla.
+ */
 public class Piirtoalusta extends JPanel {
 
     private Pelilauta lauta;
@@ -30,7 +33,6 @@ public class Piirtoalusta extends JPanel {
     }
 
     private void piirraNappulat(Graphics graphics) {
-        int x = 0, y = 0;
         for (Nappula nappula : lauta.getNappulat()) {
             graphics.drawImage(nappula.getKuva(), nappula.getSijainti().getX(),
                     nappula.getSijainti().getY(), this);

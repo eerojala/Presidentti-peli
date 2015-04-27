@@ -28,7 +28,9 @@ public class TapahtumakorttienLuoja extends Luoja {
     @Override
     public void luo() {
         luoKortit();
-        lueTiedosto();
+        asetaScannerilleTiedosto("tekstit/TapahtumakorttienSelostukset.txt",
+                TapahtumakorttienLuoja.class.getClassLoader());
+        asettaja.asetaSelosteet(lista, lukija);
     }
 
     public ArrayList<SelosteenOmaava> getLista() {
@@ -58,17 +60,6 @@ public class TapahtumakorttienLuoja extends Luoja {
         luoYleissivistavaKoulutusKortit();
         luoPuolueenJasenkirjanMenetysKortit();
         luoKortitJoissaEiTapahduMitaan();
-    }
-
-    private void lueTiedosto() {
-        classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("tekstit/TapahtumakorttienSelostukset.txt").getFile());
-        try {
-            lukija = new Scanner(tiedosto, "UTF-8");
-            asettaja.asetaSelosteet(lista, lukija);
-        } catch (Exception e) {
-            System.out.println("Tiedoston lukeminen epäonnistui");
-        }
     }
 
     private void luoTapahtumakortti(Tapahtuma... tapahtumat) {

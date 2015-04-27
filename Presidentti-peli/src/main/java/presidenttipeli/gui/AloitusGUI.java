@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.gui;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import presidenttipeli.logiikka.Aloitus;
 import presidenttipeli.logiikka.KaikenLuoja;
 
 /**
- *
- * @author Eero
+ * GUI joka kyselee montako pelaajaa peliin osallistuu ja heidän nimensä.
  */
 public class AloitusGUI extends javax.swing.JFrame implements Runnable{
 
-    /**
-     * Creates new form AloitusGUI
-     */
+
     public AloitusGUI() {
 
     }
@@ -348,10 +340,6 @@ public class AloitusGUI extends javax.swing.JFrame implements Runnable{
         }
     }
     
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

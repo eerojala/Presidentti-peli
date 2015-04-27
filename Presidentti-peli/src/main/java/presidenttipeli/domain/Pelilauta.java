@@ -1,14 +1,10 @@
 package presidenttipeli.domain;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.ImageIO;
+
 
 /**
  * Luokka joka sisältää kaikki pelaajat ja muut peliin liittyvät oliot
@@ -32,13 +28,8 @@ public class Pelilauta {
         mokit = new ArrayDeque();
         liikkeet = new ArrayDeque();
         tapahtumakortit = new ArrayDeque();
-        try {
-           File tiedosto = new File(
-                   getClass().getClassLoader().getResource("kuvat/Pelilauta.png").getFile());
-           kuva = ImageIO.read(tiedosto);
-        } catch (Exception e) {
-           
-        }
+        kuva = null;
+
     }
 
     public List<Ammatti> getJohtajaAmmatit() {
@@ -48,7 +39,7 @@ public class Pelilauta {
     public BufferedImage getKuva() {
         return kuva;
     }
-    
+
     public ArrayDeque<Liike> getLiikkeet() {
         return liikkeet;
     }
@@ -99,6 +90,10 @@ public class Pelilauta {
 
     public void setTapahtumakortit(ArrayDeque<Tapahtumakortti> tapahtumakortit) {
         this.tapahtumakortit = tapahtumakortit;
+    }
+    
+    public void setKuva(BufferedImage kuva) {
+        this.kuva = kuva;
     }
 
 }

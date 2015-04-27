@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presidenttipeli.gui;
 
 import javax.swing.JFrame;
@@ -11,8 +6,7 @@ import presidenttipeli.logiikka.Peli;
 import presidenttipeli.logiikka.Velkalaskuri;
 
 /**
- *
- * @author Eero
+ * GUI jonka avulla pelaaja pystyy ottamaan velkaa tai maksamaan sitä pois.
  */
 public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
 

@@ -2,7 +2,7 @@ package presidenttipeli.domain;
 
 /**
  * Luokka pitää muistissa ammatin nimen ja palkan sekä tiedon onko ammatti
- * johtaja-ammatti tai sattuma-ammatti ja salliiko se kansan edustajuuden.
+ * johtaja-ammatti tai sattuma-ammatti ja salliiko se kansanedustajuuden.
  */
 public class Ammatti implements Comparable<Ammatti> {
 

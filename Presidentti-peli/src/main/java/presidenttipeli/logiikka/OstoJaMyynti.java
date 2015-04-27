@@ -5,6 +5,9 @@ import presidenttipeli.domain.Mokki;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
+/**
+ * OstoJaMyyntiGUIn logiikkaluokka.
+ */
 public class OstoJaMyynti {
 
     private boolean saaMyyda;
@@ -35,14 +38,30 @@ public class OstoJaMyynti {
         taytaLiikeTaulukko();
     }
 
+    /**
+     * Ostaa tarjotun mökin.
+     *
+     * @param mokki Tarjottu mökki.
+     */
     public void ostaMokki(Mokki mokki) {
         valittaja.annaPelaajalleMokki(pelaaja, kerroin);
     }
 
+    /**
+     * Ostaa tarjotun liikeen.
+     *
+     * @param liike Tarjottu liike.
+     */
     public void ostaLiike(Liike liike) {
         valittaja.annaPelaajalleLiike(pelaaja, kerroin);
     }
 
+    /**
+     * Myy valitun mökin. Jos pelaajalla on tarjous saa hän kaksinkertaisen
+     * summan rahaa.
+     *
+     * @param i Valitun mökin indeksi pelaajan mökkilistassa.
+     */
     public void myyMokki(int i) {
         Mokki mokki = pelaaja.getOmistamatMokit().get(i);
         if (ruutu16Tarjous) {
@@ -52,6 +71,12 @@ public class OstoJaMyynti {
         }
     }
 
+    /**
+     * Myy valitun liikkeen. Jos pelaajalla on tarjous saa hän kaksinkertaisen
+     * summan rahaa.
+     *
+     * @param i Valitun liikkeen indeksi pelaajan liikelistassa.
+     */
     public void myyLiike(int i) {
         Liike liike = pelaaja.getOmistamatLiikkeet().get(i);
         if (ruutu16Tarjous) {
@@ -111,6 +136,9 @@ public class OstoJaMyynti {
         }
     }
 
+    /**
+     * Vie tarjotun mökin takaisin pinon pohjalle.
+     */
     public void vieMokkiPinonPohjalle() {
         if (paallimmainenMokki != null) {
             lauta.getMokit().poll();
@@ -118,6 +146,9 @@ public class OstoJaMyynti {
         }
     }
 
+    /**
+     * Vie tarjotun liikkeen takaisin pinon pohjalle.
+     */
     public void vieLiikePinonPohjalle() {
         if (paallimmainenLiike != null) {
             lauta.getLiikkeet().poll();
@@ -125,6 +156,11 @@ public class OstoJaMyynti {
         }
     }
 
+    /**
+     * Tarkistaa riittääkö pelaajalla rahat tarjottuun mökkiin.
+     *
+     * @return Riittääkö pelaajan rahat tarjottuun mökkiin.
+     */
     public boolean riittaakoRahatMokkiin() {
         if (paallimmainenMokki == null) {
             return false;
@@ -134,6 +170,11 @@ public class OstoJaMyynti {
         return pelaaja.getRahat() >= paallimmainenMokki.getArvo();
     }
 
+    /**
+     * Tarkistaa riitääkö pelaajan rahat tarjottuun liikkeeseen.
+     * 
+     * @return Riittääkö pelaajan rahat tarjottuun liikkeeseen.
+     */
     public boolean riittaakoRahatLiikkeeseen() {
         if (paallimmainenLiike == null) {
             return false;

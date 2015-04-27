@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
+import presidenttipeli.domain.util.KuvanLataaja;
 
 public class NappuloidenLuoja extends Luoja {
 
@@ -28,18 +29,10 @@ public class NappuloidenLuoja extends Luoja {
     }
 
     private void asetaNappuloilleKuvat() {
-        File tiedosto;
-
         for (int i = 0; i < nappulat.size(); i++) {
-            String tiedostonNimi = "kuvat/Pelaaja";
-            tiedostonNimi += (i + 1) + ".png";
-            try {
-                tiedosto = new File(getClass().getClassLoader().getResource(tiedostonNimi).getFile());
-                BufferedImage kuva = ImageIO.read(tiedosto);
-                nappulat.get(i).setKuva(kuva);
-            } catch (Exception e) {
-                System.out.println("Nappuloiden kuvien asettaminen epäonnistui");
-            }
+            String tiedostopolku = "/kuvat/Pelaaja";
+            tiedostopolku += (i + 1) + ".png";
+                nappulat.get(i).setKuva(KuvanLataaja.palautaKuva(tiedostopolku));
         }
     }
 

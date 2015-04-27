@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package presidenttipeli.gui;
 
-import java.awt.Component;
 import javax.swing.JFrame;
 import presidenttipeli.logiikka.PelaajanStatus;
 
 /**
- *
- * @author Eero
+ * GUI joka näyttää nykyiselle pelaajalle hänen peliin liittyvät tietonsa.
  */
 public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
 
-    /**
-     * Creates new form PelaajanStatusGUI
-     */
+
     public PelaajanStatusGUI(PelaajanStatus status, JFrame frame) {
         this.status = status;
         this.frame = frame;
@@ -288,9 +280,6 @@ public class PelaajanStatusGUI extends javax.swing.JFrame implements Runnable {
         frame.setEnabled(true);
     }//GEN-LAST:event_sulje
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

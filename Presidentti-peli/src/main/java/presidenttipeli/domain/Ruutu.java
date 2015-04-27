@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 
 /**
- * Luokka joka pitää muistissa ruudun numeron, tapahtumat jne
+ * Luokka joka pitää muistissa ruudun numeron, tapahtumat, koordinaatit, jne...
  */
 public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
 
@@ -44,7 +44,7 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
     public int getY() {
         return y;
     }
-    
+
     public ArrayList<Tapahtuma> getTapahtumat() {
         return tapahtumat;
     }
@@ -69,6 +69,7 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
         this.putkaruutu = putkaruutu;
     }
 
+    @Override
     public void setSeloste(String seloste) {
         this.seloste = seloste;
     }
@@ -94,7 +95,7 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
         if (obj == null) {
             return false;
         }
-        
+
         if (obj.getClass() != this.getClass()) {
             return false;
         }
@@ -110,11 +111,11 @@ public class Ruutu implements Comparable<Ruutu>, SelosteenOmaava {
     }
 
     /**
-     *  Metodi joka vertaa kahta ruutua keskenään
-     * 
-     *  @param o Toinen ruutu
-     * 
-     *  @return Numeron joka määrää ruutujen keskenäisen järjestyksen 
+     * Metodi joka vertaa kahta ruutua keskenään
+     *
+     * @param o Toinen ruutu
+     *
+     * @return Numeron joka määrää ruutujen keskenäisen järjestyksen
      */
     @Override
     public int compareTo(Ruutu o) {

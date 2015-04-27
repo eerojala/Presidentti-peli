@@ -23,6 +23,9 @@ public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma {
      * Konstruktorille annettu totuusarvomuuttuja yleissivistava maaraa onko
      * annettava tutkinto yleissivistävä vai ei.
      *
+     * Jos pelaajalla on yleissivistävä tutkinto niin ei-yleissivistä tutkinto
+     * ei mene sen päälle
+     * 
      * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
      * @return aina True
      */
