@@ -31,7 +31,7 @@ public class NappuloidenLuoja extends Luoja {
         File tiedosto;
 
         for (int i = 0; i < nappulat.size(); i++) {
-            String tiedostonNimi = "Pelaaja";
+            String tiedostonNimi = "kuvat/Pelaaja";
             tiedostonNimi += (i + 1) + ".png";
             try {
                 tiedosto = new File(getClass().getClassLoader().getResource(tiedostonNimi).getFile());

@@ -18,7 +18,7 @@ public class JohtajaAmmattienLuoja extends Luoja{
     @Override
     public void luo() {
         classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("JohtajaAmmatit.txt").getFile());     
+        tiedosto = new File(classloader.getResource("tekstit/JohtajaAmmatit.txt").getFile());     
         try {
             lukija = new Scanner(tiedosto, "UTF-8");
             luoAmmatit(lukija);

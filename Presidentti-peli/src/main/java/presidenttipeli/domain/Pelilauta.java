@@ -34,10 +34,10 @@ public class Pelilauta {
         tapahtumakortit = new ArrayDeque();
         try {
            File tiedosto = new File(
-                   getClass().getClassLoader().getResource("Pelilauta.png").getFile());
+                   getClass().getClassLoader().getResource("kuvat/Pelilauta.png").getFile());
            kuva = ImageIO.read(tiedosto);
         } catch (Exception e) {
-            System.out.println("Kuvan lukeminen epäonnistui");
+           
         }
     }
 

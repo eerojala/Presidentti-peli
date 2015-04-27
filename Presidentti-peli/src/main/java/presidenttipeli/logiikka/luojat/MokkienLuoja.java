@@ -19,7 +19,7 @@ public class MokkienLuoja extends Luoja{
     @Override
     public void luo() {
         classloader = getClass().getClassLoader();
-        tiedosto = new File (classloader.getResource("Mokit.txt").getFile());
+        tiedosto = new File (classloader.getResource("tekstit/Mokit.txt").getFile());
         try {
             lukija = new Scanner(tiedosto, "UTF-8");
             luoMokit(lukija);

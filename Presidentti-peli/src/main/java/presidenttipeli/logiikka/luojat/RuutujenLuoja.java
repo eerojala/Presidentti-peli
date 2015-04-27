@@ -56,7 +56,7 @@ public class RuutujenLuoja extends Luoja {
 
     private void lueTiedosto() {
         classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("RuutujenSelostukset.txt").getFile());
+        tiedosto = new File(classloader.getResource("tekstit/RuutujenSelostukset.txt").getFile());
         try {
             lukija = new Scanner(tiedosto, "UTF-8");
             asettaja.asetaSelosteet(lista, lukija);

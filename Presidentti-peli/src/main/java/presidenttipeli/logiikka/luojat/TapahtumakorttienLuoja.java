@@ -62,7 +62,7 @@ public class TapahtumakorttienLuoja extends Luoja {
 
     private void lueTiedosto() {
         classloader = getClass().getClassLoader();
-        tiedosto = new File(classloader.getResource("TapahtumakorttienSelostukset.txt").getFile());
+        tiedosto = new File(classloader.getResource("tekstit/TapahtumakorttienSelostukset.txt").getFile());
         try {
             lukija = new Scanner(tiedosto, "UTF-8");
             asettaja.asetaSelosteet(lista, lukija);
