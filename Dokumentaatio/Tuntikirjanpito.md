@@ -27,3 +27,5 @@
 * 24.4.2015 7 tuntia, OstoJaMyyntiGUI valmis, huomioitu jos ei laudalla ei mökkejä tai liikkeitä. Peli melkein valmis.
 * 25.4.2015 5 tuntia, Pelin toiminnallisuus valmis. Tarvitsee vielä testata onko peli käyttökelpoinen.
 * 26.4.2015 4 tuntia, Pieniä sääntövirheitä ja GUIkoodia korjailtu, pelin pitäisi olla nyt pelikelpoinen.
+* 27.4.2015 4 tuntia, .Jarin kanssa painimista, Javadocin kirjoittamista jatkettu.
+* 28.4.2015 1,5 tuntia, Javadocin kirjoittelua, Johtaja- sekä sattuma-ammattien luonnin koodia siistitty.

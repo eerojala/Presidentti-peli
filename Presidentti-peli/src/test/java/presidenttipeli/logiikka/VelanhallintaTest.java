@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
 
 
-public class VelkalaskuriTest {
+public class VelanhallintaTest {
     Pelaaja pelaaja;
-    Velkalaskuri laskuri;
+    Velanhallinta laskuri;
     
-    public VelkalaskuriTest() {
+    public VelanhallintaTest() {
     }
     
     @BeforeClass
@@ -36,14 +36,14 @@ public class VelkalaskuriTest {
 
     @Test
     public void kasvattaaOttorahaaSadallaJosVelkaEiYlitaRajaa() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaSadalla();
         assertEquals(100, laskuri.getOttoraha());
     }
     
     @Test
     public void kasvattaaOttorahaaTuhannellaJosVelkaEiYlitaRajaa() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaTuhannella();
         assertEquals(1000, laskuri.getOttoraha());
     }
@@ -51,7 +51,7 @@ public class VelkalaskuriTest {
     @Test
     public void eiKasvataOttorahaaSadallaJosVelkaYlittaisiRajan() {
         pelaaja.setVelkaa(5000);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaSadalla();
         assertEquals(0, laskuri.getOttoraha());
     }
@@ -59,7 +59,7 @@ public class VelkalaskuriTest {
     @Test
     public void eiKasvataOttorahaaTuhannellaJosVelkaYlittaisiRajan() {
         pelaaja.setVelkaa(4100);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaTuhannella();
         assertEquals(0, laskuri.getOttoraha());
     }
@@ -67,7 +67,7 @@ public class VelkalaskuriTest {
     @Test
     public void kasvattaaMaksurahaaSadallaJosPelaajallaRiittaaRahat() {
         pelaaja.setVelkaa(5000);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         assertEquals(100, laskuri.getMaksuraha());
     }
@@ -75,7 +75,7 @@ public class VelkalaskuriTest {
     @Test
     public void kasvattaaMaksurahaaTuhannellaJosPelaajallaRiittaaRahat() {
         pelaaja.setVelkaa(5000);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
         assertEquals(1000, laskuri.getMaksuraha());
     }
@@ -84,7 +84,7 @@ public class VelkalaskuriTest {
     public void eiKasvataMaksurahaaSadallaJosPelaajallaEiRiitaRahat() {
         pelaaja.setVelkaa(5000);
         pelaaja.setRahat(99);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         assertEquals(0, laskuri.getMaksuraha());
     }
@@ -93,7 +93,7 @@ public class VelkalaskuriTest {
     public void eiKasvataMaksurahaaTuhannellaJosPelaajallaEiRiitaRhat() {
         pelaaja.setVelkaa(5000);
         pelaaja.setRahat(999);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
         assertEquals(0, laskuri.getMaksuraha());
     }
@@ -101,7 +101,7 @@ public class VelkalaskuriTest {
     @Test
     public void eiKasvataMaksurahaaSadallaJosSeYlittaisiVelan() {
         pelaaja.setVelkaa(99);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         assertEquals(0, laskuri.getMaksuraha());
     }
@@ -109,14 +109,14 @@ public class VelkalaskuriTest {
     @Test
     public void eiKasvataMaksurahaaTuhannellaJosSeYlittaisiVelan() {
         pelaaja.setVelkaa(999);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
         assertEquals(0, laskuri.getMaksuraha());
     }
     
     @Test
     public void vahentaaOttorahaaSadalla() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaSadalla();
         laskuri.kasvataOttorahaaSadalla();
         laskuri.vahennaOttorahaaSadalla();
@@ -125,7 +125,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void vahennaOttorahaaTuhannella() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaTuhannella();
         laskuri.kasvataOttorahaaSadalla();
         laskuri.vahennaOttorahaaTuhannella();
@@ -134,7 +134,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void eiVahennaOttorahaaSadallaJosSeMeneeAlleNollan() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaSadalla();
         for (int i = 0; i < 2; i++) {
             laskuri.vahennaOttorahaaSadalla();
@@ -144,7 +144,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void asettaaOttorahanNollaksiJosMenisiAlleNollanKunVahentaaTuhannella() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataOttorahaaSadalla();
         laskuri.vahennaOttorahaaTuhannella();
         assertEquals(0, laskuri.getOttoraha());
@@ -154,7 +154,7 @@ public class VelkalaskuriTest {
     @Test
     public void vahentaaMaksurahaaSadalla() {
         pelaaja.setVelkaa(5000);
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         laskuri.kasvataMaksurahaaSadalla();
         laskuri.vahennaMaksurahaaSadalla();
@@ -163,7 +163,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void vahentaaMaksurahaaTuhannella() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
         laskuri.vahennaMaksurahaaTuhannella();
         
@@ -171,7 +171,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void eiVahennaMaksurahaaSadallaJosMenisiAlleNollan() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         for (int i = 0; i < 2; i++) {
             laskuri.vahennaMaksurahaaSadalla();
@@ -181,7 +181,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void asettaaOttorahaksiNollaJosMenisiAlleNollanKunVahentaaTuhannella() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
         laskuri.vahennaMaksurahaaTuhannella();
         assertEquals(0, laskuri.getMaksuraha());
@@ -189,7 +189,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void paivitaPelaajanVelkaToimii() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         pelaaja.setVelkaa(5000);
         laskuri.paivitaPelaajanVelka();
         assertEquals(5000, laskuri.getPelaajanVelat());
@@ -197,7 +197,7 @@ public class VelkalaskuriTest {
     
     @Test
     public void paivitaPelaajanRahatToimii() {
-        laskuri = new Velkalaskuri(pelaaja);
+        laskuri = new Velanhallinta(pelaaja);
         pelaaja.setRahat(10000);
         laskuri.paivitaPelaajanRahat();
         assertEquals(10000, laskuri.getPelaajanRahat());

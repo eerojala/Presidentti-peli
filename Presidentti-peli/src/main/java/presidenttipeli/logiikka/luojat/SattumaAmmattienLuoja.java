@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import presidenttipeli.domain.Ammatti;
 
-public class SattumaAmmattienLuoja extends Luoja {
+public class SattumaAmmattienLuoja extends AmmatinLuoja {
 
     private ArrayList<Ammatti> ammatit;
 
@@ -19,29 +19,10 @@ public class SattumaAmmattienLuoja extends Luoja {
     public void luo() {
         asetaScannerilleTiedosto("tekstit/SattumaAmmatit.txt",
                 SattumaAmmattienLuoja.class.getClassLoader());
-        luoAmmatit(lukija);
+        luoAmmatit(lukija, false, ammatit);
     }
 
-    private void luoAmmatit(Scanner lukija) {
-        boolean palkkaViimeksi = true;
-        String nimi = "";
-        int palkka = 0;
 
-        while (lukija.hasNext()) {
-            String rivi = lukija.nextLine();
-            if (!rivi.isEmpty()) {
-                if (palkkaViimeksi) {
-                    nimi = rivi;
-                    palkkaViimeksi = false;
-                } else {
-                    palkka = Integer.parseInt(rivi);
-                    palkkaViimeksi = true;
-                }
-            } else {
-                ammatit.add(new Ammatti(nimi, palkka, false, true, true));
-            }
-        }
-    }
 
     public ArrayList<Ammatti> getAmmatit() {
         return ammatit;

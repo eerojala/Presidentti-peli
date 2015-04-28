@@ -1,11 +1,19 @@
-
-package presidenttipeli.domain.util;
+package presidenttipeli.util;
 
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
-
+/**
+ * Kuvien lataamiseen tarkoitettu luokka.
+ */
 public class KuvanLataaja {
+
+    /**
+     *  Yrittää lataa kuvan annetusta tiedostopolusta
+     * 
+     *  @param polku Tiedostopolku josta kuva yritetään ladata.
+     *  @return Ladattu kuva tai null jos lataaminen ei onnistunut.
+     */
     public static BufferedImage palautaKuva(String polku) {
         BufferedImage kuva = null;
         try {

@@ -9,6 +9,10 @@ import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import presidenttipeli.gui.PeliGUI;
 import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
+/**
+ * Pelin päälogiikkaluokka joka pitää muistissa tämänhetkistä pelaajaa sekä
+ * huolehtii ruutujen tapahtumien suorittamisesta.
+ */
 public class Peli {
 
     private Pelilauta lauta;
@@ -84,6 +88,12 @@ public class Peli {
         return random.nextInt(6) + 1;
     }
 
+    /**
+     * Suorittaa ruutuun liittyvät tapahtumat, tai jos kyseessä on erikoisruutu
+     * käskee guita avaamaan niihin liittyvät GUIt.
+     *
+     * @return Onnistuiko ruudun tapahtumien suorittaminen.
+     */
     public boolean suoritaRuudunTapahtumat() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
         if (onkoErikoisruutu(ruutu)) {
@@ -105,20 +115,23 @@ public class Peli {
                 return false;
             }
         }
+        suoritaRuudunTapahtumat2(ruutu, vanha);
+        return true;
+    }
 
+    private void suoritaRuudunTapahtumat2(Ruutu ruutu, Ruutu vanha) {
         if (ruutu.getNumero() == 22 || (ruutu.getNumero() == 12 && nykyinenPelaaja.isPuolueenJasen())) {
             peligui.naytaKortinSisalto(nykyinenPelaaja.getAmmatti().toString());
         }
-        
+
         if (nykyinenPelaaja.getNappula().getSijainti().getNumero() == 1) {
             pankinjohtaja.annaPelaajalleKuukaudenTuotot(nykyinenPelaaja);
             peligui.uusiKierros();
         }
-        
+
         if (!vanha.equals(nykyinenPelaaja.getNappula().getSijainti())) {
             suoritaRuudunTapahtumat();
         }
-        return true;
     }
 
     private boolean suoritaErikoisruutu() {
@@ -172,10 +185,20 @@ public class Peli {
         peligui.naytaKortinSisalto(sisalto);
     }
 
+    /**
+     * Tarkistaa onko kyseinen ruutu erikoisruutu
+     *
+     * @param ruutu Ruutu joka tarkastetaan
+     *
+     * @return Onko tarkasteltava ruutu erikoisruutu.
+     */
     public boolean onkoErikoisruutu(Ruutu ruutu) {
         return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
     }
 
+    /**
+     * Vaihtaa vuoroa, nykyinen pelaaja vaihtuu seuraavaan.
+     */
     public void vaihdaVuoroa() {
         Pelaaja edellinenPelaaja = nykyinenPelaaja;
         edellinenPelaaja.setOdottaaVuoroaan(edellinenPelaaja.getOdottaaVuoroaan() - 1);
@@ -219,6 +242,12 @@ public class Peli {
         }
     }
 
+    /**
+     * Tiputtaa nykyisen pelaajan pelistä ja tarkistaa onko pelaajia enää
+     * jäljellä.
+     *
+     * @return Onko pelaajia enää jäljellä.
+     */
     public boolean tiputaPelaajaPelista() {
         lauta.getNappulat().remove(nykyinenPelaaja.getNappula());
         return lauta.getNappulat().isEmpty();
@@ -226,7 +255,7 @@ public class Peli {
 
     private boolean suoritaOstoJaMyyntiruutu(Ruutu ruutu) {
         OstoJaMyynti ostoJaMyynti;
-        if (ruutu.getNumero() == 1) { 
+        if (ruutu.getNumero() == 1) {
             ostoJaMyynti = luoUusiOstoJaMyynti(true, 1, false, false);
             peligui.avaaOstoJaMyyntiGUI(ostoJaMyynti);
         } else if (ruutu.getNumero() == 16) {
@@ -265,6 +294,11 @@ public class Peli {
         return ostojamyynti;
     }
 
+    /**
+     * Tarkistaa onko laudan liikepinossa enää kortteja jäljellä
+     *
+     * @return Onko pinossa vielä kortteja jäljellä.
+     */
     public boolean onkoPinossaLiikkeita() {
         return !lauta.getLiikkeet().isEmpty();
     }
@@ -277,6 +311,12 @@ public class Peli {
         }
     }
 
+    /**
+     * Suorittaa ruudun tapahtumat. Tätä metodia kutsutaan jos pelaaja
+     * epäonnistui suorittaa ruudun tapahtumat ensimmäisellä kerralla. Jos
+     * pelaaja epäonnistuu jälleen tiputetaan hänet pelistä, ja mikäli hän oli
+     * viimeinen pelaaja, lopetetaan ohjelman suoritus.
+     */
     public void yritaSuorittaaTapahtumaaToisenKerran() {
         naytaKortti(nykyinenPelaaja.getNappula().getSijainti().getNumero());
         if (suoritaRuudunTapahtumat() == false) {

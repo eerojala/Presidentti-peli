@@ -3,7 +3,7 @@ package presidenttipeli.gui;
 import javax.swing.JFrame;
 import presidenttipeli.logiikka.Pankinjohtaja;
 import presidenttipeli.logiikka.Peli;
-import presidenttipeli.logiikka.Velkalaskuri;
+import presidenttipeli.logiikka.Velanhallinta;
 
 /**
  * GUI jonka avulla pelaaja pystyy ottamaan velkaa tai maksamaan sitä pois.
@@ -14,7 +14,7 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
         this.peli = peli;
         this.pakkoOttaaVelkaa = pakkoOttaaVelkaa;
         pankinjohtaja = peli.getPankinjohtaja();
-        laskuri = new Velkalaskuri(peli.getNykyinenPelaaja());
+        laskuri = new Velanhallinta(peli.getNykyinenPelaaja());
         this.frame = frame;
     }
 
@@ -372,7 +372,7 @@ public class VelanhallintaGUI extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton suljeButton;
     // End of variables declaration//GEN-END:variables
     private Peli peli;
-    private Velkalaskuri laskuri;
+    private Velanhallinta laskuri;
     private Pankinjohtaja pankinjohtaja;
     private JFrame frame;
     private boolean pakkoOttaaVelkaa;

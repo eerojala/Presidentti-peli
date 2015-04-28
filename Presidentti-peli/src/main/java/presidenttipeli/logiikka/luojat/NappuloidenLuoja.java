@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
-import presidenttipeli.domain.util.KuvanLataaja;
+import presidenttipeli.util.KuvanLataaja;
 
 public class NappuloidenLuoja extends Luoja {
 

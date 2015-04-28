@@ -9,7 +9,7 @@ import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.SelosteenOmaava;
 import presidenttipeli.domain.Tapahtumakortti;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
-import presidenttipeli.logiikka.SelosteenAsettaja;
+import presidenttipeli.util.SelosteenAsettaja;
 
 public class TapahtumakorttienLuoja extends Luoja {
 

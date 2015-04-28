@@ -10,7 +10,7 @@ import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
 import presidenttipeli.domain.SelosteenOmaava;
 import presidenttipeli.domain.tapahtumat.*;
-import presidenttipeli.logiikka.SelosteenAsettaja;
+import presidenttipeli.util.SelosteenAsettaja;
 
 public class RuutujenLuoja extends Luoja {
 

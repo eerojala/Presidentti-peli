@@ -6,7 +6,8 @@ import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
 /**
- * OstoJaMyyntiGUIn logiikkaluokka.
+ * OstoJaMyyntiGUIn logiikkaluokka joka toimii välikätenä pelaajan ja muun
+ * logiikan välillä
  */
 public class OstoJaMyynti {
 
@@ -172,7 +173,7 @@ public class OstoJaMyynti {
 
     /**
      * Tarkistaa riitääkö pelaajan rahat tarjottuun liikkeeseen.
-     * 
+     *
      * @return Riittääkö pelaajan rahat tarjottuun liikkeeseen.
      */
     public boolean riittaakoRahatLiikkeeseen() {

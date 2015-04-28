@@ -10,7 +10,7 @@ import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import presidenttipeli.logiikka.Pankinjohtaja;
 import presidenttipeli.logiikka.Peli;
-import presidenttipeli.logiikka.Velkalaskuri;
+import presidenttipeli.logiikka.Velanhallinta;
 
 /**
  * VelanhallintaGUIn nappuloille tarkoitettu ActionListener-luokka.
@@ -35,10 +35,10 @@ public class VelanhallintaActionListener implements ActionListener {
     private JFrame frame;
     private JRootPane rootPane;
     private Peli peli;
-    private Velkalaskuri laskuri;
+    private Velanhallinta laskuri;
     private Pankinjohtaja pankinjohtaja;
 
-    public VelanhallintaActionListener(JButton hyvaksyTakaisinmaksu, JButton hyvaksyVelanotto, JButton maksurahaMinus100, JButton maksurahaMinus1000, JButton maksurahaPlus100, JButton maksurahaPlus1000, JButton ottorahatMinus100, JButton ottorahatMinus1000, JButton ottorahatPlus100, JButton ottorahatPlus1000, JButton suljeButton, JTextField maksurahat, JTextField ottorahat, JLabel pelaajanRahat, JLabel pelaajanVelat, JFrame frame, JRootPane rootPane, Peli peli, Velkalaskuri laskuri, Pankinjohtaja pankinjohtaja) {
+    public VelanhallintaActionListener(JButton hyvaksyTakaisinmaksu, JButton hyvaksyVelanotto, JButton maksurahaMinus100, JButton maksurahaMinus1000, JButton maksurahaPlus100, JButton maksurahaPlus1000, JButton ottorahatMinus100, JButton ottorahatMinus1000, JButton ottorahatPlus100, JButton ottorahatPlus1000, JButton suljeButton, JTextField maksurahat, JTextField ottorahat, JLabel pelaajanRahat, JLabel pelaajanVelat, JFrame frame, JRootPane rootPane, Peli peli, Velanhallinta laskuri, Pankinjohtaja pankinjohtaja) {
         this.hyvaksyTakaisinmaksu = hyvaksyTakaisinmaksu;
         this.hyvaksyVelanotto = hyvaksyVelanotto;
         this.maksurahaMinus100 = maksurahaMinus100;

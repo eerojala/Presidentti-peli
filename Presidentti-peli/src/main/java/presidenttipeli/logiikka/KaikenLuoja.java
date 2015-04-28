@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
-import presidenttipeli.domain.util.KuvanLataaja;
+import presidenttipeli.util.KuvanLataaja;
 import presidenttipeli.logiikka.luojat.*;
 
 /**

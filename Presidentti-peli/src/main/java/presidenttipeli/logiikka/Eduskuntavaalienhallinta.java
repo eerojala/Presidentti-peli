@@ -3,7 +3,8 @@ package presidenttipeli.logiikka;
 import presidenttipeli.domain.Pelaaja;
 
 /**
- * EduskuntavaalienhallintaGUIhin liittyvä logiikkaluokka.
+ * EduskuntavaalienhallintaGUIn logiikkaluokka joka toimii välikätenä pelajaan
+ * ja muun logiikan välillä.
  */
 public class Eduskuntavaalienhallinta {
 

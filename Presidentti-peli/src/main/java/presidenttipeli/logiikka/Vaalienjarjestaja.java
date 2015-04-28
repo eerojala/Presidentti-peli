@@ -8,6 +8,10 @@ import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 public class Vaalienjarjestaja {
 
+    /**
+     * Logiikkaluokka joka huolehtii eduskunta- ja presidentinvaalien
+     * järjestämisestä.
+     */
     private TapahtumienLuoja luoja;
     private ArrayList<Integer> saadutAanet;
 
@@ -16,7 +20,14 @@ public class Vaalienjarjestaja {
         saadutAanet = new ArrayList();
     }
 
-    // Peli ei anna osallistua eduskuntavaaleihin jos pelaaja on jo kansanedustaja
+    /**
+     * Järjestää kansanedustajanvaalit. Jos vaalit onnistuvat pelaajasta tulee
+     * kansanedustaja.
+     *
+     * @param tarvittavaAanimaara Tarvittava äänimäärä kansanedustajan
+     * pääsemiseksi.
+     * @param pelaaja Pelaaja joka yrittää vaaleja.
+     */
     public void jarjestaEduskuntavaalit(int tarvittavaAanimaara, Pelaaja pelaaja) {
         Vaalit vaalit = luoja.luoVaalit(tarvittavaAanimaara);
         if (vaalit.suoritaTapahtuma(pelaaja) == true) {
@@ -25,6 +36,16 @@ public class Vaalienjarjestaja {
         saadutAanet = vaalit.getSaadutAanet();
     }
 
+    /**
+     * Järjestää presidnetinvaalit. Jos pelaaja voittaa vaaleissa voittaa hän
+     * samalla koko pelin.
+     *
+     * @param tarvittavaAanimaara Tarvittava äänimäärä presidentiksi
+     * pääsemiseksi.
+     * @param pelaaja Pelaaja joka yrittää vaaleja.
+     *
+     * @return True jos pelaaja voitti vaalit, muuten false.
+     */
     public boolean jarjestaPresidentinvaalit(int tarvittavaAanimaara, Pelaaja pelaaja) {
         Vaalit vaalit = luoja.luoVaalit(tarvittavaAanimaara);
         boolean onnistuiko = false;
@@ -39,6 +60,11 @@ public class Vaalienjarjestaja {
         return saadutAanet;
     }
 
+    /**
+     *  Palauttaa saadut yksittäiset äänet summattuna.
+     * 
+     *  @return Saadut yksittäiset äänet summattuna.
+     */
     public int getSaadutAanetSummattuna() {
         int summa = 0;
         for (Integer aani : saadutAanet) {

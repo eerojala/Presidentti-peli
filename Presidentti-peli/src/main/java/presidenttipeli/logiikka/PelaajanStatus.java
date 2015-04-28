@@ -1,9 +1,11 @@
 package presidenttipeli.logiikka;
 
 import java.awt.image.BufferedImage;
-import presidenttipeli.domain.Liike;
 import presidenttipeli.domain.Pelaaja;
 
+/**
+ *  StatusGUIn logiikaluokka, kerää tietoa pelaajan attribuuteista.
+ */
 public class PelaajanStatus {
 
     private Pelaaja pelaaja;
