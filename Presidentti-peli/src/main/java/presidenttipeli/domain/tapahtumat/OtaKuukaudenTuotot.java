@@ -14,10 +14,11 @@ public class OtaKuukaudenTuotot implements Tapahtuma {
 
     /**
      * Metodi joka laskee pelaajan saaman tuoton ja antaa hänelle sen verran
-     * rahaa
+     * rahaa.
      *
-     * @param pelaaja Pelaaja joka saa keräämänsä tuoton
-     * @return Aina true
+     * @param pelaaja Pelaaja joka saa keräämänsä tuoton.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

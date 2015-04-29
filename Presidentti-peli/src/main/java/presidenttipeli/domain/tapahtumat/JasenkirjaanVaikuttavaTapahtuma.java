@@ -18,6 +18,7 @@ public class JasenkirjaanVaikuttavaTapahtuma implements Tapahtuma {
      * riippuen konstrukorille annetusta totuusarvosta.
      *
      * @param pelaaja Pelaaja jonka puolueen jäsenyyteen vaikutetaan
+     * 
      * @return Aina true
      */
     @Override

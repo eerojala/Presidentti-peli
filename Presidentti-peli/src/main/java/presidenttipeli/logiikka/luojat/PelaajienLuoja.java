@@ -1,12 +1,13 @@
-
 package presidenttipeli.logiikka.luojat;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import presidenttipeli.domain.Pelaaja;
 
+/**
+ *  Luojaluokka joka luo pelille pelaajat.
+ */
+public class PelaajienLuoja extends Luoja {
 
-public class PelaajienLuoja extends Luoja{
     private ArrayList<String> nimet;
     private ArrayList<Pelaaja> pelaajat;
 
@@ -24,6 +25,6 @@ public class PelaajienLuoja extends Luoja{
 
     public ArrayList<Pelaaja> getPelaajat() {
         return pelaajat;
-    }  
-    
+    }
+
 }

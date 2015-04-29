@@ -18,10 +18,11 @@ public class PalkastaRiippuvaTapahtuma implements Tapahtuma {
 
     /**
      * Metodi suorittaa yhden tapahtumista joka vastaa palkkarajaa johon
-     * pelaajan palkka kuuluu
+     * pelaajan palkka kuuluu.
      *
      * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
-     * @return Onnistuiko suoritettava tapahtuma.
+     *
+     * @return True jos tapahtuman suoritus onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

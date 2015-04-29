@@ -24,10 +24,11 @@ public class TutkintoonVaikuttavaTapahtuma implements Tapahtuma {
      * annettava tutkinto yleissivistävä vai ei.
      *
      * Jos pelaajalla on yleissivistävä tutkinto niin ei-yleissivistä tutkinto
-     * ei mene sen päälle
-     * 
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return aina True
+     * ei mene sen päälle.
+     *
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
+     *
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

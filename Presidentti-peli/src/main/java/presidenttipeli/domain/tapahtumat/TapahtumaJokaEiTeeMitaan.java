@@ -8,10 +8,11 @@ import presidenttipeli.domain.Pelaaja;
 public class TapahtumaJokaEiTeeMitaan implements Tapahtuma {
 
     /**
-     * Metodi ei tee mitään muuta kuin palauta true
+     * Metodi ei tee mitään muuta kuin palauta true.
      *
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return Aina true
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

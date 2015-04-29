@@ -24,8 +24,9 @@ public class KansanedustajuuteenVaikuttavaTapahtuma implements Tapahtuma {
      * Jos Pelaaja saa kansanedustajuuden kun on ammatissa joka ei tätä salli,
      * otetaan pelaajalta nykyinen ammatti pois ja asetetaan hänet työttömäksi.
      *
-     * @param pelaaja Pelaaja jonka kansanedustajuuteen vaikutetaan
-     * @return aina true
+     * @param pelaaja Pelaaja jonka kansanedustajuuteen vaikutetaan.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

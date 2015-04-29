@@ -160,7 +160,8 @@ public class OstoJaMyynti {
     /**
      * Tarkistaa riittääkö pelaajalla rahat tarjottuun mökkiin.
      *
-     * @return Riittääkö pelaajan rahat tarjottuun mökkiin.
+     * @return True jos pelaajan rahat riittävät tarjottuun mökkiin, muuten
+     * false.
      */
     public boolean riittaakoRahatMokkiin() {
         if (paallimmainenMokki == null) {
@@ -174,7 +175,8 @@ public class OstoJaMyynti {
     /**
      * Tarkistaa riitääkö pelaajan rahat tarjottuun liikkeeseen.
      *
-     * @return Riittääkö pelaajan rahat tarjottuun liikkeeseen.
+     * @return True jos pelaajan rahat riittävät tarjottuun liikkeeseen, muuten
+     * false
      */
     public boolean riittaakoRahatLiikkeeseen() {
         if (paallimmainenLiike == null) {

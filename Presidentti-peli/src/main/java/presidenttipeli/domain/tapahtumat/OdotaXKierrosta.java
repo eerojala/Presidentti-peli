@@ -17,8 +17,9 @@ public class OdotaXKierrosta implements Tapahtuma {
      * Metodi asettaa pelaajan liikkumiskieltoon konstruktorille annetun
      * kokonaislukumuuttujan ilmoittamaksi ajaksi.
      *
-     * @param pelaaja Pelaaja jonka liikkumiskykyä rajoitetaan
-     * @return Aina true
+     * @param pelaaja Pelaaja jonka liikkumiskykyä rajoitetaan.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

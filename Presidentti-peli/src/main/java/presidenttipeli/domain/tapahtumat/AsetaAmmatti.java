@@ -25,6 +25,7 @@ public class AsetaAmmatti implements Tapahtuma {
      * ja tutkintokin lähtee pois jos kyseessä ei ole yleissivistävä tutkinto.
      *
      * @param pelaaja Pelaaja jolle uusi ammatti asetetaan
+     * 
      * @return Aina true
      */
     @Override

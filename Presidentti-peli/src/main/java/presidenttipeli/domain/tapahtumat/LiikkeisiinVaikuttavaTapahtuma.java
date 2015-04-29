@@ -24,6 +24,7 @@ public class LiikkeisiinVaikuttavaTapahtuma implements Tapahtuma {
      * sen takaisin laudalle
      *
      * @param pelaaja Pelaaja jolle annetaan tai otetaan liike
+     * 
      * @return Aina true
      */
     @Override

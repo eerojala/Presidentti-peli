@@ -18,8 +18,9 @@ public class OtaMokkikortti implements Tapahtuma {
     /**
      * Metodi ottaa laudan päälimmäisen mökin ja antaa sen pelaajalle.
      *
-     * @param pelaaja Pelaaja joka saa mökin
-     * @return Onnistuiko mökin antaminen pelaajalle
+     * @param pelaaja Pelaaja joka saa mökin.
+     * 
+     * @return Onnistuiko mökin antaminen pelaajalle.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

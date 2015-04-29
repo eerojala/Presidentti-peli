@@ -21,7 +21,8 @@ public class JohtajuudestaTaiKansanedustajuudestaRiippuvaTapahtuma implements Ta
      * riippuen onko pelaaja johtaja-ammatissa tai kansanedustaja
      *
      * @param pelaaja Pelaaja jolle jompikumpi tapahtuma suoritetaan
-     * @return Onnistuiko suoritettu tapahtuma
+     * 
+     * @return True jos suoritettava tapahtuma onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

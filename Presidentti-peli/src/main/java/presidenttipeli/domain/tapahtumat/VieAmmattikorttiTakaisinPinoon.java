@@ -1,14 +1,16 @@
-
 package presidenttipeli.domain.tapahtumat;
 
-import presidenttipeli.domain.Ammatti;;
+import presidenttipeli.domain.Ammatti;
+;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
 /**
- *  Tapahtumaluokka joka vie pelaajan ammatin takaisin laudalle
+ * Tapahtumaluokka joka vie pelaajan ammatin takaisin laudalle
  */
-public class VieAmmattikorttiTakaisinPinoon implements Tapahtuma{
+
+
+public class VieAmmattikorttiTakaisinPinoon implements Tapahtuma {
 
     private Pelilauta lauta;
     private Ammatti ammatti;
@@ -21,9 +23,10 @@ public class VieAmmattikorttiTakaisinPinoon implements Tapahtuma{
     /**
      * Metodi palauttaa konstruktorille annetun ammatin johtaja- tai
      * sattuma-ammattipinoon riippuen onko ammatti johtaja- vai sattuma-ammatti.
+     *
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
      * 
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return Aina true
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
@@ -34,6 +37,5 @@ public class VieAmmattikorttiTakaisinPinoon implements Tapahtuma{
         }
         return true;
     }
-    
-    
+
 }

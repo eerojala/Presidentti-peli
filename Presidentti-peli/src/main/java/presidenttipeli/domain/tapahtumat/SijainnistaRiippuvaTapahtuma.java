@@ -24,7 +24,8 @@ public class SijainnistaRiippuvaTapahtuma implements Tapahtuma {
      * kokonaisluku
      *
      * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
-     * @return Onnistuiko tapahtuma
+     *
+     * @return True jos tapahtuman suorittaminen onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

@@ -19,8 +19,9 @@ public class OtaLiikekortti implements Tapahtuma {
      * Metodi joka ottaa pelilaudan korttipinon päälimmäisen liikekortin ja
      * antaa sen pelaajalle.
      *
-     * @param pelaaja Pelaaja joka saa korttipinon päälimmäisen liikkeen
-     * @return Onnistuiko liikkeen antaminen pelaajalle
+     * @param pelaaja Pelaaja joka saa korttipinon päälimmäisen liikkeen.
+     * 
+     * @return Onnistuiko liikkeen antaminen pelaajalle.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

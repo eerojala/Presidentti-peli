@@ -1,28 +1,27 @@
 package presidenttipeli.logiikka.luojat;
 
-import java.io.File;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.SelosteenOmaava;
 import presidenttipeli.domain.Tapahtumakortti;
 import presidenttipeli.domain.tapahtumat.Tapahtuma;
 import presidenttipeli.util.SelosteenAsettaja;
 
+/**
+ * Luojaluokka joka luo pelille tapahtumakortit.
+ */
 public class TapahtumakorttienLuoja extends Luoja {
 
     private Pelilauta lauta;
     private ArrayList<SelosteenOmaava> lista;
     private TapahtumienLuoja luoja;
-    private SelosteenAsettaja asettaja;
 
     public TapahtumakorttienLuoja(Pelilauta lauta) {
         this.lauta = lauta;
         lista = new ArrayList();
         luoja = new TapahtumienLuoja(lauta);
-        asettaja = new SelosteenAsettaja();
     }
 
     @Override
@@ -30,7 +29,7 @@ public class TapahtumakorttienLuoja extends Luoja {
         luoKortit();
         asetaScannerilleTiedosto("tekstit/TapahtumakorttienSelostukset.txt",
                 TapahtumakorttienLuoja.class.getClassLoader());
-        asettaja.asetaSelosteet(lista, lukija);
+        SelosteenAsettaja.asetaSelosteet(lista, lukija);
     }
 
     public ArrayList<SelosteenOmaava> getLista() {

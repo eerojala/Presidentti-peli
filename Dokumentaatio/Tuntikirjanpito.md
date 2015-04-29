@@ -29,3 +29,4 @@
 * 26.4.2015 4 tuntia, Pieniä sääntövirheitä ja GUIkoodia korjailtu, pelin pitäisi olla nyt pelikelpoinen.
 * 27.4.2015 4 tuntia, .Jarin kanssa painimista, Javadocin kirjoittamista jatkettu.
 * 28.4.2015 1,5 tuntia, Javadocin kirjoittelua, Johtaja- sekä sattuma-ammattien luonnin koodia siistitty.
+* 29.4.2015 2 tuntia, Javadocin kirjoittelua, pikkujuttuja lisäilty koodiin.

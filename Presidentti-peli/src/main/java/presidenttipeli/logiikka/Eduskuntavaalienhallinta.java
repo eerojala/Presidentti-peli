@@ -71,7 +71,7 @@ public class Eduskuntavaalienhallinta {
     /**
      * Tarkistaa riittääkö pelaajan rahat hänen haluamaansa vaalien hintaan.
      *
-     * @return Riittääkö pelaajan rahat.
+     * @return True jos pelaajan rahat riittävät, muuten false.
      */
     public boolean riittaakoRahaaSuorittaaVaalit() {
         if (pankinjohtaja.otaPelaajaltaRahaa(pelaaja, maksettavaRaha) == false) {
@@ -84,7 +84,7 @@ public class Eduskuntavaalienhallinta {
     /**
      * Suorittaa vaalit.
      *
-     * @return Onnistuivatko vaalit.
+     * @return True jos vaalit onnistuivat, muuten false.
      */
     public boolean suoritaVaalit() {
         jarjestaja.jarjestaEduskuntavaalit(tarvittavaAanimaara, pelaaja);

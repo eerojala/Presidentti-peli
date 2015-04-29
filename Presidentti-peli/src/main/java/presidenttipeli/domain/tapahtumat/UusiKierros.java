@@ -5,8 +5,8 @@ import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
 
 /**
- * Tapahtumaluokka joka suorittaa jokaisen kierroksen alussa automaattisesti tapahtuvat
- * tapahtumat.
+ * Tapahtumaluokka joka suorittaa jokaisen kierroksen alussa automaattisesti
+ * tapahtuvat tapahtumat.
  */
 public class UusiKierros implements Tapahtuma {
 
@@ -18,11 +18,12 @@ public class UusiKierros implements Tapahtuma {
     }
 
     /**
-     * Metodi antaa pelaajalle kuukauden tuotot, asettaa hänelle oikeuden tuottoon,
-     * asettaa hänen ammattinsa työttömäksi ja korottaa velkaa 10%.
+     * Metodi antaa pelaajalle kuukauden tuotot, asettaa hänelle oikeuden
+     * tuottoon, asettaa hänen ammattinsa työttömäksi ja korottaa velkaa 10%.
      *
-     * @param pelaaja Pelajaa joka aloittaa uuden kierroksen
-     * @return Aina true
+     * @param pelaaja Pelajaa joka aloittaa uuden kierroksen.
+     *
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
@@ -42,7 +43,5 @@ public class UusiKierros implements Tapahtuma {
     public int getKuukaudenTuotot() {
         return kuukaudenTuotot;
     }
-    
-    
 
 }

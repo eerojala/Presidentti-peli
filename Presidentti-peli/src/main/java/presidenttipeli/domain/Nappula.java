@@ -3,14 +3,14 @@ package presidenttipeli.domain;
 import java.awt.image.BufferedImage;
 
 /**
- * Luokka pitää muistissaan nappulan omistajaa ja sen sijantia.
+ * Luokka pitää muistissaan nappulan kuvaa, omistajaa ja sen sijantia.
  */
 public class Nappula {
 
     private Pelaaja omistaja;
     private Ruutu sijainti; // Nappula asetetaan luontivaiheessa aloitusruudulle
     private BufferedImage kuva;
-    
+
     public Nappula(Pelaaja omistaja) {
         this.omistaja = omistaja;
     }
@@ -34,6 +34,5 @@ public class Nappula {
     public void setKuva(BufferedImage kuva) {
         this.kuva = kuva;
     }
-    
-    
+
 }

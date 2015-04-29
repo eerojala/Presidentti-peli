@@ -1,10 +1,6 @@
 package presidenttipeli.logiikka.luojat;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 import presidenttipeli.domain.Ammatti;
 import presidenttipeli.domain.Pelilauta;
 import presidenttipeli.domain.Ruutu;
@@ -12,13 +8,15 @@ import presidenttipeli.domain.SelosteenOmaava;
 import presidenttipeli.domain.tapahtumat.*;
 import presidenttipeli.util.SelosteenAsettaja;
 
+/**
+ * Luojaluokka joka luo ruudut pelille.
+ */
 public class RuutujenLuoja extends Luoja {
 
     private ArrayList<SelosteenOmaava> lista;
     private Pelilauta lauta;
     private Ammatti tyoton;
     private TapahtumienLuoja luoja;
-    private SelosteenAsettaja asettaja;
     private ArrayList<Ruutu> ruudut;
 
     public RuutujenLuoja(Pelilauta lauta) {
@@ -26,7 +24,6 @@ public class RuutujenLuoja extends Luoja {
         this.lauta = lauta;
         tyoton = new Ammatti("Työtön", 1000, false, false, true);
         luoja = new TapahtumienLuoja(lauta);
-        asettaja = new SelosteenAsettaja();
         ruudut = new ArrayList();
     }
 
@@ -34,7 +31,7 @@ public class RuutujenLuoja extends Luoja {
     public void luo() {
         luoRuudut();
         asetaScannerilleTiedosto("tekstit/RuutujenSelostukset.txt", RuutujenLuoja.class.getClassLoader());
-        asettaja.asetaSelosteet(lista, lukija);
+        SelosteenAsettaja.asetaSelosteet(lista, lukija);
         ruudut = muunnaRuuduiksi();
     }
 
@@ -42,6 +39,11 @@ public class RuutujenLuoja extends Luoja {
         return ruudut;
     }
 
+    /**
+     *  Muuntaa ruudut SelosteenOmaava-muodosta Ruuduiksi.
+     * 
+     *  @return Ruudut listana.
+     */
     public ArrayList<Ruutu> muunnaRuuduiksi() {
         ArrayList<Ruutu> temp = new ArrayList();
         for (SelosteenOmaava apu : lista) {

@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import presidenttipeli.domain.Ammatti;
 
+/**
+ * Abstrakti luojaluokka joka lukee tiedostosta ammattien parametrit.
+ */
 public abstract class AmmatinLuoja extends Luoja {
 
+    /**
+     * Lisää listaan Ammatit jotka metodi lukee tiedostosta.
+     *
+     * @param lukija Scanner joka lukee tiedoston.
+     * @param johtaja True jos luodaan johtaja-ammatit, muussa tapauksessa
+     * luodaan sattuma-ammatit.
+     * @param ammatit Lista johon ammatit lisätään.
+     */
     protected void luoAmmatit(Scanner lukija, boolean johtaja, ArrayList<Ammatti> ammatit) {
         boolean palkkaViimeksi = true;
         String nimi = "";

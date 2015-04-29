@@ -13,8 +13,8 @@ public class Aloitus {
      * pituisia)
      *
      * @param nimet Annetut nimet
-     * 
-     * @return Ovatko annetut nimet sallitun mittaisia.
+     *
+     * @return True jos annetut nimet ovat sallitun mittaisia, muuten false.
      */
     public boolean pituustarkastus(ArrayList<String> nimet) {
         for (String nimi : nimet) {
@@ -26,11 +26,11 @@ public class Aloitus {
     }
 
     /**
-     * Metodi tarkistaa esiintyykl annetuissa nimissä duplikaatteja.
+     * Metodi tarkistaa esiintyykö annetuissa nimissä duplikaatteja.
      *
      * @param nimet Annetut nimet.
-     * 
-     * @return Esiintyykö annetuissa nimissä duplikaatteja.
+     *
+     * @return True jos duplikaatteja ei esiinny, muuten false.
      */
     public boolean samuustarkastus(ArrayList<String> nimet) {
         boolean samaLoydettyKerran;

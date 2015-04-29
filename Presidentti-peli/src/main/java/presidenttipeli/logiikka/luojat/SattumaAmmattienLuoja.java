@@ -1,12 +1,13 @@
 package presidenttipeli.logiikka.luojat;
 
-import java.io.File;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 import presidenttipeli.domain.Ammatti;
 
+/**
+ * Luojaluokka joka luo sattuma-ammatit pelille.
+ */
 public class SattumaAmmattienLuoja extends AmmatinLuoja {
 
     private ArrayList<Ammatti> ammatit;
@@ -22,16 +23,19 @@ public class SattumaAmmattienLuoja extends AmmatinLuoja {
         luoAmmatit(lukija, false, ammatit);
     }
 
-
-
     public ArrayList<Ammatti> getAmmatit() {
         return ammatit;
     }
-    
+
+    /**
+     * Sekoittaa ammattilistan ja palauttaa sen ArrayDequena.
+     *
+     * @return Sekoitetut ammatit ArrayDequena.
+     */
     public ArrayDeque<Ammatti> getSekoitetutAmmatit() {
         return luoPino();
     }
-    
+
     private ArrayDeque<Ammatti> luoPino() {
         ArrayDeque<Ammatti> palautettava = new ArrayDeque();
         Collections.shuffle(ammatit);

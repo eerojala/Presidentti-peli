@@ -34,10 +34,14 @@ public class Vaalit implements Tapahtuma {
     }
 
     /**
-     * Metodi joka palauttaa onnistuivatko vaalit
+     * Metodi joka palauttaa onnistuivatko vaalit. Vaalit tapahtuvat siten että
+     * otetaan 5 satunnaista "korttia" joissa lukee kunkin kortin äänimäärä,
+     * jotka lasketaan yhteen kokonaisäänimäärän saamiseksi.
      *
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return Onnistuiko vaalit
+     *
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
+     * 
+     * @return True jos vaalit onnistuivat, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
@@ -58,17 +62,19 @@ public class Vaalit implements Tapahtuma {
      * Metodi joka tarkistaa onko saatu äänimäärä vähintään yhtäsuurikuin
      * konstruktorin asettama kokonaislukumuuttuja tarvittavaAanimaara
      *
-     * @param aanimaara saatu äänimäärä
-     * @return Onko aanimaara suurempi tai yhtäsuurikuin tarvittavaAanimaara
+     * @param aanimaara saatu äänimäärä.
+     *
+     * @return True jos aanimaara onsuurempi tai yhtäsuurikuin
+     * tarvittavaAanimaara, muuten false.
      */
     public boolean onnistuikoVaalit(int aanimaara) {
         return aanimaara >= tarvittavaAanimaara;
     }
 
     /**
-     * Metodi joka palauttaa pelaajan saamat äänet
+     * Metodi joka palauttaa pelaajan saamat yksittäiset ääne.
      *
-     * @return Pelaajan saamat äänet
+     * @return Pelaajan saamat äänet listana.
      */
     public ArrayList<Integer> getSaadutAanet() {
         return saadutAanet;

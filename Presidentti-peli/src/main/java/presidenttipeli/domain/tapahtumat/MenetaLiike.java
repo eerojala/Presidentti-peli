@@ -24,6 +24,7 @@ public class MenetaLiike implements Tapahtuma {
      * vakuutusKorvaa trueksi.
      *
      * @param pelaaja Pelaaja jolta otetaan arvokkain liike pois.
+     * 
      * @return Aina true
      */
     @Override

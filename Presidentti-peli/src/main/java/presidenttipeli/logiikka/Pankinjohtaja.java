@@ -39,7 +39,7 @@ public class Pankinjohtaja {
      *
      * @see #otaPelaajaltaRahaa(presidenttipeli.domain.Pelaaja, int)
      *
-     * @return Onnistuiko velkojen vähennys.
+     * @return True jos velkojen vähennys onnistui, muuten false.
      */
     public boolean vahennaVelkaa(Pelaaja pelaaja, int maara) {
         if (pelaaja.getRahat() < maara || pelaaja.getVelkaa() < maara) {
@@ -59,7 +59,7 @@ public class Pankinjohtaja {
      * 
      *  @see #annaPelaajalleRahaa(presidenttipeli.domain.Pelaaja, int) 
      * 
-     *  @return Onnistuiko velankasvatus.
+     *  @return True jos velankasvatus onnistui, muuten false.
      */
     public boolean kasvataVelkaa(Pelaaja pelaaja, int maara) {
         if (pelaaja.getVelkaa() + maara > 5000) {

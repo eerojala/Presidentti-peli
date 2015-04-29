@@ -24,14 +24,14 @@ public class MokkeihinVaikuttavaTapahtuma implements Tapahtuma {
      * takaisin laudalle.
      *
      * @param pelaaja Pelaaja joka saa tai menettää mökin.
-     * @return Aina true
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
         if (pelaajalleMokki) {
             pelaaja.getOmistamatMokit().add(mokki);
         } else {
-            // Ohjelma syöttää poistotilanteessa tapahtumalle pelaajan omistaman mökin
             lauta.getMokit().add(mokki);
             pelaaja.getOmistamatMokit().remove(mokki);
         }

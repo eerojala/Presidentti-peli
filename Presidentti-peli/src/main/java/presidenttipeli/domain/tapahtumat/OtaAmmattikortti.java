@@ -22,8 +22,9 @@ public class OtaAmmattikortti implements Tapahtuma {
      * Metodi ottaa joko johtaja- tai sattuma-ammatin pinosta ja asettaa sen
      * pelaajan ammatiksi
      *
-     * @param pelaaja Pelaaja jolle annetaan ammatti
-     * @return Onnistuiko aseta ammatti tapahtuma
+     * @param pelaaja Pelaaja jolle annetaan ammatti.
+     * 
+     * @return True jos AsetaAmmatti-tapahtuma onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
@@ -41,7 +42,7 @@ public class OtaAmmattikortti implements Tapahtuma {
         Random random = new Random();
         int indeksi = random.nextInt(lauta.getJohtajaAmmatit().size());
         Ammatti ammatti = lauta.getJohtajaAmmatit().get(indeksi);
-        lauta.getJohtajaAmmatit().remove(indeksi); // muista tarkistaa että siirtääkö arraylist poistetun alkion oikealla olevia alkioita yhden vasemmalle
+        lauta.getJohtajaAmmatit().remove(indeksi); 
         return ammatti;
     }
 

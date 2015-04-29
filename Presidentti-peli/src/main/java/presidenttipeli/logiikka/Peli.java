@@ -92,7 +92,7 @@ public class Peli {
      * Suorittaa ruutuun liittyvät tapahtumat, tai jos kyseessä on erikoisruutu
      * käskee guita avaamaan niihin liittyvät GUIt.
      *
-     * @return Onnistuiko ruudun tapahtumien suorittaminen.
+     * @return True jos ruudun tapahtumien suorittaminen onnistui, muuten false.
      */
     public boolean suoritaRuudunTapahtumat() {
         Ruutu ruutu = nykyinenPelaaja.getNappula().getSijainti();
@@ -139,34 +139,45 @@ public class Peli {
         if (ruutu.isOstoJaMyyntiruutu()) {
             return suoritaOstoJaMyyntiruutu(ruutu);
         } else if (ruutu.isVaaliruutu()) {
-            return suoritaVaaliruutu(ruutu);
+            suoritaVaaliruutu(ruutu);
         } else if (ruutu.isPutkaruutu()) {
             suoritaPutkaruutu();
-            return true;
-        } else {
-            return true;
+        }
+        return true;
+    }
+
+    private void suoritaVaaliruutu(Ruutu ruutu) {
+        if (ruutu.getNumero() == 10 || ruutu.getNumero() == 25) {
+            suoritaEduskuntavaaliruutu(ruutu);
+        } else if (ruutu.getNumero() == 30) {
+            suoritaPresidentinvaaliruutu();
         }
     }
 
-    private boolean suoritaVaaliruutu(Ruutu ruutu) {
-        if (ruutu.getNumero() == 10) {
-            Eduskuntavaalienhallinta hallinta = new Eduskuntavaalienhallinta(nykyinenPelaaja,
-                    vaalienjarjestaja, pankinjohtaja);
-            peligui.avaaEduskuntavaalienHallintaGUI(hallinta);
-        } else if (ruutu.getNumero() == 25) {
-            if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
-                peligui.avaaRuutu25KyselyGUI();
-            }
-        } else if (ruutu.getNumero() == 30) {
-            Presidentinvaalienhallinta hallinta = new Presidentinvaalienhallinta(nykyinenPelaaja,
-                    vaalienjarjestaja, pankinjohtaja, kiinteistonvalittaja);
-            if (hallinta.pystyykoPelaajaOsallistumaanVaaleihin() == false) {
-                peligui.varallisuusEiRiitaVaaleihin();
-            } else {
-                peligui.avaaPresidentinvaalienHallintaGUI(hallinta);
+    private void suoritaEduskuntavaaliruutu(Ruutu ruutu) {
+        if (nykyinenPelaaja.isKansanedustaja()) {
+            peligui.pelaajaJoKansanedustaja();
+        } else {
+            if (ruutu.getNumero() == 10) {
+                Eduskuntavaalienhallinta hallinta = new Eduskuntavaalienhallinta(nykyinenPelaaja,
+                        vaalienjarjestaja, pankinjohtaja);
+                peligui.avaaEduskuntavaalienHallintaGUI(hallinta);
+            } else if (ruutu.getNumero() == 25) {
+                if (nykyinenPelaaja.getAmmatti().getPalkka() > 4000 && nykyinenPelaaja.isPuolueenJasen()) {
+                    peligui.avaaRuutu25KyselyGUI();
+                }
             }
         }
-        return true;
+    }
+
+    private void suoritaPresidentinvaaliruutu() {
+        Presidentinvaalienhallinta hallinta = new Presidentinvaalienhallinta(nykyinenPelaaja,
+                vaalienjarjestaja, pankinjohtaja, kiinteistonvalittaja);
+        if (hallinta.pystyykoPelaajaOsallistumaanVaaleihin() == false) {
+            peligui.varallisuusEiRiitaVaaleihin();
+        } else {
+            peligui.avaaPresidentinvaalienHallintaGUI(hallinta);
+        }
     }
 
     private void naytaKortti(int ruudunNro) {
@@ -190,7 +201,7 @@ public class Peli {
      *
      * @param ruutu Ruutu joka tarkastetaan
      *
-     * @return Onko tarkasteltava ruutu erikoisruutu.
+     * @return True jos tarkasteltava ruutu on erikoisruutu, muuten false.
      */
     public boolean onkoErikoisruutu(Ruutu ruutu) {
         return ruutu.isOstoJaMyyntiruutu() || ruutu.isPutkaruutu() || ruutu.isVaaliruutu();
@@ -246,7 +257,7 @@ public class Peli {
      * Tiputtaa nykyisen pelaajan pelistä ja tarkistaa onko pelaajia enää
      * jäljellä.
      *
-     * @return Onko pelaajia enää jäljellä.
+     * @return True jos pelaajia on vielä jäljellä, muuten false.
      */
     public boolean tiputaPelaajaPelista() {
         lauta.getNappulat().remove(nykyinenPelaaja.getNappula());
@@ -295,9 +306,9 @@ public class Peli {
     }
 
     /**
-     * Tarkistaa onko laudan liikepinossa enää kortteja jäljellä
+     * Tarkistaa onko laudan liikepinossa enää kortteja jäljellä.
      *
-     * @return Onko pinossa vielä kortteja jäljellä.
+     * @return True jos laudan liikepinossa on vielä liikkeitä, muuten false.
      */
     public boolean onkoPinossaLiikkeita() {
         return !lauta.getLiikkeet().isEmpty();

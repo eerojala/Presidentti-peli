@@ -152,7 +152,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_seuraavaVuoroButtonActionPerformed
 
     /**
-     * Näyttää pakan päälimmäisen kortin sisällön dialogissa
+     * Näyttää pakan päälimmäisen kortin sisällön dialogissa. Metodia kutsutaan
+     * jos pelaaja astuu ruudulle jossa hän joutuu nostamaan jonkin kortin.
      *
      * @param teksti Näytettävän kortin sisältö
      */
@@ -187,7 +188,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Ilmoittaa vaalien tuloksen dialogissa
+     * Ilmoittaa vaalien tuloksen dialogissa.
      *
      * @param onnistui Totuusarvo joka kertoo onnistuiko vaalit
      * @param saadutAanet Saadut äänet yksittäisinä listattuna
@@ -211,7 +212,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Ilmoittaa dialogissa pelaajan joka voitti.
+     * Ilmoittaa dialogissa pelaajan joka voitti. Metodia kutsutaan jos joku
+     * pelaajista voitti presidentinvaalit.
      */
     public void peliVoitettu() {
         JOptionPane.showMessageDialog(rootPane, "Onneksi olkoon "
@@ -222,7 +224,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
 
     /**
      * Ilmoittaa dialogissa että pelaajan varat eivät riittäneet vaalien
-     * aloittamiseen.
+     * aloittamiseen. Metodia kutsutaan jos pelaaja astuu ruudulle 30 eikä
+     * hänellä ole varaa presidentinvaalien aloittamiseen.
      */
     public void varallisuusEiRiitaVaaleihin() {
         JOptionPane.showMessageDialog(rootPane,
@@ -239,7 +242,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Ilmoittaa dialogissa liikkeiden loppuneen laudalla.
+     * Ilmoittaa dialogissa liikkeiden loppuneen laudalla. Metodia kutsutaan jos
+     * pelaaja astuu ruudulle 19 ja liikkeitä ei ole laudalle enää jäljellä.
      */
     public void liikkeitaEiOleEnaaJaljella() {
         JOptionPane.showMessageDialog(rootPane, "Liikkeita ei ole enää jäljellä",
@@ -260,7 +264,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Avaa PutkakyselyGUIn
+     * Avaa PutkakyselyGUIn.
      */
     public void avaaPutkakyselyGUI() {
         this.setEnabled(false);
@@ -271,7 +275,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Ilmoittaa dialogissa pelaajan joutuneen putkaan 2 vuoron ajaksi
+     * Ilmoittaa dialogissa pelaajan joutuneen putkaan 2 vuoron ajaksi. Metodia
+     * kutsutaan jos pelaaja astuu ruudulle 24 ja ei maksa 4000 mk.
      */
     public void pelaajaJoutuuPutkaan() {
         JOptionPane.showMessageDialog(rootPane, "Jouduit putkaan 2 vuoron ajaksi",
@@ -279,7 +284,8 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Ilmoittaa dialogissa pelaajan tippuneen pelistä pois.
+     * Ilmoittaa dialogissa pelaajan tippuneen pelistä pois. Metodia kutsutaan
+     * jos pelaaja tippuu pelistä.
      */
     public void pelaajaTippuuPelista() {
         JOptionPane.showMessageDialog(rootPane,
@@ -289,7 +295,7 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
 
     /**
      * Ilmoittaa dialogissa pelin päättyneen koska pelaajia ei ole enää
-     * jäljellä.
+     * jäljellä. Metodia kutsutaan jos viimeinen pelaaja tippuu pelistä.
      */
     public void kaikkiHavisivat() {
         JOptionPane.showMessageDialog(rootPane,
@@ -299,7 +305,9 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Avaa Ruutu25KyselyGUIn
+     * Avaa Ruutu25KyselyGUIn. Metodia kutsutaan jos pelaaja joka täyttää
+     * vaatimukset (puolueen jäsen ja ammatissa jonka palkka yli 4000 mk/kk)
+     * astuu ruudulle 25.
      */
     public void avaaRuutu25KyselyGUI() {
         Ruutu25KyselyGUI kysely = new Ruutu25KyselyGUI(this, peli);
@@ -311,10 +319,10 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
 
     /**
      * Ilmoittaa dialogissa uuden kierroksen alkaneen ja pelaajan saamat tuotot
-     * sekä nykyisen velkatilanteen.
+     * sekä nykyisen velkatilanteen. Metodia kutsutaan jos pelaaja aloittaa
+     * uuden kierroksen laudalla.
      */
     public void uusiKierros() {
-        peli.getPankinjohtaja().annaPelaajalleKuukaudenTuotot(peli.getNykyinenPelaaja());
         JOptionPane.showMessageDialog(rootPane, peli.getNykyinenPelaaja()
                 + " aloitti uuden kierroksen.\n" + "Kuukauden tuotot: "
                 + peli.getPankinjohtaja().getKuukaudenTuotot() + " mk\n"
@@ -322,6 +330,15 @@ public class PeliGUI extends javax.swing.JFrame implements Runnable {
                 JOptionPane.PLAIN_MESSAGE);
     }
 
+    /**
+     * Ilmoittaa dialogissa pelaajan olevan jo kansanedustaja. Metodia kutsutaan
+     * jos pelaaja joka on jo kansanedustaja saapuu eduskuntavaaliruudulle.
+     */
+    public void pelaajaJoKansanedustaja() {
+        JOptionPane.showMessageDialog(rootPane, peli.getNykyinenPelaaja()
+                + " on jo kansanedustaja.", "Vaalien aloittaminen epäonnistui.",
+                JOptionPane.PLAIN_MESSAGE);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton noppaButton;

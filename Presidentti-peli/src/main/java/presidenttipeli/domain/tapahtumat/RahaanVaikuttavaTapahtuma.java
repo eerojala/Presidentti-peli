@@ -21,7 +21,8 @@ public class RahaanVaikuttavaTapahtuma implements Tapahtuma {
      * annetusta totuusarvosta
      *
      * @param pelaaja Pelaaja jolle annetaan tai otetaan pois rahaa.
-     * @return Onnistuiko rahan antaminen tai ottaminen.
+     *
+     * @return True jos rahan ottaminen tai antaminen onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {
@@ -44,7 +45,5 @@ public class RahaanVaikuttavaTapahtuma implements Tapahtuma {
     public boolean isPelaajalleRahaa() {
         return pelaajalleRahaa;
     }
-    
-    
 
 }

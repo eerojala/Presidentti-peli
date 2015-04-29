@@ -20,8 +20,9 @@ public class LiikkeistaTaiMokeistaRiippuvaTapahtuma implements Tapahtuma {
      * Metodi joka suorittaa jommankumman konstruktorille annetuista tapahtumistata
      * riippuen siitä omistaako pelaaja yhtään liiketta tai mökkiä.
      *
-     * @param pelaaja Pelaajalle jolle suoritetaan jompikumpi tapahtuma
-     * @return Onnistuiko suoritettu tapahtuma
+     * @param pelaaja Pelaajalle jolle suoritetaan jompikumpi tapahtuma.
+     * 
+     * @return True jos suoritettu tapahtuma onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

@@ -11,8 +11,9 @@ public class NostaLiikkeidenTuotto implements Tapahtuma {
     /**
      * Metodi antaa pelaajalle jokaisen hänen omistaman liikkeidensä tuoton
      *
-     * @param pelaaja Pelaaja joka saa likkeidensä tuoton
-     * @return Aina true
+     * @param pelaaja Pelaaja joka saa likkeidensä tuoton.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

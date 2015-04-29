@@ -23,8 +23,9 @@ public class TietystaAmmatistaRiippuvaTapahtuma implements Tapahtuma {
      * Metodi suorittaa jommankumman konstruktorille annetuista tapahtumista
      * riippuen onko pelaajan ammatti sama kuin konstruktorille annettu ammatti.
      *
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return Onnistuiko tapahtuma
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
+     *
+     * @return True jos suoritettava tapahtuma onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

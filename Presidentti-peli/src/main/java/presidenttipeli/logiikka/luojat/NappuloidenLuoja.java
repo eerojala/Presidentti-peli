@@ -1,13 +1,13 @@
 package presidenttipeli.logiikka.luojat;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import presidenttipeli.domain.Nappula;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.util.KuvanLataaja;
 
+/**
+ * Luojaluokka joka luo pelille nappulat.
+ */
 public class NappuloidenLuoja extends Luoja {
 
     private ArrayList<Pelaaja> pelaajat;
@@ -32,7 +32,7 @@ public class NappuloidenLuoja extends Luoja {
         for (int i = 0; i < nappulat.size(); i++) {
             String tiedostopolku = "/kuvat/Pelaaja";
             tiedostopolku += (i + 1) + ".png";
-                nappulat.get(i).setKuva(KuvanLataaja.palautaKuva(tiedostopolku));
+            nappulat.get(i).setKuva(KuvanLataaja.palautaKuva(tiedostopolku));
         }
     }
 

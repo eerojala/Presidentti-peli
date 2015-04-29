@@ -15,10 +15,11 @@ public class VieTaiAnnaOikeusLiikkeidenTuottoon implements Tapahtuma {
 
     /**
      * Metodi joka vie tai antaa oikeuden liikkeiden tuottoon riippuen
-     * konstruktorille asetetusta totuusarvosta
+     * konstruktorille asetetusta totuusarvosta.
      *
-     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan
-     * @return Aina true
+     * @param pelaaja Pelaaja jolle tapahtuma suoritetaan.
+     * 
+     * @return Aina true.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

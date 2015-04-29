@@ -24,6 +24,7 @@ public class MenetaMokki implements Tapahtuma {
      * vakuutusKorvaa trueksi.
      *
      * @param pelaaja Pelaaja jolta otetaan hänen arvokkain mökkinsä pois
+     * 
      * @return Aina true
      */
     @Override

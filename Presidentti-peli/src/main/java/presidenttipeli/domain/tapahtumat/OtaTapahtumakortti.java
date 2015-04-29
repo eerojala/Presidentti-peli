@@ -18,10 +18,12 @@ public class OtaTapahtumakortti implements Tapahtuma {
 
     /**
      * Metodi joka nostaa laudan päälimmäisen tapahtumakortin ja suorittaa sen
-     * tapahtumat
+     * tapahtumat. Jos tapahtumien suoritus onnistui asetetaan kortti takaisin
+     * pinon pohjalle.
      *
-     * @param pelaaja Pelaaja jolle suoritetaan tapahtumakortin tapahtumat
-     * @return Onnistuiko kaikki tapahtumat
+     * @param pelaaja Pelaaja jolle suoritetaan tapahtumakortin tapahtumat.
+     *
+     * @return Jos kaikkien tapahtumien suoritus onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

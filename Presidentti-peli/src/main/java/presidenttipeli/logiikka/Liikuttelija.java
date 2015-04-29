@@ -23,7 +23,7 @@ public class Liikuttelija {
      * @param nappula Nappula jota liikutetaan.
      * @param silmaluku Kuinka monta askelta nappulaa liikutetaan
      *
-     * @return Siirtyikö nappula seuraavalle kierrokselle.
+     * @return True jos nappula siirtyi uudelle kierrokselle, muuten false.
      */
     public boolean liikutaNappulaa(Nappula nappula, int silmaluku) {
         int nykyinenSijainti = nappula.getSijainti().getNumero();

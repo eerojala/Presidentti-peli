@@ -1,12 +1,14 @@
 package presidenttipeli.logiikka.luojat;
 
-import java.io.File;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 import presidenttipeli.domain.Liike;
 
+/**
+ * Luojaluokka joka luo pelille liikkeet.
+ */
 public class LiikkeidenLuoja extends Luoja {
 
     private ArrayList<Liike> lista;
@@ -17,7 +19,7 @@ public class LiikkeidenLuoja extends Luoja {
 
     @Override
     public void luo() {
-        asetaScannerilleTiedosto("tekstit/Liikkeet.txt", 
+        asetaScannerilleTiedosto("tekstit/Liikkeet.txt",
                 LiikkeidenLuoja.class.getClassLoader());
         luoLiikkeet(lukija);
     }
@@ -52,7 +54,12 @@ public class LiikkeidenLuoja extends Luoja {
     public ArrayList<Liike> getLista() {
         return lista;
     }
-    
+
+    /**
+     * Sekoittaa liikelistan ja palauttaa sen ArrayDequena.
+     *
+     * @return Sekoitetut liikkeet ArrayDeque-muodossa.
+     */
     public ArrayDeque<Liike> getSekoitetutLiikkeet() {
         ArrayDeque<Liike> liikkeet = new ArrayDeque();
         Collections.shuffle(lista);

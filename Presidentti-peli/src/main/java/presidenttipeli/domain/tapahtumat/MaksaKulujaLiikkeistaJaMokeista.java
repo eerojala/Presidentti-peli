@@ -19,7 +19,8 @@ public class MaksaKulujaLiikkeistaJaMokeista implements Tapahtuma {
      * omistamaltaan mökiltä ja liikkeeltä
      *
      * @param pelaaja Pelaaja jolta veloitetaan rahaa
-     * @return Onnistuiko rahojen veloitus
+     * 
+     * @return True jos rahojen veloitus onnistui, muuten false.
      */
     @Override
     public boolean suoritaTapahtuma(Pelaaja pelaaja) {

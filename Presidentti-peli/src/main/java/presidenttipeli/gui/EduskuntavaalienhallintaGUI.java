@@ -3,11 +3,11 @@ package presidenttipeli.gui;
 import javax.swing.JOptionPane;
 import presidenttipeli.logiikka.Eduskuntavaalienhallinta;
 
+/**
+ * GUI joka kyselee paljonko rahaa pelaaja haluaa käyttää eduskuntavaaleihin
+ */
 public class EduskuntavaalienhallintaGUI extends javax.swing.JFrame implements Runnable {
 
-    /**
-     * GUI joka kyselee paljonko rahaa pelaaja haluaa käyttää eduskuntavaaleihin
-     */
     public EduskuntavaalienhallintaGUI(Eduskuntavaalienhallinta hallinta, PeliGUI peligui) {
         this.hallinta = hallinta;
         this.peligui = peligui;
