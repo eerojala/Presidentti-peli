@@ -9,12 +9,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import presidenttipeli.domain.Pelaaja;
 import presidenttipeli.domain.Pelilauta;
+import presidenttipeli.logiikka.luojat.TapahtumienLuoja;
 
 
 public class PutkaTest {
     Putka putka;
     Pelaaja pelaaja;
-    
+    TapahtumienLuoja luoja = new TapahtumienLuoja(new Pelilauta());
     public PutkaTest() {
     }
     
@@ -28,7 +29,7 @@ public class PutkaTest {
     
     @Before
     public void setUp() {
-        putka = new Putka(new Pelilauta());
+        putka = new Putka(luoja);
         pelaaja = new Pelaaja("Pelaaja");
     }
     

@@ -1,4 +1,4 @@
-package presidenttipeli.logiikka;
+    package presidenttipeli.logiikka;
 
 import presidenttipeli.domain.Pelaaja;
 

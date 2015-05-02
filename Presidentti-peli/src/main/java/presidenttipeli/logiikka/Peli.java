@@ -23,7 +23,7 @@ public class Peli {
     private Vaalienjarjestaja vaalienjarjestaja;
     private Putka putka;
     private Pelaaja nykyinenPelaaja;
-    private int nykyisenPelaajanIndeksi;
+    private Vuoronvaihtaja vuoronvaihtaja;
     private PeliGUI peligui; // haters will haters
 
     public Peli(Pelilauta lauta) {
@@ -33,10 +33,10 @@ public class Peli {
         pankinjohtaja = new Pankinjohtaja(lauta);
         kiinteistonvalittaja = new Kiinteistonvalittaja(lauta, pankinjohtaja);
         vaalienjarjestaja = new Vaalienjarjestaja(lauta);
-        putka = new Putka(lauta);
+        putka = new Putka(tapahtumienluoja);
         arvoJarjestys();
         nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
-        nykyisenPelaajanIndeksi = 0;
+        vuoronvaihtaja = new Vuoronvaihtaja(lauta);
     }
 
     private void arvoJarjestys() {
@@ -211,47 +211,9 @@ public class Peli {
      * Vaihtaa vuoroa, nykyinen pelaaja vaihtuu seuraavaan.
      */
     public void vaihdaVuoroa() {
-        Pelaaja edellinenPelaaja = nykyinenPelaaja;
-        edellinenPelaaja.setOdottaaVuoroaan(edellinenPelaaja.getOdottaaVuoroaan() - 1);
-        if (!lauta.getNappulat().contains(nykyinenPelaaja.getNappula())) {
-            vaihdaVuoroaKunEdellinenTippuiPelista();
-        } else {
-            etsiUusiPelaaja();
-        }
-
+        nykyinenPelaaja = vuoronvaihtaja.vaihdaVuoroa(nykyinenPelaaja);
     }
 
-    private void etsiUusiPelaaja() {
-        for (int i = 0; i < lauta.getNappulat().size(); i++) {
-            if (lauta.getNappulat().get(i).getOmistaja() == nykyinenPelaaja) {
-                if (i == lauta.getNappulat().size() - 1) {
-                    nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
-                    nykyisenPelaajanIndeksi = 0;
-                } else {
-                    nykyinenPelaaja = lauta.getNappulat().get(i + 1).getOmistaja();
-                    nykyisenPelaajanIndeksi = i + 1;
-                }
-
-                if (nykyinenPelaaja.getOdottaaVuoroaan() > 0) {
-                    vaihdaVuoroa();
-                }
-                break;
-            }
-
-        }
-    }
-
-    private void vaihdaVuoroaKunEdellinenTippuiPelista() {
-        if (nykyisenPelaajanIndeksi == lauta.getNappulat().size() - 1) {
-            nykyinenPelaaja = lauta.getNappulat().get(0).getOmistaja();
-        } else {
-            if (nykyisenPelaajanIndeksi == lauta.getNappulat().size()) {
-                nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi - 1).getOmistaja();
-            } else {
-                nykyinenPelaaja = lauta.getNappulat().get(nykyisenPelaajanIndeksi).getOmistaja();
-            }
-        }
-    }
 
     /**
      * Tiputtaa nykyisen pelaajan pelistä ja tarkistaa onko pelaajia enää

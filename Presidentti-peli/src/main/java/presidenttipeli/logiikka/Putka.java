@@ -11,8 +11,8 @@ public class Putka {
 
     private TapahtumienLuoja luoja;
 
-    public Putka(Pelilauta lauta) {
-        luoja = new TapahtumienLuoja(lauta);
+    public Putka(TapahtumienLuoja luoja) {
+        this.luoja = luoja;
     }
 
     /**

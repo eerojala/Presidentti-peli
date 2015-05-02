@@ -68,7 +68,7 @@ public class Vaalienjarjestaja {
     public int getSaadutAanetSummattuna() {
         int summa = 0;
         for (Integer aani : saadutAanet) {
-            summa += aani;
+            summa += aani; 
         }
         return summa;
     }
