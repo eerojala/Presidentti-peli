@@ -72,6 +72,10 @@ Liikuttaa pelaajien nappuloita laudalla.
 
 Huolehtii pelaajan rahasta ja velasta, sekä antaa uuden kierroksen alkaessa pelaajalle kuukauden tuotot.
 
+### PelajaanStatus
+
+Kerää tietoa nykyisestä pelaajasta.
+
 ### Peli
 
 Pelin päälogiikkaluokka. Huolehtii ruutujen tapahtumien suorittamisesta ja pelaajien pelistä tiputtamisesta, sekä pitää

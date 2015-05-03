@@ -115,11 +115,12 @@ public class Peli {
                 return false;
             }
         }
-        suoritaRuudunTapahtumat2(ruutu, vanha);
-        return true;
+        Ruutu uusi = nykyinenPelaaja.getNappula().getSijainti();
+        return suoritaRuudunTapahtumat2(uusi, vanha);
     }
 
-    private void suoritaRuudunTapahtumat2(Ruutu ruutu, Ruutu vanha) {
+    private boolean suoritaRuudunTapahtumat2(Ruutu ruutu, Ruutu vanha) {
+        
         if (ruutu.getNumero() == 22 || (ruutu.getNumero() == 12 && nykyinenPelaaja.isPuolueenJasen())) {
             peligui.naytaKortinSisalto(nykyinenPelaaja.getAmmatti().toString());
         }
@@ -130,8 +131,10 @@ public class Peli {
         }
 
         if (!vanha.equals(nykyinenPelaaja.getNappula().getSijainti())) {
-            suoritaRuudunTapahtumat();
+            peligui.naytaSelostus();
+            return suoritaRuudunTapahtumat();
         }
+        return true;
     }
 
     private boolean suoritaErikoisruutu() {

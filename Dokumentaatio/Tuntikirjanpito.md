@@ -1,4 +1,5 @@
 # Tuntikirjanpito
+
 * 10.3.2015, 2 tuntia, Gitin opettelua ja tiedostojen pushaamista
 * 11.3.2015, 1 tunti, Käyttötapausten kirjoittelua
 * 17.3.2015 1,5 tuntia, Aloitin koodauksen, domain luokkien koodausta
@@ -30,3 +31,8 @@
 * 27.4.2015 4 tuntia, .Jarin kanssa painimista, Javadocin kirjoittamista jatkettu.
 * 28.4.2015 1,5 tuntia, Javadocin kirjoittelua, Johtaja- sekä sattuma-ammattien luonnin koodia siistitty.
 * 29.4.2015 2 tuntia, Javadocin kirjoittelua, pikkujuttuja lisäilty koodiin.
+* 2.5.2015 5 tuntia, Javadoc valmis, uuden luokkakaavion teko ja rakenteenkuvaus
+* 3.5 5 tuntia, Piirsin pelilaudan selkeämmäksi, lopun dokumentaation tuhertelua. PROJEKTI VALMIS
+
+*YUML oli vähän jäinen viimeisenä iltana joten luokkakaavio ei ole täysin valmis.
+## Aikaa käytetty yhteensä: 140h

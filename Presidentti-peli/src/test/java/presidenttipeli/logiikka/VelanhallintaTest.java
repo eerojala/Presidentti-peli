@@ -86,7 +86,7 @@ public class VelanhallintaTest {
         pelaaja.setRahat(99);
         laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
-        assertEquals(0, laskuri.getMaksuraha());
+        assertEquals(99, laskuri.getMaksuraha());
     }
     
     @Test
@@ -95,7 +95,7 @@ public class VelanhallintaTest {
         pelaaja.setRahat(999);
         laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
-        assertEquals(0, laskuri.getMaksuraha());
+        assertEquals(999, laskuri.getMaksuraha());
     }
     
     @Test
@@ -103,7 +103,7 @@ public class VelanhallintaTest {
         pelaaja.setVelkaa(99);
         laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaSadalla();
-        assertEquals(0, laskuri.getMaksuraha());
+        assertEquals(99, laskuri.getMaksuraha());
     }
     
     @Test
@@ -111,7 +111,7 @@ public class VelanhallintaTest {
         pelaaja.setVelkaa(999);
         laskuri = new Velanhallinta(pelaaja);
         laskuri.kasvataMaksurahaaTuhannella();
-        assertEquals(0, laskuri.getMaksuraha());
+        assertEquals(999, laskuri.getMaksuraha());
     }
     
     @Test

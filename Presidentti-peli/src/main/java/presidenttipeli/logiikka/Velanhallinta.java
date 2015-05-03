@@ -49,6 +49,8 @@ public class Velanhallinta {
     public void kasvataMaksurahaaSadalla() {
         if (maksuraha + 100 <= pelaajanRahat && maksuraha + 100 <= pelaajanVelat) {
             maksuraha += 100;
+        } else {
+            maksuraha = Math.min(pelaajanRahat, pelaajanVelat);
         }
     }
 
@@ -59,6 +61,8 @@ public class Velanhallinta {
     public void kasvataMaksurahaaTuhannella() {
         if (maksuraha + 1000 <= pelaajanRahat && maksuraha + 1000 <= pelaajanVelat) {
             maksuraha += 1000;
+        } else {
+            maksuraha = Math.min(pelaajanRahat, pelaajanVelat);
         }
     }
 

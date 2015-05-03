@@ -66,52 +66,52 @@ public class RuutujenLuoja extends Luoja {
     }
 
     private void luoRuudut1() {
-        luoOstoJaMyyntiruutu(1, 574, 374, false);
-        luoYksinkertainenAmmattiruutu(2, 513, 374, tyoton);
-        luoYksinkertainenAmmattiruutu(3, 450, 374,
+        luoOstoJaMyyntiruutu(1, 862, 557, false);
+        luoYksinkertainenAmmattiruutu(2, 767, 557, tyoton);
+        luoYksinkertainenAmmattiruutu(3, 672, 557,
                 new Ammatti("Opettaja", 5000, false, false, false));
-        luoYksinkertainenAmmattiruutu(4, 387, 374,
+        luoYksinkertainenAmmattiruutu(4, 577, 557,
                 new Ammatti("Autonkuljettaja", 3000, false, false, true));
-        luoYksinkertainenAmmattiruutu(5, 324, 374, tyoton);
-        luoYksinkertainenAmmattiruutu(6, 261, 374,
+        luoYksinkertainenAmmattiruutu(5, 484, 557, tyoton);
+        luoYksinkertainenAmmattiruutu(6, 389, 557,
                 new Ammatti("Päälikkö", 9000, false, false, false));
-        luoJohtajaTaiSattumaAmmattiruutu(7, 198, 374, false);
-        luoJasenkirjaanVaikuttavaRuutu(8, 135, 374, true);
-        luoRahaanVaikuttavaRuutu(9, 72, 374, true, 2000);
-        luoVaaliruutu(10, 8, 374);
+        luoJohtajaTaiSattumaAmmattiruutu(7, 294, 557, false);
+        luoJasenkirjaanVaikuttavaRuutu(8, 199, 557, true);
+        luoRahaanVaikuttavaRuutu(9, 104, 557, true, 2000);
+        luoVaaliruutu(10, 10, 557);
     }
 
     private void luoRuudut2() {
-        luoPalkastaRiippuvaRuutu(11, 8, 312,
+        luoPalkastaRiippuvaRuutu(11, 10, 465,
                 luoRuudun11Tapahtumat(), luoRuudun11Palkkarajat());
-        luoJasenkirjastaRiippuvaRuutu(12, 8, 251,
+        luoJasenkirjastaRiippuvaRuutu(12, 10, 373,
                 luoja.luoOtaAmmattikorttiTapahtuma(true), luoja.luoOtaTapahtumakorttiTapahtuma());
-        luoTietystaAmmatistaRiippuvaRuutu(13, 8, 190,
+        luoTietystaAmmatistaRiippuvaRuutu(13, 10, 281,
                 tyoton, luoja.luoTapahtumaJokaEiTeeMitaan(),
                 luoja.luoRahaanVaikuttavaTapahtuma(false, 500));
-        luoTietystaAmmatistaRiippuvaRuutu(14, 8, 129, tyoton,
+        luoTietystaAmmatistaRiippuvaRuutu(14, 10, 190, tyoton,
                 luoja.luoTapahtumaJokaEiTeeMitaan(),
                 luoja.luoRahaanVaikuttavaTapahtuma(true, 1000));
-        luoRahaanVaikuttavaRuutu(15, 8, 68, false, 5000);
-        luoOstoJaMyyntiruutu(16, 8, 7, true);
-        luoTutkintoonVaikuttavaRuutu(17, 72, 7, true, false);
-        luoYksinkertainenAmmattiruutu(18, 135, 7, tyoton);
-        luoOtaLiikekorttiRuutu(19, 198, 7);
-        luoOstoJaMyyntiruutu(20, 261, 7, false);
+        luoRahaanVaikuttavaRuutu(15, 10, 98, false, 5000);
+        luoOstoJaMyyntiruutu(16, 10, 8, true);
+        luoTutkintoonVaikuttavaRuutu(17, 105, 8, true, false);
+        luoYksinkertainenAmmattiruutu(18, 199, 8, tyoton);
+        luoOtaLiikekorttiRuutu(19, 294, 8);
+        luoOstoJaMyyntiruutu(20, 389, 8, false);
     }
 
     private void luoRuudut3() {
-        luoMokinpoistoruutu(21, 324, 7, true);
-        luoJohtajaTaiSattumaAmmattiruutu(22, 387, 7, true);
-        luoRuutuJossaUseampiTapahtuma(23, 450, 7, luoja.luoRahaanVaikuttavaTapahtuma(false, 500),
+        luoMokinpoistoruutu(21, 484, 8, true);
+        luoJohtajaTaiSattumaAmmattiruutu(22, 577, 8, true);
+        luoRuutuJossaUseampiTapahtuma(23, 672, 8, luoja.luoRahaanVaikuttavaTapahtuma(false, 500),
                 luoja.luoJohtajuudestaTaiKansanedustajuudestaRiippuvaTapahtuma(luoja.luoSiirraNappulaaTapahtuma(30), luoja.luoTapahtumaJokaEiTeeMitaan()));
-        luoPutkaruutu(24, 513, 7);
-        luoVaaliruutu(25, 575, 7);
-        luoNappulaaSiirtavaRuutu(26, 575, 68, 1);
-        luoRahaanVaikuttavaRuutu(27, 575, 129, true, 20000);
-        luoTapahtumakorttiRuutu(28, 575, 190);
-        luoVerotarkastusRuutu(29, 575, 251, false);
-        luoVaaliruutu(30, 575, 312);
+        luoPutkaruutu(24, 767, 8);
+        luoVaaliruutu(25, 862, 8);
+        luoNappulaaSiirtavaRuutu(26, 862, 98, 1);
+        luoRahaanVaikuttavaRuutu(27, 862, 190, true, 20000);
+        luoTapahtumakorttiRuutu(28, 862, 281);
+        luoVerotarkastusRuutu(29, 862, 373, false);
+        luoVaaliruutu(30, 862, 465);
     }
 
     private void luoOstoJaMyyntiruutu(int numero, int x, int y, boolean ruutu16) {

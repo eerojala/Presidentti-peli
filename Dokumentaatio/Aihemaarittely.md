@@ -57,6 +57,7 @@ puolueen jäsenkirjaa välitavoitteiden ja lopullisen päämäärän saavuttamis
 * Tutkinnon vastaanottaminen
 * Rahan saaminen
 * Rahan menettäminen
-
+* Statuksen avaaminen
+* Vuoron vaihtaminen
 
 

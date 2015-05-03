@@ -77,24 +77,21 @@ public class PeliActionListener implements ActionListener {
         piirtoalusta.repaint();
         if (peli.getLiikuttelija().liikutaNappulaa(peli.getNykyinenPelaaja().getNappula(),
                 silmaluku) == true) {
+            peli.getPankinjohtaja().annaPelaajalleKuukaudenTuotot(peli.getNykyinenPelaaja());
             peligui.uusiKierros();
         }
-        naytaSelostus();
+        peligui.naytaSelostus();
         suoritaTapahtuma();
     }
 
     private void seuraavaVuoroButtonPainettu() {
         this.seuraavaVuoroButton.setEnabled(false);
         peli.vaihdaVuoroa();
-        ilmoitaKenenVuoro();
+        peligui.ilmoitaKenenVuoro();
         this.noppaButton.setEnabled(true);
     }
 
-    private void naytaSelostus() {
-        Ruutu ruutu = peli.getNykyinenPelaaja().getNappula().getSijainti();
-        JOptionPane.showMessageDialog(rootPane, ruutu.getSeloste(), "Ruutu "
-                + ruutu.getNumero(), JOptionPane.PLAIN_MESSAGE);
-    }
+    
 
     private void suoritaTapahtuma() {
         if (peli.suoritaRuudunTapahtumat() == false) {
@@ -105,11 +102,6 @@ public class PeliActionListener implements ActionListener {
             velanhallintagui.setVisible(true);
         }
 
-    }
-
-    private void ilmoitaKenenVuoro() {
-        JOptionPane.showMessageDialog(rootPane, "Pelaajan " + peli.getNykyinenPelaaja() + " vuoro",
-                "Uusi vuoro", JOptionPane.PLAIN_MESSAGE);
     }
 
 }
